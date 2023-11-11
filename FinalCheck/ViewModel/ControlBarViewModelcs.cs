@@ -31,10 +31,13 @@ namespace FinalCheck.ViewModel
         }
         public void MethodCloseWindow(UserControl p)
         {
-            var MyWindow = Window.GetWindow(p);
-            if (MyWindow != null)
+            if (MessageBox.Show("Bạn chắc chắn muốn thoát chương trình không?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) == MessageBoxResult.Yes)
             {
-                MyWindow.Close();
+                var MyWindow = Window.GetWindow(p);
+                if (MyWindow != null)
+                {
+                    MyWindow.Close();
+                }
             }
         }
         public void MethodNormalWindow(UserControl p)

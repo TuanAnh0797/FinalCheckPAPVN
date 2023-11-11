@@ -28,5 +28,14 @@ namespace FinalCheck.MyUserControl
             MyViewModel = new ControlBarViewModelcs();
             this.DataContext = MyViewModel;
         }
+
+        private void btn_close_Click(object sender, RoutedEventArgs e)
+        {
+            var MyWindow = Window.GetWindow(this);
+            if (MyWindow != null)
+            {
+                MyWindow.Close();
+            }
+        }
     }
 }

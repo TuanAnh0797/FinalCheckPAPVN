@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FinalCheck"
-         xmlns:uc="clr-namespace:FinalCheck.MyUserControl"
+        
         mc:Ignorable="d"
+        xmlns:uc="clr-namespace:FinalCheck.MyUserControl"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              TextElement.FontWeight="Regular"
@@ -24,11 +25,58 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
+            <!--<RowDefinition Height="50"></RowDefinition>-->
         </Grid.RowDefinitions>
-        <uc:TitleBar>
-            
+        <uc:TitleBar Grid.Row="0">
         </uc:TitleBar>
-        <Button Padding="0" Content="Close" FontSize="25" Background="Red" Width="150" Grid.Row="2" Click="Button_Click"></Button>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Medium" Text="ABCDEFGHIK11"></TextBlock>
+            <Grid Grid.Row="1" Margin="5">
+                    <Grid Height="256" Width="200">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <materialDesign:ColorZone Padding="6">
+                            <StackPanel Orientation="Horizontal">
+                                <Button Style="{StaticResource MaterialDesignToolForegroundButton}" Command="{x:Static materialDesign:Flipper.FlipCommand}" HorizontalAlignment="Left">
+                                    <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                </Button>
+                            <TextBlock Margin="8 0 0 0" VerticalAlignment="Center"> EDIT USER
+                                </TextBlock>
+                            </StackPanel>
+                        </materialDesign:ColorZone>
+                        <Grid Grid.Row="1" Margin="0 6 0 0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="172">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <TextBox materialDesign:HintAssist.Hint="First name" materialDesign:HintAssist.IsFloating="True" Margin="0 12 0 0">
+                                James
+                            </TextBox>
+                            <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="Last name" materialDesign:HintAssist.IsFloating="True" Margin="0 12 0 0">
+                                Willock
+                            </TextBox>
+                            <StackPanel Grid.Row="2" Orientation="Horizontal"  Margin="0 12 0 0" HorizontalAlignment="Right">
+                            <TextBlock VerticalAlignment="Center"> Email Contact
+                                </TextBlock>
+                                <ToggleButton Margin="8 0 0 0"></ToggleButton>
+                            </StackPanel>
+                            <StackPanel  Grid.Row="3" Orientation="Horizontal" Margin="0 12 0 0" HorizontalAlignment="Right">
+                            <TextBlock VerticalAlignment="Center"> Telephone Contact
+                                </TextBlock>
+                                <ToggleButton Margin="8 0 0 0"></ToggleButton>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+            </Grid>
+        </Grid>
+        <!--<Button Padding="0" Content="Close" FontSize="25" Background="Red" Width="150" Grid.Row="2" Click="Button_Click"></Button>-->
     </Grid>
 </Window>

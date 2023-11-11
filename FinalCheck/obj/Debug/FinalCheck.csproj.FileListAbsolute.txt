@@ -165,3 +165,7 @@ C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.Pro
 C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.csproj.GenerateResource.Cache
 C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.exe
 C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.pdb
+C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\obj\Debug\Login.g.cs
+C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\obj\Debug\Login.baml
+C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\obj\Debug\Setup.g.cs
+C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\obj\Debug\Setup.baml

@@ -449,6 +449,8 @@ namespace FinalCheck
             {
                 btn_open.IsChecked = false;
             }
+            Login p = new Login();
+            p.ShowDialog();
         }
 
         private void btn_History_Click(object sender, RoutedEventArgs e)
