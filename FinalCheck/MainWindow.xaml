@@ -51,12 +51,6 @@
                                     <Label Foreground="White" Content="Setup"></Label>
                                 </StackPanel>
                             </Button>
-                            <Button Click="btn_report_Click"  Name="btn_report"  Width="150" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}" CommandParameter="{x:Static Dock.Left}"  HorizontalAlignment="Center" HorizontalContentAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}">
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Foreground="White" Content="{materialDesign:PackIcon Kind=GooglePlay}"></Label>
-                                    <Label Foreground="White" Content="Report"></Label>
-                                </StackPanel>
-                            </Button>
                             <Button Click="btn_History_Click"  Name="btn_History"  Width="150" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}" CommandParameter="{x:Static Dock.Left}"  HorizontalAlignment="Center" HorizontalContentAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}">
                                 <StackPanel Orientation="Horizontal">
                                     <Label Foreground="White" Content="{materialDesign:PackIcon Kind=GooglePlay}"></Label>
@@ -88,296 +82,1233 @@
                 </Grid>
                 <Grid Grid.Row="1" Margin="0,2,0,2">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="70"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" Background="White" Margin="5,2,5,2" Name="gr_header">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <!--<ColumnDefinition Width="200"></ColumnDefinition>-->
-                        </Grid.ColumnDefinitions>
-                        <Grid  Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <StackPanel Grid.Column="0" Margin="30,5,0,5" Orientation="Horizontal">
-                                <Border Height="50" Width="600" CornerRadius="6" VerticalAlignment="Center" BorderThickness="2" BorderBrush="White">
-                                    <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Text="{Binding CurentData}">
-                                    </TextBlock>
-                                </Border>
-                            </StackPanel>
-                        </Grid>
-                        <!--<Grid Grid.Column="1">
-                            <StackPanel Grid.Column="0" Margin="0,5,0,0" Orientation="Vertical">
-                               
-                                    <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="192.168.1.1:1000"></TextBlock>
-                                    <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" Text="Connected"></TextBlock>
-
-                            </StackPanel>
-                        </Grid>-->
-
-                    </Grid>
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-
-                        <!--<Separator Grid.Row="0" Margin="5,5,5,10"></Separator>-->
-
                         <Grid Grid.Row="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="2*"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="0" Margin="5,0,5,0" Background="WhiteSmoke">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="35"></RowDefinition>
-                                    <!--<RowDefinition Height="50"></RowDefinition>-->
-                                    <RowDefinition Height="*"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Grid Grid.Row="0" Background="Orange">
-                                    <TextBlock FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">History</TextBlock>
-                                </Grid>
-
-                                <!--<Grid Grid.Row="1" Margin="10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"></RowDefinition>
+                                <RowDefinition Height="2*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" Background="White" Margin="5,0,0,5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="35"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*"></ColumnDefinition>
-                                        <ColumnDefinition Width="120"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="4*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-
-                                    <TextBox Grid.Column="0" Height="30" FontSize="15" Padding="5" Margin="0,0,0,0" materialDesign:HintAssist.Hint="Hãy nhập mã tủ">
-
-                                    </TextBox>
-                                    <Button BorderBrush="Black"  Grid.Column="1" FontSize="15" Foreground="White"  Background="CadetBlue" Height="30" Margin="0,0,0,0" Width="100" Padding="0" Click="Button_Click">
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Content="{materialDesign:PackIcon Kind=DatabaseSearch}"></Label>
-                                            <Label Content="Search!"></Label>
+                                    <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="DarkSeaGreen">
+                                        <TextBlock FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">Checking</TextBlock>
+                                    </Grid>
+                                    <Grid Grid.Column="0" Grid.Row="1">
+                                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock HorizontalAlignment="Center" FontSize="15" Text="Model đang kiểm tra"></TextBlock>
+                                            <TextBlock  HorizontalAlignment="Center" FontWeight="Medium" FontSize="25" Text="NR-BA190GKVN"></TextBlock>
+                                            <TextBlock  HorizontalAlignment="Center" FontSize="15" Text="Serial đang kiểm tra "></TextBlock>
+                                            <TextBlock  HorizontalAlignment="Center" FontWeight="Medium" FontSize="25" Text="1234567"></TextBlock>
                                         </StackPanel>
-                                    </Button>
-                                </Grid>-->
-                                <Grid Grid.Row="1" Margin="0,0">
-                                    <ListView  x:Name="lv1" Grid.Column="0" ItemsSource="{Binding myListErrorFileCheck, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" MouseUp="lv1_MouseUp" >
-                                        <ListView.Resources>
-                                            <Style TargetType="GridViewColumnHeader">
-                                                <Setter Property="FontSize" Value="15"></Setter>
-                                                <Setter Property="Width" Value="auto"></Setter>
-                                                <Setter Property="FontWeight" Value="Medium"></Setter>
-                                            </Style>
-                                        </ListView.Resources>
-                                        <ListView.View>
-                                            <GridView>
-                                                <GridViewColumn>
-                                                    <GridViewColumn.Header>
-                                                        <Grid Margin="5,0,5,0">
-                                                            <Label>Name</Label>
-                                                        </Grid>
-                                                    </GridViewColumn.Header>
-                                                    <GridViewColumn.CellTemplate>
-                                                        <DataTemplate>
-                                                            <Grid Margin="5,0,5,0">
-                                                                <Grid.RowDefinitions>
-                                                                    <RowDefinition />
-                                                                </Grid.RowDefinitions>
-                                                                <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition />
-                                                                </Grid.ColumnDefinitions>
-                                                                <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding NameModel}" ></TextBlock>
-                                                            </Grid>
+                                    </Grid>
+                                    <Border Margin="5"  Grid.Column="1" Grid.Row="1" BorderThickness="1" BorderBrush="Black">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                               
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="30"></ColumnDefinition>
+                                                <ColumnDefinition Width="80"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition Width="45"></ColumnDefinition>
+                                                <ColumnDefinition Width="35"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <!--Row1-->
+                                            <Grid  Grid.Row="0" Grid.Column="0">
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Column="0">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">STT</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="0" Grid.Column="1">
+                                                <Border BorderThickness="1" BorderBrush="Black" >
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Content</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="4">
+                                                <Border BorderThickness="1" BorderBrush="Black" >
 
-                                                        </DataTemplate>
-                                                    </GridViewColumn.CellTemplate>
-                                                </GridViewColumn>
-                                                <GridViewColumn >
-                                                    <GridViewColumn.Header>
-                                                        <Grid Margin="5,0,5,0">
-                                                            <Label>Result</Label>
-                                                        </Grid>
-                                                    </GridViewColumn.Header>
-                                                    <GridViewColumn.CellTemplate>
-                                                        <DataTemplate>
-                                                            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                                <Grid.RowDefinitions>
-                                                                    <RowDefinition />
-                                                                </Grid.RowDefinitions>
-                                                                <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="*" />
-                                                                </Grid.ColumnDefinitions>
-                                                                <TextBlock Width="auto" TextAlignment="Center" FontWeight="Medium"  FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Statuscheck}">
-                                                                    <TextBlock.Style>
-                                                                        <Style TargetType="TextBlock">
-                                                                            <Style.Triggers>
-                                                                                <Trigger Property="Text" Value="NG">
-                                                                                    <Setter Property="Foreground" Value="Red"></Setter>
-                                                                                </Trigger>
-                                                                                <Trigger Property="Text" Value="OK">
-                                                                                    <Setter Property="Foreground" Value="Green"></Setter>
-                                                                                </Trigger>
-                                                                                <Trigger Property="Text" Value="Pending">
-                                                                                    <Setter Property="Foreground" Value="Orange"></Setter>
-                                                                                </Trigger>
-                                                                            </Style.Triggers>
-                                                                        </Style>
-                                                                    </TextBlock.Style>
-                                                                </TextBlock>
-                                                            </Grid>
+                                                   
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="0" Grid.Column="6">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Result</TextBlock>
 
-                                                        </DataTemplate>
-                                                    </GridViewColumn.CellTemplate>
-                                                </GridViewColumn>
-                                                <GridViewColumn>
-                                                    <GridViewColumn.Header>
-                                                        <Grid Margin="5,0,5,0">
-                                                            <Label>Time Check</Label>
-                                                        </Grid>
-                                                    </GridViewColumn.Header>
-                                                    <GridViewColumn.CellTemplate>
-                                                        <DataTemplate>
-                                                            <Grid Margin="0,0,5,0">
-                                                                <Grid.RowDefinitions>
-                                                                    <RowDefinition />
-                                                                </Grid.RowDefinitions>
-                                                                <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition />
-                                                                </Grid.ColumnDefinitions>
-                                                                <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding DateCreate}" ></TextBlock>
-                                                            </Grid>
+                                                   
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="0" Grid.Column="7">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Total</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            
+                                            <!--Row2-->
+                                            <Grid  Grid.Row="1" Grid.Column="0">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">1</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="1" Grid.Column="1">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">VP</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="1" Grid.Column="2">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Vaccum Value</TextBlock>
 
-                                                        </DataTemplate>
-                                                    </GridViewColumn.CellTemplate>
-                                                </GridViewColumn>
+                                                </Border>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="1" Grid.Column="3">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
 
 
-                                            </GridView>
+                                                </Border>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
 
-                                        </ListView.View>
-                                    </ListView>
+
+                                                </Border>
+
+                                            </Grid>
+                                            <Grid  Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2">
+                                                <Border BorderThickness="1" BorderBrush="Black"></Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="1" Grid.Column="6">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="1" Grid.Column="7" Grid.RowSpan="12">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            
+                                            <!--Row3-->
+                                            <Grid  Grid.Row="2" Grid.Column="0">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">2</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="2" Grid.Column="1">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">GAS</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="2" Grid.Column="2">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">GAS</TextBlock>
+
+                                                </Border>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="2" Grid.Column="3">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+
+
+                                                </Border>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+
+
+                                                </Border>
+
+                                            </Grid>
+                                            <Grid  Grid.Row="2" Grid.Column="4">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">OIL</TextBlock>
+
+                                                </Border>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="2" Grid.Column="5">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+
+
+                                                </Border>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+
+
+                                                </Border>
+
+                                            </Grid>
+
+                                            <Grid  Grid.Row="2" Grid.Column="6">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                </Border>
+                                            </Grid>
+
+                                            <!--Row4-->
+                                            <Grid  Grid.Row="3" Grid.Column="0">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">3</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="3" Grid.Column="1">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">WI 1 WITH</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="3" Grid.Column="2">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Leak current(mA)</TextBlock>
+
+                                                </Border>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="3" Grid.Column="3">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+
+
+                                                </Border>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+
+
+                                                </Border>
+
+                                            </Grid>
+                                            <Grid  Grid.Row="3" Grid.Column="4">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Resistor(Ôm)</TextBlock>
+
+                                                </Border>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="3" Grid.Column="5">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+
+
+                                                </Border>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+
+
+                                                </Border>
+
+                                            </Grid>
+
+                                            <Grid  Grid.Row="3" Grid.Column="6">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <!--Row5-->
+                                            <Grid  Grid.Row="4" Grid.Column="0">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">4</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="4" Grid.Column="1">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">WI 1 START</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="4" Grid.Column="2">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Current(mA)</TextBlock>
+
+                                                </Border>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="4" Grid.Column="3">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+
+
+                                                </Border>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+
+
+                                                </Border>
+
+                                            </Grid>
+                                            <Grid  Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2">
+                                                <Border BorderThickness="1" BorderBrush="Black"></Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="4" Grid.Column="6">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <!--Row6-->
+                                            <Grid  Grid.Row="5" Grid.Column="0">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">5</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="5" Grid.Column="1">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">IP</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="5" Grid.Column="2">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Capacity(W)</TextBlock>
+                                                </Border>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="5" Grid.Column="3">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+
+
+                                                </Border>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+
+
+                                                </Border>
+
+                                            </Grid>
+                                            <Grid  Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2">
+                                                <Border BorderThickness="1" BorderBrush="Black"></Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="5" Grid.Column="6">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <!--Row7-->
+                                            <Grid  Grid.Row="6" Grid.Column="0">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">6</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="6" Grid.Column="1">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">DF</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="6" Grid.Column="2">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Capacity(W)</TextBlock>
+                                                </Border>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="6" Grid.Column="3">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+
+
+                                                </Border>
+                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+
+
+                                                </Border>
+
+                                            </Grid>
+                                            <Grid  Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="2">
+                                                <Border BorderThickness="1" BorderBrush="Black"></Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="6" Grid.Column="6">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <!--Row8-->
+                                            <Grid  Grid.Row="7" Grid.Column="0">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">7</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="7" Grid.Column="1">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">TEMP</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="4">
+                                                <Border BorderThickness="1" BorderBrush="Black"></Border>
+                                            </Grid>
+                                           
+                                           
+                                            <Grid  Grid.Row="7" Grid.Column="6">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                </Border>
+                                            </Grid>
+
+                                            <!--Row9-->
+                                            <Grid  Grid.Row="8" Grid.Column="0">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">8</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="8" Grid.Column="1">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">IOT</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="8" Grid.Column="2">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Passkey</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="8" Grid.Column="3">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Code In</TextBlock>
+                                                </Border>
+
+                                            </Grid>
+                                            <Grid  Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="2">
+                                                <Border BorderThickness="1" BorderBrush="Black"></Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="8" Grid.Column="6">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <!--Row10-->
+                                            <Grid  Grid.Row="9" Grid.Column="0">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">9</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="9" Grid.Column="1">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">PAN</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="9" Grid.Column="2">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Code Market</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="9" Grid.Column="3">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Code PCB</TextBlock>
+                                                </Border>
+
+                                            </Grid>
+                                            <Grid  Grid.Row="9" Grid.Column="4">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Code PAN</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="9" Grid.Column="5">
+                                                <Border BorderThickness="1" BorderBrush="Black"></Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="9" Grid.Column="6">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <!--Row11-->
+                                            <Grid  Grid.Row="10" Grid.Column="0">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">10</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="10" Grid.Column="1">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Cam Back</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="4">
+                                                <Border BorderThickness="1" BorderBrush="Black"></Border>
+                                            </Grid>
+
+
+                                            <Grid  Grid.Row="10" Grid.Column="6">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <!--Row12-->
+                                            <Grid  Grid.Row="11" Grid.Column="0">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">11</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="11" Grid.Column="1">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Cam Front</TextBlock>
+                                                </Border>
+                                            </Grid>
+                                            <Grid  Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="4">
+                                                <Border BorderThickness="1" BorderBrush="Black"></Border>
+                                            </Grid>
+
+
+                                            <Grid  Grid.Row="11" Grid.Column="6">
+                                                <Border BorderThickness="1" BorderBrush="Black">
+                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                </Border>
+                                            </Grid>
+
+
+
+                                        </Grid>
+                                        
+
+                                    </Border>
+                                   
+                                </Grid>
+                                <Grid Grid.Column="1"  Margin="0,0,5,0" Background="White">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="35"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0" Background="DarkSeaGreen" Margin="5,0,3,0">
+                                        <TextBlock FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">Chart</TextBlock>
+                                    </Grid>
+                                    <Grid Grid.Row="1" Grid.Column="0" Margin="0" Background="WhiteSmoke">
+                                        <Grid Grid.Column="0" Margin="5" Background="White">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="30"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid Grid.Row="0" Margin="0,5,0,0">
+                                                <TextBlock HorizontalAlignment="Center" FontSize="15" FontWeight="Medium">Tên biểu đồ</TextBlock>
+                                            </Grid>
+                                            <Grid Grid.Row="1">
+                                                <lvc:PieChart Series="{Binding mydata2}" LegendLocation="Bottom"  Hoverable="False" DataTooltip="{x:Null}" Margin="5,0,5,10">
+                                                </lvc:PieChart>
+                                            </Grid>
+
+                                        </Grid>
+
+                                    </Grid>
+                                    <Grid Grid.Row="2" Margin="0" Background="WhiteSmoke" >
+                                        <Grid Grid.Column="0" Background="White" Margin="5">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="30"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid Grid.Row="0" Margin="0,5,0,0">
+                                                <TextBlock HorizontalAlignment="Center" FontSize="15" FontWeight="Medium">Tên biểu đồ</TextBlock>
+                                            </Grid>
+                                            <Grid Grid.Row="1">
+                                                <lvc:CartesianChart Series="{Binding mydata1}" Margin="15" >
+                                                    <lvc:CartesianChart.AxisX>
+                                                        <lvc:Axis Foreground="Black" FontWeight="Heavy" Labels="{Binding Labels }" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                                            <lvc:Axis.Separator>
+                                                                <lvc:Separator Step="1" IsEnabled="False" />
+                                                            </lvc:Axis.Separator>
+                                                        </lvc:Axis>
+                                                    </lvc:CartesianChart.AxisX>
+                                                    <lvc:CartesianChart.AxisY>
+                                                        <lvc:Axis Foreground="Black"  MinValue="0" FontSize="14" >
+                                                        </lvc:Axis>
+                                                    </lvc:CartesianChart.AxisY>
+                                                </lvc:CartesianChart>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
 
                                 </Grid>
+
                             </Grid>
-
-                            <Grid Grid.Column="1"  Margin="0,0,5,0" Background="White">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="35"></RowDefinition>
-                                    <RowDefinition Height="*"></RowDefinition>
-                                    <RowDefinition Height="*"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Grid Grid.Row="0" Background="DarkSeaGreen">
-                                    <TextBlock FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">Chart</TextBlock>
-                                </Grid>
-                                <Grid Grid.Row="1" Grid.Column="0" Margin="0" Background="WhiteSmoke">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid Grid.Column="0" Margin="5" Background="White">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="30"></RowDefinition>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                        </Grid.RowDefinitions>
-                                        <Grid Grid.Row="0" Margin="0,5,0,0">
-                                            <TextBlock HorizontalAlignment="Center" FontSize="15" FontWeight="Medium">Tên biểu đồ</TextBlock>
-                                        </Grid>
-                                        <Grid Grid.Row="1">
-                                            <lvc:CartesianChart Series="{Binding mydata1}" Margin="15" >
-                                                <lvc:CartesianChart.AxisX>
-                                                    <lvc:Axis Labels="{Binding Labels }" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                                                        <lvc:Axis.Separator>
-                                                            <lvc:Separator Step="1" IsEnabled="False" />
-                                                        </lvc:Axis.Separator>
-                                                    </lvc:Axis>
-                                                </lvc:CartesianChart.AxisX>
-                                                <lvc:CartesianChart.AxisY>
-                                                    <lvc:Axis Title="Quantity" MinValue="0" FontSize="12" >
-                                                    </lvc:Axis>
-                                                </lvc:CartesianChart.AxisY>
-                                            </lvc:CartesianChart>
-                                        </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid Grid.Column="0" Margin="5,0,5,0" Background="WhiteSmoke">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="35"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0" Background="Orange">
+                                        <TextBlock FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">History</TextBlock>
                                     </Grid>
-                                    <Grid Grid.Column="1" Margin="5" Background="White">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="30"></RowDefinition>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                        </Grid.RowDefinitions>
+                                    <Grid Grid.Row="1" Margin="0,0">
+                                        <ListView  x:Name="lv1" Grid.Column="0" ItemsSource="{Binding myListErrorFileCheck, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" MouseUp="lv1_MouseUp" >
+                                            <ListView.Resources>
+                                                <Style TargetType="GridViewColumnHeader">
+                                                    <Setter Property="FontSize" Value="15"></Setter>
+                                                    <Setter Property="Width" Value="auto"></Setter>
+                                                    <Setter Property="FontWeight" Value="Medium"></Setter>
+                                                </Style>
+                                            </ListView.Resources>
+                                            <ListView.View>
+                                                <GridView>
+                                                    <GridViewColumn>
+                                                        <GridViewColumn.Header>
+                                                            <Grid Margin="5,0,5,0">
+                                                                <Label>STT</Label>
+                                                            </Grid>
+                                                        </GridViewColumn.Header>
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid Margin="5,0,5,0">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition />
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding NameModel}" ></TextBlock>
+                                                                </Grid>
 
-                                        <Grid Grid.Row="0" Margin="0,5,0,0">
-                                            <TextBlock HorizontalAlignment="Center" FontSize="15" FontWeight="Medium">Tên biểu đồ</TextBlock>
-                                        </Grid>
-                                        <Grid Grid.Row="1">
-                                            <lvc:CartesianChart Series="{Binding mydata4}" Margin="15">
-                                                <lvc:CartesianChart.AxisX>
-                                                    <lvc:Axis Title="Quantity" LabelFormatter="{Binding Formatter}" FontSize="12">
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
 
-                                                    </lvc:Axis>
-                                                </lvc:CartesianChart.AxisX>
-                                                <lvc:CartesianChart.AxisY>
-                                                    <lvc:Axis  Labels="{Binding Labels}" FontSize="12">
-                                                        <lvc:Axis.Separator>
-                                                            <lvc:Separator Step="1" IsEnabled="False" />
-                                                        </lvc:Axis.Separator>
-                                                    </lvc:Axis>
+                                                    <GridViewColumn>
+                                                        <GridViewColumn.Header>
+                                                            <Grid Margin="5,0,5,0">
+                                                                <Label>Date Time</Label>
+                                                            </Grid>
+                                                        </GridViewColumn.Header>
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid Margin="0,0,5,0">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition />
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding DateCreate}" ></TextBlock>
+                                                                </Grid>
 
-                                                </lvc:CartesianChart.AxisY>
-                                            </lvc:CartesianChart>
-                                        </Grid>
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                    <GridViewColumn>
+                                                        <GridViewColumn.Header>
+                                                            <Grid Margin="5,0,5,0">
+                                                                <Label>Model + Serial</Label>
+                                                            </Grid>
+                                                        </GridViewColumn.Header>
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid Margin="5,0,5,0">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition />
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding NameModel}" ></TextBlock>
+                                                                </Grid>
 
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                    <GridViewColumn >
+                                                        <GridViewColumn.Header>
+                                                            <Grid Margin="5,0,5,0">
+                                                                <Label>VP</Label>
+                                                            </Grid>
+                                                        </GridViewColumn.Header>
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition />
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Width="auto" TextAlignment="Center" FontWeight="Medium"  FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Statuscheck}">
+                                                                        <TextBlock.Style>
+                                                                            <Style TargetType="TextBlock">
+                                                                                <Style.Triggers>
+                                                                                    <Trigger Property="Text" Value="NG">
+                                                                                        <Setter Property="Foreground" Value="Red"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="OK">
+                                                                                        <Setter Property="Foreground" Value="Green"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="Pending">
+                                                                                        <Setter Property="Foreground" Value="Orange"></Setter>
+                                                                                    </Trigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </TextBlock.Style>
+                                                                    </TextBlock>
+                                                                </Grid>
 
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                    <GridViewColumn >
+                                                        <GridViewColumn.Header>
+                                                            <Grid Margin="5,0,5,0">
+                                                                <Label>Gas</Label>
+                                                            </Grid>
+                                                        </GridViewColumn.Header>
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition />
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Width="auto" TextAlignment="Center" FontWeight="Medium"  FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Statuscheck}">
+                                                                        <TextBlock.Style>
+                                                                            <Style TargetType="TextBlock">
+                                                                                <Style.Triggers>
+                                                                                    <Trigger Property="Text" Value="NG">
+                                                                                        <Setter Property="Foreground" Value="Red"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="OK">
+                                                                                        <Setter Property="Foreground" Value="Green"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="Pending">
+                                                                                        <Setter Property="Foreground" Value="Orange"></Setter>
+                                                                                    </Trigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </TextBlock.Style>
+                                                                    </TextBlock>
+                                                                </Grid>
 
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                    <GridViewColumn >
+                                                        <GridViewColumn.Header>
+                                                            <Grid Margin="5,0,5,0">
+                                                                <Label>WI 1 WITH</Label>
+                                                            </Grid>
+                                                        </GridViewColumn.Header>
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition />
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Width="auto" TextAlignment="Center" FontWeight="Medium"  FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Statuscheck}">
+                                                                        <TextBlock.Style>
+                                                                            <Style TargetType="TextBlock">
+                                                                                <Style.Triggers>
+                                                                                    <Trigger Property="Text" Value="NG">
+                                                                                        <Setter Property="Foreground" Value="Red"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="OK">
+                                                                                        <Setter Property="Foreground" Value="Green"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="Pending">
+                                                                                        <Setter Property="Foreground" Value="Orange"></Setter>
+                                                                                    </Trigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </TextBlock.Style>
+                                                                    </TextBlock>
+                                                                </Grid>
 
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                    <GridViewColumn >
+                                                        <GridViewColumn.Header>
+                                                            <Grid Margin="5,0,5,0">
+                                                                <Label>WI 1 START</Label>
+                                                            </Grid>
+                                                        </GridViewColumn.Header>
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition />
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Width="auto" TextAlignment="Center" FontWeight="Medium"  FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Statuscheck}">
+                                                                        <TextBlock.Style>
+                                                                            <Style TargetType="TextBlock">
+                                                                                <Style.Triggers>
+                                                                                    <Trigger Property="Text" Value="NG">
+                                                                                        <Setter Property="Foreground" Value="Red"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="OK">
+                                                                                        <Setter Property="Foreground" Value="Green"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="Pending">
+                                                                                        <Setter Property="Foreground" Value="Orange"></Setter>
+                                                                                    </Trigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </TextBlock.Style>
+                                                                    </TextBlock>
+                                                                </Grid>
 
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                    <GridViewColumn >
+                                                        <GridViewColumn.Header>
+                                                            <Grid Margin="5,0,5,0">
+                                                                <Label>IP</Label>
+                                                            </Grid>
+                                                        </GridViewColumn.Header>
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition />
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Width="auto" TextAlignment="Center" FontWeight="Medium"  FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Statuscheck}">
+                                                                        <TextBlock.Style>
+                                                                            <Style TargetType="TextBlock">
+                                                                                <Style.Triggers>
+                                                                                    <Trigger Property="Text" Value="NG">
+                                                                                        <Setter Property="Foreground" Value="Red"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="OK">
+                                                                                        <Setter Property="Foreground" Value="Green"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="Pending">
+                                                                                        <Setter Property="Foreground" Value="Orange"></Setter>
+                                                                                    </Trigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </TextBlock.Style>
+                                                                    </TextBlock>
+                                                                </Grid>
 
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                    <GridViewColumn >
+                                                        <GridViewColumn.Header>
+                                                            <Grid Margin="5,0,5,0">
+                                                                <Label>DF</Label>
+                                                            </Grid>
+                                                        </GridViewColumn.Header>
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition />
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Width="auto" TextAlignment="Center" FontWeight="Medium"  FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Statuscheck}">
+                                                                        <TextBlock.Style>
+                                                                            <Style TargetType="TextBlock">
+                                                                                <Style.Triggers>
+                                                                                    <Trigger Property="Text" Value="NG">
+                                                                                        <Setter Property="Foreground" Value="Red"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="OK">
+                                                                                        <Setter Property="Foreground" Value="Green"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="Pending">
+                                                                                        <Setter Property="Foreground" Value="Orange"></Setter>
+                                                                                    </Trigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </TextBlock.Style>
+                                                                    </TextBlock>
+                                                                </Grid>
 
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                    <GridViewColumn >
+                                                        <GridViewColumn.Header>
+                                                            <Grid Margin="5,0,5,0">
+                                                                <Label>TEMP</Label>
+                                                            </Grid>
+                                                        </GridViewColumn.Header>
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition />
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Width="auto" TextAlignment="Center" FontWeight="Medium"  FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Statuscheck}">
+                                                                        <TextBlock.Style>
+                                                                            <Style TargetType="TextBlock">
+                                                                                <Style.Triggers>
+                                                                                    <Trigger Property="Text" Value="NG">
+                                                                                        <Setter Property="Foreground" Value="Red"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="OK">
+                                                                                        <Setter Property="Foreground" Value="Green"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="Pending">
+                                                                                        <Setter Property="Foreground" Value="Orange"></Setter>
+                                                                                    </Trigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </TextBlock.Style>
+                                                                    </TextBlock>
+                                                                </Grid>
+
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                    <GridViewColumn >
+                                                        <GridViewColumn.Header>
+                                                            <Grid Margin="5,0,5,0">
+                                                                <Label>IOT</Label>
+                                                            </Grid>
+                                                        </GridViewColumn.Header>
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition />
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Width="auto" TextAlignment="Center" FontWeight="Medium"  FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Statuscheck}">
+                                                                        <TextBlock.Style>
+                                                                            <Style TargetType="TextBlock">
+                                                                                <Style.Triggers>
+                                                                                    <Trigger Property="Text" Value="NG">
+                                                                                        <Setter Property="Foreground" Value="Red"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="OK">
+                                                                                        <Setter Property="Foreground" Value="Green"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="Pending">
+                                                                                        <Setter Property="Foreground" Value="Orange"></Setter>
+                                                                                    </Trigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </TextBlock.Style>
+                                                                    </TextBlock>
+                                                                </Grid>
+
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                    <GridViewColumn >
+                                                        <GridViewColumn.Header>
+                                                            <Grid Margin="5,0,5,0">
+                                                                <Label>PAN</Label>
+                                                            </Grid>
+                                                        </GridViewColumn.Header>
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition />
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Width="auto" TextAlignment="Center" FontWeight="Medium"  FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Statuscheck}">
+                                                                        <TextBlock.Style>
+                                                                            <Style TargetType="TextBlock">
+                                                                                <Style.Triggers>
+                                                                                    <Trigger Property="Text" Value="NG">
+                                                                                        <Setter Property="Foreground" Value="Red"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="OK">
+                                                                                        <Setter Property="Foreground" Value="Green"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="Pending">
+                                                                                        <Setter Property="Foreground" Value="Orange"></Setter>
+                                                                                    </Trigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </TextBlock.Style>
+                                                                    </TextBlock>
+                                                                </Grid>
+
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                    <GridViewColumn >
+                                                        <GridViewColumn.Header>
+                                                            <Grid Margin="5,0,5,0">
+                                                                <Label>CAM BACK</Label>
+                                                            </Grid>
+                                                        </GridViewColumn.Header>
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition />
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Width="auto" TextAlignment="Center" FontWeight="Medium"  FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Statuscheck}">
+                                                                        <TextBlock.Style>
+                                                                            <Style TargetType="TextBlock">
+                                                                                <Style.Triggers>
+                                                                                    <Trigger Property="Text" Value="NG">
+                                                                                        <Setter Property="Foreground" Value="Red"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="OK">
+                                                                                        <Setter Property="Foreground" Value="Green"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="Pending">
+                                                                                        <Setter Property="Foreground" Value="Orange"></Setter>
+                                                                                    </Trigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </TextBlock.Style>
+                                                                    </TextBlock>
+                                                                </Grid>
+
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                    <GridViewColumn >
+                                                        <GridViewColumn.Header>
+                                                            <Grid Margin="5,0,5,0">
+                                                                <Label>CAM FRONT</Label>
+                                                            </Grid>
+                                                        </GridViewColumn.Header>
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition />
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Width="auto" TextAlignment="Center" FontWeight="Medium"  FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Statuscheck}">
+                                                                        <TextBlock.Style>
+                                                                            <Style TargetType="TextBlock">
+                                                                                <Style.Triggers>
+                                                                                    <Trigger Property="Text" Value="NG">
+                                                                                        <Setter Property="Foreground" Value="Red"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="OK">
+                                                                                        <Setter Property="Foreground" Value="Green"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="Pending">
+                                                                                        <Setter Property="Foreground" Value="Orange"></Setter>
+                                                                                    </Trigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </TextBlock.Style>
+                                                                    </TextBlock>
+                                                                </Grid>
+
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                    <GridViewColumn >
+                                                        <GridViewColumn.Header>
+                                                            <Grid Margin="5,0,5,0">
+                                                                <Label>TOTAL</Label>
+                                                            </Grid>
+                                                        </GridViewColumn.Header>
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition />
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Width="auto" TextAlignment="Center" FontWeight="Medium"  FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Statuscheck}">
+                                                                        <TextBlock.Style>
+                                                                            <Style TargetType="TextBlock">
+                                                                                <Style.Triggers>
+                                                                                    <Trigger Property="Text" Value="NG">
+                                                                                        <Setter Property="Foreground" Value="Red"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="OK">
+                                                                                        <Setter Property="Foreground" Value="Green"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="Pending">
+                                                                                        <Setter Property="Foreground" Value="Orange"></Setter>
+                                                                                    </Trigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </TextBlock.Style>
+                                                                    </TextBlock>
+                                                                </Grid>
+
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                    <GridViewColumn>
+                                                        <GridViewColumn.Header>
+                                                            <Grid Margin="5,0,5,0">
+                                                                <Label>Xử lý</Label>
+                                                            </Grid>
+                                                        </GridViewColumn.Header>
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid Margin="5,0,5,0">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition />
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding NameModel}" ></TextBlock>
+                                                                </Grid>
+
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                    <GridViewColumn>
+                                                        <GridViewColumn.Header>
+                                                            <Grid Margin="5,0,5,0">
+                                                                <Label>Người xác nhận</Label>
+                                                            </Grid>
+                                                        </GridViewColumn.Header>
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid Margin="5,0,5,0">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition />
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding NameModel}" ></TextBlock>
+                                                                </Grid>
+
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                </GridView>
+
+                                            </ListView.View>
+                                        </ListView>
 
                                     </Grid>
-
-
-
-                                </Grid>
-                                <Grid Grid.Row="2" Grid.Column="0" Margin="0" Background="WhiteSmoke" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid Grid.Column="0" Background="White" Margin="5">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="30"></RowDefinition>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                        </Grid.RowDefinitions>
-                                        <Grid Grid.Row="0" Margin="0,5,0,0">
-                                            <TextBlock HorizontalAlignment="Center" FontSize="15" FontWeight="Medium">Tên biểu đồ</TextBlock>
-                                        </Grid>
-                                        <Grid Grid.Row="1">
-                                            <lvc:PieChart Series="{Binding mydata2}" LegendLocation="Bottom"  Hoverable="False" DataTooltip="{x:Null}" Margin="5,0,5,10">
-                                            </lvc:PieChart>
-                                        </Grid>
-                                    </Grid>
-                                    <Grid Grid.Column="1" Margin="5" Background="White">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="30"></RowDefinition>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                        </Grid.RowDefinitions>
-
-                                        <Grid Grid.Row="0" Margin="0,5,0,0">
-                                            <TextBlock HorizontalAlignment="Center" FontSize="15" FontWeight="Medium">Tên biểu đồ</TextBlock>
-                                        </Grid>
-                                        <Grid Grid.Row="1">
-                                            <lvc:CartesianChart Series="{Binding mydata3}" Margin="15">
-                                                <lvc:CartesianChart.AxisX>
-                                                    <lvc:Axis Title="Quantity" LabelFormatter="{Binding Formatter}" FontSize="12">
-
-                                                    </lvc:Axis>
-                                                </lvc:CartesianChart.AxisX>
-                                                <lvc:CartesianChart.AxisY>
-                                                    <lvc:Axis Labels="{Binding Labels}" FontSize="12">
-                                                        <lvc:Axis.Separator>
-                                                            <lvc:Separator Step="1" IsEnabled="False" />
-                                                        </lvc:Axis.Separator>
-                                                    </lvc:Axis>
-
-                                                </lvc:CartesianChart.AxisY>
-                                            </lvc:CartesianChart>
-                                        </Grid>
-
-                                    </Grid>
-
-
                                 </Grid>
 
                             </Grid>

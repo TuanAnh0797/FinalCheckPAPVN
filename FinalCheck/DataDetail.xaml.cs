@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,15 +21,24 @@ namespace FinalCheck
     public partial class DataDetail : Window
     {
        
-        public DataDetail()
+        public  DataDetail()
         {
+           
             InitializeComponent();
+           
+           
             
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private async void MyControlBarTA_Loaded(object sender, RoutedEventArgs e)
+        {
+            await Task.Delay(10000);
+            MessageBox.Show("OK");
         }
     }
 }

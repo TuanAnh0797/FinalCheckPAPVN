@@ -19,7 +19,7 @@
         ResizeMode="NoResize"
         WindowState="Normal"
         WindowStartupLocation="CenterScreen"
-        Title="Setup" Height="280" Width="600" Closed="MyControlBarTA_Closed">
+        Title="Setup" Height="320" Width="600" Closed="MyControlBarTA_Closed">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -33,8 +33,9 @@
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Margin="5" Background="White">
+            <Grid Margin="5,5,5,0" Background="White">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
                    
@@ -51,7 +52,22 @@
                     </StackPanel>
                     <Button Background="Green" FontSize="15" Content="Test connect"></Button>
                 </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="2" Margin="0,0,0,10">
+                    <StackPanel VerticalAlignment="Center"  Orientation="Horizontal" Margin="0,0,20,0">
+                        <Label FontWeight="Medium" FontSize="20">Triger(M):</Label>
+                        <TextBox FontSize="20" Text="000000"></TextBox>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Center" Grid.Row="2" Orientation="Horizontal" Margin="0,0,20,0">
+                        <Label FontWeight="Medium" FontSize="20">Data(DM):</Label>
+                        <TextBox FontSize="20" Text="00000"></TextBox>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Center" Grid.Row="2" Orientation="Horizontal" Margin="0,0,20,0">
+                        <Label FontWeight="Medium" FontSize="20">Complete(M):</Label>
+                        <TextBox FontSize="20" Text="00000"></TextBox>
+                    </StackPanel>
+                </StackPanel>
                 
+
             </Grid>
             <Grid Grid.Row="1" Margin="5" Background="White">
                 <Grid.RowDefinitions>
