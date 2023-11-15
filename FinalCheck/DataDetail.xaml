@@ -35,47 +35,586 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Medium" Text="ABCDEFGHIK11"></TextBlock>
-            <Grid Grid.Row="1" Margin="5">
-                    <Grid Height="256" Width="200">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <materialDesign:ColorZone Padding="6">
-                            <StackPanel Orientation="Horizontal">
-                                <Button Style="{StaticResource MaterialDesignToolForegroundButton}" Command="{x:Static materialDesign:Flipper.FlipCommand}" HorizontalAlignment="Left">
-                                    <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
-                                </Button>
-                            <TextBlock Margin="8 0 0 0" VerticalAlignment="Center"> EDIT USER
-                                </TextBlock>
-                            </StackPanel>
-                        </materialDesign:ColorZone>
-                        <Grid Grid.Row="1" Margin="0 6 0 0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="172">
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
-                                <RowDefinition />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <TextBox materialDesign:HintAssist.Hint="First name" materialDesign:HintAssist.IsFloating="True" Margin="0 12 0 0">
-                                James
-                            </TextBox>
-                            <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="Last name" materialDesign:HintAssist.IsFloating="True" Margin="0 12 0 0">
-                                Willock
-                            </TextBox>
-                            <StackPanel Grid.Row="2" Orientation="Horizontal"  Margin="0 12 0 0" HorizontalAlignment="Right">
-                            <TextBlock VerticalAlignment="Center"> Email Contact
-                                </TextBlock>
-                                <ToggleButton Margin="8 0 0 0"></ToggleButton>
-                            </StackPanel>
-                            <StackPanel  Grid.Row="3" Orientation="Horizontal" Margin="0 12 0 0" HorizontalAlignment="Right">
-                            <TextBlock VerticalAlignment="Center"> Telephone Contact
-                                </TextBlock>
-                                <ToggleButton Margin="8 0 0 0"></ToggleButton>
-                            </StackPanel>
-                        </Grid>
+            <Border Margin="0"  Grid.Column="1" Grid.Row="1" BorderThickness="0" BorderBrush="White" Background="#FFE4E4E4" >
+                <Grid>
+                    <Grid.Resources>
+                        <Style TargetType="Border" x:Key="bordertable">
+                            <Setter Property="BorderBrush" Value="White"></Setter>
+                        </Style>
+                        <Style TargetType="TextBlock" x:Key="txbcolor">
+                            <Setter Property="FontSize" Value="15"></Setter>
+                            <Setter Property="FontWeight" Value="Heavy"></Setter>
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="NG">
+                                    <Setter Property="Foreground" Value="Red"></Setter>
+                                </Trigger>
+                                <Trigger Property="Text" Value="OK">
+                                    <Setter Property="Foreground" Value="Green"></Setter>
+                                </Trigger>
+                                <Trigger Property="Text" Value="Pending">
+                                    <Setter Property="Foreground" Value="Orange"></Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                        <Style TargetType="TextBlock" x:Key="txb_column1">
+                            <Setter Property="FontSize" Value="15"></Setter>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"></ColumnDefinition>
+                        <ColumnDefinition Width="100"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="65"></ColumnDefinition>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <!--Row1-->
+                    <Grid  Grid.Row="0" Grid.Column="0" Background="#FF35B888">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Column="0">
+                            <TextBlock FontSize="16" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center">STT</TextBlock>
+                        </Border>
                     </Grid>
-            </Grid>
+                    <Grid  Grid.Row="0" Grid.Column="1" Background="#FF35B888">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" >
+                            <TextBlock FontSize="16" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center">Content</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="4" Background="#FF35B888">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" >
+
+
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="0" Grid.Column="6" Background="#FF35B888">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock FontSize="16" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center">Result</TextBlock>
+
+
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="0" Grid.Column="7" Background="#FF35B888">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock FontSize="16" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center">Total</TextBlock>
+                        </Border>
+                    </Grid>
+
+                    <!--Row2-->
+                    <Grid  Grid.Row="1" Grid.Column="0">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">1</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="1" Grid.Column="1">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">VP</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="1" Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Vaccum Value</TextBlock>
+
+                        </Border>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="1" Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+
+
+                        </Border>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+
+
+                        </Border>
+
+                    </Grid>
+                    <Grid  Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
+                    </Grid>
+                    <Grid  Grid.Row="1" Grid.Column="6">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center" Text=""> Pending</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="1" Grid.Column="7" Grid.RowSpan="12">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                        </Border>
+                    </Grid>
+
+                    <!--Row3-->
+                    <Grid  Grid.Row="2" Grid.Column="0">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">2</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="2" Grid.Column="1">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock  Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">GAS</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="2" Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">GAS</TextBlock>
+
+                        </Border>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="2" Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+
+
+                        </Border>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+
+
+                        </Border>
+
+                    </Grid>
+                    <Grid  Grid.Row="2" Grid.Column="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">OIL</TextBlock>
+
+                        </Border>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="2" Grid.Column="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+
+
+                        </Border>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+
+
+                        </Border>
+
+                    </Grid>
+
+                    <Grid  Grid.Row="2" Grid.Column="6">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                        </Border>
+                    </Grid>
+
+                    <!--Row4-->
+                    <Grid  Grid.Row="3" Grid.Column="0">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">3</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="3" Grid.Column="1">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">WI 1 WITH</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="3" Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Leak current(mA)</TextBlock>
+
+                        </Border>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="3" Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+
+
+                        </Border>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+
+
+                        </Border>
+
+                    </Grid>
+                    <Grid  Grid.Row="3" Grid.Column="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Resistor(Ôm)</TextBlock>
+
+                        </Border>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="3" Grid.Column="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+
+
+                        </Border>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+
+
+                        </Border>
+
+                    </Grid>
+
+                    <Grid  Grid.Row="3" Grid.Column="6">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                        </Border>
+                    </Grid>
+                    <!--Row5-->
+                    <Grid  Grid.Row="4" Grid.Column="0">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">4</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="4" Grid.Column="1">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">WI 1 START</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="4" Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Current(mA)</TextBlock>
+
+                        </Border>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="4" Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+
+
+                        </Border>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+
+
+                        </Border>
+
+                    </Grid>
+                    <Grid  Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
+                    </Grid>
+                    <Grid  Grid.Row="4" Grid.Column="6">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                        </Border>
+                    </Grid>
+                    <!--Row6-->
+                    <Grid  Grid.Row="5" Grid.Column="0">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">5</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="5" Grid.Column="1">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">IP</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="5" Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Capacity(W)</TextBlock>
+                        </Border>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="5" Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+
+
+                        </Border>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+
+
+                        </Border>
+
+                    </Grid>
+                    <Grid  Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
+                    </Grid>
+                    <Grid  Grid.Row="5" Grid.Column="6">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                        </Border>
+                    </Grid>
+                    <!--Row7-->
+                    <Grid  Grid.Row="6" Grid.Column="0">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">6</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="6" Grid.Column="1">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">DF</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="6" Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Capacity(W)</TextBlock>
+                        </Border>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="6" Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+
+
+                        </Border>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+
+
+                        </Border>
+
+                    </Grid>
+                    <Grid  Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="2">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
+                    </Grid>
+                    <Grid  Grid.Row="6" Grid.Column="6">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                        </Border>
+                    </Grid>
+                    <!--Row8-->
+                    <Grid  Grid.Row="7" Grid.Column="0">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">7</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="7" Grid.Column="1">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">TEMP</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="4">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
+                    </Grid>
+
+
+                    <Grid  Grid.Row="7" Grid.Column="6">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                        </Border>
+                    </Grid>
+
+                    <!--Row9-->
+                    <Grid  Grid.Row="8" Grid.Column="0">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">8</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="8" Grid.Column="1">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">IOT</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="8" Grid.Column="2">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Passkey</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="8" Grid.Column="3">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Code In</TextBlock>
+                        </Border>
+
+                    </Grid>
+                    <Grid  Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="2">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
+                    </Grid>
+                    <Grid  Grid.Row="8" Grid.Column="6">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                        </Border>
+                    </Grid>
+                    <!--Row10-->
+                    <Grid  Grid.Row="9" Grid.Column="0">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">9</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="9" Grid.Column="1">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">PAN</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="9" Grid.Column="2">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Code Market</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="9" Grid.Column="3">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Code PCB</TextBlock>
+                        </Border>
+
+                    </Grid>
+                    <Grid  Grid.Row="9" Grid.Column="4">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Code PAN</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="9" Grid.Column="5">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
+                    </Grid>
+                    <Grid  Grid.Row="9" Grid.Column="6">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                        </Border>
+                    </Grid>
+                    <!--Row11-->
+                    <Grid  Grid.Row="10" Grid.Column="0">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">10</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="10" Grid.Column="1">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Cam Back</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="4">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
+                    </Grid>
+
+
+                    <Grid  Grid.Row="10" Grid.Column="6">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                        </Border>
+                    </Grid>
+                    <!--Row12-->
+                    <Grid  Grid.Row="11" Grid.Column="0">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">11</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="11" Grid.Column="1">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Cam Front</TextBlock>
+                        </Border>
+                    </Grid>
+                    <Grid  Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="4">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
+                    </Grid>
+
+
+                    <Grid  Grid.Row="11" Grid.Column="6">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                        </Border>
+                    </Grid>
+
+
+
+                </Grid>
+
+
+            </Border>
+
         </Grid>
         <!--<Button Padding="0" Content="Close" FontSize="25" Background="Red" Width="150" Grid.Row="2" Click="Button_Click"></Button>-->
     </Grid>

@@ -33,16 +33,16 @@ namespace FinalCheck
     {
         DispatcherTimer time1 = new DispatcherTimer();
         public Func<double, string> Formatter { get; set; }
-        public ObservableCollection<ResultCheckFinal> dataforlistview { set; get; }
+        public ObservableCollection<ResultMain> dataforlistview { set; get; }
 
 
-        public SeriesCollection mydata1 { set; get; }
-        public SeriesCollection mydata2 { set; get; }
-        public SeriesCollection mydata3 { set; get; }
-
-        public SeriesCollection mydata4 { set; get; }
+        public SeriesCollection datastackchart { set; get; }
+        public SeriesCollection datapiechart { set; get; }
+        public SeriesCollection databarchartNG { set; get; }
+        public SeriesCollection databarchartPending { set; get; }
 
         public Func<ChartPoint, string> PointLabel { get; set; }
+
         public ObservableValue Condition1OK { get; set; }
         public ObservableValue Condition2OK { get; set; }
         public ObservableValue Condition3OK { get; set; }
@@ -331,7 +331,7 @@ namespace FinalCheck
         }
         public void innitproperty()
         {
-            dataforlistview = new ObservableCollection<ResultCheckFinal>();
+            dataforlistview = new ObservableCollection<ResultMain>();
 
             TotalOK = new ObservableValue(0);
             TotalNG = new ObservableValue(0);
@@ -374,13 +374,15 @@ namespace FinalCheck
             Condition9Pending = new ObservableValue(0);
             Condition10Pending = new ObservableValue(0);
             Condition11Pending = new ObservableValue(0);
+
+            Labels = new[] { "VP", "Nạp Gas", "WI 1 W", "WI 1 S", "IP", "DF", "TEMP", "IOT", "PAN", "CAM B", "CAM F" };
         }
         
         public void innitStackedbarchart()
         {
             
 
-            mydata1 = new SeriesCollection()
+            datastackchart = new SeriesCollection()
             {
                 new StackedColumnSeries
                 {
@@ -408,14 +410,13 @@ namespace FinalCheck
                 }
 
             };
-            Labels = new[] { "VP", "Nạp Gas", "WI 1 WITH", "WI 1 STASRT", "IP", "DF", "TEMP", "IOT", "PAN", "CAM BACK", "CAM FRONT" };
 
         }
 
         public void innitpiechart()
         {
             PointLabel = chartPoint => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
-            mydata2 = new SeriesCollection()
+            datapiechart = new SeriesCollection()
             {
                 new PieSeries
                 {
@@ -440,11 +441,11 @@ namespace FinalCheck
         }
         public void innitbarchart()
         {
-            mydata3 = new SeriesCollection()
+            databarchartNG = new SeriesCollection()
             {
                 new RowSeries
                 {
-                     Values = new ChartValues<ObservableValue> { Condition1NG, Condition2NG, Condition3NG, Condition4NG, Condition5NG, Condition6NG, Condition7NG, Condition8NG},
+                     Values = new ChartValues<ObservableValue> { Condition1NG, Condition2NG, Condition3NG, Condition4NG, Condition5NG, Condition6NG, Condition7NG, Condition8NG, Condition9NG, Condition10NG, Condition11NG},
                      DataLabels = true,
                      Fill = new SolidColorBrush(Colors.Red),
                      Title = "NG"
@@ -452,11 +453,11 @@ namespace FinalCheck
                 }
 
             };
-            mydata4 = new SeriesCollection()
+            databarchartPending = new SeriesCollection()
             {
                 new RowSeries
                 {
-                     Values = new ChartValues<ObservableValue> { Condition1Pending, Condition2Pending, Condition3Pending, Condition4Pending, Condition5Pending, Condition6Pending, Condition7Pending, Condition8Pending},
+                     Values = new ChartValues<ObservableValue> { Condition1Pending, Condition2Pending, Condition3Pending, Condition4Pending, Condition5Pending, Condition6Pending, Condition7Pending, Condition8Pending,Condition9Pending, Condition10Pending, Condition11Pending},
                      DataLabels = true,
                      Fill = new SolidColorBrush(Colors.Orange),
                      Title = "Pending",
@@ -558,28 +559,13 @@ namespace FinalCheck
 
             var workingWidth = listView.ActualWidth - SystemParameters.VerticalScrollBarWidth;
 
-            var col1 = 0.1;
-            var col2 = 0.04;
-            var col3 = 0.052;
+            
 
-            gView.Columns[0].Width = workingWidth * col2;
-            gView.Columns[1].Width = workingWidth * col1;
-            gView.Columns[2].Width = workingWidth * col1;
-            gView.Columns[3].Width = workingWidth * col2;
-            gView.Columns[4].Width = workingWidth * col2;
-            gView.Columns[5].Width = workingWidth * col3;
-            gView.Columns[6].Width = workingWidth * col3;
-            gView.Columns[7].Width = workingWidth * col2;
-            gView.Columns[8].Width = workingWidth * col2;
-            gView.Columns[9].Width = workingWidth * col2;
-            gView.Columns[10].Width = workingWidth * col2;
-            gView.Columns[11].Width = workingWidth * col2;
-            gView.Columns[12].Width = workingWidth * col2;
-            gView.Columns[13].Width = workingWidth * col3;
-            gView.Columns[14].Width = workingWidth * col3;
-            gView.Columns[15].Width = workingWidth * col2;
-            gView.Columns[16].Width = workingWidth * col1;
-            gView.Columns[17].Width = workingWidth * col1;
+            gView.Columns[0].Width = workingWidth * 0.1;
+            gView.Columns[1].Width = workingWidth * 0.35;
+            gView.Columns[2].Width = workingWidth * 0.2;
+            gView.Columns[3].Width = workingWidth * 0.35;
+            
 
 
         }
