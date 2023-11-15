@@ -42,7 +42,7 @@
                     <Grid Grid.Row="0">
                         <TextBlock Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Medium"  Text="PSNV"></TextBlock>
                     </Grid>
-                    <Separator Grid.Row="1" Margin="0" Height="1" BorderThickness="3" BorderBrush="White" ></Separator>
+                    <Separator Grid.Row="1" Margin="0" Height="1" BorderThickness="3" BorderBrush="Black" ></Separator>
                     <Grid Grid.Row="2">
                         <StackPanel Margin="5,2,5,2" Width="150">
                             <Button Click="btn_config_Click" Name="btn_config"  Width="150" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}" CommandParameter="{x:Static Dock.Left}" HorizontalAlignment="Center" HorizontalContentAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}">
@@ -99,28 +99,52 @@
                                     <ColumnDefinition Width="5*"></ColumnDefinition>
                                     <ColumnDefinition Width="4*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Grid Grid.Column="0" Background="White" Margin="5,0,0,5">
+                                <Grid Grid.Column="0" Background="White" Margin="5,5,0,5">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="35"></RowDefinition>
                                         <RowDefinition Height="*"></RowDefinition>
                                     </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                        <ColumnDefinition Width="4*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="DarkSeaGreen">
+                                    <!--<Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                                        <ColumnDefinition Width="11*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>-->
+                                    <!--<Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="MediumSeaGreen">
                                         <TextBlock FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">Checking</TextBlock>
-                                    </Grid>
-                                    <Grid Grid.Column="0" Grid.Row="1">
-                                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock HorizontalAlignment="Center" FontSize="15" Text="Model đang kiểm tra"></TextBlock>
-                                            <TextBlock  HorizontalAlignment="Center" FontWeight="Medium" FontSize="25" Text="NR-BA190GKVN"></TextBlock>
-                                            <TextBlock  HorizontalAlignment="Center" FontSize="15" Text="Serial đang kiểm tra "></TextBlock>
-                                            <TextBlock  HorizontalAlignment="Center" FontWeight="Medium" FontSize="25" Text="1234567"></TextBlock>
+                                    </Grid>-->
+                                    <Grid Grid.Column="0" Grid.Row="0">
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Text="Model đang kiểm tra:" Margin="0,0,5,0"></TextBlock>
+                                            <TextBlock VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Medium" FontSize="25" Text="NR-BA190GKVN" Margin="0,0,10,0"></TextBlock>
+                                            <TextBlock VerticalAlignment="Center"  HorizontalAlignment="Center" FontSize="20" Text="Serial đang kiểm tra:" Margin="0,0,5,0"></TextBlock>
+                                            <TextBlock VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Medium" FontSize="25" Text="1234567"></TextBlock>
                                         </StackPanel>
                                     </Grid>
-                                    <Border Margin="5"  Grid.Column="1" Grid.Row="1" BorderThickness="1" BorderBrush="Black">
+                                    <!--Table-->
+                                    <Border Margin="0"  Grid.Column="1" Grid.Row="1" BorderThickness="0" BorderBrush="White" Background="#FFE4E4E4" >
                                         <Grid>
+                                            <Grid.Resources>
+                                                <Style TargetType="Border" x:Key="bordertable">
+                                                    <Setter Property="BorderBrush" Value="White"></Setter>
+                                                </Style>
+                                                    <Style TargetType="TextBlock" x:Key="txbcolor">
+                                                    <Setter Property="FontSize" Value="15"></Setter>
+                                                    <Setter Property="FontWeight" Value="Heavy"></Setter>
+                                                    <Style.Triggers>
+                                                            <Trigger Property="Text" Value="NG">
+                                                                <Setter Property="Foreground" Value="Red"></Setter>
+                                                            </Trigger>
+                                                            <Trigger Property="Text" Value="OK">
+                                                                <Setter Property="Foreground" Value="Green"></Setter>
+                                                            </Trigger>
+                                                            <Trigger Property="Text" Value="Pending">
+                                                                <Setter Property="Foreground" Value="Orange"></Setter>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                <Style TargetType="TextBlock" x:Key="txb_column1">
+                                                    <Setter Property="FontSize" Value="15"></Setter>
+                                                </Style>
+                                            </Grid.Resources>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition></RowDefinition>
                                                 <RowDefinition></RowDefinition>
@@ -134,57 +158,57 @@
                                                 <RowDefinition></RowDefinition>
                                                 <RowDefinition></RowDefinition>
                                                 <RowDefinition></RowDefinition>
-                                               
+
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="30"></ColumnDefinition>
-                                                <ColumnDefinition Width="80"></ColumnDefinition>
+                                                <ColumnDefinition Width="40"></ColumnDefinition>
+                                                <ColumnDefinition Width="100"></ColumnDefinition>
                                                 <ColumnDefinition></ColumnDefinition>
                                                 <ColumnDefinition></ColumnDefinition>
                                                 <ColumnDefinition></ColumnDefinition>
                                                 <ColumnDefinition></ColumnDefinition>
-                                                <ColumnDefinition Width="45"></ColumnDefinition>
-                                                <ColumnDefinition Width="35"></ColumnDefinition>
+                                                <ColumnDefinition Width="65"></ColumnDefinition>
+                                                <ColumnDefinition Width="50"></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
                                             <!--Row1-->
-                                            <Grid  Grid.Row="0" Grid.Column="0">
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Column="0">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">STT</TextBlock>
+                                            <Grid  Grid.Row="0" Grid.Column="0" Background="#FF35B888">
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Column="0">
+                                                    <TextBlock FontSize="16" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center">STT</TextBlock>
                                                 </Border>
                                             </Grid>
-                                            <Grid  Grid.Row="0" Grid.Column="1">
-                                                <Border BorderThickness="1" BorderBrush="Black" >
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Content</TextBlock>
+                                            <Grid  Grid.Row="0" Grid.Column="1" Background="#FF35B888">
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" >
+                                                    <TextBlock FontSize="16" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center">Content</TextBlock>
                                                 </Border>
                                             </Grid>
-                                            <Grid  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="4">
-                                                <Border BorderThickness="1" BorderBrush="Black" >
+                                            <Grid  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="4" Background="#FF35B888">
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" >
 
-                                                   
-                                                </Border>
-                                            </Grid>
-                                            <Grid  Grid.Row="0" Grid.Column="6">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Result</TextBlock>
 
-                                                   
                                                 </Border>
                                             </Grid>
-                                            <Grid  Grid.Row="0" Grid.Column="7">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Total</TextBlock>
+                                            <Grid  Grid.Row="0" Grid.Column="6" Background="#FF35B888">
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock FontSize="16" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center">Result</TextBlock>
+
+
                                                 </Border>
                                             </Grid>
-                                            
+                                            <Grid  Grid.Row="0" Grid.Column="7" Background="#FF35B888">
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock FontSize="16" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center">Total</TextBlock>
+                                                </Border>
+                                            </Grid>
+
                                             <!--Row2-->
                                             <Grid  Grid.Row="1" Grid.Column="0">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">1</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">1</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="1" Grid.Column="1">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">VP</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">VP</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="1" Grid.Column="2">
@@ -192,12 +216,12 @@
                                                     <RowDefinition></RowDefinition>
                                                     <RowDefinition></RowDefinition>
                                                 </Grid.RowDefinitions>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Vaccum Value</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Vaccum Value</TextBlock>
 
                                                 </Border>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
 
                                                 </Border>
                                             </Grid>
@@ -206,41 +230,41 @@
                                                     <RowDefinition></RowDefinition>
                                                     <RowDefinition></RowDefinition>
                                                 </Grid.RowDefinitions>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
 
 
                                                 </Border>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
 
 
                                                 </Border>
 
                                             </Grid>
                                             <Grid  Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2">
-                                                <Border BorderThickness="1" BorderBrush="Black"></Border>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
                                             </Grid>
                                             <Grid  Grid.Row="1" Grid.Column="6">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center" Text=""> Pending</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="1" Grid.Column="7" Grid.RowSpan="12">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                                                 </Border>
                                             </Grid>
-                                            
+
                                             <!--Row3-->
                                             <Grid  Grid.Row="2" Grid.Column="0">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">2</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">2</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="2" Grid.Column="1">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">GAS</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock  Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">GAS</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="2" Grid.Column="2">
@@ -248,12 +272,12 @@
                                                     <RowDefinition></RowDefinition>
                                                     <RowDefinition></RowDefinition>
                                                 </Grid.RowDefinitions>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">GAS</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">GAS</TextBlock>
 
                                                 </Border>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
 
                                                 </Border>
                                             </Grid>
@@ -262,13 +286,13 @@
                                                     <RowDefinition></RowDefinition>
                                                     <RowDefinition></RowDefinition>
                                                 </Grid.RowDefinitions>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
 
 
                                                 </Border>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
 
 
                                                 </Border>
@@ -279,12 +303,12 @@
                                                     <RowDefinition></RowDefinition>
                                                     <RowDefinition></RowDefinition>
                                                 </Grid.RowDefinitions>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">OIL</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">OIL</TextBlock>
 
                                                 </Border>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
 
                                                 </Border>
                                             </Grid>
@@ -293,13 +317,13 @@
                                                     <RowDefinition></RowDefinition>
                                                     <RowDefinition></RowDefinition>
                                                 </Grid.RowDefinitions>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
 
 
                                                 </Border>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
 
 
                                                 </Border>
@@ -307,20 +331,20 @@
                                             </Grid>
 
                                             <Grid  Grid.Row="2" Grid.Column="6">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                                                 </Border>
                                             </Grid>
 
                                             <!--Row4-->
                                             <Grid  Grid.Row="3" Grid.Column="0">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">3</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">3</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="3" Grid.Column="1">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">WI 1 WITH</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">WI 1 WITH</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="3" Grid.Column="2">
@@ -328,12 +352,12 @@
                                                     <RowDefinition></RowDefinition>
                                                     <RowDefinition></RowDefinition>
                                                 </Grid.RowDefinitions>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Leak current(mA)</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Leak current(mA)</TextBlock>
 
                                                 </Border>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
 
                                                 </Border>
                                             </Grid>
@@ -342,13 +366,13 @@
                                                     <RowDefinition></RowDefinition>
                                                     <RowDefinition></RowDefinition>
                                                 </Grid.RowDefinitions>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
 
 
                                                 </Border>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
 
 
                                                 </Border>
@@ -359,12 +383,12 @@
                                                     <RowDefinition></RowDefinition>
                                                     <RowDefinition></RowDefinition>
                                                 </Grid.RowDefinitions>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Resistor(Ôm)</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Resistor(Ôm)</TextBlock>
 
                                                 </Border>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
 
                                                 </Border>
                                             </Grid>
@@ -373,13 +397,13 @@
                                                     <RowDefinition></RowDefinition>
                                                     <RowDefinition></RowDefinition>
                                                 </Grid.RowDefinitions>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
 
 
                                                 </Border>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
 
 
                                                 </Border>
@@ -387,19 +411,19 @@
                                             </Grid>
 
                                             <Grid  Grid.Row="3" Grid.Column="6">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <!--Row5-->
                                             <Grid  Grid.Row="4" Grid.Column="0">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">4</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">4</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="4" Grid.Column="1">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">WI 1 START</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">WI 1 START</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="4" Grid.Column="2">
@@ -407,12 +431,12 @@
                                                     <RowDefinition></RowDefinition>
                                                     <RowDefinition></RowDefinition>
                                                 </Grid.RowDefinitions>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Current(mA)</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Current(mA)</TextBlock>
 
                                                 </Border>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
 
                                                 </Border>
                                             </Grid>
@@ -421,35 +445,35 @@
                                                     <RowDefinition></RowDefinition>
                                                     <RowDefinition></RowDefinition>
                                                 </Grid.RowDefinitions>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
 
 
                                                 </Border>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
 
 
                                                 </Border>
 
                                             </Grid>
                                             <Grid  Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2">
-                                                <Border BorderThickness="1" BorderBrush="Black"></Border>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
                                             </Grid>
                                             <Grid  Grid.Row="4" Grid.Column="6">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <!--Row6-->
                                             <Grid  Grid.Row="5" Grid.Column="0">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">5</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">5</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="5" Grid.Column="1">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">IP</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">IP</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="5" Grid.Column="2">
@@ -457,11 +481,11 @@
                                                     <RowDefinition></RowDefinition>
                                                     <RowDefinition></RowDefinition>
                                                 </Grid.RowDefinitions>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Capacity(W)</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Capacity(W)</TextBlock>
                                                 </Border>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
 
                                                 </Border>
                                             </Grid>
@@ -470,35 +494,35 @@
                                                     <RowDefinition></RowDefinition>
                                                     <RowDefinition></RowDefinition>
                                                 </Grid.RowDefinitions>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
 
 
                                                 </Border>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
 
 
                                                 </Border>
 
                                             </Grid>
                                             <Grid  Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2">
-                                                <Border BorderThickness="1" BorderBrush="Black"></Border>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
                                             </Grid>
                                             <Grid  Grid.Row="5" Grid.Column="6">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <!--Row7-->
                                             <Grid  Grid.Row="6" Grid.Column="0">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">6</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">6</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="6" Grid.Column="1">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">DF</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">DF</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="6" Grid.Column="2">
@@ -506,11 +530,11 @@
                                                     <RowDefinition></RowDefinition>
                                                     <RowDefinition></RowDefinition>
                                                 </Grid.RowDefinitions>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Capacity(W)</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Capacity(W)</TextBlock>
                                                 </Border>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
 
                                                 </Border>
                                             </Grid>
@@ -519,182 +543,182 @@
                                                     <RowDefinition></RowDefinition>
                                                     <RowDefinition></RowDefinition>
                                                 </Grid.RowDefinitions>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
 
 
                                                 </Border>
-                                                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="1">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
 
 
                                                 </Border>
 
                                             </Grid>
                                             <Grid  Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="2">
-                                                <Border BorderThickness="1" BorderBrush="Black"></Border>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
                                             </Grid>
                                             <Grid  Grid.Row="6" Grid.Column="6">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <!--Row8-->
                                             <Grid  Grid.Row="7" Grid.Column="0">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">7</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">7</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="7" Grid.Column="1">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">TEMP</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">TEMP</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="4">
-                                                <Border BorderThickness="1" BorderBrush="Black"></Border>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
                                             </Grid>
-                                           
-                                           
+
+
                                             <Grid  Grid.Row="7" Grid.Column="6">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                                                 </Border>
                                             </Grid>
 
                                             <!--Row9-->
                                             <Grid  Grid.Row="8" Grid.Column="0">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">8</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">8</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="8" Grid.Column="1">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">IOT</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">IOT</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="8" Grid.Column="2">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Passkey</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Passkey</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="8" Grid.Column="3">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Code In</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Code In</TextBlock>
                                                 </Border>
 
                                             </Grid>
                                             <Grid  Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="2">
-                                                <Border BorderThickness="1" BorderBrush="Black"></Border>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
                                             </Grid>
                                             <Grid  Grid.Row="8" Grid.Column="6">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <!--Row10-->
                                             <Grid  Grid.Row="9" Grid.Column="0">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">9</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">9</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="9" Grid.Column="1">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">PAN</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">PAN</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="9" Grid.Column="2">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Code Market</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Code Market</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="9" Grid.Column="3">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Code PCB</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Code PCB</TextBlock>
                                                 </Border>
 
                                             </Grid>
                                             <Grid  Grid.Row="9" Grid.Column="4">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Code PAN</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Code PAN</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="9" Grid.Column="5">
-                                                <Border BorderThickness="1" BorderBrush="Black"></Border>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
                                             </Grid>
                                             <Grid  Grid.Row="9" Grid.Column="6">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <!--Row11-->
                                             <Grid  Grid.Row="10" Grid.Column="0">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">10</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">10</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="10" Grid.Column="1">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Cam Back</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Cam Back</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="4">
-                                                <Border BorderThickness="1" BorderBrush="Black"></Border>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
                                             </Grid>
 
 
                                             <Grid  Grid.Row="10" Grid.Column="6">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <!--Row12-->
                                             <Grid  Grid.Row="11" Grid.Column="0">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">11</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">11</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="11" Grid.Column="1">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Cam Front</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Cam Front</TextBlock>
                                                 </Border>
                                             </Grid>
                                             <Grid  Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="4">
-                                                <Border BorderThickness="1" BorderBrush="Black"></Border>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
                                             </Grid>
 
 
                                             <Grid  Grid.Row="11" Grid.Column="6">
-                                                <Border BorderThickness="1" BorderBrush="Black">
-                                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                                                <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                                                    <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                                                 </Border>
                                             </Grid>
 
 
 
                                         </Grid>
-                                        
+
 
                                     </Border>
-                                   
+
                                 </Grid>
                                 <Grid Grid.Column="1"  Margin="0,0,5,0" Background="White">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="35"></RowDefinition>
-                                        <RowDefinition Height="*"></RowDefinition>
-                                        <RowDefinition Height="*"></RowDefinition>
+                                        <!--<RowDefinition Height="35"></RowDefinition>-->
+                                        <RowDefinition Height="4*"></RowDefinition>
+                                        <RowDefinition Height="3*"></RowDefinition>
                                     </Grid.RowDefinitions>
-                                    <Grid Grid.Row="0" Background="DarkSeaGreen" Margin="5,0,3,0">
+                                    <!--<Grid Grid.Row="0" Background="DarkSeaGreen" Margin="5,0,3,0">
                                         <TextBlock FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">Chart</TextBlock>
-                                    </Grid>
-                                    <Grid Grid.Row="1" Grid.Column="0" Margin="0" Background="WhiteSmoke">
+                                    </Grid>-->
+                                    <Grid Grid.Row="0" Grid.Column="0" Margin="0" Background="WhiteSmoke">
                                         <Grid Grid.Column="0" Margin="5" Background="White">
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="30"></RowDefinition>
+                                                <!--<RowDefinition Height="30"></RowDefinition>-->
                                                 <RowDefinition Height="*"></RowDefinition>
                                             </Grid.RowDefinitions>
-                                            <Grid Grid.Row="0" Margin="0,5,0,0">
-                                                <TextBlock HorizontalAlignment="Center" FontSize="15" FontWeight="Medium">Tên biểu đồ</TextBlock>
-                                            </Grid>
+                                            <!--<Grid Grid.Row="0" Margin="0,0,0,0" Background="Bisque">
+                                                <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center" FontSize="18" FontWeight="Medium">Tên biểu đồ</TextBlock>
+                                            </Grid>-->
                                             <Grid Grid.Row="1">
                                                 <lvc:PieChart Series="{Binding mydata2}" LegendLocation="Bottom"  Hoverable="False" DataTooltip="{x:Null}" Margin="5,0,5,10">
                                                 </lvc:PieChart>
@@ -706,12 +730,12 @@
                                     <Grid Grid.Row="2" Margin="0" Background="WhiteSmoke" >
                                         <Grid Grid.Column="0" Background="White" Margin="5">
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="30"></RowDefinition>
+                                                <!--<RowDefinition Height="30"></RowDefinition>-->
                                                 <RowDefinition Height="*"></RowDefinition>
                                             </Grid.RowDefinitions>
-                                            <Grid Grid.Row="0" Margin="0,5,0,0">
-                                                <TextBlock HorizontalAlignment="Center" FontSize="15" FontWeight="Medium">Tên biểu đồ</TextBlock>
-                                            </Grid>
+                                            <!--<Grid Grid.Row="0" Margin="0,0,0,0" Background="Aquamarine">
+                                                <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center" FontSize="18" FontWeight="Medium">Tên biểu đồ</TextBlock>
+                                            </Grid>-->
                                             <Grid Grid.Row="1">
                                                 <lvc:CartesianChart Series="{Binding mydata1}" Margin="15" >
                                                     <lvc:CartesianChart.AxisX>
@@ -736,23 +760,25 @@
                             <Grid Grid.Row="1">
                                 <Grid Grid.Column="0" Margin="5,0,5,0" Background="WhiteSmoke">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="35"></RowDefinition>
+                                        <!--<RowDefinition Height="35"></RowDefinition>-->
                                         <RowDefinition Height="*"></RowDefinition>
                                     </Grid.RowDefinitions>
-                                    <Grid Grid.Row="0" Background="Orange">
+                                    <!--<Grid Grid.Row="0" Background="Orange">
                                         <TextBlock FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">History</TextBlock>
-                                    </Grid>
+                                    </Grid>-->
                                     <Grid Grid.Row="1" Margin="0,0">
-                                        <ListView  x:Name="lv1" Grid.Column="0" ItemsSource="{Binding myListErrorFileCheck, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" MouseUp="lv1_MouseUp" >
+                                        <ListView SizeChanged="lv1_SizeChanged" HorizontalContentAlignment="Stretch"  x:Name="lv1" Grid.Column="0" ItemsSource="{Binding myListErrorFileCheck, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Auto" MouseUp="lv1_MouseUp" >
                                             <ListView.Resources>
                                                 <Style TargetType="GridViewColumnHeader">
                                                     <Setter Property="FontSize" Value="15"></Setter>
                                                     <Setter Property="Width" Value="auto"></Setter>
                                                     <Setter Property="FontWeight" Value="Medium"></Setter>
+                                                    <Setter Property="Background" Value="Orange"></Setter>
                                                 </Style>
                                             </ListView.Resources>
                                             <ListView.View>
                                                 <GridView>
+                                                    
                                                     <GridViewColumn>
                                                         <GridViewColumn.Header>
                                                             <Grid Margin="5,0,5,0">
@@ -1113,6 +1139,44 @@
                                                             </DataTemplate>
                                                         </GridViewColumn.CellTemplate>
                                                     </GridViewColumn>
+                                                    <GridViewColumn >
+                                                        <GridViewColumn.Header>
+                                                            <Grid Margin="5,0,5,0">
+                                                                <Label>WI2</Label>
+                                                            </Grid>
+                                                        </GridViewColumn.Header>
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition />
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Width="auto" TextAlignment="Center" FontWeight="Medium"  FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Statuscheck}">
+                                                                        <TextBlock.Style>
+                                                                            <Style TargetType="TextBlock">
+                                                                                <Style.Triggers>
+                                                                                    <Trigger Property="Text" Value="NG">
+                                                                                        <Setter Property="Foreground" Value="Red"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="OK">
+                                                                                        <Setter Property="Foreground" Value="Green"></Setter>
+                                                                                    </Trigger>
+                                                                                    <Trigger Property="Text" Value="Pending">
+                                                                                        <Setter Property="Foreground" Value="Orange"></Setter>
+                                                                                    </Trigger>
+                                                                                </Style.Triggers>
+                                                                            </Style>
+                                                                        </TextBlock.Style>
+                                                                    </TextBlock>
+                                                                </Grid>
+
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+
                                                     <GridViewColumn >
                                                         <GridViewColumn.Header>
                                                             <Grid Margin="5,0,5,0">

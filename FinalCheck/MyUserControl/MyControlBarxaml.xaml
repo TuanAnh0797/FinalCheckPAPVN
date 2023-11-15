@@ -25,7 +25,7 @@
         <Mydata:ControlBarViewModelcs></Mydata:ControlBarViewModelcs>
     </UserControl.DataContext>-->
     <Grid>
-        <materialDesign:ColorZone Padding="0" Background="LightGray">
+        <materialDesign:ColorZone Padding="0" Background="#FFF1F1F1">
             <Grid Margin="5,0,5,0">
                 <StackPanel DockPanel.Dock="Right" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Background="Transparent">
                     <Button Foreground="Black" Height="15" Width="40" Command="{Binding cmd_MinimizeWindow}" CommandParameter="{Binding ElementName=MyControlBarTA}" BorderBrush="Transparent" Margin="5" Padding="0" Background="Transparent" Content="{materialDesign:PackIcon Kind=WindowMinimize}" />

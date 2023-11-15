@@ -21,6 +21,8 @@ using LiveCharts.Defaults;
 using System.Windows.Threading;
 using System.Windows.Controls.Primitives;
 using System.Runtime.CompilerServices;
+using TALibrary;
+
 
 namespace FinalCheck
 {
@@ -31,7 +33,7 @@ namespace FinalCheck
     {
         DispatcherTimer time1 = new DispatcherTimer();
         public Func<double, string> Formatter { get; set; }
-        public ObservableCollection<ListErrorFileCheck> myListErrorFileCheck { set; get; }
+        public ObservableCollection<ResultCheckFinal> dataforlistview { set; get; }
 
 
         public SeriesCollection mydata1 { set; get; }
@@ -140,7 +142,7 @@ namespace FinalCheck
 
             if (values2 < 8 )
             {
-                myListErrorFileCheck.Add(new ListErrorFileCheck() { NameModel = $"ABCDEFGHIK{index}", DateCreate = timecheck, DateModify = "NG", FileName = "OK", FilePath = "OK", Statuscheck = "OK" });
+               // dataforlistview.Add(new ListErrorFileCheck() { NameModel = $"ABCDEFGHIK{index}", DateCreate = timecheck, DateModify = "NG", FileName = "OK", FilePath = "OK", Statuscheck = "OK" });
                 CurentData = $"ABCDEFGHIK{index}";
                // gr_header.Background = new SolidColorBrush(Colors.Green);
                 Condition1OK.Value++;
@@ -158,7 +160,7 @@ namespace FinalCheck
             }
             else 
             {
-                myListErrorFileCheck.Add(new ListErrorFileCheck() { NameModel = $"ABCDEFGHIK{index}", DateCreate = timecheck, DateModify = "NG", FileName = "OK", FilePath = "OK", Statuscheck = "NG" });
+               // dataforlistview.Add(new ListErrorFileCheck() { NameModel = $"ABCDEFGHIK{index}", DateCreate = timecheck, DateModify = "NG", FileName = "OK", FilePath = "OK", Statuscheck = "NG" });
                 CurentData = $"ABCDEFGHIK{index}";
                 //gr_header.Background = new SolidColorBrush(Colors.Red);
                 for (int i = 0; i < 11; i++)
@@ -329,7 +331,7 @@ namespace FinalCheck
         }
         public void innitproperty()
         {
-            myListErrorFileCheck = new ObservableCollection<ListErrorFileCheck>();
+            dataforlistview = new ObservableCollection<ResultCheckFinal>();
 
             TotalOK = new ObservableValue(0);
             TotalNG = new ObservableValue(0);
@@ -526,7 +528,7 @@ namespace FinalCheck
             {
                 this.Dispatcher?.Invoke(new Action(() =>
                 {
-                    ListErrorFileCheck dt = (ListErrorFileCheck)lv1.SelectedItem;
+                    //ListErrorFileCheck dt = (ListErrorFileCheck)lv1.SelectedItem;
                     DataDetail p = new DataDetail();
                     p.Show();
                 }));
@@ -549,6 +551,38 @@ namespace FinalCheck
             await result;
         }
 
+        private void lv1_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            ListView listView = sender as ListView;
+            GridView gView = listView.View as GridView;
+
+            var workingWidth = listView.ActualWidth - SystemParameters.VerticalScrollBarWidth;
+
+            var col1 = 0.1;
+            var col2 = 0.04;
+            var col3 = 0.052;
+
+            gView.Columns[0].Width = workingWidth * col2;
+            gView.Columns[1].Width = workingWidth * col1;
+            gView.Columns[2].Width = workingWidth * col1;
+            gView.Columns[3].Width = workingWidth * col2;
+            gView.Columns[4].Width = workingWidth * col2;
+            gView.Columns[5].Width = workingWidth * col3;
+            gView.Columns[6].Width = workingWidth * col3;
+            gView.Columns[7].Width = workingWidth * col2;
+            gView.Columns[8].Width = workingWidth * col2;
+            gView.Columns[9].Width = workingWidth * col2;
+            gView.Columns[10].Width = workingWidth * col2;
+            gView.Columns[11].Width = workingWidth * col2;
+            gView.Columns[12].Width = workingWidth * col2;
+            gView.Columns[13].Width = workingWidth * col3;
+            gView.Columns[14].Width = workingWidth * col3;
+            gView.Columns[15].Width = workingWidth * col2;
+            gView.Columns[16].Width = workingWidth * col1;
+            gView.Columns[17].Width = workingWidth * col1;
+
+
+        }
     }
 
 }

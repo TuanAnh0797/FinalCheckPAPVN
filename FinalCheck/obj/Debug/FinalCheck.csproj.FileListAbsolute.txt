@@ -228,3 +228,15 @@ C:\Users\PC\Desktop\WPF\FinalCheckPAPVN\FinalCheck\bin\Debug\de\PdfSharp.resourc
 C:\Users\PC\Desktop\WPF\FinalCheckPAPVN\FinalCheck\bin\Debug\de\PdfSharp.Charting.resources.dll
 C:\Users\PC\Desktop\WPF\FinalCheckPAPVN\FinalCheck\bin\Debug\System.Drawing.Common.dll
 C:\Users\PC\Desktop\WPF\FinalCheckPAPVN\FinalCheck\bin\Debug\System.Drawing.Common.xml
+C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\bin\Debug\PdfSharp.Charting.dll
+C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\bin\Debug\PdfSharp.dll
+C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\bin\Debug\System.Drawing.Common.dll
+C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\bin\Debug\PdfSharp.xml
+C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\bin\Debug\PdfSharp.Charting.xml
+C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\bin\Debug\System.Drawing.Common.xml
+C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\bin\Debug\de\PdfSharp.resources.dll
+C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\bin\Debug\de\PdfSharp.Charting.resources.dll
+C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\obj\Debug\History.g.cs
+C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\obj\Debug\History.baml
+C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\bin\Debug\ConnectPLC.dll
+C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\bin\Debug\ConnectPLC.pdb

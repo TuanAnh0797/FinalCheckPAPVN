@@ -40,6 +40,9 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ConnectPLC">
+      <HintPath>D:\ConnectPLC\ConnectPLC\bin\Debug\ConnectPLC.dll</HintPath>
+    </Reference>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
     </Reference>
@@ -104,11 +107,7 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\cmb_data_class.cs" />
-    <Compile Include="Model\Config.cs" />
-    <Compile Include="Model\ListErrorConfigFileCheck.cs" />
-    <Compile Include="Model\ListErrorContentFileCheck.cs" />
-    <Compile Include="Model\ListErrorFileCheck.cs" />
+    <Compile Include="Model\ResultCheckFinal.cs" />
     <Compile Include="MyUserControl\TitleBar.xaml.cs">
       <DependentUpon>TitleBar.xaml</DependentUpon>
     </Compile>
