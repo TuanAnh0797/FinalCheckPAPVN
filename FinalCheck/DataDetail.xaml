@@ -20,7 +20,7 @@
         ResizeMode="NoResize"
         WindowState="Normal"
         WindowStartupLocation="CenterScreen"
-        Title="DataDetail" Height="450" Width="800" Loaded="MyControlBarTA_Loaded">
+        Title="DataDetail" Height="550" Width="850" Loaded="MyControlBarTA_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -34,8 +34,8 @@
                 <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Medium" Text="ABCDEFGHIK11"></TextBlock>
-            <Border Margin="0"  Grid.Column="1" Grid.Row="1" BorderThickness="0" BorderBrush="White" Background="#FFE4E4E4" >
+            <TextBlock Name="txb_namecabi" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Medium"></TextBlock>
+            <Border Margin="5,0,5,5"  Grid.Column="1" Grid.Row="1" BorderThickness="0" BorderBrush="White" Background="#FFE4E4E4" >
                 <Grid>
                     <Grid.Resources>
                         <Style TargetType="Border" x:Key="bordertable">

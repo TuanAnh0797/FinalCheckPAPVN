@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -18,27 +20,48 @@ namespace FinalCheck
     /// <summary>
     /// Interaction logic for DataDetail.xaml
     /// </summary>
-    public partial class DataDetail : Window
+    public partial class DataDetail : Window,INotifyPropertyChanged
     {
-       
-        public  DataDetail()
+        private string cabinet;
+
+        public string Cabinet
+        {
+            get { return cabinet; }
+            set
+            {
+                if (value != cabinet)
+                {
+                    cabinet = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        public  DataDetail(string namecabi)
         {
            
             InitializeComponent();
+           txb_namecabi.Text = namecabi;
            
-           
-            
+
+
+
         }
+
+       
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private async void MyControlBarTA_Loaded(object sender, RoutedEventArgs e)
+        private void MyControlBarTA_Loaded(object sender, RoutedEventArgs e)
         {
-            await Task.Delay(10000);
-            MessageBox.Show("OK");
+           
         }
     }
 }

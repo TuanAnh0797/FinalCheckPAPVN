@@ -43,42 +43,42 @@ namespace FinalCheck
 
         public Func<ChartPoint, string> PointLabel { get; set; }
 
-        public ObservableValue Condition1OK { get; set; }
-        public ObservableValue Condition2OK { get; set; }
-        public ObservableValue Condition3OK { get; set; }
-        public ObservableValue Condition4OK { get; set; }
-        public ObservableValue Condition5OK { get; set; }
-        public ObservableValue Condition6OK { get; set; }
-        public ObservableValue Condition7OK { get; set; }
-        public ObservableValue Condition8OK { get; set; }
-        public ObservableValue Condition9OK { get; set; }
-        public ObservableValue Condition10OK { get; set; }
-        public ObservableValue Condition11OK { get; set; }
+        public ObservableValue VPOK { get; set; }
+        public ObservableValue GASOILOK { get; set; }
+        public ObservableValue WI1WITHOK { get; set; }
+        public ObservableValue WI1STARTOK { get; set; }
+        public ObservableValue IPOK { get; set; }
+        public ObservableValue DFOK { get; set; }
+        public ObservableValue TEMPOK { get; set; }
+        public ObservableValue IOTOK { get; set; }
+        public ObservableValue PANOK { get; set; }
+        public ObservableValue CAMBACKOK { get; set; }
+        public ObservableValue CAMFRONTOK { get; set; }
 
-        public ObservableValue Condition1NG { get; set; }
-        public ObservableValue Condition2NG { get; set; }
-        public ObservableValue Condition3NG { get; set; }
-        public ObservableValue Condition4NG { get; set; }
-        public ObservableValue Condition5NG { get; set; }
-        public ObservableValue Condition6NG { get; set; }
-        public ObservableValue Condition7NG { get; set; }
-        public ObservableValue Condition8NG { get; set; }
-        public ObservableValue Condition9NG { get; set; }
-        public ObservableValue Condition10NG { get; set; }
-        public ObservableValue Condition11NG { get; set; }
+        public ObservableValue VPNG { get; set; }
+        public ObservableValue GASOILNG { get; set; }
+        public ObservableValue WI1WITHNG { get; set; }
+        public ObservableValue WI1STARTNG { get; set; }
+        public ObservableValue IPNG { get; set; }
+        public ObservableValue DFNG { get; set; }
+        public ObservableValue TEMPNG { get; set; }
+        public ObservableValue IOTNG { get; set; }
+        public ObservableValue PANNG { get; set; }
+        public ObservableValue CAMBACKNG { get; set; }
+        public ObservableValue CAMFRONTNG { get; set; }
 
 
-        public ObservableValue Condition1Pending { get; set; }
-        public ObservableValue Condition2Pending { get; set; }
-        public ObservableValue Condition3Pending { get; set; }
-        public ObservableValue Condition4Pending { get; set; }
-        public ObservableValue Condition5Pending { get; set; }
-        public ObservableValue Condition6Pending { get; set; }
-        public ObservableValue Condition7Pending { get; set; }
-        public ObservableValue Condition8Pending { get; set; }
-        public ObservableValue Condition9Pending { get; set; }
-        public ObservableValue Condition10Pending { get; set; }
-        public ObservableValue Condition11Pending { get; set; }
+        public ObservableValue VPPENDING { get; set; }
+        public ObservableValue GASOILPENDING { get; set; }
+        public ObservableValue WI1WITHPENDING { get; set; }
+        public ObservableValue WI1STARTPENDING { get; set; }
+        public ObservableValue IPPENDING { get; set; }
+        public ObservableValue DFPENDING { get; set; }
+        public ObservableValue TEMPPENDING { get; set; }
+        public ObservableValue IOTPENDING { get; set; }
+        public ObservableValue PANPENDING { get; set; }
+        public ObservableValue CAMBACKPENDING { get; set; }
+        public ObservableValue CAMFRONTPENDING { get; set; }
 
         public ObservableValue TotalOK { get; set; }
 
@@ -89,16 +89,30 @@ namespace FinalCheck
 
         public string[] Labels { get; set; }
 
-        private string curentdata;
+        private string modelcurrent;
 
-        public string CurentData
+        public string ModelCurrent
         {
-            get { return curentdata; }
+            get { return modelcurrent; }
             set
             {
-                if (curentdata != value)
+                if (modelcurrent != value)
                 {
-                    curentdata = value;
+                    modelcurrent = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        private string serialcurrent;
+
+        public string SerialCurrent
+        {
+            get { return serialcurrent; }
+            set
+            {
+                if (serialcurrent != value)
+                {
+                    serialcurrent = value;
                     OnPropertyChanged();
                 }
             }
@@ -114,7 +128,7 @@ namespace FinalCheck
         {
            
             InitializeComponent();
-            CurentData = "";
+            ModelCurrent = "";
             DataContext = this;
             time1.Interval = TimeSpan.FromSeconds(5);
             
@@ -130,6 +144,7 @@ namespace FinalCheck
         Random rd = new Random();
         Random rd2 = new Random();
         int index = 10;
+        int STT = 1;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -142,27 +157,29 @@ namespace FinalCheck
 
             if (values2 < 8 )
             {
-               // dataforlistview.Add(new ListErrorFileCheck() { NameModel = $"ABCDEFGHIK{index}", DateCreate = timecheck, DateModify = "NG", FileName = "OK", FilePath = "OK", Statuscheck = "OK" });
-                CurentData = $"ABCDEFGHIK{index}";
-               // gr_header.Background = new SolidColorBrush(Colors.Green);
-                Condition1OK.Value++;
-                Condition2OK.Value++;
-                Condition3OK.Value++;
-                Condition4OK.Value++;
-                Condition5OK.Value++;
-                Condition6OK.Value++;
-                Condition7OK.Value++;
-                Condition8OK.Value++;
-                Condition9OK.Value++;
-                Condition10OK.Value++;
-                Condition11OK.Value++;
+                dataforlistview.Add(new ResultMain(STT, $"ABCDEFGHIK{index}","OK",timecheck) );
+                ModelCurrent = $"ABCDEFGHIK";
+                SerialCurrent =  index.ToString();
+                gr_header.Background = new SolidColorBrush(Colors.Green);
+                VPOK.Value++;
+                GASOILOK.Value++;
+                WI1WITHOK.Value++;
+                WI1STARTOK.Value++;
+                IPOK.Value++;
+                DFOK.Value++;
+                TEMPOK.Value++;
+                IOTOK.Value++;
+                PANOK.Value++;
+                CAMBACKOK.Value++;
+                CAMFRONTOK.Value++;
                 TotalOK.Value++;
             }
             else 
             {
-               // dataforlistview.Add(new ListErrorFileCheck() { NameModel = $"ABCDEFGHIK{index}", DateCreate = timecheck, DateModify = "NG", FileName = "OK", FilePath = "OK", Statuscheck = "NG" });
-                CurentData = $"ABCDEFGHIK{index}";
-                //gr_header.Background = new SolidColorBrush(Colors.Red);
+                dataforlistview.Add(new ResultMain(STT, $"ABCDEFGHIK{index}", "NG", timecheck));
+                ModelCurrent = $"ABCDEFGHI";
+                SerialCurrent = index.ToString();
+                gr_header.Background = new SolidColorBrush(Colors.Red);
                 for (int i = 0; i < 11; i++)
                 {
                     int values = rd.Next(0, 20);
@@ -171,163 +188,166 @@ namespace FinalCheck
                         case 0:
                             if (values < 3)
                             {
-                                Condition1OK.Value++;
+                                VPOK.Value++;
                             }
                             else if (values < 12)
                             {
-                                Condition1NG.Value++;
+                                VPNG.Value++;
                             }
                             else
                             {
-                                Condition1Pending.Value++;
+                                VPPENDING.Value++;
                             }
                             break;
                         case 1:
                             if (values < 3)
                             {
-                                Condition2OK.Value++;
+                                GASOILOK.Value++;
                             }
                             else if (values < 12)
                             {
-                                Condition2NG.Value++;
+                                GASOILNG.Value++;
                             }
                             else
                             {
-                                Condition2Pending.Value++;
+                                GASOILPENDING.Value++;
                             }
                             break;
                         case 2:
                             if (values < 3)
                             {
-                                Condition3OK.Value++;
+                                WI1WITHOK.Value++;
                             }
                             else if (values < 12)
                             {
-                                Condition3NG.Value++;
+                                WI1WITHNG.Value++;
                             }
                             else
                             {
-                                Condition3Pending.Value++;
+                                WI1WITHPENDING.Value++;
                             }
                             break;
                         case 3:
                             if (values < 3)
                             {
-                                Condition4OK.Value++;
+                                WI1STARTOK.Value++;
                             }
                             else if (values < 12)
                             {
-                                Condition4NG.Value++;
+                                WI1STARTNG.Value++;
                             }
                             else
                             {
-                                Condition4Pending.Value++;
+                                WI1STARTPENDING.Value++;
                             }
                             break;
                         case 4:
                             if (values < 3)
                             {
-                                Condition5OK.Value++;
+                                IPOK.Value++;
                             }
                             else if (values < 12)
                             {
-                                Condition5NG.Value++;
+                                IPNG.Value++;
                             }
                             else
                             {
-                                Condition5Pending.Value++;
+                                IPPENDING.Value++;
                             }
                             break;
                         case 5:
                             if (values < 3)
                             {
-                                Condition6OK.Value++;
+                                DFOK.Value++;
                             }
                             else if (values < 12)
                             {
-                                Condition6NG.Value++;
+                                DFNG.Value++;
                             }
                             else
                             {
-                                Condition6Pending.Value++;
+                                DFPENDING.Value++;
                             }
                             break;
                         case 6:
                             if (values < 3)
                             {
-                                Condition7OK.Value++;
+                                TEMPOK.Value++;
                             }
                             else if (values < 12)
                             {
-                                Condition7NG.Value++;
+                                TEMPNG.Value++;
                             }
                             else
                             {
-                                Condition7Pending.Value++;
+                                TEMPPENDING.Value++;
                             }
                             break;
                         case 7:
                             if (values < 3)
                             {
-                                Condition8OK.Value++;
+                                IOTOK.Value++;
                             }
                             else if (values < 12)
                             {
-                                Condition8NG.Value++;
+                                IOTNG.Value++;
                             }
                             else
                             {
-                                Condition8Pending.Value++;
+                                IOTPENDING.Value++;
                             }
                             break;
                         case 8:
                             if (values < 3)
                             {
-                                Condition9OK.Value++;
+                                PANOK.Value++;
                             }
                             else if (values < 12)
                             {
-                                Condition9NG.Value++;
+                                PANNG.Value++;
                             }
                             else
                             {
-                                Condition9Pending.Value++;
+                                PANPENDING.Value++;
                             }
                             break;
                         case 9:
                             if (values < 3)
                             {
-                                Condition10OK.Value++;
+                                CAMBACKOK.Value++;
                             }
                             else if (values < 12)
                             {
-                                Condition10NG.Value++;
+                                CAMBACKNG.Value++;
                             }
                             else
                             {
-                                Condition10Pending.Value++;
+                                CAMBACKPENDING.Value++;
                             }
                             break;
                         case 10:
                             if (values < 3)
                             {
-                                Condition11OK.Value++;
+                                CAMFRONTOK.Value++;
                             }
                             else if (values < 12)
                             {
-                                Condition11NG.Value++;
+                                CAMFRONTNG.Value++;
                             }
                             else
                             {
-                                Condition11Pending.Value++;
+                                CAMFRONTPENDING.Value++;
                             }
                             break;
                     }
                 }
                 TotalNG.Value++;
+               
                 
             }
-          
+            STT++;
+
+
         }
         public void innitproperty()
         {
@@ -337,43 +357,43 @@ namespace FinalCheck
             TotalNG = new ObservableValue(0);
             TotalPending = new ObservableValue(0);
 
-            Condition1OK = new ObservableValue(0);
-            Condition2OK = new ObservableValue(0);
-            Condition3OK = new ObservableValue(0);
-            Condition4OK = new ObservableValue(0);
-            Condition5OK = new ObservableValue(0);
-            Condition6OK = new ObservableValue(0);
-            Condition7OK = new ObservableValue(0);
-            Condition8OK = new ObservableValue(0);
-            Condition9OK = new ObservableValue(0);
-            Condition10OK = new ObservableValue(0);
-            Condition11OK = new ObservableValue(0);
+            VPOK = new ObservableValue(0);
+            GASOILOK = new ObservableValue(0);
+            WI1WITHOK = new ObservableValue(0);
+            WI1STARTOK = new ObservableValue(0);
+            IPOK = new ObservableValue(0);
+            DFOK = new ObservableValue(0);
+            TEMPOK = new ObservableValue(0);
+            IOTOK = new ObservableValue(0);
+            PANOK = new ObservableValue(0);
+            CAMBACKOK = new ObservableValue(0);
+            CAMFRONTOK = new ObservableValue(0);
 
 
-            Condition1NG = new ObservableValue(0);
-            Condition2NG = new ObservableValue(0);
-            Condition3NG = new ObservableValue(0);
-            Condition4NG = new ObservableValue(0);
-            Condition5NG = new ObservableValue(0);
-            Condition6NG = new ObservableValue(0);
-            Condition7NG = new ObservableValue(0);
-            Condition8NG = new ObservableValue(0);
-            Condition9NG = new ObservableValue(0);
-            Condition10NG = new ObservableValue(0);
-            Condition11NG = new ObservableValue(0);
+            VPNG = new ObservableValue(0);
+            GASOILNG = new ObservableValue(0);
+            WI1WITHNG = new ObservableValue(0);
+            WI1STARTNG = new ObservableValue(0);
+            IPNG = new ObservableValue(0);
+            DFNG = new ObservableValue(0);
+            TEMPNG = new ObservableValue(0);
+            IOTNG = new ObservableValue(0);
+            PANNG = new ObservableValue(0);
+            CAMBACKNG = new ObservableValue(0);
+            CAMFRONTNG = new ObservableValue(0);
 
 
-            Condition1Pending = new ObservableValue(0);
-            Condition2Pending = new ObservableValue(0);
-            Condition3Pending = new ObservableValue(0);
-            Condition4Pending = new ObservableValue(0);
-            Condition5Pending = new ObservableValue(0);
-            Condition6Pending = new ObservableValue(0);
-            Condition7Pending = new ObservableValue(0);
-            Condition8Pending = new ObservableValue(0);
-            Condition9Pending = new ObservableValue(0);
-            Condition10Pending = new ObservableValue(0);
-            Condition11Pending = new ObservableValue(0);
+            VPPENDING = new ObservableValue(0);
+            GASOILPENDING = new ObservableValue(0);
+            WI1WITHPENDING = new ObservableValue(0);
+            WI1STARTPENDING = new ObservableValue(0);
+            IPPENDING = new ObservableValue(0);
+            DFPENDING = new ObservableValue(0);
+            TEMPPENDING = new ObservableValue(0);
+            IOTPENDING = new ObservableValue(0);
+            PANPENDING = new ObservableValue(0);
+            CAMBACKPENDING = new ObservableValue(0);
+            CAMFRONTPENDING = new ObservableValue(0);
 
             Labels = new[] { "VP", "Nạp Gas", "WI 1 W", "WI 1 S", "IP", "DF", "TEMP", "IOT", "PAN", "CAM B", "CAM F" };
         }
@@ -386,15 +406,15 @@ namespace FinalCheck
             {
                 new StackedColumnSeries
                 {
-                    Values = new ChartValues<ObservableValue> { Condition1OK, Condition2OK, Condition3OK, Condition4OK, Condition5OK, Condition6OK, Condition7OK, Condition8OK, Condition9OK, Condition10OK, Condition11OK},
+                    Values = new ChartValues<ObservableValue> { VPOK, GASOILOK, WI1WITHOK, WI1STARTOK, IPOK, DFOK, TEMPOK, IOTOK, PANOK, CAMBACKOK, CAMFRONTOK},
                     StackMode = StackMode.Values,
                      DataLabels = true,
-                     Fill =new SolidColorBrush(Colors.Blue),
+                     Fill =new SolidColorBrush(Colors.Green),
                      Title = "OK"
                 },
                  new StackedColumnSeries
                 {
-                    Values = new ChartValues<ObservableValue> { Condition1Pending, Condition2Pending, Condition3Pending, Condition4Pending, Condition5Pending, Condition6Pending, Condition7Pending, Condition8Pending,Condition9Pending, Condition10Pending, Condition11Pending},
+                    Values = new ChartValues<ObservableValue> { VPPENDING, GASOILPENDING, WI1WITHPENDING, WI1STARTPENDING, IPPENDING, DFPENDING, TEMPPENDING, IOTPENDING,PANPENDING, CAMBACKPENDING, CAMFRONTPENDING},
                     StackMode = StackMode.Values,
                      DataLabels = true,
                      Fill =new SolidColorBrush(Colors.Orange),
@@ -402,7 +422,7 @@ namespace FinalCheck
                 },
                  new StackedColumnSeries
                 {
-                     Values = new ChartValues<ObservableValue> { Condition1NG, Condition2NG, Condition3NG, Condition4NG, Condition5NG, Condition6NG, Condition7NG, Condition8NG, Condition9NG, Condition10NG,Condition11NG},
+                     Values = new ChartValues<ObservableValue> { VPNG, GASOILNG, WI1WITHNG, WI1STARTNG, IPNG, DFNG, TEMPNG, IOTNG, PANNG, CAMBACKNG,CAMFRONTNG},
                         StackMode = StackMode.Values,
                      DataLabels = true,
                       Fill =new SolidColorBrush(Colors.Red),
@@ -424,7 +444,7 @@ namespace FinalCheck
                    LabelPoint = PointLabel,
                    DataLabels= true,
                    Title = "OK",
-                   Fill = new SolidColorBrush(Colors.Blue)
+                   Fill = new SolidColorBrush(Colors.Green)
 
                 },
                 new PieSeries
@@ -443,9 +463,9 @@ namespace FinalCheck
         {
             databarchartNG = new SeriesCollection()
             {
-                new RowSeries
+                new ColumnSeries
                 {
-                     Values = new ChartValues<ObservableValue> { Condition1NG, Condition2NG, Condition3NG, Condition4NG, Condition5NG, Condition6NG, Condition7NG, Condition8NG, Condition9NG, Condition10NG, Condition11NG},
+                     Values = new ChartValues<ObservableValue> { VPNG, GASOILNG, WI1WITHNG, WI1STARTNG, IPNG, DFNG, TEMPNG, IOTNG, PANNG, CAMBACKNG, CAMFRONTNG},
                      DataLabels = true,
                      Fill = new SolidColorBrush(Colors.Red),
                      Title = "NG"
@@ -455,9 +475,9 @@ namespace FinalCheck
             };
             databarchartPending = new SeriesCollection()
             {
-                new RowSeries
+                new ColumnSeries
                 {
-                     Values = new ChartValues<ObservableValue> { Condition1Pending, Condition2Pending, Condition3Pending, Condition4Pending, Condition5Pending, Condition6Pending, Condition7Pending, Condition8Pending,Condition9Pending, Condition10Pending, Condition11Pending},
+                     Values = new ChartValues<ObservableValue> { VPPENDING, GASOILPENDING, WI1WITHPENDING, WI1STARTPENDING, IPPENDING, DFPENDING, TEMPPENDING, IOTPENDING,PANPENDING, CAMBACKPENDING, CAMFRONTPENDING},
                      DataLabels = true,
                      Fill = new SolidColorBrush(Colors.Orange),
                      Title = "Pending",
@@ -484,8 +504,6 @@ namespace FinalCheck
         private async void lv1_MouseUp(object sender, MouseButtonEventArgs e)
         {
            await showdetail();
-
-
         }
         
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -529,8 +547,8 @@ namespace FinalCheck
             {
                 this.Dispatcher?.Invoke(new Action(() =>
                 {
-                    //ListErrorFileCheck dt = (ListErrorFileCheck)lv1.SelectedItem;
-                    DataDetail p = new DataDetail();
+                    ResultMain dt = (ResultMain)lv1.SelectedItem;
+                    DataDetail p = new DataDetail(dt.Cabinet);
                     p.Show();
                 }));
             });
@@ -556,11 +574,7 @@ namespace FinalCheck
         {
             ListView listView = sender as ListView;
             GridView gView = listView.View as GridView;
-
             var workingWidth = listView.ActualWidth - SystemParameters.VerticalScrollBarWidth;
-
-            
-
             gView.Columns[0].Width = workingWidth * 0.1;
             gView.Columns[1].Width = workingWidth * 0.35;
             gView.Columns[2].Width = workingWidth * 0.2;

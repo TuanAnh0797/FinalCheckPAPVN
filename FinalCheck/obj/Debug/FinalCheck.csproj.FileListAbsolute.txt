@@ -240,3 +240,4 @@ C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\obj\Debug\History.g.cs
 C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\obj\Debug\History.baml
 C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\bin\Debug\ConnectPLC.dll
 C:\Users\70P7970\Desktop\WPF\FinalCheckPAPVN\FinalCheck\bin\Debug\ConnectPLC.pdb
+C:\Users\PC\Desktop\WPF\FinalCheckPAPVN\FinalCheck\bin\Debug\ConnectPLC.pdb

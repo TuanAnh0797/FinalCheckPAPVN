@@ -40,7 +40,7 @@
                         <RowDefinition Height="30"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
-                        <TextBlock Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Medium"  Text="PSNV"></TextBlock>
+                        <TextBlock Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Medium"  Text="PAPVN"></TextBlock>
                     </Grid>
                     <Separator Grid.Row="1" Margin="0" Height="1" BorderThickness="3" BorderBrush="Black" ></Separator>
                     <Grid Grid.Row="2">
@@ -76,38 +76,60 @@
                     <materialDesign:ColorZone Background="#FF3A3838" Mode="PrimaryDark" Padding="16,0,0,0" Height="40" >
                         <StackPanel Orientation="Horizontal">
                             <ToggleButton Name="btn_open"  Style="{DynamicResource MaterialDesignHamburgerToggleButton}" Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}" CommandParameter="{x:Static Dock.Left}" />
-                            <TextBlock FontWeight="Medium" FontSize="20" VerticalAlignment="Center" Margin="16 0 0 0"> Title Name</TextBlock>
+                            <TextBlock FontWeight="Medium" FontSize="20" VerticalAlignment="Center" Margin="16 0 0 0"> FINAL CHECK PAPVN</TextBlock>
                         </StackPanel>
                     </materialDesign:ColorZone>
                 </Grid>
-                <Grid Grid.Row="1" Margin="0,2,0,2" Background="LightGray">
+                <Grid Grid.Row="1" Background="Black">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="60"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" Background="White" Margin="2,2,2,2">
+                    <Grid Grid.Row="0" Background="White" Margin="6,2,6,0" Name="gr_header">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Text="Model đang kiểm tra:" Margin="0,0,5,0"></TextBlock>
-                            <TextBlock VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Medium" FontSize="25" Text="NR-BA190GKVN" Margin="0,0,10,0"></TextBlock>
-                            <TextBlock VerticalAlignment="Center"  HorizontalAlignment="Center" FontSize="20" Text="Serial đang kiểm tra:" Margin="0,0,5,0"></TextBlock>
-                            <TextBlock VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Medium" FontSize="25" Text="1234567"></TextBlock>
+                            <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Text="Model đang kiểm tra:" Margin="0,0,5,0"></TextBlock>
+                            <TextBlock VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Medium" FontSize="35"  Margin="0,0,10,0" Text="{Binding ModelCurrent}"></TextBlock>
+                            <TextBlock VerticalAlignment="Center"  HorizontalAlignment="Center" FontSize="30" Text="Serial đang kiểm tra:" Margin="0,0,5,0" ></TextBlock>
+                            <TextBlock VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Medium" FontSize="35" Text="{Binding SerialCurrent}"></TextBlock>
                         </StackPanel>
                     </Grid>
-                    <Grid Grid.Row="1">
+                    <Grid Grid.Row="1" Margin="4,0,4,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"></ColumnDefinition>
                             <ColumnDefinition Width="5*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0" Margin="2" Background="White">
-                            <ListView SizeChanged="lv1_SizeChanged" HorizontalContentAlignment="Stretch"  x:Name="lv1" Grid.Column="0" ItemsSource="{Binding myListErrorFileCheck, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Auto" MouseUp="lv1_MouseUp" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Heavy">Lịch sử 50 tủ gần nhất</TextBlock>
+                            <ListView Grid.Row="1" SizeChanged="lv1_SizeChanged" HorizontalContentAlignment="Stretch"  x:Name="lv1" Grid.Column="0" ItemsSource="{Binding dataforlistview, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Auto" MouseUp="lv1_MouseUp" >
                                 <ListView.Resources>
                                     <Style TargetType="GridViewColumnHeader">
-                                        <Setter Property="FontSize" Value="15"></Setter>
+                                        <Setter Property="FontSize" Value="17"></Setter>
                                         <Setter Property="Width" Value="auto"></Setter>
-                                        <Setter Property="FontWeight" Value="Medium"></Setter>
-                                        <Setter Property="Background" Value="Orange"></Setter>
+                                        <Setter Property="FontWeight" Value="Heavy"></Setter>
+                                        <Setter Property="Background" Value="LightGray"></Setter>
                                     </Style>
                                 </ListView.Resources>
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Style.Triggers>
+                                            <!-- DataTrigger để kiểm tra giá trị của Cột3 -->
+                                            <DataTrigger Binding="{Binding Result}" Value="OK">
+
+                                                <Setter Property="Background" Value="#FF2DA52F" />
+                                            </DataTrigger>
+                                            
+                                            <DataTrigger Binding="{Binding Result}" Value="NG">
+                                                
+                                                <Setter Property="Background" Value="OrangeRed" />
+                                            </DataTrigger>
+                                            
+                                        </Style.Triggers>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn>
@@ -125,7 +147,7 @@
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition />
                                                         </Grid.ColumnDefinitions>
-                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding NameModel}" ></TextBlock>
+                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding STT}" ></TextBlock>
                                                     </Grid>
 
                                                 </DataTemplate>
@@ -146,7 +168,7 @@
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition />
                                                         </Grid.ColumnDefinitions>
-                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding DateCreate}" ></TextBlock>
+                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Cabinet}" ></TextBlock>
                                                     </Grid>
 
                                                 </DataTemplate>
@@ -167,7 +189,7 @@
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition />
                                                         </Grid.ColumnDefinitions>
-                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding NameModel}" ></TextBlock>
+                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
                                                     </Grid>
 
                                                 </DataTemplate>
@@ -188,22 +210,8 @@
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="*" />
                                                         </Grid.ColumnDefinitions>
-                                                        <TextBlock Width="auto" TextAlignment="Center" FontWeight="Medium"  FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Statuscheck}">
-                                                            <TextBlock.Style>
-                                                                <Style TargetType="TextBlock">
-                                                                    <Style.Triggers>
-                                                                        <Trigger Property="Text" Value="NG">
-                                                                            <Setter Property="Foreground" Value="Red"></Setter>
-                                                                        </Trigger>
-                                                                        <Trigger Property="Text" Value="OK">
-                                                                            <Setter Property="Foreground" Value="Green"></Setter>
-                                                                        </Trigger>
-                                                                        <Trigger Property="Text" Value="Pending">
-                                                                            <Setter Property="Foreground" Value="Orange"></Setter>
-                                                                        </Trigger>
-                                                                    </Style.Triggers>
-                                                                </Style>
-                                                            </TextBlock.Style>
+                                                        <TextBlock Width="auto" TextAlignment="Center" FontWeight="Medium"  FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding TimeCheck}">
+                                                           
                                                         </TextBlock>
                                                     </Grid>
 
@@ -227,25 +235,35 @@
                                         <ColumnDefinition Width="2*"></ColumnDefinition>
                                         <ColumnDefinition Width="2*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <Grid Grid.Column="0" Margin="2" Background="White">
+                                    <Grid Grid.Column="0" Margin="0,2,2,0" Background="White">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Heavy">Biểu đồ tỉ lệ OK/NG</TextBlock>
 
-                                        <lvc:PieChart Series="{Binding datapiechart}" LegendLocation="Bottom"  Hoverable="False" DataTooltip="{x:Null}" Margin="5,0,5,10">
+                                        <lvc:PieChart Grid.Row="1" Series="{Binding datapiechart}" LegendLocation="Bottom"  Hoverable="False" DataTooltip="{x:Null}" Margin="5,0,5,10">
                                         </lvc:PieChart>
                                     </Grid>
 
 
-                                    <Grid Grid.Column="1" Margin="2" Background="White" >
-                                        
-                                                <lvc:CartesianChart Series="{Binding datastackchart}" Margin="10" >
+                                    <Grid Grid.Column="1" Margin="0,2,2,0" Background="White" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Heavy">Biểu đồ số lượng tủ OK/NG/PENDING</TextBlock>
+
+                                        <lvc:CartesianChart Series="{Binding datastackchart}" Margin="10" Grid.Row="1">
                                                     <lvc:CartesianChart.AxisX>
-                                                        <lvc:Axis Foreground="Black" FontWeight="Heavy" Labels="{Binding Labels }" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                                <lvc:Axis  Labels="{Binding Labels }" Foreground="Black" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" >
                                                             <lvc:Axis.Separator>
                                                                 <lvc:Separator Step="1" IsEnabled="False" />
                                                             </lvc:Axis.Separator>
                                                         </lvc:Axis>
                                                     </lvc:CartesianChart.AxisX>
                                                     <lvc:CartesianChart.AxisY>
-                                                        <lvc:Axis Foreground="Black"  MinValue="0" FontSize="14" >
+                                                        <lvc:Axis Foreground="Black"  MinValue="0" FontSize="12" >
                                                         </lvc:Axis>
                                                     </lvc:CartesianChart.AxisY>
                                                 </lvc:CartesianChart>
@@ -257,39 +275,81 @@
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <Grid Grid.Column="0" Background="White" Margin="2">
-                                            <lvc:CartesianChart Series="{Binding databarchartPending}" Margin="10">
+                                    <Grid Grid.Column="0" Background="White" Margin="0,2,2,2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Heavy">Biểu đồ số lượng tủ Pending mỗi công đoạn</TextBlock>
+
+                                        <lvc:CartesianChart Series="{Binding databarchartPending}" Margin="10" Grid.Row="1">
+                                            <lvc:CartesianChart.AxisX>
+                                                <lvc:Axis  Labels="{Binding Labels }" Foreground="Black" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                                    <lvc:Axis.Separator>
+                                                        <lvc:Separator Step="1" IsEnabled="False" />
+                                                    </lvc:Axis.Separator>
+                                                </lvc:Axis>
+                                            </lvc:CartesianChart.AxisX>
+                                            <lvc:CartesianChart.AxisY>
+                                                <lvc:Axis Foreground="Black"  MinValue="0" FontSize="12" >
+                                                </lvc:Axis>
+                                            </lvc:CartesianChart.AxisY>
+                                        </lvc:CartesianChart>
+
+                                        <!--<lvc:CartesianChart Series="{Binding databarchartPending}" Margin="10">
                                                 <lvc:CartesianChart.AxisX>
-                                                    <lvc:Axis Title="Quantity" LabelFormatter="{Binding Formatter}" FontSize="12">
+                                                <lvc:Axis MinValue="0" MinRange="1"  LabelFormatter="{Binding Formatter}" Foreground="Black" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center">
 
                                                     </lvc:Axis>
                                                 </lvc:CartesianChart.AxisX>
                                                 <lvc:CartesianChart.AxisY>
-                                                    <lvc:Axis  Labels="{Binding Labels}" FontSize="12">
+                                                <lvc:Axis  Labels="{Binding Labels}" Foreground="Black" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center">
                                                         <lvc:Axis.Separator>
                                                             <lvc:Separator Step="1" IsEnabled="False" />
                                                         </lvc:Axis.Separator>
                                                     </lvc:Axis>
 
                                                 </lvc:CartesianChart.AxisY>
-                                            </lvc:CartesianChart>
+                                            </lvc:CartesianChart>-->
                                     </Grid>
-                                    <Grid Grid.Column="1" Background="White" Margin="2">
-                                            <lvc:CartesianChart Series="{Binding databarchartNG}" Margin="10">
+                                    <Grid Grid.Column="1" Background="White" Margin="0,2,2,2" >
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Heavy">Biểu đồ số lượng tủ NG mỗi công đoạn</TextBlock>
+                                        <lvc:CartesianChart Series="{Binding databarchartNG}" Margin="10" Grid.Row="1">
+                                            <lvc:CartesianChart.AxisX>
+                                                <lvc:Axis  Labels="{Binding Labels }" Foreground="Black" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                                    <lvc:Axis.Separator>
+                                                        <lvc:Separator Step="1" IsEnabled="False" />
+                                                    </lvc:Axis.Separator>
+                                                </lvc:Axis>
+                                            </lvc:CartesianChart.AxisX>
+                                            <lvc:CartesianChart.AxisY>
+                                                <lvc:Axis Foreground="Black"  MinValue="0" FontSize="12" >
+                                                </lvc:Axis>
+                                            </lvc:CartesianChart.AxisY>
+                                        </lvc:CartesianChart>
+
+
+                                        <!--<lvc:CartesianChart Series="{Binding databarchartNG}" Margin="10" Padding="0">
                                                 <lvc:CartesianChart.AxisX>
-                                                    <lvc:Axis Title="Quantity" LabelFormatter="{Binding Formatter}" FontSize="12">
+                                                <lvc:Axis MinValue="0" MinRange="1" LabelFormatter="{Binding Formatter}" Foreground="Black" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center">
 
                                                     </lvc:Axis>
                                                 </lvc:CartesianChart.AxisX>
                                                 <lvc:CartesianChart.AxisY>
-                                                    <lvc:Axis Labels="{Binding Labels}" FontSize="12">
+                                                <lvc:Axis Labels="{Binding Labels}" Foreground="Black" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center">
                                                         <lvc:Axis.Separator>
                                                             <lvc:Separator Step="1" IsEnabled="False" />
                                                         </lvc:Axis.Separator>
+                                                        
                                                     </lvc:Axis>
 
                                                 </lvc:CartesianChart.AxisY>
-                                            </lvc:CartesianChart>
+                                            </lvc:CartesianChart>-->
 
                                         </Grid>
 
