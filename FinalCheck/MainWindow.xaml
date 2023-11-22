@@ -82,13 +82,13 @@
                 </Grid>
                 <Grid Grid.Row="1" Background="Black">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="120"></RowDefinition>
+                        <RowDefinition Height="107"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" Background="White" Margin="6,2,6,0" Name="gr_header">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40"></RowDefinition>
-                            <RowDefinition Height="80"></RowDefinition>
+                            <RowDefinition Height="68"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -99,51 +99,51 @@
                             </StackPanel>
                         </Grid>
                         <Grid Grid.Row="1" Background="White">
-                            <ListView Name="lv_rsdetail" SizeChanged="lv_rsdetail_SizeChanged" HorizontalContentAlignment="Stretch" Grid.Column="0" ItemsSource="{Binding dataforlistview, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Auto" >
+                            <ListView Name="lv_rsdetail" SizeChanged="lv_rsdetail_SizeChanged" HorizontalContentAlignment="Stretch" Grid.Column="0" ItemsSource="{Binding List_Result_Check_Final, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
                                 <ListView.Resources>
                                     <Style TargetType="GridViewColumnHeader">
                                         <Setter Property="FontSize" Value="15"></Setter>
-                                        <Setter Property="Width" Value="auto"></Setter>
+                                        
                                         <Setter Property="FontWeight" Value="Heavy"></Setter>
                                         <Setter Property="Background" Value="OldLace"></Setter>
                                     </Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="FontSize" Value="20"></Setter>
+                                        <Setter Property="TextAlignment" Value="Center"></Setter>
+                                        <!--<Setter Property="Foreground" Value="Black"></Setter>-->
+                                        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                                        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                                        <Setter Property="FontWeight" Value="Bold"></Setter>
+                                        <!--<Style.Triggers>
+                                            <Trigger Property="Text"  Value="OK">
+                                                <Setter Property="Foreground" Value="Green"></Setter>
+                                            </Trigger>
+                                            <Trigger Property="Text"  Value="NG">
+                                                <Setter Property="Foreground" Value="Red"></Setter>
+                                            </Trigger>
+                                            <Trigger Property="Text"  Value="Pending">
+                                                <Setter Property="Foreground" Value="Orange"></Setter>
+                                            </Trigger>
+                                        </Style.Triggers>-->
+                                    </Style>
                                 </ListView.Resources>
-                                <ListView.ItemContainerStyle>
-                                    <Style TargetType="ListViewItem">
+                                <!--<ListView.ItemContainerStyle>
+                                    <Style TargetType="TextBlock">
                                         <Style.Triggers>
-                                            <!-- DataTrigger để kiểm tra giá trị của Cột3 -->
-                                            <DataTrigger Binding="{Binding Result}" Value="OK">
-                                                <Setter Property="Background" Value="#FF2DA52F" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding Result}" Value="NG">
-                                                <Setter Property="Background" Value="OrangeRed" />
-                                            </DataTrigger>
+                                            <Trigger Property="Text"  Value="OK">
+                                                <Setter Property="Foreground" Value="Green"></Setter>
+                                            </Trigger>
+                                            <Trigger Property="Text"  Value="NG">
+                                                <Setter Property="Foreground" Value="Red"></Setter>
+                                            </Trigger>
+                                            <Trigger Property="Text"  Value="Pending">
+                                                <Setter Property="Foreground" Value="Orange"></Setter>
+                                            </Trigger>
                                         </Style.Triggers>
                                     </Style>
-                                </ListView.ItemContainerStyle>
+                                </ListView.ItemContainerStyle>-->
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn>
-                                            <GridViewColumn.Header>
-                                                <Grid Margin="5,0,5,0">
-                                                    <Label>Model+Serial</Label>
-                                                </Grid>
-                                            </GridViewColumn.Header>
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <Grid Margin="0,0,5,0">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition />
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Cabinet}" ></TextBlock>
-                                                    </Grid>
-
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
                                         <GridViewColumn>
                                             <GridViewColumn.Header>
                                                 <Grid Margin="5,0,5,0">
@@ -152,15 +152,25 @@
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Grid Margin="5,0,5,0">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition />
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
-                                                    </Grid>
+                                                    <TextBlock  Text="{Binding Judge_VP}" FontSize="15" FontWeight="Heavy">
+
+                                                        <TextBlock.Style>
+                                                            <Style TargetType="TextBlock">
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="Text"  Value="OK">
+                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="NG">
+                                                                        <Setter Property="Background" Value="Red"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="Pending">
+                                                                        <Setter Property="Background" Value="Orange"></Setter>
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                        </TextBlock>
+                                                   
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
@@ -172,15 +182,27 @@
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Grid Margin="5,0,5,0">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition />
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
-                                                    </Grid>
+
+                                                    <TextBlock   Text="{Binding Judge_GAS}" FontSize="15" FontWeight="Heavy">
+
+                                                        <TextBlock.Style>
+                                                            <Style TargetType="TextBlock">
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="Text"  Value="OK">
+                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="NG">
+                                                                        <Setter Property="Background" Value="Red"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="Pending">
+                                                                        <Setter Property="Background" Value="Orange"></Setter>
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+
+                                                    </TextBlock>
+                                                    
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
@@ -192,15 +214,25 @@
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Grid Margin="5,0,5,0">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition />
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
-                                                    </Grid>
+
+                                                    <TextBlock   Text="{Binding Judge_WI1WITH}" FontSize="15" FontWeight="Heavy">
+                                                        <TextBlock.Style>
+                                                            <Style TargetType="TextBlock">
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="Text"  Value="OK">
+                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="NG">
+                                                                        <Setter Property="Background" Value="Red"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="Pending">
+                                                                        <Setter Property="Background" Value="Orange"></Setter>
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                    </TextBlock>
+                                                   
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
@@ -212,15 +244,25 @@
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Grid Margin="5,0,5,0">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition />
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
-                                                    </Grid>
+
+                                                    <TextBlock   Text="{Binding Judge_WI1START}" FontSize="15" FontWeight="Heavy">
+                                                        <TextBlock.Style>
+                                                            <Style TargetType="TextBlock">
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="Text"  Value="OK">
+                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="NG">
+                                                                        <Setter Property="Background" Value="Red"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="Pending">
+                                                                        <Setter Property="Background" Value="Orange"></Setter>
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                    </TextBlock>
+                                                   
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
@@ -232,15 +274,25 @@
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Grid Margin="5,0,5,0">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition />
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
-                                                    </Grid>
+
+                                                    <TextBlock   Text="{Binding Judge_IP}" FontSize="15" FontWeight="Heavy">
+                                                        <TextBlock.Style>
+                                                            <Style TargetType="TextBlock">
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="Text"  Value="OK">
+                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="NG">
+                                                                        <Setter Property="Background" Value="Red"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="Pending">
+                                                                        <Setter Property="Background" Value="Orange"></Setter>
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                    </TextBlock>
+                                                    
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
@@ -252,15 +304,25 @@
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Grid Margin="5,0,5,0">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition />
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
-                                                    </Grid>
+
+                                                    <TextBlock   Text="{Binding Judge_DF}" FontSize="15" FontWeight="Heavy">
+                                                        <TextBlock.Style>
+                                                            <Style TargetType="TextBlock">
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="Text"  Value="OK">
+                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="NG">
+                                                                        <Setter Property="Background" Value="Red"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="Pending">
+                                                                        <Setter Property="Background" Value="Orange"></Setter>
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                    </TextBlock>
+                                                    
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
@@ -272,15 +334,25 @@
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Grid Margin="5,0,5,0">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition />
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
-                                                    </Grid>
+
+                                                    <TextBlock  Text="{Binding Judge_TEMP}" FontSize="15" FontWeight="Heavy">
+                                                        <TextBlock.Style>
+                                                            <Style TargetType="TextBlock">
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="Text"  Value="OK">
+                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="NG">
+                                                                        <Setter Property="Background" Value="Red"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="Pending">
+                                                                        <Setter Property="Background" Value="Orange"></Setter>
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                    </TextBlock>
+                                                   
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
@@ -292,15 +364,25 @@
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Grid Margin="5,0,5,0">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition />
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
-                                                    </Grid>
+
+                                                    <TextBlock   Text="{Binding Judge_IOT}" FontSize="15" FontWeight="Heavy">
+                                                        <TextBlock.Style>
+                                                            <Style TargetType="TextBlock">
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="Text"  Value="OK">
+                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="NG">
+                                                                        <Setter Property="Background" Value="Red"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="Pending">
+                                                                        <Setter Property="Background" Value="Orange"></Setter>
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                    </TextBlock>
+                                                    
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
@@ -312,15 +394,25 @@
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Grid Margin="5,0,5,0">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition />
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
-                                                    </Grid>
+
+                                                    <TextBlock   Text="{Binding Judge_WI2}" FontSize="15" FontWeight="Heavy">
+                                                        <TextBlock.Style>
+                                                            <Style TargetType="TextBlock">
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="Text"  Value="OK">
+                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="NG">
+                                                                        <Setter Property="Background" Value="Red"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="Pending">
+                                                                        <Setter Property="Background" Value="Orange"></Setter>
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                    </TextBlock>
+                                                   
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
@@ -332,15 +424,25 @@
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Grid Margin="5,0,5,0">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition />
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
-                                                    </Grid>
+
+                                                    <TextBlock   Text="{Binding Judge_PAN}" FontSize="15" FontWeight="Heavy">
+                                                        <TextBlock.Style>
+                                                            <Style TargetType="TextBlock">
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="Text"  Value="OK">
+                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="NG">
+                                                                        <Setter Property="Background" Value="Red"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="Pending">
+                                                                        <Setter Property="Background" Value="Orange"></Setter>
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                    </TextBlock>
+                                                    
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
@@ -352,15 +454,25 @@
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Grid Margin="5,0,5,0">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition />
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
-                                                    </Grid>
+
+                                                    <TextBlock   Text="{Binding Judge_CAMBACK}" FontSize="15" FontWeight="Heavy">
+                                                        <TextBlock.Style>
+                                                            <Style TargetType="TextBlock">
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="Text"  Value="OK">
+                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="NG">
+                                                                        <Setter Property="Background" Value="Red"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="Pending">
+                                                                        <Setter Property="Background" Value="Orange"></Setter>
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                    </TextBlock>
+                                                   
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
@@ -372,15 +484,25 @@
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Grid Margin="5,0,5,0">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition />
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBlock  TextAlignment="Center" FontSize="1" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
-                                                    </Grid>
+
+                                                    <TextBlock  Text="{Binding Judge_CAMFRONT}" FontSize="15" FontWeight="Heavy">
+                                                        <TextBlock.Style>
+                                                            <Style TargetType="TextBlock">
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="Text"  Value="OK">
+                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="NG">
+                                                                        <Setter Property="Background" Value="Red"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="Pending">
+                                                                        <Setter Property="Background" Value="Orange"></Setter>
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                    </TextBlock>
+                                                   
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>

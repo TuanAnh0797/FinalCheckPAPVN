@@ -35,6 +35,8 @@ namespace FinalCheck
         public Func<double, string> Formatter { get; set; }
         public ObservableCollection<ResultMain> dataforlistview { set; get; }
 
+        public ObservableCollection<ResultCheckFinal> List_Result_Check_Final { set; get; }
+
 
         public SeriesCollection datastackchart { set; get; }
         public SeriesCollection datapiechart { set; get; }
@@ -88,6 +90,10 @@ namespace FinalCheck
         public ObservableValue TotalNG { get; set; }
 
         public ObservableValue TotalPending { get; set; }
+
+
+        public ResultCheckFinal Result_Check_Final;
+        
 
 
         public string[] Labels { get; set; }
@@ -157,10 +163,35 @@ namespace FinalCheck
             
             int values2 = rd2.Next(0,10);
             string timecheck = DateTime.Now.ToString();
+            List_Result_Check_Final.Clear();
 
             if (values2 < 8 )
             {
                 dataforlistview.Add(new ResultMain(STT, $"ABCDEFGHIK{index}","OK",timecheck) );
+                Result_Check_Final.Judge_VP = "OK";
+                Result_Check_Final.Judge_GAS = "OK";
+                Result_Check_Final.Judge_WI1WITH = "OK";
+
+                Result_Check_Final.Judge_WI1START = "OK";
+
+                Result_Check_Final.Judge_IP = "OK";
+
+                Result_Check_Final.Judge_DF = "OK";
+
+                Result_Check_Final.Judge_TEMP = "OK";
+
+                Result_Check_Final.Judge_IOT = "OK";
+
+                Result_Check_Final.Judge_WI2 = "OK";
+
+                Result_Check_Final.Judge_PAN = "OK";
+
+                Result_Check_Final.Judge_CAMBACK = "OK";
+
+                Result_Check_Final.Judge_CAMFRONT = "OK";
+
+
+
                 ModelCurrent = $"ABCDEFGHIK";
                 SerialCurrent =  index.ToString();
                 gr_header.Background = new SolidColorBrush(Colors.Green);
@@ -193,183 +224,225 @@ namespace FinalCheck
                             if (values < 3)
                             {
                                 VPOK.Value++;
+                                Result_Check_Final.Judge_VP = "OK";
                             }
                             else if (values < 12)
                             {
                                 VPNG.Value++;
+                                Result_Check_Final.Judge_VP = "NG";
                             }
                             else
                             {
                                 VPPENDING.Value++;
+                                Result_Check_Final.Judge_VP = "Pending";
                             }
                             break;
                         case 1:
                             if (values < 3)
                             {
                                 GASOILOK.Value++;
+                                Result_Check_Final.Judge_GAS = "OK";
                             }
                             else if (values < 12)
                             {
                                 GASOILNG.Value++;
+                                Result_Check_Final.Judge_GAS = "NG";
                             }
                             else
                             {
                                 GASOILPENDING.Value++;
+                                Result_Check_Final.Judge_GAS = "Pending";
                             }
                             break;
                         case 2:
                             if (values < 3)
                             {
                                 WI1WITHOK.Value++;
+                                Result_Check_Final.Judge_WI1WITH = "OK";
                             }
                             else if (values < 12)
                             {
                                 WI1WITHNG.Value++;
+                                Result_Check_Final.Judge_WI1WITH = "NG";
                             }
                             else
                             {
                                 WI1WITHPENDING.Value++;
+                                Result_Check_Final.Judge_WI1WITH = "Pending";
                             }
                             break;
                         case 3:
                             if (values < 3)
                             {
                                 WI1STARTOK.Value++;
+                                Result_Check_Final.Judge_WI1START = "OK";
                             }
                             else if (values < 12)
                             {
                                 WI1STARTNG.Value++;
+                                Result_Check_Final.Judge_WI1START = "NG";
                             }
                             else
                             {
                                 WI1STARTPENDING.Value++;
+                                Result_Check_Final.Judge_WI1START = "Pending";
                             }
                             break;
                         case 4:
                             if (values < 3)
                             {
                                 IPOK.Value++;
+                                Result_Check_Final.Judge_IP = "OK";
                             }
                             else if (values < 12)
                             {
                                 IPNG.Value++;
+                                Result_Check_Final.Judge_IP = "NG";
                             }
                             else
                             {
                                 IPPENDING.Value++;
+                                Result_Check_Final.Judge_IP = "Pending";
                             }
                             break;
                         case 5:
                             if (values < 3)
                             {
                                 DFOK.Value++;
+                                Result_Check_Final.Judge_DF = "OK";
                             }
                             else if (values < 12)
                             {
                                 DFNG.Value++;
+                                Result_Check_Final.Judge_DF = "NG";
                             }
                             else
                             {
                                 DFPENDING.Value++;
+                                Result_Check_Final.Judge_DF = "Pending";
                             }
                             break;
                         case 6:
                             if (values < 3)
                             {
                                 TEMPOK.Value++;
+                                Result_Check_Final.Judge_TEMP = "OK";
                             }
                             else if (values < 12)
                             {
                                 TEMPNG.Value++;
+                                Result_Check_Final.Judge_TEMP = "NG";
                             }
                             else
                             {
                                 TEMPPENDING.Value++;
+                                Result_Check_Final.Judge_TEMP = "Pending";
                             }
                             break;
                         case 7:
                             if (values < 3)
                             {
                                 IOTOK.Value++;
+                                Result_Check_Final.Judge_IOT = "OK";
                             }
                             else if (values < 12)
                             {
                                 IOTNG.Value++;
+                                Result_Check_Final.Judge_IOT = "NG";
                             }
                             else
                             {
                                 IOTPENDING.Value++;
+                                Result_Check_Final.Judge_IOT = "Pending";
                             }
                             break;
                         case 8:
                             if (values < 3)
                             {
                                 PANOK.Value++;
+                                Result_Check_Final.Judge_PAN = "OK";
                             }
                             else if (values < 12)
                             {
                                 PANNG.Value++;
+                                Result_Check_Final.Judge_PAN = "NG";
                             }
                             else
                             {
                                 PANPENDING.Value++;
+                                Result_Check_Final.Judge_PAN = "Pending";
                             }
                             break;
                         case 9:
                             if (values < 3)
                             {
                                 CAMBACKOK.Value++;
+                                Result_Check_Final.Judge_CAMBACK = "OK";
                             }
                             else if (values < 12)
                             {
                                 CAMBACKNG.Value++;
+                                Result_Check_Final.Judge_CAMBACK = "NG";
                             }
                             else
                             {
                                 CAMBACKPENDING.Value++;
+                                Result_Check_Final.Judge_CAMBACK = "Pending";
                             }
                             break;
                         case 10:
                             if (values < 3)
                             {
                                 CAMFRONTOK.Value++;
+                                Result_Check_Final.Judge_CAMFRONT = "OK";
                             }
                             else if (values < 12)
                             {
                                 CAMFRONTNG.Value++;
+                                Result_Check_Final.Judge_CAMFRONT = "NG";
                             }
                             else
                             {
                                 CAMFRONTPENDING.Value++;
+                                Result_Check_Final.Judge_CAMFRONT = "Pending";
                             }
                             break;
                         case 11:
                             if (values < 3)
                             {
                                 WI2OK.Value++;
+                                Result_Check_Final.Judge_WI2 = "OK";
                             }
                             else if (values < 12)
                             {
                                 WI2NG.Value++;
+                                Result_Check_Final.Judge_WI2 = "NG";
                             }
                             else
                             {
                                 WI2PENDING.Value++;
+                                Result_Check_Final.Judge_WI2 = "Pending";
                             }
                             break;
                     }
                 }
                 TotalNG.Value++;
                
-                
+
+
+
             }
             STT++;
-
+            List_Result_Check_Final.Add(Result_Check_Final);
 
         }
         public void innitproperty()
         {
             dataforlistview = new ObservableCollection<ResultMain>();
+
+            List_Result_Check_Final = new ObservableCollection<ResultCheckFinal>();
+
+            Result_Check_Final = new ResultCheckFinal();
 
             TotalOK = new ObservableValue(0);
             TotalNG = new ObservableValue(0);
@@ -607,8 +680,9 @@ namespace FinalCheck
             ListView listView = sender as ListView;
             GridView gView = listView.View as GridView;
             var workingWidth = listView.ActualWidth;
-            double with = 0.07;
-            gView.Columns[0].Width = workingWidth * 0.16;
+            double with = 0.083;
+            //gView.Columns[0].Width = workingWidth * 0.16;
+            gView.Columns[0].Width = workingWidth * with;
             gView.Columns[1].Width = workingWidth * with;
             gView.Columns[2].Width = workingWidth * with;
             gView.Columns[3].Width = workingWidth * with;
@@ -620,7 +694,6 @@ namespace FinalCheck
             gView.Columns[9].Width = workingWidth * with;
             gView.Columns[10].Width = workingWidth * with;
             gView.Columns[11].Width = workingWidth * with;
-            gView.Columns[12].Width = workingWidth * with;
         }
     }
 
