@@ -82,16 +82,325 @@
                 </Grid>
                 <Grid Grid.Row="1" Background="Black">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="60"></RowDefinition>
+                        <RowDefinition Height="120"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" Background="White" Margin="6,2,6,0" Name="gr_header">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Text="Model đang kiểm tra:" Margin="0,0,5,0"></TextBlock>
-                            <TextBlock VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Medium" FontSize="35"  Margin="0,0,10,0" Text="{Binding ModelCurrent}"></TextBlock>
-                            <TextBlock VerticalAlignment="Center"  HorizontalAlignment="Center" FontSize="30" Text="Serial đang kiểm tra:" Margin="0,0,5,0" ></TextBlock>
-                            <TextBlock VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Medium" FontSize="35" Text="{Binding SerialCurrent}"></TextBlock>
-                        </StackPanel>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="80"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Text="Model đang kiểm tra:" Margin="0,0,5,0"></TextBlock>
+                                <TextBlock VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Medium" FontSize="35"  Margin="0,0,10,0" Text="{Binding ModelCurrent}"></TextBlock>
+                                <TextBlock VerticalAlignment="Center"  HorizontalAlignment="Center" FontSize="30" Text="Serial đang kiểm tra:" Margin="0,0,5,0" ></TextBlock>
+                                <TextBlock VerticalAlignment="Center"  HorizontalAlignment="Center" FontWeight="Medium" FontSize="35" Text="{Binding SerialCurrent}"></TextBlock>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Row="1" Background="White">
+                            <ListView Name="lv_rsdetail" SizeChanged="lv_rsdetail_SizeChanged" HorizontalContentAlignment="Stretch" Grid.Column="0" ItemsSource="{Binding dataforlistview, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Auto" >
+                                <ListView.Resources>
+                                    <Style TargetType="GridViewColumnHeader">
+                                        <Setter Property="FontSize" Value="15"></Setter>
+                                        <Setter Property="Width" Value="auto"></Setter>
+                                        <Setter Property="FontWeight" Value="Heavy"></Setter>
+                                        <Setter Property="Background" Value="OldLace"></Setter>
+                                    </Style>
+                                </ListView.Resources>
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Style.Triggers>
+                                            <!-- DataTrigger để kiểm tra giá trị của Cột3 -->
+                                            <DataTrigger Binding="{Binding Result}" Value="OK">
+                                                <Setter Property="Background" Value="#FF2DA52F" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Result}" Value="NG">
+                                                <Setter Property="Background" Value="OrangeRed" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn>
+                                            <GridViewColumn.Header>
+                                                <Grid Margin="5,0,5,0">
+                                                    <Label>Model+Serial</Label>
+                                                </Grid>
+                                            </GridViewColumn.Header>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid Margin="0,0,5,0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Cabinet}" ></TextBlock>
+                                                    </Grid>
+
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn>
+                                            <GridViewColumn.Header>
+                                                <Grid Margin="5,0,5,0">
+                                                    <Label>VP</Label>
+                                                </Grid>
+                                            </GridViewColumn.Header>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid Margin="5,0,5,0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn>
+                                            <GridViewColumn.Header>
+                                                <Grid Margin="5,0,5,0">
+                                                    <Label>GAS</Label>
+                                                </Grid>
+                                            </GridViewColumn.Header>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid Margin="5,0,5,0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn>
+                                            <GridViewColumn.Header>
+                                                <Grid Margin="5,0,5,0">
+                                                    <Label>WI1 W</Label>
+                                                </Grid>
+                                            </GridViewColumn.Header>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid Margin="5,0,5,0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn>
+                                            <GridViewColumn.Header>
+                                                <Grid Margin="5,0,5,0">
+                                                    <Label>WI1 S</Label>
+                                                </Grid>
+                                            </GridViewColumn.Header>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid Margin="5,0,5,0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn>
+                                            <GridViewColumn.Header>
+                                                <Grid Margin="5,0,5,0">
+                                                    <Label>IP</Label>
+                                                </Grid>
+                                            </GridViewColumn.Header>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid Margin="5,0,5,0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn>
+                                            <GridViewColumn.Header>
+                                                <Grid Margin="5,0,5,0">
+                                                    <Label>DF</Label>
+                                                </Grid>
+                                            </GridViewColumn.Header>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid Margin="5,0,5,0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn>
+                                            <GridViewColumn.Header>
+                                                <Grid Margin="5,0,5,0">
+                                                    <Label>TEMP</Label>
+                                                </Grid>
+                                            </GridViewColumn.Header>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid Margin="5,0,5,0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn>
+                                            <GridViewColumn.Header>
+                                                <Grid Margin="5,0,5,0">
+                                                    <Label>IOT</Label>
+                                                </Grid>
+                                            </GridViewColumn.Header>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid Margin="5,0,5,0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn>
+                                            <GridViewColumn.Header>
+                                                <Grid Margin="5,0,5,0">
+                                                    <Label>WI2</Label>
+                                                </Grid>
+                                            </GridViewColumn.Header>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid Margin="5,0,5,0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn>
+                                            <GridViewColumn.Header>
+                                                <Grid Margin="5,0,5,0">
+                                                    <Label>PAN</Label>
+                                                </Grid>
+                                            </GridViewColumn.Header>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid Margin="5,0,5,0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn>
+                                            <GridViewColumn.Header>
+                                                <Grid Margin="5,0,5,0">
+                                                    <Label>CAM B</Label>
+                                                </Grid>
+                                            </GridViewColumn.Header>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid Margin="5,0,5,0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock  TextAlignment="Center" FontSize="15" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn>
+                                            <GridViewColumn.Header>
+                                                <Grid Margin="5,0,5,0">
+                                                    <Label>CAM F</Label>
+                                                </Grid>
+                                            </GridViewColumn.Header>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid Margin="5,0,5,0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock  TextAlignment="Center" FontSize="1" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Result}" ></TextBlock>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+
+
+
+
+
+
+
+
+
+
+                                    </GridView>
+
+                                </ListView.View>
+                            </ListView>
+
+                        </Grid>
+                       
                     </Grid>
                     <Grid Grid.Row="1" Margin="4,0,4,0">
                         <Grid.ColumnDefinitions>

@@ -51,6 +51,7 @@ namespace FinalCheck
         public ObservableValue DFOK { get; set; }
         public ObservableValue TEMPOK { get; set; }
         public ObservableValue IOTOK { get; set; }
+        public ObservableValue WI2OK { get; set; }
         public ObservableValue PANOK { get; set; }
         public ObservableValue CAMBACKOK { get; set; }
         public ObservableValue CAMFRONTOK { get; set; }
@@ -63,6 +64,7 @@ namespace FinalCheck
         public ObservableValue DFNG { get; set; }
         public ObservableValue TEMPNG { get; set; }
         public ObservableValue IOTNG { get; set; }
+        public ObservableValue WI2NG { get; set; }
         public ObservableValue PANNG { get; set; }
         public ObservableValue CAMBACKNG { get; set; }
         public ObservableValue CAMFRONTNG { get; set; }
@@ -76,6 +78,7 @@ namespace FinalCheck
         public ObservableValue DFPENDING { get; set; }
         public ObservableValue TEMPPENDING { get; set; }
         public ObservableValue IOTPENDING { get; set; }
+        public ObservableValue WI2PENDING { get; set; }
         public ObservableValue PANPENDING { get; set; }
         public ObservableValue CAMBACKPENDING { get; set; }
         public ObservableValue CAMFRONTPENDING { get; set; }
@@ -169,6 +172,7 @@ namespace FinalCheck
                 DFOK.Value++;
                 TEMPOK.Value++;
                 IOTOK.Value++;
+                WI2OK.Value++;
                 PANOK.Value++;
                 CAMBACKOK.Value++;
                 CAMFRONTOK.Value++;
@@ -180,7 +184,7 @@ namespace FinalCheck
                 ModelCurrent = $"ABCDEFGHI";
                 SerialCurrent = index.ToString();
                 gr_header.Background = new SolidColorBrush(Colors.Red);
-                for (int i = 0; i < 11; i++)
+                for (int i = 0; i < 12; i++)
                 {
                     int values = rd.Next(0, 20);
                     switch (i)
@@ -339,6 +343,20 @@ namespace FinalCheck
                                 CAMFRONTPENDING.Value++;
                             }
                             break;
+                        case 11:
+                            if (values < 3)
+                            {
+                                WI2OK.Value++;
+                            }
+                            else if (values < 12)
+                            {
+                                WI2NG.Value++;
+                            }
+                            else
+                            {
+                                WI2PENDING.Value++;
+                            }
+                            break;
                     }
                 }
                 TotalNG.Value++;
@@ -365,6 +383,7 @@ namespace FinalCheck
             DFOK = new ObservableValue(0);
             TEMPOK = new ObservableValue(0);
             IOTOK = new ObservableValue(0);
+            WI2OK = new ObservableValue(0);
             PANOK = new ObservableValue(0);
             CAMBACKOK = new ObservableValue(0);
             CAMFRONTOK = new ObservableValue(0);
@@ -378,6 +397,7 @@ namespace FinalCheck
             DFNG = new ObservableValue(0);
             TEMPNG = new ObservableValue(0);
             IOTNG = new ObservableValue(0);
+            WI2NG = new ObservableValue(0);
             PANNG = new ObservableValue(0);
             CAMBACKNG = new ObservableValue(0);
             CAMFRONTNG = new ObservableValue(0);
@@ -391,11 +411,12 @@ namespace FinalCheck
             DFPENDING = new ObservableValue(0);
             TEMPPENDING = new ObservableValue(0);
             IOTPENDING = new ObservableValue(0);
+            WI2PENDING = new ObservableValue(0);
             PANPENDING = new ObservableValue(0);
             CAMBACKPENDING = new ObservableValue(0);
             CAMFRONTPENDING = new ObservableValue(0);
 
-            Labels = new[] { "VP", "Nạp Gas", "WI 1 W", "WI 1 S", "IP", "DF", "TEMP", "IOT", "PAN", "CAM B", "CAM F" };
+            Labels = new[] { "VP", "Nạp Gas", "WI1 W", "WI1 S", "IP", "DF", "TEMP", "IOT","WI2", "PAN", "CAM B", "CAM F" };
         }
         
         public void innitStackedbarchart()
@@ -406,7 +427,7 @@ namespace FinalCheck
             {
                 new StackedColumnSeries
                 {
-                    Values = new ChartValues<ObservableValue> { VPOK, GASOILOK, WI1WITHOK, WI1STARTOK, IPOK, DFOK, TEMPOK, IOTOK, PANOK, CAMBACKOK, CAMFRONTOK},
+                    Values = new ChartValues<ObservableValue> { VPOK, GASOILOK, WI1WITHOK, WI1STARTOK, IPOK, DFOK, TEMPOK, IOTOK,WI2OK, PANOK, CAMBACKOK, CAMFRONTOK},
                     StackMode = StackMode.Values,
                      DataLabels = true,
                      Fill =new SolidColorBrush(Colors.Green),
@@ -414,7 +435,7 @@ namespace FinalCheck
                 },
                  new StackedColumnSeries
                 {
-                    Values = new ChartValues<ObservableValue> { VPPENDING, GASOILPENDING, WI1WITHPENDING, WI1STARTPENDING, IPPENDING, DFPENDING, TEMPPENDING, IOTPENDING,PANPENDING, CAMBACKPENDING, CAMFRONTPENDING},
+                    Values = new ChartValues<ObservableValue> { VPPENDING, GASOILPENDING, WI1WITHPENDING, WI1STARTPENDING, IPPENDING, DFPENDING, TEMPPENDING, IOTPENDING,WI2PENDING,PANPENDING, CAMBACKPENDING, CAMFRONTPENDING},
                     StackMode = StackMode.Values,
                      DataLabels = true,
                      Fill =new SolidColorBrush(Colors.Orange),
@@ -422,7 +443,7 @@ namespace FinalCheck
                 },
                  new StackedColumnSeries
                 {
-                     Values = new ChartValues<ObservableValue> { VPNG, GASOILNG, WI1WITHNG, WI1STARTNG, IPNG, DFNG, TEMPNG, IOTNG, PANNG, CAMBACKNG,CAMFRONTNG},
+                     Values = new ChartValues<ObservableValue> { VPNG, GASOILNG, WI1WITHNG, WI1STARTNG, IPNG, DFNG, TEMPNG, IOTNG,WI2NG, PANNG, CAMBACKNG,CAMFRONTNG},
                         StackMode = StackMode.Values,
                      DataLabels = true,
                       Fill =new SolidColorBrush(Colors.Red),
@@ -465,7 +486,7 @@ namespace FinalCheck
             {
                 new ColumnSeries
                 {
-                     Values = new ChartValues<ObservableValue> { VPNG, GASOILNG, WI1WITHNG, WI1STARTNG, IPNG, DFNG, TEMPNG, IOTNG, PANNG, CAMBACKNG, CAMFRONTNG},
+                     Values = new ChartValues<ObservableValue> { VPNG, GASOILNG, WI1WITHNG, WI1STARTNG, IPNG, DFNG, TEMPNG, IOTNG,WI2NG, PANNG, CAMBACKNG, CAMFRONTNG},
                      DataLabels = true,
                      Fill = new SolidColorBrush(Colors.Red),
                      Title = "NG"
@@ -477,7 +498,7 @@ namespace FinalCheck
             {
                 new ColumnSeries
                 {
-                     Values = new ChartValues<ObservableValue> { VPPENDING, GASOILPENDING, WI1WITHPENDING, WI1STARTPENDING, IPPENDING, DFPENDING, TEMPPENDING, IOTPENDING,PANPENDING, CAMBACKPENDING, CAMFRONTPENDING},
+                     Values = new ChartValues<ObservableValue> { VPPENDING, GASOILPENDING, WI1WITHPENDING, WI1STARTPENDING, IPPENDING, DFPENDING, TEMPPENDING, IOTPENDING,WI2PENDING,PANPENDING, CAMBACKPENDING, CAMFRONTPENDING},
                      DataLabels = true,
                      Fill = new SolidColorBrush(Colors.Orange),
                      Title = "Pending",
@@ -579,9 +600,27 @@ namespace FinalCheck
             gView.Columns[1].Width = workingWidth * 0.35;
             gView.Columns[2].Width = workingWidth * 0.2;
             gView.Columns[3].Width = workingWidth * 0.35;
-            
+        }
 
-
+        private void lv_rsdetail_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            ListView listView = sender as ListView;
+            GridView gView = listView.View as GridView;
+            var workingWidth = listView.ActualWidth;
+            double with = 0.07;
+            gView.Columns[0].Width = workingWidth * 0.16;
+            gView.Columns[1].Width = workingWidth * with;
+            gView.Columns[2].Width = workingWidth * with;
+            gView.Columns[3].Width = workingWidth * with;
+            gView.Columns[4].Width = workingWidth * with;
+            gView.Columns[5].Width = workingWidth * with;
+            gView.Columns[6].Width = workingWidth * with;
+            gView.Columns[7].Width = workingWidth * with;
+            gView.Columns[8].Width = workingWidth * with;
+            gView.Columns[9].Width = workingWidth * with;
+            gView.Columns[10].Width = workingWidth * with;
+            gView.Columns[11].Width = workingWidth * with;
+            gView.Columns[12].Width = workingWidth * with;
         }
     }
 
