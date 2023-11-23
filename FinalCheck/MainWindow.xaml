@@ -152,13 +152,13 @@
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock  Text="{Binding Judge_VP}" FontSize="15" FontWeight="Heavy">
+                                                    <TextBlock  Text="{Binding Judge_VP}" FontSize="20" FontWeight="Heavy">
 
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
                                                                     <Trigger Property="Text"  Value="OK">
-                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                        <Setter Property="Background" Value="LightGreen"></Setter>
                                                                     </Trigger>
                                                                     <Trigger Property="Text"  Value="NG">
                                                                         <Setter Property="Background" Value="Red"></Setter>
@@ -183,13 +183,13 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock   Text="{Binding Judge_GAS}" FontSize="15" FontWeight="Heavy">
+                                                    <TextBlock   Text="{Binding Judge_GAS}" FontSize="20" FontWeight="Heavy">
 
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
                                                                     <Trigger Property="Text"  Value="OK">
-                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                        <Setter Property="Background" Value="LightGreen"></Setter>
                                                                     </Trigger>
                                                                     <Trigger Property="Text"  Value="NG">
                                                                         <Setter Property="Background" Value="Red"></Setter>
@@ -215,12 +215,12 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock   Text="{Binding Judge_WI1WITH}" FontSize="15" FontWeight="Heavy">
+                                                    <TextBlock   Text="{Binding Judge_WI1WITH}" FontSize="20" FontWeight="Heavy">
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
                                                                     <Trigger Property="Text"  Value="OK">
-                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                        <Setter Property="Background" Value="LightGreen"></Setter>
                                                                     </Trigger>
                                                                     <Trigger Property="Text"  Value="NG">
                                                                         <Setter Property="Background" Value="Red"></Setter>
@@ -245,12 +245,12 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock   Text="{Binding Judge_WI1START}" FontSize="15" FontWeight="Heavy">
+                                                    <TextBlock   Text="{Binding Judge_WI1START}" FontSize="20" FontWeight="Heavy">
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
                                                                     <Trigger Property="Text"  Value="OK">
-                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                        <Setter Property="Background" Value="LightGreen"></Setter>
                                                                     </Trigger>
                                                                     <Trigger Property="Text"  Value="NG">
                                                                         <Setter Property="Background" Value="Red"></Setter>
@@ -275,12 +275,12 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock   Text="{Binding Judge_IP}" FontSize="15" FontWeight="Heavy">
+                                                    <TextBlock   Text="{Binding Judge_IP}" FontSize="20" FontWeight="Heavy">
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
                                                                     <Trigger Property="Text"  Value="OK">
-                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                        <Setter Property="Background" Value="LightGreen"></Setter>
                                                                     </Trigger>
                                                                     <Trigger Property="Text"  Value="NG">
                                                                         <Setter Property="Background" Value="Red"></Setter>
@@ -305,12 +305,12 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock   Text="{Binding Judge_DF}" FontSize="15" FontWeight="Heavy">
+                                                    <TextBlock   Text="{Binding Judge_DF}" FontSize="20" FontWeight="Heavy">
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
                                                                     <Trigger Property="Text"  Value="OK">
-                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                        <Setter Property="Background" Value="#FF45CD45"></Setter>
                                                                     </Trigger>
                                                                     <Trigger Property="Text"  Value="NG">
                                                                         <Setter Property="Background" Value="Red"></Setter>
@@ -335,12 +335,12 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock  Text="{Binding Judge_TEMP}" FontSize="15" FontWeight="Heavy">
+                                                    <TextBlock  Text="{Binding Judge_TEMP}" FontSize="20" FontWeight="Heavy">
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
                                                                     <Trigger Property="Text"  Value="OK">
-                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                        <Setter Property="Background" Value="#FF45CD45"></Setter>
                                                                     </Trigger>
                                                                     <Trigger Property="Text"  Value="NG">
                                                                         <Setter Property="Background" Value="Red"></Setter>
@@ -365,12 +365,12 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock   Text="{Binding Judge_IOT}" FontSize="15" FontWeight="Heavy">
+                                                    <TextBlock   Text="{Binding Judge_IOT}" FontSize="20" FontWeight="Heavy">
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
                                                                     <Trigger Property="Text"  Value="OK">
-                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                        <Setter Property="Background" Value="#FF45CD45"></Setter>
                                                                     </Trigger>
                                                                     <Trigger Property="Text"  Value="NG">
                                                                         <Setter Property="Background" Value="Red"></Setter>
@@ -395,12 +395,12 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock   Text="{Binding Judge_WI2}" FontSize="15" FontWeight="Heavy">
+                                                    <TextBlock   Text="{Binding Judge_WI2}" FontSize="20" FontWeight="Heavy">
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
                                                                     <Trigger Property="Text"  Value="OK">
-                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                        <Setter Property="Background" Value="#FF45CD45"></Setter>
                                                                     </Trigger>
                                                                     <Trigger Property="Text"  Value="NG">
                                                                         <Setter Property="Background" Value="Red"></Setter>
@@ -425,12 +425,12 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock   Text="{Binding Judge_PAN}" FontSize="15" FontWeight="Heavy">
+                                                    <TextBlock   Text="{Binding Judge_PAN}" FontSize="20" FontWeight="Heavy">
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
                                                                     <Trigger Property="Text"  Value="OK">
-                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                        <Setter Property="Background" Value="#FF45CD45"></Setter>
                                                                     </Trigger>
                                                                     <Trigger Property="Text"  Value="NG">
                                                                         <Setter Property="Background" Value="Red"></Setter>
@@ -455,12 +455,12 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock   Text="{Binding Judge_CAMBACK}" FontSize="15" FontWeight="Heavy">
+                                                    <TextBlock   Text="{Binding Judge_CAMBACK}" FontSize="20" FontWeight="Heavy">
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
                                                                     <Trigger Property="Text"  Value="OK">
-                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                        <Setter Property="Background" Value="#FF45CD45"></Setter>
                                                                     </Trigger>
                                                                     <Trigger Property="Text"  Value="NG">
                                                                         <Setter Property="Background" Value="Red"></Setter>
@@ -485,12 +485,12 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock  Text="{Binding Judge_CAMFRONT}" FontSize="15" FontWeight="Heavy">
+                                                    <TextBlock  Text="{Binding Judge_CAMFRONT}" FontSize="20" FontWeight="Heavy">
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
                                                                     <Trigger Property="Text"  Value="OK">
-                                                                        <Setter Property="Background" Value="Green"></Setter>
+                                                                        <Setter Property="Background" Value="#FF45CD45"></Setter>
                                                                     </Trigger>
                                                                     <Trigger Property="Text"  Value="NG">
                                                                         <Setter Property="Background" Value="Red"></Setter>
@@ -550,7 +550,7 @@
                                             <!-- DataTrigger để kiểm tra giá trị của Cột3 -->
                                             <DataTrigger Binding="{Binding Result}" Value="OK">
 
-                                                <Setter Property="Background" Value="#FF2DA52F" />
+                                                <Setter Property="Background" Value="#FF4CCD4E" />
                                             </DataTrigger>
                                             
                                             <DataTrigger Binding="{Binding Result}" Value="NG">

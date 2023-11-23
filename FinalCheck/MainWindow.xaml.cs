@@ -21,15 +21,15 @@ using LiveCharts.Defaults;
 using System.Windows.Threading;
 using System.Windows.Controls.Primitives;
 using System.Runtime.CompilerServices;
-using TALibrary;
-
+using System.Data;
+using FinalCheck.DataBase;
 
 namespace FinalCheck
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window,INotifyPropertyChanged
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         DispatcherTimer time1 = new DispatcherTimer();
         public Func<double, string> Formatter { get; set; }
@@ -70,9 +70,8 @@ namespace FinalCheck
         public ObservableValue PANNG { get; set; }
         public ObservableValue CAMBACKNG { get; set; }
         public ObservableValue CAMFRONTNG { get; set; }
-
-
         public ObservableValue VPPENDING { get; set; }
+
         public ObservableValue GASOILPENDING { get; set; }
         public ObservableValue WI1WITHPENDING { get; set; }
         public ObservableValue WI1STARTPENDING { get; set; }
@@ -89,11 +88,11 @@ namespace FinalCheck
 
         public ObservableValue TotalNG { get; set; }
 
-        public ObservableValue TotalPending { get; set; }
+        //public ObservableValue TotalPending { get; set; }
 
 
-        public ResultCheckFinal Result_Check_Final;
-        
+       
+
 
 
         public string[] Labels { get; set; }
@@ -135,21 +134,33 @@ namespace FinalCheck
 
         public MainWindow()
         {
-           
+
             InitializeComponent();
-            ModelCurrent = "";
-            DataContext = this;
-            time1.Interval = TimeSpan.FromSeconds(5);
-            
-            innitproperty();
+            try
+            {
+                ModelCurrent = "";
+                DataContext = this;
+                time1.Interval = TimeSpan.FromSeconds(5);
+                innitproperty();
+                innitchart();
+                time1.Start();
+                time1.Tick += Time1_Tick;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+        }
+
+        public void innitchart()
+        {
             innitStackedbarchart();
             innitpiechart();
             innitbarchart();
-            innitlistview();
-            time1.Start();
-            time1.Tick += Time1_Tick;
-
         }
+
         Random rd = new Random();
         Random rd2 = new Random();
         int index = 10;
@@ -160,14 +171,13 @@ namespace FinalCheck
         private void Time1_Tick(object sender, EventArgs e)
         {
             index++;
-            
-            int values2 = rd2.Next(0,10);
+            int values2 = rd2.Next(0, 10);
             string timecheck = DateTime.Now.ToString();
             List_Result_Check_Final.Clear();
-
-            if (values2 < 8 )
+            ResultCheckFinal Result_Check_Final = new ResultCheckFinal();
+            if (values2 < 8)
             {
-                dataforlistview.Add(new ResultMain(STT, $"ABCDEFGHIK{index}","OK",timecheck) );
+                dataforlistview.Add(new ResultMain(STT, $"ABCDEFGHIK{index}", "OK", timecheck));
                 Result_Check_Final.Judge_VP = "OK";
                 Result_Check_Final.Judge_GAS = "OK";
                 Result_Check_Final.Judge_WI1WITH = "OK";
@@ -193,8 +203,8 @@ namespace FinalCheck
 
 
                 ModelCurrent = $"ABCDEFGHIK";
-                SerialCurrent =  index.ToString();
-                gr_header.Background = new SolidColorBrush(Colors.Green);
+                SerialCurrent = index.ToString();
+                gr_header.Background = new SolidColorBrush(Colors.LightGreen);
                 VPOK.Value++;
                 GASOILOK.Value++;
                 WI1WITHOK.Value++;
@@ -209,7 +219,7 @@ namespace FinalCheck
                 CAMFRONTOK.Value++;
                 TotalOK.Value++;
             }
-            else 
+            else
             {
                 dataforlistview.Add(new ResultMain(STT, $"ABCDEFGHIK{index}", "NG", timecheck));
                 ModelCurrent = $"ABCDEFGHI";
@@ -427,7 +437,7 @@ namespace FinalCheck
                     }
                 }
                 TotalNG.Value++;
-               
+
 
 
 
@@ -438,15 +448,14 @@ namespace FinalCheck
         }
         public void innitproperty()
         {
+
             dataforlistview = new ObservableCollection<ResultMain>();
 
             List_Result_Check_Final = new ObservableCollection<ResultCheckFinal>();
 
-            Result_Check_Final = new ResultCheckFinal();
-
             TotalOK = new ObservableValue(0);
             TotalNG = new ObservableValue(0);
-            TotalPending = new ObservableValue(0);
+            //TotalPending = new ObservableValue(0);
 
             VPOK = new ObservableValue(0);
             GASOILOK = new ObservableValue(0);
@@ -489,12 +498,12 @@ namespace FinalCheck
             CAMBACKPENDING = new ObservableValue(0);
             CAMFRONTPENDING = new ObservableValue(0);
 
-            Labels = new[] { "VP", "Nạp Gas", "WI1 W", "WI1 S", "IP", "DF", "TEMP", "IOT","WI2", "PAN", "CAM B", "CAM F" };
+            Labels = new[] { "VP", "Nạp Gas", "WI1 W", "WI1 S", "IP", "DF", "TEMP", "IOT", "WI2", "PAN", "CAM B", "CAM F" };
         }
-        
+
         public void innitStackedbarchart()
         {
-            
+
 
             datastackchart = new SeriesCollection()
             {
@@ -581,14 +590,9 @@ namespace FinalCheck
             };
             Formatter = value => value.ToString();
         }
-        public void innitlistview()
-        {
-
-
-        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           
+
 
 
         }
@@ -597,9 +601,9 @@ namespace FinalCheck
 
         private async void lv1_MouseUp(object sender, MouseButtonEventArgs e)
         {
-           await showdetail();
+            await showdetail();
         }
-        
+
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (btn_open.IsChecked == true)
@@ -695,6 +699,107 @@ namespace FinalCheck
             gView.Columns[10].Width = workingWidth * with;
             gView.Columns[11].Width = workingWidth * with;
         }
-    }
 
+
+        //Load Data For Chart
+
+        public void LoadDataForChart()
+        {
+            DbConnect db_connect = new DbConnect();
+            DataTable dt = db_connect.StoreFillDS("", CommandType.StoredProcedure, "");
+            //OK
+            if (dt.Rows.Count>0)
+            {
+                VPOK.Value = (double)dt.Rows[0]["VPOK"];
+                GASOILOK.Value = (double)dt.Rows[0]["GASOILOK"];
+                WI1WITHOK.Value = (double)dt.Rows[0]["WI1WITHOK"];
+                WI1STARTOK.Value = (double)dt.Rows[0]["WI1STARTOK"];
+                IPOK.Value = (double)dt.Rows[0]["IPOK"];
+                DFOK.Value = (double)dt.Rows[0]["DFOK"];
+                TEMPOK.Value = (double)dt.Rows[0]["TEMPOK"];
+                IOTOK.Value = (double)dt.Rows[0]["IOTOK"];
+                WI2OK.Value = (double)dt.Rows[0]["WI2OK"];
+                PANOK.Value = (double)dt.Rows[0]["PANOK"];
+                CAMBACKOK.Value = (double)dt.Rows[0]["CAMBACKOK"];
+                CAMFRONTOK.Value = (double)dt.Rows[0]["CAMFRONTOK"];
+                //NG
+                VPNG.Value = (double)dt.Rows[0]["VPNG"];
+                GASOILNG.Value = (double)dt.Rows[0]["GASOILNG"];
+                WI1WITHNG.Value = (double)dt.Rows[0]["WI1WITHNG"];
+                WI1STARTNG.Value = (double)dt.Rows[0]["WI1STARTNG"];
+                IPNG.Value = (double)dt.Rows[0]["IPNG"];
+                DFNG.Value = (double)dt.Rows[0]["DFNG"];
+                TEMPNG.Value = (double)dt.Rows[0]["TEMPNG"];
+                IOTNG.Value = (double)dt.Rows[0]["IOTNG"];
+                WI2NG.Value = (double)dt.Rows[0]["WI2NG"];
+                PANNG.Value = (double)dt.Rows[0]["PANNG"];
+                CAMBACKNG.Value = (double)dt.Rows[0]["CAMBACKNG"];
+                CAMFRONTNG.Value = (double)dt.Rows[0]["CAMFRONTNG"];
+                //PENDING
+                VPPENDING.Value = (double)dt.Rows[0]["VPPENDING"];
+                GASOILPENDING.Value = (double)dt.Rows[0]["GASOILPENDING"];
+                WI1WITHPENDING.Value = (double)dt.Rows[0]["WI1WITHPENDING"];
+                WI1STARTPENDING.Value = (double)dt.Rows[0]["WI1STARTPENDING"];
+                IPPENDING.Value = (double)dt.Rows[0]["IPPENDING"];
+                DFPENDING.Value = (double)dt.Rows[0]["DFPENDING"];
+                TEMPPENDING.Value = (double)dt.Rows[0]["TEMPPENDING"];
+                IOTPENDING.Value = (double)dt.Rows[0]["IOTPENDING"];
+                WI2PENDING.Value = (double)dt.Rows[0]["WI2PENDING"];
+                PANPENDING.Value = (double)dt.Rows[0]["PANPENDING"];
+                CAMBACKPENDING.Value = (double)dt.Rows[0]["CAMBACKPENDING"];
+                CAMFRONTPENDING.Value = (double)dt.Rows[0]["CAMFRONTPENDING"];
+                //Total
+                TotalOK.Value = (double)dt.Rows[0]["TotalOK"];
+                TotalNG.Value = (double)dt.Rows[0]["TotalNG"];
+            }
+        }
+        public void LoadDataForCabi()
+        {
+            DbConnect db_connect = new DbConnect();
+            ResultCheckFinal RCF = new ResultCheckFinal();
+            DataTable dt = db_connect.StoreFillDS("", CommandType.StoredProcedure, "");
+            if (dt.Rows.Count > 0)
+            {
+                RCF.Judge_VP = dt.Rows[0]["Judge_VP"].ToString();
+                RCF.Judge_GAS = dt.Rows[0]["Judge_GAS"].ToString();
+                RCF.Judge_WI1WITH = dt.Rows[0]["Judge_WI1WITH"].ToString();
+                RCF.Judge_WI1START = dt.Rows[0]["Judge_WI1START"].ToString();
+                RCF.Judge_IP = dt.Rows[0]["Judge_IP"].ToString();
+                RCF.Judge_DF = dt.Rows[0]["Judge_DF"].ToString();
+                RCF.Judge_TEMP = dt.Rows[0]["Judge_TEMP"].ToString();
+                RCF.Judge_IOT = dt.Rows[0]["Judge_IOT"].ToString();
+                RCF.Judge_WI2 = dt.Rows[0]["Judge_WI2"].ToString();
+                RCF.Judge_PAN = dt.Rows[0]["Judge_PAN"].ToString();
+                RCF.Judge_CAMBACK = dt.Rows[0]["Judge_CAMBACK"].ToString();
+                RCF.Judge_CAMFRONT = dt.Rows[0]["Judge_CAMFRONT"].ToString();
+                RCF.Judge_Total = dt.Rows[0]["Judge_Total"].ToString();
+            }
+            else
+            {
+                RCF.Judge_VP = "Pending";
+                RCF.Judge_GAS = "Pending";
+                RCF.Judge_WI1WITH = "Pending";
+                RCF.Judge_WI1START = "Pending";
+                RCF.Judge_IP = "Pending";
+                RCF.Judge_DF = "Pending";
+                RCF.Judge_TEMP = "Pending";
+                RCF.Judge_IOT = "Pending";
+                RCF.Judge_WI2 = "Pending";
+                RCF.Judge_PAN = "Pending";
+                RCF.Judge_CAMBACK = "Pending";
+                RCF.Judge_CAMFRONT = "Pending";
+                RCF.Judge_Total = "NG";
+            }
+            if (RCF.Judge_Total == "OK")
+            {
+                gr_header.Background = new SolidColorBrush(Colors.Green);
+            }
+            else
+            {
+                gr_header.Background = new SolidColorBrush(Colors.Red);
+            }
+
+        }
+
+    }
 }

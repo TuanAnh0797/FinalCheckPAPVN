@@ -73,6 +73,7 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
+                       
 
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -162,12 +163,12 @@
                     </Grid>
                     <Grid  Grid.Row="1" Grid.Column="6">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center" Text=""> Pending</TextBlock>
+                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center" Text="OK"> Pending</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="1" Grid.Column="7" Grid.RowSpan="12">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center" Text="OK"> </TextBlock>
                         </Border>
                     </Grid>
 
