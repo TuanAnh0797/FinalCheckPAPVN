@@ -23,6 +23,11 @@ using System.Windows.Controls.Primitives;
 using System.Runtime.CompilerServices;
 using System.Data;
 using FinalCheck.DataBase;
+using TALibrary;
+using System.Net.Sockets;
+using FinalCheck.Model;
+using System.Net;
+using System.Threading;
 
 namespace FinalCheck
 {
@@ -31,7 +36,12 @@ namespace FinalCheck
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        PLC Plc = new PLC();
         DispatcherTimer time1 = new DispatcherTimer();
+        DispatcherTimer TimerCheck = new DispatcherTimer();
+
+        bool check_run = false;
+        bool rs_NG = false;
         public Func<double, string> Formatter { get; set; }
         public ObservableCollection<ResultMain> dataforlistview { set; get; }
 
@@ -90,15 +100,8 @@ namespace FinalCheck
 
         //public ObservableValue TotalPending { get; set; }
 
-
-       
-
-
-
         public string[] Labels { get; set; }
-
         private string modelcurrent;
-
         public string ModelCurrent
         {
             get { return modelcurrent; }
@@ -141,9 +144,12 @@ namespace FinalCheck
                 ModelCurrent = "";
                 DataContext = this;
                 time1.Interval = TimeSpan.FromSeconds(5);
+                TimerCheck.Interval = TimeSpan.FromMilliseconds(300);
                 innitproperty();
                 innitchart();
                 time1.Start();
+                TimerCheck.Start();
+                TimerCheck.Tick += TimerCheck_Tick;
                 time1.Tick += Time1_Tick;
             }
             catch (Exception ex)
@@ -153,6 +159,8 @@ namespace FinalCheck
 
 
         }
+
+      
 
         public void innitchart()
         {
@@ -685,7 +693,6 @@ namespace FinalCheck
             GridView gView = listView.View as GridView;
             var workingWidth = listView.ActualWidth;
             double with = 0.083;
-            //gView.Columns[0].Width = workingWidth * 0.16;
             gView.Columns[0].Width = workingWidth * with;
             gView.Columns[1].Width = workingWidth * with;
             gView.Columns[2].Width = workingWidth * with;
@@ -708,7 +715,7 @@ namespace FinalCheck
             DbConnect db_connect = new DbConnect();
             DataTable dt = db_connect.StoreFillDS("", CommandType.StoredProcedure, "");
             //OK
-            if (dt.Rows.Count>0)
+            if (dt.Rows.Count > 0)
             {
                 VPOK.Value = (double)dt.Rows[0]["VPOK"];
                 GASOILOK.Value = (double)dt.Rows[0]["GASOILOK"];
@@ -753,11 +760,11 @@ namespace FinalCheck
                 TotalNG.Value = (double)dt.Rows[0]["TotalNG"];
             }
         }
-        public void LoadDataForCabi()
+        public ResultCheckFinal LoadDataForCabi(string cabinet)
         {
             DbConnect db_connect = new DbConnect();
             ResultCheckFinal RCF = new ResultCheckFinal();
-            DataTable dt = db_connect.StoreFillDS("", CommandType.StoredProcedure, "");
+            DataTable dt = db_connect.StoreFillDS("", CommandType.StoredProcedure, cabinet);
             if (dt.Rows.Count > 0)
             {
                 RCF.Judge_VP = dt.Rows[0]["Judge_VP"].ToString();
@@ -776,18 +783,18 @@ namespace FinalCheck
             }
             else
             {
-                RCF.Judge_VP = "Pending";
-                RCF.Judge_GAS = "Pending";
-                RCF.Judge_WI1WITH = "Pending";
-                RCF.Judge_WI1START = "Pending";
-                RCF.Judge_IP = "Pending";
-                RCF.Judge_DF = "Pending";
-                RCF.Judge_TEMP = "Pending";
-                RCF.Judge_IOT = "Pending";
-                RCF.Judge_WI2 = "Pending";
-                RCF.Judge_PAN = "Pending";
-                RCF.Judge_CAMBACK = "Pending";
-                RCF.Judge_CAMFRONT = "Pending";
+                RCF.Judge_VP = "PD";
+                RCF.Judge_GAS = "PD";
+                RCF.Judge_WI1WITH = "PD";
+                RCF.Judge_WI1START = "PD";
+                RCF.Judge_IP = "PD";
+                RCF.Judge_DF = "PD";
+                RCF.Judge_TEMP = "PD";
+                RCF.Judge_IOT = "PD";
+                RCF.Judge_WI2 = "PD";
+                RCF.Judge_PAN = "PD";
+                RCF.Judge_CAMBACK = "PD";
+                RCF.Judge_CAMFRONT = "PD";
                 RCF.Judge_Total = "NG";
             }
             if (RCF.Judge_Total == "OK")
@@ -798,7 +805,73 @@ namespace FinalCheck
             {
                 gr_header.Background = new SolidColorBrush(Colors.Red);
             }
+            return RCF;
 
+        }
+        //ControlPlc
+
+        public async Task ControlPlc(int timeout)
+        {
+            using (TcpClient tcpclient = new TcpClient())
+            {
+                CancellationTokenSource PlcCancellationToken = new CancellationTokenSource();
+                Task connectTask = tcpclient.ConnectAsync(IPAddress.Parse(ConfigConnection.IpAddress), ConfigConnection.Port);
+                if (await Task.WhenAny(connectTask, Task.Delay(timeout, PlcCancellationToken.Token)) != connectTask)
+                {
+                    PlcCancellationToken.Cancel();
+                    throw new TimeoutException("Error timed out Open Connection .");
+                }
+                await connectTask;
+                NetworkStream StreamPLc = tcpclient.GetStream();
+                if (await Plc.ReadBit(StreamPLc, timeout, ConfigConnection.ReadData.TypeDeviceTrigerReadCabi, ConfigConnection.ReadData.NameDeviceTrigerReadCabi))
+                {
+                    string DataCabi = (string)await Plc.ReadData(StreamPLc, timeout, ConfigConnection.ReadData.TypeDeviceDataCabi, ConfigConnection.ReadData.NameDeviceDataCabi, ConfigConnection.ReadData.QuantityDataCabi, "String");
+                    if (DataCabi != null && DataCabi.Length >= 19)
+                    {
+                        ResultCheckFinal RCF = LoadDataForCabi(DataCabi.Substring(0, 19));
+                        if (RCF.Judge_Total == "OK")
+                        {
+                            //Save Data Sql
+                            SaveDataFinal();
+                            //
+                            await Plc.WriteASCII(StreamPLc, timeout, ConfigConnection.WriteData.TypeDeviceSendResult, ConfigConnection.WriteData.NameDeviceSendResult, ConfigConnection.WriteData.QuantityDeviceSendResult, "OKOKOKOKOKOKOKOKOKOKOKOKOK");
+                            
+                           
+                        }
+                        else
+                        {
+                            string rs = RCF.Judge_VP + RCF.Judge_GAS + RCF.Judge_WI1WITH + RCF.Judge_WI1START + RCF.Judge_IP + RCF.Judge_DF + RCF.Judge_TEMP + RCF.Judge_IOT + RCF.Judge_WI2 + RCF.Judge_PAN + RCF.Judge_CAMBACK + RCF.Judge_CAMFRONT + RCF.Judge_Total;
+                            await Plc.WriteASCII(StreamPLc, timeout, ConfigConnection.WriteData.TypeDeviceSendResult, ConfigConnection.WriteData.NameDeviceSendResult, ConfigConnection.WriteData.QuantityDeviceSendResult, rs);
+                            rs_NG = true;
+                        }
+                    }
+                    else
+                    {
+                        await Plc.WriteASCII(StreamPLc, timeout, ConfigConnection.WriteData.TypeDeviceSendResult, ConfigConnection.WriteData.NameDeviceSendResult, ConfigConnection.WriteData.QuantityDeviceSendResult, "NoDataCabi");
+                    }
+
+                }
+                tcpclient.Close();
+            }
+            if (rs_NG)
+            {
+                //Hiểm thị thông tin lỗi:
+            }
+
+        }
+        public void SaveDataFinal(params object[] data)
+        {
+            DbConnect db_connect = new DbConnect();
+            db_connect.exnonquery("", CommandType.StoredProcedure, data);
+        }
+        private async void TimerCheck_Tick(object sender, EventArgs e)
+        {
+            if (!check_run&&!rs_NG)
+            {
+                check_run = true;
+                //await ControlPlc(20000);
+                check_run = false;
+            }
         }
 
     }

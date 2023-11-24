@@ -84,7 +84,7 @@
                 
 
             </Grid>
-            <Grid Grid.Row="1" Margin="5" Background="White">
+            <!--<Grid Grid.Row="1" Margin="5" Background="White">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
@@ -163,7 +163,7 @@
                
                 
                 
-            </Grid>
+            </Grid>-->
             
         </Grid>
        
