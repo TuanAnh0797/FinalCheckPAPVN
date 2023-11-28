@@ -358,7 +358,5 @@ C:\Users\PC\Desktop\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.exe
 C:\Users\PC\Desktop\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.pdb
 C:\Users\70P7970\Desktop\FinalCheckPAPVN\FinalCheck\bin\Debug\ConnectPLC.dll
 C:\Users\70P7970\Desktop\FinalCheckPAPVN\FinalCheck\bin\Debug\ConnectPLC.pdb
-C:\Users\70P7970\Desktop\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.csproj.AssemblyReference.cache
-C:\Users\70P7970\Desktop\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.csproj.SuggestedBindingRedirects.cache
-C:\Users\70P7970\Desktop\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.csproj.CoreCompileInputs.cache
-C:\Users\70P7970\Desktop\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.csproj.CopyComplete
+C:\Users\70P7970\Desktop\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.csprojResolveAssemblyReference.cache
+C:\Users\70P7970\Desktop\FinalCheckPAPVN\FinalCheck\bin\Debug\ShowMeTheXAML.dll

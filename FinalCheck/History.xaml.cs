@@ -1,4 +1,5 @@
-﻿using PdfSharp.Drawing;
+﻿using MaterialDesignThemes.Wpf;
+using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace FinalCheck
         public History()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -80,5 +82,16 @@ namespace FinalCheck
             //    System.Diagnostics.Process.Start(pdfFilePath);
             //}
         }
+        private void lv1_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            ListView listView = sender as ListView;
+            GridView gView = listView.View as GridView;
+            var workingWidth = listView.ActualWidth - SystemParameters.VerticalScrollBarWidth;
+            gView.Columns[0].Width = workingWidth * 0.1;
+            gView.Columns[1].Width = workingWidth * 0.35;
+            gView.Columns[2].Width = workingWidth * 0.2;
+            gView.Columns[3].Width = workingWidth * 0.35;
+        }
+
     }
 }
