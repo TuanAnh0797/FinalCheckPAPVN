@@ -123,7 +123,8 @@ namespace FinalCheck
             {
                 Updatedatasql();
                 loaddatasql();
-                MessageBox.Show("Cập nhật thành công");
+                MessageBox.Show("Cập nhật thành công","Thông báo");
+                
 
             }
             catch (Exception ex)
