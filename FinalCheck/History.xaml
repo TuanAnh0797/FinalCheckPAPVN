@@ -197,6 +197,7 @@
                         <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
+<<<<<<< HEAD
                     <DataGrid Name="dtg_VP" AutoGenerateColumns="True" Grid.Row="0"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
                     <DataGrid Name="dtg_GAS" AutoGenerateColumns="True" Grid.Row="1"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
                     <DataGrid Name="dtg_WI1WITH" AutoGenerateColumns="True" Grid.Row="2"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
@@ -220,6 +221,20 @@
 
 
 
+=======
+                    <DataGrid Grid.Row="0"></DataGrid>
+                    <DataGrid Grid.Row="1"></DataGrid>
+                    <DataGrid Grid.Row="2"></DataGrid>
+                    <DataGrid Grid.Row="3"></DataGrid>
+                    <DataGrid Grid.Row="4"></DataGrid>
+                    <DataGrid Grid.Row="5"></DataGrid>
+                    <DataGrid Grid.Row="6"></DataGrid>
+                    <DataGrid Grid.Row="7"></DataGrid>
+                    <DataGrid Grid.Row="8"></DataGrid>
+                    <DataGrid Grid.Row="9"></DataGrid>
+                    <DataGrid Grid.Row="10"></DataGrid>
+                    <DataGrid Grid.Row="11"></DataGrid>
+>>>>>>> 76627f09b1696b2559e3d011b981f0d976775f58
                 </Grid>
             </Grid>
         </Grid>
