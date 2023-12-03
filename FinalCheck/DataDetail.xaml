@@ -20,7 +20,7 @@
         ResizeMode="NoResize"
         WindowState="Normal"
         WindowStartupLocation="CenterScreen"
-        Title="DataDetail" Height="700" Width="850" Loaded="MyControlBarTA_Loaded">
+        Title="DataDetail" Height="550" Width="850" Loaded="MyControlBarTA_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -125,19 +125,11 @@
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">VP</TextBlock>
                         </Border>
                     </Grid>
-<<<<<<< HEAD
 
                     <Grid  Grid.Row="1" Grid.Column="2">
 
                         <Border BorderThickness="1" Style="{StaticResource bordertable}" >
 
-=======
-                    
-                    <Grid  Grid.Row="1" Grid.Column="2">
-                        
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" >
-                           
->>>>>>> 76627f09b1696b2559e3d011b981f0d976775f58
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2">
@@ -166,19 +158,11 @@
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="2" Grid.Column="2">
-<<<<<<< HEAD
 
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
 
                         </Border>
 
-=======
-                        
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                           
-                        </Border>
-                       
->>>>>>> 76627f09b1696b2559e3d011b981f0d976775f58
                     </Grid>
 
                     <Grid  Grid.Row="2" Grid.Column="3">
@@ -200,15 +184,9 @@
                     </Grid>
                     <Grid  Grid.Row="3" Grid.Column="2">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}" >
-<<<<<<< HEAD
 
                         </Border>
 
-=======
-
-                        </Border>
-                       
->>>>>>> 76627f09b1696b2559e3d011b981f0d976775f58
                     </Grid>
 
                     <Grid  Grid.Row="3" Grid.Column="3">
@@ -228,11 +206,7 @@
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="4" Grid.Column="2">
-<<<<<<< HEAD
 
-=======
-                        
->>>>>>> 76627f09b1696b2559e3d011b981f0d976775f58
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
 
                         </Border>
@@ -254,11 +228,7 @@
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="5" Grid.Column="2">
-<<<<<<< HEAD
 
-=======
-                        
->>>>>>> 76627f09b1696b2559e3d011b981f0d976775f58
                         <Border BorderThickness="1" Style="{StaticResource bordertable}" >
                         </Border>
                     </Grid>
@@ -279,11 +249,7 @@
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="6" Grid.Column="2">
-<<<<<<< HEAD
 
-=======
-                       
->>>>>>> 76627f09b1696b2559e3d011b981f0d976775f58
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
                         </Border>
                     </Grid>
@@ -352,19 +318,11 @@
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="9" Grid.Column="2">
-<<<<<<< HEAD
 
                         <Border BorderThickness="1" Style="{StaticResource bordertable}" >
 
                         </Border>
 
-=======
-                        
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" >
-
-                        </Border>
-                       
->>>>>>> 76627f09b1696b2559e3d011b981f0d976775f58
                     </Grid>
 
                     <Grid  Grid.Row="9" Grid.Column="3">

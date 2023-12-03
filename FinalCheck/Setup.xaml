@@ -19,7 +19,7 @@
         ResizeMode="NoResize"
         WindowState="Normal"
         WindowStartupLocation="CenterScreen"
-        Title="Setup" Height="350" Width="550" Closed="MyControlBarTA_Closed">
+        Title="Setup" Height="400" Width="700" Closed="MyControlBarTA_Closed">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -40,7 +40,6 @@
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Grid.Row="1" Margin="0,0,0,10">
                     <StackPanel VerticalAlignment="Center"  Orientation="Horizontal" Margin="0,0,20,0">
                         <Label FontWeight="Medium" FontSize="15">IP Address:</Label>
-<<<<<<< HEAD
                         <TextBox Name="txb_ip" FontSize="15" Width="120" Text=""></TextBox>
                     </StackPanel>
                     <StackPanel VerticalAlignment="Center" Grid.Row="2" Orientation="Horizontal" Margin="0,0,20,0">
@@ -48,15 +47,6 @@
                         <TextBox Name="txb_port" FontSize="15" Width="70" Text=""></TextBox>
                     </StackPanel>
                     <Button Name="btn_testconnect" Click="btn_testconnect_Click" Background="DarkSeaGreen"  FontSize="15" Content="Test connect" FontWeight="Medium" Foreground="Black"></Button>
-=======
-                        <TextBox FontSize="15" Width="120" Text=""></TextBox>
-                    </StackPanel>
-                    <StackPanel VerticalAlignment="Center" Grid.Row="2" Orientation="Horizontal" Margin="0,0,20,0">
-                        <Label FontWeight="Medium" FontSize="15">Port Number:</Label>
-                        <TextBox FontSize="15" Width="70" Text=""></TextBox>
-                    </StackPanel>
-                    <Button Background="DarkSeaGreen"  FontSize="15" Content="Test connect" FontWeight="Medium" Foreground="Black"></Button>
->>>>>>> 76627f09b1696b2559e3d011b981f0d976775f58
                 </StackPanel>
                 <Grid Grid.Row="2" Background="Black">
                     <Grid.ColumnDefinitions>
@@ -72,17 +62,12 @@
                             <Border BorderBrush="Black" BorderThickness="0,0,0,1">
                                 <TextBlock Foreground="White" FontSize="20" FontWeight="Medium" HorizontalAlignment="Center" VerticalAlignment="Center">Main Form</TextBlock>
                             </Border>
-<<<<<<< HEAD
 
-=======
-                            
->>>>>>> 76627f09b1696b2559e3d011b981f0d976775f58
                         </Grid>
                         <Grid Grid.Row="1">
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center">
                                 <StackPanel VerticalAlignment="Center"  Orientation="Horizontal" Margin="0,0,0,5">
                                     <Label Width="150" FontWeight="Medium" FontSize="15">Alive Check(M):</Label>
-<<<<<<< HEAD
                                     <TextBox Name="txb_alive"  FontSize="15" Width="70" Text=""></TextBox>
                                 </StackPanel>
                                 <StackPanel VerticalAlignment="Center"  Orientation="Horizontal" Margin="0,0,0,5">
@@ -96,21 +81,6 @@
                                 <StackPanel VerticalAlignment="Center" Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,5">
                                     <Label Width="150" FontWeight="Medium" FontSize="15">Result Check(DM):</Label>
                                     <TextBox Name="txb_result" FontSize="15"  Width="70" Text=""></TextBox>
-=======
-                                    <TextBox FontSize="15" Width="70" Text=""></TextBox>
-                                </StackPanel>
-                                <StackPanel VerticalAlignment="Center"  Orientation="Horizontal" Margin="0,0,0,5">
-                                    <Label Width="150" FontWeight="Medium" FontSize="15">Triger Data Cabi(M):</Label>
-                                    <TextBox FontSize="15" Width="70" Text=""></TextBox>
-                                </StackPanel>
-                                <StackPanel VerticalAlignment="Center" Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,5">
-                                    <Label Width="150" FontWeight="Medium" FontSize="15">Data Cabi(DM):</Label>
-                                    <TextBox FontSize="15"  Width="70" Text=""></TextBox>
-                                </StackPanel>
-                                <StackPanel VerticalAlignment="Center" Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,5">
-                                    <Label Width="150" FontWeight="Medium" FontSize="15">Result Check(DM):</Label>
-                                    <TextBox FontSize="15"  Width="70" Text=""></TextBox>
->>>>>>> 76627f09b1696b2559e3d011b981f0d976775f58
                                 </StackPanel>
                             </StackPanel>
                         </Grid>
@@ -124,17 +94,12 @@
                             <Border BorderBrush="Black" BorderThickness="0,0,0,1">
                                 <TextBlock Foreground="White" FontSize="20" FontWeight="Medium" HorizontalAlignment="Center" VerticalAlignment="Center">ERROR Form</TextBlock>
                             </Border>
-<<<<<<< HEAD
 
-=======
-                           
->>>>>>> 76627f09b1696b2559e3d011b981f0d976775f58
                         </Grid>
                         <Grid Grid.Row="1">
                             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Grid.Row="3" Margin="0,0,0,0">
                                 <StackPanel VerticalAlignment="Center"  Orientation="Horizontal" Margin="0,0,0,5">
                                     <Label Width="150" FontWeight="Medium" FontSize="15">Triger ERROR(M):</Label>
-<<<<<<< HEAD
                                     <TextBox Name="txb_trigerError" FontSize="15"  Width="70" Text=""></TextBox>
                                 </StackPanel>
                                 <StackPanel VerticalAlignment="Center" Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,5">
@@ -148,32 +113,13 @@
                                 <StackPanel VerticalAlignment="Center" Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,0">
                                     <Label Width="150" FontWeight="Medium" FontSize="15">Confirm Finish(M)</Label>
                                     <TextBox Name="txb_ConfirmFinish" FontSize="15"  Width="70" Text=""></TextBox>
-=======
-                                    <TextBox FontSize="15"  Width="70" Text=""></TextBox>
-                                </StackPanel>
-                                <StackPanel VerticalAlignment="Center" Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,5">
-                                    <Label Width="150" FontWeight="Medium" FontSize="15">User Confirm(DM):</Label>
-                                    <TextBox FontSize="15"  Width="70" Text=""></TextBox>
-                                </StackPanel>
-                                <StackPanel VerticalAlignment="Center" Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,5">
-                                    <Label Width="150" FontWeight="Medium" FontSize="15">Content ERROR(DM):</Label>
-                                    <TextBox FontSize="15"  Width="70" Text=""></TextBox>
-                                </StackPanel>
-                                <StackPanel VerticalAlignment="Center" Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,0">
-                                    <Label Width="150" FontWeight="Medium" FontSize="15">Confirm Finish(M)</Label>
-                                    <TextBox FontSize="15"  Width="70" Text=""></TextBox>
->>>>>>> 76627f09b1696b2559e3d011b981f0d976775f58
                                 </StackPanel>
                             </StackPanel>
                         </Grid>
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="3" Margin="0,5,0,0">
-<<<<<<< HEAD
                     <Button Name="btn_save" Click="btn_save_Click" Background="Red" Width="200" FontSize="20">Save</Button>
-=======
-                    <Button Background="Red" Width="200" FontSize="20">Save</Button>
->>>>>>> 76627f09b1696b2559e3d011b981f0d976775f58
                 </Grid>
             </Grid>
 
