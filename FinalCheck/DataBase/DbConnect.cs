@@ -11,7 +11,7 @@ namespace FinalCheck.DataBase
     public class DbConnect
     {
        
-        public  DataTable StoreFillDS(string query_object, CommandType type, params object[] obj)
+        public  DataTable StoreFillDT(string query_object, CommandType type, params object[] obj)
         {
             using (SqlConnection conn = new SqlConnection(StaticData.connection_string))
             {
@@ -25,6 +25,25 @@ namespace FinalCheck.DataBase
                 }
                 SqlDataAdapter dap = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
+                dap.Fill(dt);
+                conn.Close();
+                return dt;
+            }
+        }
+        public DataSet StoreFillDS(string query_object, CommandType type, params object[] obj)
+        {
+            using (SqlConnection conn = new SqlConnection(StaticData.connection_string))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query_object, conn);
+                cmd.CommandType = type;
+                SqlCommandBuilder.DeriveParameters(cmd);
+                for (int i = 1; i <= obj.Length; i++)
+                {
+                    cmd.Parameters[i].Value = obj[i - 1];
+                }
+                SqlDataAdapter dap = new SqlDataAdapter(cmd);
+                DataSet dt = new DataSet();
                 dap.Fill(dt);
                 conn.Close();
                 return dt;

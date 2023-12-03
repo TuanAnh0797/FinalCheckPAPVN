@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         xmlns:uc="clr-namespace:FinalCheck.MyUserControl"
         xmlns:Mydata="clr-namespace:FinalCheck.ViewModel"
-        xmlns:Myconverter="clr-namespace:FinalCheck.MyConverter"
+        xmlns:StringConverter="clr-namespace:FinalCheck.MyConverter"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -22,8 +22,10 @@
         
         WindowState="Maximized"
         Name="MainForm"
-        Title="MainWindow" Height="450" Width="800">
-
+        Title="MainWindow" Height="450" Width="800" Closed="MainForm_Closed">
+    <Window.Resources>
+        <StringConverter:PDConverter x:Key="PDConverter"></StringConverter:PDConverter>
+    </Window.Resources>
     <Grid Margin="0,0,0,5">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -152,13 +154,13 @@
                                             </GridViewColumn.Header>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock  Text="{Binding Judge_VP}" FontSize="20" FontWeight="Heavy">
+                                                    <TextBlock Margin="10,0,0,0" Width="80" TextAlignment="Center"  Text="{Binding Judge_VP, Converter={StaticResource PDConverter}}"  FontSize="20" FontWeight="Heavy">
 
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
                                                                     <Trigger Property="Text"  Value="OK">
-                                                                        <Setter Property="Background" Value="LightGreen"></Setter>
+                                                                        <Setter Property="Background" Value="#FF45CD45"></Setter>
                                                                     </Trigger>
                                                                     <Trigger Property="Text"  Value="NG">
                                                                         <Setter Property="Background" Value="Red"></Setter>
@@ -183,13 +185,13 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock   Text="{Binding Judge_GAS}" FontSize="20" FontWeight="Heavy">
+                                                    <TextBlock Margin="10,0,0,0" Width="80" TextAlignment="Center"  Text="{Binding Judge_GAS, Converter={StaticResource PDConverter}}" FontSize="20" FontWeight="Heavy">
 
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
                                                                     <Trigger Property="Text"  Value="OK">
-                                                                        <Setter Property="Background" Value="LightGreen"></Setter>
+                                                                        <Setter Property="Background" Value="#FF45CD45"></Setter>
                                                                     </Trigger>
                                                                     <Trigger Property="Text"  Value="NG">
                                                                         <Setter Property="Background" Value="Red"></Setter>
@@ -215,12 +217,12 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock   Text="{Binding Judge_WI1WITH}" FontSize="20" FontWeight="Heavy">
+                                                    <TextBlock Margin="10,0,0,0" Width="80" TextAlignment="Center"  Text="{Binding Judge_WI1WITH, Converter={StaticResource PDConverter}}" FontSize="20" FontWeight="Heavy">
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
                                                                     <Trigger Property="Text"  Value="OK">
-                                                                        <Setter Property="Background" Value="LightGreen"></Setter>
+                                                                        <Setter Property="Background" Value="#FF45CD45"></Setter>
                                                                     </Trigger>
                                                                     <Trigger Property="Text"  Value="NG">
                                                                         <Setter Property="Background" Value="Red"></Setter>
@@ -245,12 +247,12 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock   Text="{Binding Judge_WI1START}" FontSize="20" FontWeight="Heavy">
+                                                    <TextBlock Margin="10,0,0,0" Width="80" TextAlignment="Center"  Text="{Binding Judge_WI1START, Converter={StaticResource PDConverter}}" FontSize="20" FontWeight="Heavy">
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
                                                                     <Trigger Property="Text"  Value="OK">
-                                                                        <Setter Property="Background" Value="LightGreen"></Setter>
+                                                                        <Setter Property="Background" Value="#FF45CD45"></Setter>
                                                                     </Trigger>
                                                                     <Trigger Property="Text"  Value="NG">
                                                                         <Setter Property="Background" Value="Red"></Setter>
@@ -275,12 +277,12 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock   Text="{Binding Judge_IP}" FontSize="20" FontWeight="Heavy">
+                                                    <TextBlock Margin="10,0,0,0" Width="80" TextAlignment="Center" Text="{Binding Judge_IP, Converter={StaticResource PDConverter}}" FontSize="20" FontWeight="Heavy">
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
                                                                     <Trigger Property="Text"  Value="OK">
-                                                                        <Setter Property="Background" Value="LightGreen"></Setter>
+                                                                        <Setter Property="Background" Value="#FF45CD45"></Setter>
                                                                     </Trigger>
                                                                     <Trigger Property="Text"  Value="NG">
                                                                         <Setter Property="Background" Value="Red"></Setter>
@@ -305,7 +307,7 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock   Text="{Binding Judge_DF}" FontSize="20" FontWeight="Heavy">
+                                                    <TextBlock Margin="10,0,0,0" Width="80" TextAlignment="Center"  Text="{Binding Judge_DF, Converter={StaticResource PDConverter}}" FontSize="20" FontWeight="Heavy">
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
@@ -335,7 +337,7 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock  Text="{Binding Judge_TEMP}" FontSize="20" FontWeight="Heavy">
+                                                    <TextBlock  Margin="10,0,0,0" Width="80" TextAlignment="Center" Text="{Binding Judge_TEMP, Converter={StaticResource PDConverter}}" FontSize="20" FontWeight="Heavy">
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
@@ -365,7 +367,7 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock   Text="{Binding Judge_IOT}" FontSize="20" FontWeight="Heavy">
+                                                    <TextBlock Margin="10,0,0,0" Width="80" TextAlignment="Center"  Text="{Binding Judge_IOT, Converter={StaticResource PDConverter}}" FontSize="20" FontWeight="Heavy">
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
@@ -395,7 +397,7 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock   Text="{Binding Judge_WI2}" FontSize="20" FontWeight="Heavy">
+                                                    <TextBlock Margin="10,0,0,0" Width="80" TextAlignment="Center"  Text="{Binding Judge_WI2, Converter={StaticResource PDConverter}}" FontSize="20" FontWeight="Heavy">
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
@@ -425,7 +427,7 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock   Text="{Binding Judge_PAN}" FontSize="20" FontWeight="Heavy">
+                                                    <TextBlock Margin="10,0,0,0" Width="80" TextAlignment="Center"  Text="{Binding Judge_PAN, Converter={StaticResource PDConverter}}" FontSize="20" FontWeight="Heavy">
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
@@ -455,7 +457,7 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock   Text="{Binding Judge_CAMBACK}" FontSize="20" FontWeight="Heavy">
+                                                    <TextBlock Margin="10,0,0,0" Width="80" TextAlignment="Center"  Text="{Binding Judge_CAMBACK, Converter={StaticResource PDConverter}}" FontSize="20" FontWeight="Heavy">
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>
@@ -485,7 +487,7 @@
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock  Text="{Binding Judge_CAMFRONT}" FontSize="20" FontWeight="Heavy">
+                                                    <TextBlock Margin="10,0,0,0" Width="80" TextAlignment="Center" Text="{Binding Judge_CAMFRONT, Converter={StaticResource PDConverter}}" FontSize="20" FontWeight="Heavy">
                                                         <TextBlock.Style>
                                                             <Style TargetType="TextBlock">
                                                                 <Style.Triggers>

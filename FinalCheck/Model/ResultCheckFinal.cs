@@ -41,6 +41,10 @@ namespace FinalCheck
 
         private string judge_Total;
 
+        private string reasonError;
+
+        private string personConfirm;
+
         public string Judge_VP { get => judge_VP; set => judge_VP = value; }
         public string Judge_GAS { get => judge_GAS; set => judge_GAS = value; }
         public string Judge_WI1WITH { get => judge_WI1WITH; set => judge_WI1WITH = value; }
@@ -54,6 +58,8 @@ namespace FinalCheck
         public string Judge_CAMBACK { get => judge_CAMBACK; set => judge_CAMBACK = value; }
         public string Judge_CAMFRONT { get => judge_CAMFRONT; set => judge_CAMFRONT = value; }
         public string Judge_Total { get => judge_Total; set => judge_Total = value; }
+        public string ReasonError { get => reasonError; set => reasonError = value; }
+        public string PersonConfirm { get => personConfirm; set => personConfirm = value; }
 
 
 

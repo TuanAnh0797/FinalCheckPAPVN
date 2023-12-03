@@ -81,9 +81,6 @@
                         <ColumnDefinition Width="40"></ColumnDefinition>
                         <ColumnDefinition Width="100"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition Width="65"></ColumnDefinition>
                         <ColumnDefinition Width="50"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
@@ -104,14 +101,14 @@
 
                         </Border>
                     </Grid>
-                    <Grid  Grid.Row="0" Grid.Column="6" Background="#FF35B888">
+                    <Grid  Grid.Row="0" Grid.Column="3" Background="#FF35B888">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
                             <TextBlock FontSize="16" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center">Result</TextBlock>
 
 
                         </Border>
                     </Grid>
-                    <Grid  Grid.Row="0" Grid.Column="7" Background="#FF35B888">
+                    <Grid  Grid.Row="0" Grid.Column="4" Background="#FF35B888">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
                             <TextBlock FontSize="16" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center">Total</TextBlock>
                         </Border>
@@ -128,48 +125,24 @@
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">VP</TextBlock>
                         </Border>
                     </Grid>
+
                     <Grid  Grid.Row="1" Grid.Column="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Vaccum Value</TextBlock>
 
-                        </Border>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" >
 
                         </Border>
                     </Grid>
-                    <Grid  Grid.Row="1" Grid.Column="3">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
-
-
-                        </Border>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
-
-
-                        </Border>
-
-                    </Grid>
-                    <Grid  Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2">
+                    <Grid  Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
                     </Grid>
-                    <Grid  Grid.Row="1" Grid.Column="6">
+                    <Grid  Grid.Row="1" Grid.Column="3">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Pending"> </TextBlock>
+                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Pending"></TextBlock>
                         </Border>
                     </Grid>
-                    <Grid  Grid.Row="1" Grid.Column="7" Grid.RowSpan="13">
+                    <Grid  Grid.Row="1" Grid.Column="4" Grid.RowSpan="13">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center" Text="OK"> </TextBlock>
+                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center" Text="OK"></TextBlock>
                         </Border>
                     </Grid>
 
@@ -185,69 +158,14 @@
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="2" Grid.Column="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">GAS</TextBlock>
+
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
 
                         </Border>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
 
-                        </Border>
                     </Grid>
+
                     <Grid  Grid.Row="2" Grid.Column="3">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
-
-
-                        </Border>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
-
-
-                        </Border>
-
-                    </Grid>
-                    <Grid  Grid.Row="2" Grid.Column="4">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">OIL</TextBlock>
-
-                        </Border>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
-
-                        </Border>
-                    </Grid>
-                    <Grid  Grid.Row="2" Grid.Column="5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
-
-
-                        </Border>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
-
-
-                        </Border>
-
-                    </Grid>
-
-                    <Grid  Grid.Row="2" Grid.Column="6">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                         </Border>
@@ -265,69 +183,13 @@
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="3" Grid.Column="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Leak current(mA)</TextBlock>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" >
 
                         </Border>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
 
-                        </Border>
                     </Grid>
+
                     <Grid  Grid.Row="3" Grid.Column="3">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
-
-
-                        </Border>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
-
-
-                        </Border>
-
-                    </Grid>
-                    <Grid  Grid.Row="3" Grid.Column="4">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Resistor(Ôm)</TextBlock>
-
-                        </Border>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
-
-                        </Border>
-                    </Grid>
-                    <Grid  Grid.Row="3" Grid.Column="5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
-
-
-                        </Border>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
-
-
-                        </Border>
-
-                    </Grid>
-
-                    <Grid  Grid.Row="3" Grid.Column="6">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                         </Border>
@@ -344,40 +206,12 @@
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="4" Grid.Column="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Current(mA)</TextBlock>
 
-                        </Border>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
 
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="4" Grid.Column="3">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
-
-
-                        </Border>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
-
-
-                        </Border>
-
-                    </Grid>
-                    <Grid  Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
-                    </Grid>
-                    <Grid  Grid.Row="4" Grid.Column="6">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                         </Border>
@@ -394,39 +228,11 @@
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="5" Grid.Column="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Capacity(W)</TextBlock>
-                        </Border>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
 
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" >
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="5" Grid.Column="3">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
-
-
-                        </Border>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
-
-
-                        </Border>
-
-                    </Grid>
-                    <Grid  Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
-                    </Grid>
-                    <Grid  Grid.Row="5" Grid.Column="6">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                         </Border>
@@ -443,39 +249,11 @@
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="6" Grid.Column="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Capacity(W)</TextBlock>
-                        </Border>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
 
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="6" Grid.Column="3">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
-
-
-                        </Border>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
-
-
-                        </Border>
-
-                    </Grid>
-                    <Grid  Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="2">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
-                    </Grid>
-                    <Grid  Grid.Row="6" Grid.Column="6">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                         </Border>
@@ -491,17 +269,17 @@
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">TEMP</TextBlock>
                         </Border>
                     </Grid>
-                    <Grid  Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="4">
+                    <Grid  Grid.Row="7" Grid.Column="2" >
                         <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
                     </Grid>
 
 
-                    <Grid  Grid.Row="7" Grid.Column="6">
+                    <Grid  Grid.Row="7" Grid.Column="3">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                         </Border>
                     </Grid>
-                    
+
 
                     <!--Row9-->
                     <Grid  Grid.Row="8" Grid.Column="0">
@@ -516,19 +294,14 @@
                     </Grid>
                     <Grid  Grid.Row="8" Grid.Column="2">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Passkey</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="8" Grid.Column="3">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Code In</TextBlock>
                         </Border>
 
                     </Grid>
-                    <Grid  Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="2">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
-                    </Grid>
-                    <Grid  Grid.Row="8" Grid.Column="6">
+                    <Grid  Grid.Row="8" Grid.Column="3">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                         </Border>
@@ -536,7 +309,7 @@
                     <!--Rownew-->
                     <Grid  Grid.Row="9" Grid.Column="0">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">4</TextBlock>
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">9</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="9" Grid.Column="1">
@@ -545,69 +318,14 @@
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="9" Grid.Column="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Leak current(mA)</TextBlock>
+
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}" >
 
                         </Border>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
 
-                        </Border>
                     </Grid>
+
                     <Grid  Grid.Row="9" Grid.Column="3">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
-
-
-                        </Border>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
-
-
-                        </Border>
-
-                    </Grid>
-                    <Grid  Grid.Row="9" Grid.Column="4">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Resistor(Ôm)</TextBlock>
-
-                        </Border>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">20</TextBlock>
-
-                        </Border>
-                    </Grid>
-                    <Grid  Grid.Row="9" Grid.Column="5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="0">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Spec</TextBlock>
-
-
-                        </Border>
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Row="1">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">66</TextBlock>
-
-
-                        </Border>
-
-                    </Grid>
-
-                    <Grid  Grid.Row="9" Grid.Column="6">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                         </Border>
@@ -615,7 +333,7 @@
                     <!--Row11-->
                     <Grid  Grid.Row="10" Grid.Column="0">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">9</TextBlock>
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">10</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="10" Grid.Column="1">
@@ -625,24 +343,9 @@
                     </Grid>
                     <Grid  Grid.Row="10" Grid.Column="2">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Code Market</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="10" Grid.Column="3">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Code PCB</TextBlock>
-                        </Border>
-
-                    </Grid>
-                    <Grid  Grid.Row="10" Grid.Column="4">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Code PAN</TextBlock>
-                        </Border>
-                    </Grid>
-                    <Grid  Grid.Row="10" Grid.Column="5">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
-                    </Grid>
-                    <Grid  Grid.Row="10" Grid.Column="6">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                         </Border>
@@ -650,7 +353,7 @@
                     <!--Row12-->
                     <Grid  Grid.Row="11" Grid.Column="0">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">10</TextBlock>
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">11</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="11" Grid.Column="1">
@@ -658,12 +361,12 @@
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Cam Back</TextBlock>
                         </Border>
                     </Grid>
-                    <Grid  Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="4">
+                    <Grid  Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="2">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
                     </Grid>
 
 
-                    <Grid  Grid.Row="11" Grid.Column="6">
+                    <Grid  Grid.Row="11" Grid.Column="3">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                         </Border>
@@ -671,7 +374,7 @@
                     <!--Row13-->
                     <Grid  Grid.Row="12" Grid.Column="0">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">11</TextBlock>
+                            <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">12</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="12" Grid.Column="1">
@@ -679,12 +382,12 @@
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Cam Front</TextBlock>
                         </Border>
                     </Grid>
-                    <Grid  Grid.Row="12" Grid.Column="2" Grid.ColumnSpan="4">
+                    <Grid  Grid.Row="12" Grid.Column="2" Grid.ColumnSpan="2">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
                     </Grid>
 
 
-                    <Grid  Grid.Row="12" Grid.Column="6">
+                    <Grid  Grid.Row="12" Grid.Column="3">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
                         </Border>
@@ -707,7 +410,7 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0">
-                        <TextBlock FontSize="18">Lỗi: </TextBlock>
+                        <TextBlock FontSize="18">Lỗi:</TextBlock>
                     </Grid>
                     <Grid Grid.Column="1">
                         <TextBlock FontSize="18" Text="Nội dung lỗi"></TextBlock>
@@ -719,7 +422,7 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0">
-                        <TextBlock FontSize="18">Người xác nhận: </TextBlock>
+                        <TextBlock FontSize="18">Người xác nhận:</TextBlock>
                     </Grid>
                     <Grid Grid.Column="1">
                         <TextBlock FontSize="18" Text="Tên người xác nhận"></TextBlock>
@@ -729,4 +432,5 @@
         </Grid>
         <!--<Button Padding="0" Content="Close" FontSize="25" Background="Red" Width="150" Grid.Row="2" Click="Button_Click"></Button>-->
     </Grid>
+
 </Window>

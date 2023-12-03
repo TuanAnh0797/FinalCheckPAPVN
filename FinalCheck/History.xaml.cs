@@ -1,8 +1,10 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿using FinalCheck.DataBase;
+using MaterialDesignThemes.Wpf;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -28,6 +30,7 @@ namespace FinalCheck
         {
             InitializeComponent();
             this.DataContext = this;
+            loaddatadetail("abc");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -91,6 +94,40 @@ namespace FinalCheck
             gView.Columns[1].Width = workingWidth * 0.35;
             gView.Columns[2].Width = workingWidth * 0.2;
             gView.Columns[3].Width = workingWidth * 0.35;
+        }
+        public void loaddatadetail(string namecabi)
+        {
+            DbConnect dbc = new DbConnect();
+            DataSet dts = dbc.StoreFillDS("GetDataDetail", System.Data.CommandType.StoredProcedure, namecabi);
+            dtg_VP.ItemsSource = dts.Tables[0].DefaultView;
+
+            dtg_GAS.ItemsSource = dts.Tables[1].DefaultView;
+
+            dtg_WI1WITH .ItemsSource = dts.Tables[2].DefaultView;
+
+            dtg_WI1START.ItemsSource = dts.Tables[3].DefaultView;
+
+            dtg_IP.ItemsSource = dts.Tables[4].DefaultView;
+
+            dtg_DF.ItemsSource = dts.Tables[5].DefaultView;
+
+            dtg_TEMP.ItemsSource = dts.Tables[6].DefaultView;
+
+            dtg_IOT.ItemsSource = dts.Tables[7].DefaultView;
+
+            dtg_WI2.ItemsSource = dts.Tables[8].DefaultView;
+
+            dtg_PAN.ItemsSource = dts.Tables[9].DefaultView;
+
+            dtg_CAMBACK.ItemsSource = dts.Tables[10].DefaultView;
+
+            dtg_CAMFRONT.ItemsSource = dts.Tables[11].DefaultView;
+
+
+
+
+
+
         }
 
     }

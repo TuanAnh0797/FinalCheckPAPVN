@@ -28,6 +28,10 @@ using System.Net.Sockets;
 using FinalCheck.Model;
 using System.Net;
 using System.Threading;
+using Newtonsoft.Json;
+using System.IO;
+using System.IO.Packaging;
+using System.Globalization;
 
 namespace FinalCheck
 {
@@ -37,16 +41,15 @@ namespace FinalCheck
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         PLC Plc = new PLC();
-        DispatcherTimer time1 = new DispatcherTimer();
+        //DispatcherTimer time1 = new DispatcherTimer();
         DispatcherTimer TimerCheck = new DispatcherTimer();
-
         bool check_run = false;
         bool rs_NG = false;
         public Func<double, string> Formatter { get; set; }
+
         public ObservableCollection<ResultMain> dataforlistview { set; get; }
 
         public ObservableCollection<ResultCheckFinal> List_Result_Check_Final { set; get; }
-
 
         public SeriesCollection datastackchart { set; get; }
         public SeriesCollection datapiechart { set; get; }
@@ -134,7 +137,6 @@ namespace FinalCheck
         }
 
 
-
         public MainWindow()
         {
 
@@ -143,21 +145,65 @@ namespace FinalCheck
             {
                 ModelCurrent = "";
                 DataContext = this;
-                time1.Interval = TimeSpan.FromSeconds(5);
+                loadConfigJson();
+                loadConfigSQL();
+                //time1.Interval = TimeSpan.FromSeconds(5);
                 TimerCheck.Interval = TimeSpan.FromMilliseconds(300);
                 innitproperty();
                 innitchart();
-                time1.Start();
+                //time1.Start();
                 TimerCheck.Start();
                 TimerCheck.Tick += TimerCheck_Tick;
-                time1.Tick += Time1_Tick;
+                //time1.Tick += Time1_Tick;
+                LoadDataForCabi("abc");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                this.Close();
             }
 
 
+        }
+        public void loadConfigJson()
+        {
+            string dataconfig = File.ReadAllText(Directory.GetCurrentDirectory() + "//config.json");
+            Config myconfig = JsonConvert.DeserializeObject<Config>(dataconfig);
+            StaticData.connection_string = myconfig.DataBase.ConnectionString;
+        }
+        public void loadConfigSQL()
+        {
+            DbConnect dbc = new DbConnect();
+
+            DataTable dt = dbc.StoreFillDT("GetConfigConnectPlc", CommandType.StoredProcedure);
+
+            if (dt.Rows.Count > 0)
+            {
+                ConfigConnection.IpAddress = dt.Rows[0]["IpAddress"].ToString();
+                ConfigConnection.PortNumber = (int)dt.Rows[0]["PortNumber"];
+                //
+                ConfigConnection.ReadData.NameDeviceTrigerReadCabi = (int)dt.Rows[0]["NameDeviceTrigerReadCabi"];
+                ConfigConnection.ReadData.NameDeviceDataCabi = (int)dt.Rows[0]["NameDeviceDataCabi"];
+                ConfigConnection.ReadData.QuantityDataCabi = (int)dt.Rows[0]["QuantityDataCabi"];
+                ConfigConnection.ReadData.NameDeviceDataPerson = (int)dt.Rows[0]["NameDeviceDataPerson"];
+                ConfigConnection.ReadData.QuantityDataPerson = (int)dt.Rows[0]["QuantityDataPerson"];
+                ConfigConnection.ReadData.NameDeviceDataReason = (int)dt.Rows[0]["NameDeviceDataReason"];
+                ConfigConnection.ReadData.QuantityDataReason = (int)dt.Rows[0]["QuantityDataReason"];
+                //
+                ConfigConnection.WriteData.NameDeviceSendResult = (int)dt.Rows[0]["NameDeviceSendResult"];
+                ConfigConnection.WriteData.QuantityDeviceSendResult = (int)dt.Rows[0]["QuantityDeviceSendResult"];
+                //
+                ConfigConnection.WriteBit.AliveBit = (int)dt.Rows[0]["AliveBit"];
+                //
+                ConfigConnection.ReadData.NameDeviceTrigerReadError = (int)dt.Rows[0]["NameDeviceTrigerReadError"];
+                ConfigConnection.WriteBit.NameDeviceSendConfirm = (int)dt.Rows[0]["NameDeviceSendConfirm"];
+            }
+            else
+            {
+                throw (new Exception("Không tìm thấy dữ liệu ConfigConnectPLC. Xem datatable: ConfigConnectionPlc"));
+            }
+
+            
         }
 
       
@@ -168,292 +214,291 @@ namespace FinalCheck
             innitpiechart();
             innitbarchart();
         }
-
-        Random rd = new Random();
-        Random rd2 = new Random();
-        int index = 10;
-        int STT = 1;
-
         public event PropertyChangedEventHandler PropertyChanged;
+        #region
+        //Random rd = new Random();
+        //Random rd2 = new Random();
+        //int index = 10;
+        //int STT = 1;
+        //private void Time1_Tick(object sender, EventArgs e)
+        //{
+        //    index++;
+        //    int values2 = rd2.Next(0, 10);
+        //    string timecheck = DateTime.Now.ToString();
+        //    List_Result_Check_Final.Clear();
+        //    ResultCheckFinal Result_Check_Final = new ResultCheckFinal();
+        //    if (values2 < 8)
+        //    {
+        //        dataforlistview.Add(new ResultMain(STT, $"ABCDEFGHIK{index}", "OK", timecheck));
+        //        Result_Check_Final.Judge_VP = "OK";
+        //        Result_Check_Final.Judge_GAS = "OK";
+        //        Result_Check_Final.Judge_WI1WITH = "OK";
 
-        private void Time1_Tick(object sender, EventArgs e)
-        {
-            index++;
-            int values2 = rd2.Next(0, 10);
-            string timecheck = DateTime.Now.ToString();
-            List_Result_Check_Final.Clear();
-            ResultCheckFinal Result_Check_Final = new ResultCheckFinal();
-            if (values2 < 8)
-            {
-                dataforlistview.Add(new ResultMain(STT, $"ABCDEFGHIK{index}", "OK", timecheck));
-                Result_Check_Final.Judge_VP = "OK";
-                Result_Check_Final.Judge_GAS = "OK";
-                Result_Check_Final.Judge_WI1WITH = "OK";
+        //        Result_Check_Final.Judge_WI1START = "OK";
 
-                Result_Check_Final.Judge_WI1START = "OK";
+        //        Result_Check_Final.Judge_IP = "OK";
 
-                Result_Check_Final.Judge_IP = "OK";
+        //        Result_Check_Final.Judge_DF = "OK";
 
-                Result_Check_Final.Judge_DF = "OK";
+        //        Result_Check_Final.Judge_TEMP = "OK";
 
-                Result_Check_Final.Judge_TEMP = "OK";
+        //        Result_Check_Final.Judge_IOT = "OK";
 
-                Result_Check_Final.Judge_IOT = "OK";
+        //        Result_Check_Final.Judge_WI2 = "OK";
 
-                Result_Check_Final.Judge_WI2 = "OK";
+        //        Result_Check_Final.Judge_PAN = "OK";
 
-                Result_Check_Final.Judge_PAN = "OK";
+        //        Result_Check_Final.Judge_CAMBACK = "OK";
 
-                Result_Check_Final.Judge_CAMBACK = "OK";
-
-                Result_Check_Final.Judge_CAMFRONT = "OK";
-
-
-
-                ModelCurrent = $"ABCDEFGHIK";
-                SerialCurrent = index.ToString();
-                gr_header.Background = new SolidColorBrush(Colors.LightGreen);
-                VPOK.Value++;
-                GASOILOK.Value++;
-                WI1WITHOK.Value++;
-                WI1STARTOK.Value++;
-                IPOK.Value++;
-                DFOK.Value++;
-                TEMPOK.Value++;
-                IOTOK.Value++;
-                WI2OK.Value++;
-                PANOK.Value++;
-                CAMBACKOK.Value++;
-                CAMFRONTOK.Value++;
-                TotalOK.Value++;
-            }
-            else
-            {
-                dataforlistview.Add(new ResultMain(STT, $"ABCDEFGHIK{index}", "NG", timecheck));
-                ModelCurrent = $"ABCDEFGHI";
-                SerialCurrent = index.ToString();
-                gr_header.Background = new SolidColorBrush(Colors.Red);
-                for (int i = 0; i < 12; i++)
-                {
-                    int values = rd.Next(0, 20);
-                    switch (i)
-                    {
-                        case 0:
-                            if (values < 3)
-                            {
-                                VPOK.Value++;
-                                Result_Check_Final.Judge_VP = "OK";
-                            }
-                            else if (values < 12)
-                            {
-                                VPNG.Value++;
-                                Result_Check_Final.Judge_VP = "NG";
-                            }
-                            else
-                            {
-                                VPPENDING.Value++;
-                                Result_Check_Final.Judge_VP = "Pending";
-                            }
-                            break;
-                        case 1:
-                            if (values < 3)
-                            {
-                                GASOILOK.Value++;
-                                Result_Check_Final.Judge_GAS = "OK";
-                            }
-                            else if (values < 12)
-                            {
-                                GASOILNG.Value++;
-                                Result_Check_Final.Judge_GAS = "NG";
-                            }
-                            else
-                            {
-                                GASOILPENDING.Value++;
-                                Result_Check_Final.Judge_GAS = "Pending";
-                            }
-                            break;
-                        case 2:
-                            if (values < 3)
-                            {
-                                WI1WITHOK.Value++;
-                                Result_Check_Final.Judge_WI1WITH = "OK";
-                            }
-                            else if (values < 12)
-                            {
-                                WI1WITHNG.Value++;
-                                Result_Check_Final.Judge_WI1WITH = "NG";
-                            }
-                            else
-                            {
-                                WI1WITHPENDING.Value++;
-                                Result_Check_Final.Judge_WI1WITH = "Pending";
-                            }
-                            break;
-                        case 3:
-                            if (values < 3)
-                            {
-                                WI1STARTOK.Value++;
-                                Result_Check_Final.Judge_WI1START = "OK";
-                            }
-                            else if (values < 12)
-                            {
-                                WI1STARTNG.Value++;
-                                Result_Check_Final.Judge_WI1START = "NG";
-                            }
-                            else
-                            {
-                                WI1STARTPENDING.Value++;
-                                Result_Check_Final.Judge_WI1START = "Pending";
-                            }
-                            break;
-                        case 4:
-                            if (values < 3)
-                            {
-                                IPOK.Value++;
-                                Result_Check_Final.Judge_IP = "OK";
-                            }
-                            else if (values < 12)
-                            {
-                                IPNG.Value++;
-                                Result_Check_Final.Judge_IP = "NG";
-                            }
-                            else
-                            {
-                                IPPENDING.Value++;
-                                Result_Check_Final.Judge_IP = "Pending";
-                            }
-                            break;
-                        case 5:
-                            if (values < 3)
-                            {
-                                DFOK.Value++;
-                                Result_Check_Final.Judge_DF = "OK";
-                            }
-                            else if (values < 12)
-                            {
-                                DFNG.Value++;
-                                Result_Check_Final.Judge_DF = "NG";
-                            }
-                            else
-                            {
-                                DFPENDING.Value++;
-                                Result_Check_Final.Judge_DF = "Pending";
-                            }
-                            break;
-                        case 6:
-                            if (values < 3)
-                            {
-                                TEMPOK.Value++;
-                                Result_Check_Final.Judge_TEMP = "OK";
-                            }
-                            else if (values < 12)
-                            {
-                                TEMPNG.Value++;
-                                Result_Check_Final.Judge_TEMP = "NG";
-                            }
-                            else
-                            {
-                                TEMPPENDING.Value++;
-                                Result_Check_Final.Judge_TEMP = "Pending";
-                            }
-                            break;
-                        case 7:
-                            if (values < 3)
-                            {
-                                IOTOK.Value++;
-                                Result_Check_Final.Judge_IOT = "OK";
-                            }
-                            else if (values < 12)
-                            {
-                                IOTNG.Value++;
-                                Result_Check_Final.Judge_IOT = "NG";
-                            }
-                            else
-                            {
-                                IOTPENDING.Value++;
-                                Result_Check_Final.Judge_IOT = "Pending";
-                            }
-                            break;
-                        case 8:
-                            if (values < 3)
-                            {
-                                PANOK.Value++;
-                                Result_Check_Final.Judge_PAN = "OK";
-                            }
-                            else if (values < 12)
-                            {
-                                PANNG.Value++;
-                                Result_Check_Final.Judge_PAN = "NG";
-                            }
-                            else
-                            {
-                                PANPENDING.Value++;
-                                Result_Check_Final.Judge_PAN = "Pending";
-                            }
-                            break;
-                        case 9:
-                            if (values < 3)
-                            {
-                                CAMBACKOK.Value++;
-                                Result_Check_Final.Judge_CAMBACK = "OK";
-                            }
-                            else if (values < 12)
-                            {
-                                CAMBACKNG.Value++;
-                                Result_Check_Final.Judge_CAMBACK = "NG";
-                            }
-                            else
-                            {
-                                CAMBACKPENDING.Value++;
-                                Result_Check_Final.Judge_CAMBACK = "Pending";
-                            }
-                            break;
-                        case 10:
-                            if (values < 3)
-                            {
-                                CAMFRONTOK.Value++;
-                                Result_Check_Final.Judge_CAMFRONT = "OK";
-                            }
-                            else if (values < 12)
-                            {
-                                CAMFRONTNG.Value++;
-                                Result_Check_Final.Judge_CAMFRONT = "NG";
-                            }
-                            else
-                            {
-                                CAMFRONTPENDING.Value++;
-                                Result_Check_Final.Judge_CAMFRONT = "Pending";
-                            }
-                            break;
-                        case 11:
-                            if (values < 3)
-                            {
-                                WI2OK.Value++;
-                                Result_Check_Final.Judge_WI2 = "OK";
-                            }
-                            else if (values < 12)
-                            {
-                                WI2NG.Value++;
-                                Result_Check_Final.Judge_WI2 = "NG";
-                            }
-                            else
-                            {
-                                WI2PENDING.Value++;
-                                Result_Check_Final.Judge_WI2 = "Pending";
-                            }
-                            break;
-                    }
-                }
-                TotalNG.Value++;
+        //        Result_Check_Final.Judge_CAMFRONT = "OK";
 
 
 
+        //        ModelCurrent = $"ABCDEFGHIK";
+        //        SerialCurrent = index.ToString();
+        //        gr_header.Background = new SolidColorBrush(Color.FromArgb(0xFF, 0x45, 0xCD, 0x45));
+        //        VPOK.Value++;
+        //        GASOILOK.Value++;
+        //        WI1WITHOK.Value++;
+        //        WI1STARTOK.Value++;
+        //        IPOK.Value++;
+        //        DFOK.Value++;
+        //        TEMPOK.Value++;
+        //        IOTOK.Value++;
+        //        WI2OK.Value++;
+        //        PANOK.Value++;
+        //        CAMBACKOK.Value++;
+        //        CAMFRONTOK.Value++;
+        //        TotalOK.Value++;
+        //    }
+        //    else
+        //    {
+        //        dataforlistview.Add(new ResultMain(STT, $"ABCDEFGHIK{index}", "NG", timecheck));
+        //        ModelCurrent = $"ABCDEFGHI";
+        //        SerialCurrent = index.ToString();
+        //        gr_header.Background = new SolidColorBrush(Colors.Red);
+        //        for (int i = 0; i < 12; i++)
+        //        {
+        //            int values = rd.Next(0, 20);
+        //            switch (i)
+        //            {
+        //                case 0:
+        //                    if (values < 3)
+        //                    {
+        //                        VPOK.Value++;
+        //                        Result_Check_Final.Judge_VP = "OK";
+        //                    }
+        //                    else if (values < 12)
+        //                    {
+        //                        VPNG.Value++;
+        //                        Result_Check_Final.Judge_VP = "NG";
+        //                    }
+        //                    else
+        //                    {
+        //                        VPPENDING.Value++;
+        //                        Result_Check_Final.Judge_VP = "Pending";
+        //                    }
+        //                    break;
+        //                case 1:
+        //                    if (values < 3)
+        //                    {
+        //                        GASOILOK.Value++;
+        //                        Result_Check_Final.Judge_GAS = "OK";
+        //                    }
+        //                    else if (values < 12)
+        //                    {
+        //                        GASOILNG.Value++;
+        //                        Result_Check_Final.Judge_GAS = "NG";
+        //                    }
+        //                    else
+        //                    {
+        //                        GASOILPENDING.Value++;
+        //                        Result_Check_Final.Judge_GAS = "Pending";
+        //                    }
+        //                    break;
+        //                case 2:
+        //                    if (values < 3)
+        //                    {
+        //                        WI1WITHOK.Value++;
+        //                        Result_Check_Final.Judge_WI1WITH = "OK";
+        //                    }
+        //                    else if (values < 12)
+        //                    {
+        //                        WI1WITHNG.Value++;
+        //                        Result_Check_Final.Judge_WI1WITH = "NG";
+        //                    }
+        //                    else
+        //                    {
+        //                        WI1WITHPENDING.Value++;
+        //                        Result_Check_Final.Judge_WI1WITH = "Pending";
+        //                    }
+        //                    break;
+        //                case 3:
+        //                    if (values < 3)
+        //                    {
+        //                        WI1STARTOK.Value++;
+        //                        Result_Check_Final.Judge_WI1START = "OK";
+        //                    }
+        //                    else if (values < 12)
+        //                    {
+        //                        WI1STARTNG.Value++;
+        //                        Result_Check_Final.Judge_WI1START = "NG";
+        //                    }
+        //                    else
+        //                    {
+        //                        WI1STARTPENDING.Value++;
+        //                        Result_Check_Final.Judge_WI1START = "Pending";
+        //                    }
+        //                    break;
+        //                case 4:
+        //                    if (values < 3)
+        //                    {
+        //                        IPOK.Value++;
+        //                        Result_Check_Final.Judge_IP = "OK";
+        //                    }
+        //                    else if (values < 12)
+        //                    {
+        //                        IPNG.Value++;
+        //                        Result_Check_Final.Judge_IP = "NG";
+        //                    }
+        //                    else
+        //                    {
+        //                        IPPENDING.Value++;
+        //                        Result_Check_Final.Judge_IP = "Pending";
+        //                    }
+        //                    break;
+        //                case 5:
+        //                    if (values < 3)
+        //                    {
+        //                        DFOK.Value++;
+        //                        Result_Check_Final.Judge_DF = "OK";
+        //                    }
+        //                    else if (values < 12)
+        //                    {
+        //                        DFNG.Value++;
+        //                        Result_Check_Final.Judge_DF = "NG";
+        //                    }
+        //                    else
+        //                    {
+        //                        DFPENDING.Value++;
+        //                        Result_Check_Final.Judge_DF = "Pending";
+        //                    }
+        //                    break;
+        //                case 6:
+        //                    if (values < 3)
+        //                    {
+        //                        TEMPOK.Value++;
+        //                        Result_Check_Final.Judge_TEMP = "OK";
+        //                    }
+        //                    else if (values < 12)
+        //                    {
+        //                        TEMPNG.Value++;
+        //                        Result_Check_Final.Judge_TEMP = "NG";
+        //                    }
+        //                    else
+        //                    {
+        //                        TEMPPENDING.Value++;
+        //                        Result_Check_Final.Judge_TEMP = "Pending";
+        //                    }
+        //                    break;
+        //                case 7:
+        //                    if (values < 3)
+        //                    {
+        //                        IOTOK.Value++;
+        //                        Result_Check_Final.Judge_IOT = "OK";
+        //                    }
+        //                    else if (values < 12)
+        //                    {
+        //                        IOTNG.Value++;
+        //                        Result_Check_Final.Judge_IOT = "NG";
+        //                    }
+        //                    else
+        //                    {
+        //                        IOTPENDING.Value++;
+        //                        Result_Check_Final.Judge_IOT = "Pending";
+        //                    }
+        //                    break;
+        //                case 8:
+        //                    if (values < 3)
+        //                    {
+        //                        PANOK.Value++;
+        //                        Result_Check_Final.Judge_PAN = "OK";
+        //                    }
+        //                    else if (values < 12)
+        //                    {
+        //                        PANNG.Value++;
+        //                        Result_Check_Final.Judge_PAN = "NG";
+        //                    }
+        //                    else
+        //                    {
+        //                        PANPENDING.Value++;
+        //                        Result_Check_Final.Judge_PAN = "Pending";
+        //                    }
+        //                    break;
+        //                case 9:
+        //                    if (values < 3)
+        //                    {
+        //                        CAMBACKOK.Value++;
+        //                        Result_Check_Final.Judge_CAMBACK = "OK";
+        //                    }
+        //                    else if (values < 12)
+        //                    {
+        //                        CAMBACKNG.Value++;
+        //                        Result_Check_Final.Judge_CAMBACK = "NG";
+        //                    }
+        //                    else
+        //                    {
+        //                        CAMBACKPENDING.Value++;
+        //                        Result_Check_Final.Judge_CAMBACK = "Pending";
+        //                    }
+        //                    break;
+        //                case 10:
+        //                    if (values < 3)
+        //                    {
+        //                        CAMFRONTOK.Value++;
+        //                        Result_Check_Final.Judge_CAMFRONT = "OK";
+        //                    }
+        //                    else if (values < 12)
+        //                    {
+        //                        CAMFRONTNG.Value++;
+        //                        Result_Check_Final.Judge_CAMFRONT = "NG";
+        //                    }
+        //                    else
+        //                    {
+        //                        CAMFRONTPENDING.Value++;
+        //                        Result_Check_Final.Judge_CAMFRONT = "Pending";
+        //                    }
+        //                    break;
+        //                case 11:
+        //                    if (values < 3)
+        //                    {
+        //                        WI2OK.Value++;
+        //                        Result_Check_Final.Judge_WI2 = "OK";
+        //                    }
+        //                    else if (values < 12)
+        //                    {
+        //                        WI2NG.Value++;
+        //                        Result_Check_Final.Judge_WI2 = "NG";
+        //                    }
+        //                    else
+        //                    {
+        //                        WI2PENDING.Value++;
+        //                        Result_Check_Final.Judge_WI2 = "Pending";
+        //                    }
+        //                    break;
+        //            }
+        //        }
+        //        TotalNG.Value++;
 
-            }
-            STT++;
-            List_Result_Check_Final.Add(Result_Check_Final);
 
-        }
+
+
+        //    }
+        //    STT++;
+        //    List_Result_Check_Final.Add(Result_Check_Final);
+
+        //}
+        #endregion
         public void innitproperty()
         {
 
@@ -598,12 +643,12 @@ namespace FinalCheck
             };
             Formatter = value => value.ToString();
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
 
 
 
-        }
+        //}
 
 
 
@@ -713,7 +758,7 @@ namespace FinalCheck
         public void LoadDataForChart()
         {
             DbConnect db_connect = new DbConnect();
-            DataTable dt = db_connect.StoreFillDS("", CommandType.StoredProcedure, "");
+            DataTable dt = db_connect.StoreFillDT("", CommandType.StoredProcedure, "");
             //OK
             if (dt.Rows.Count > 0)
             {
@@ -762,24 +807,122 @@ namespace FinalCheck
         }
         public ResultCheckFinal LoadDataForCabi(string cabinet)
         {
+            List_Result_Check_Final.Clear();
             DbConnect db_connect = new DbConnect();
             ResultCheckFinal RCF = new ResultCheckFinal();
-            DataTable dt = db_connect.StoreFillDS("", CommandType.StoredProcedure, cabinet);
+            DataTable dt = db_connect.StoreFillDT("GetJudgeAllLine", CommandType.StoredProcedure, cabinet);
             if (dt.Rows.Count > 0)
             {
-                RCF.Judge_VP = dt.Rows[0]["Judge_VP"].ToString();
-                RCF.Judge_GAS = dt.Rows[0]["Judge_GAS"].ToString();
-                RCF.Judge_WI1WITH = dt.Rows[0]["Judge_WI1WITH"].ToString();
-                RCF.Judge_WI1START = dt.Rows[0]["Judge_WI1START"].ToString();
-                RCF.Judge_IP = dt.Rows[0]["Judge_IP"].ToString();
-                RCF.Judge_DF = dt.Rows[0]["Judge_DF"].ToString();
-                RCF.Judge_TEMP = dt.Rows[0]["Judge_TEMP"].ToString();
-                RCF.Judge_IOT = dt.Rows[0]["Judge_IOT"].ToString();
-                RCF.Judge_WI2 = dt.Rows[0]["Judge_WI2"].ToString();
-                RCF.Judge_PAN = dt.Rows[0]["Judge_PAN"].ToString();
-                RCF.Judge_CAMBACK = dt.Rows[0]["Judge_CAMBACK"].ToString();
-                RCF.Judge_CAMFRONT = dt.Rows[0]["Judge_CAMFRONT"].ToString();
-                RCF.Judge_Total = dt.Rows[0]["Judge_Total"].ToString();
+                //
+                if (dt.Rows[0]["JudgeVP"].ToString() == "OK" && dt.Rows[0]["JudgeVP"].ToString() == "NG")
+                {
+                    RCF.Judge_VP = dt.Rows[0]["JudgeVP"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_VP = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgeGAS"].ToString() == "OK" && dt.Rows[0]["JudgeGAS"].ToString() == "NG")
+                {
+                    RCF.Judge_GAS = dt.Rows[0]["Judge_GAS"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_GAS = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgeWI1WITH"].ToString() == "OK" && dt.Rows[0]["JudgeWI1WITH"].ToString() == "NG")
+                {
+                    RCF.Judge_WI1WITH = dt.Rows[0]["JudgeWI1WITH"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_WI1WITH = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgeWI1START"].ToString() == "OK" && dt.Rows[0]["JudgeWI1START"].ToString() == "NG")
+                {
+                    RCF.Judge_WI1START = dt.Rows[0]["Judge_WI1START"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_WI1START = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgeIP"].ToString() == "OK" && dt.Rows[0]["JudgeIP"].ToString() == "NG")
+                {
+                    RCF.Judge_IP = dt.Rows[0]["JudgeIP"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_IP = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgeDF"].ToString() == "OK" && dt.Rows[0]["JudgeDF"].ToString() == "NG")
+                {
+                    RCF.Judge_DF = dt.Rows[0]["JudgeDF"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_DF = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgeTEMP"].ToString() == "OK" && dt.Rows[0]["JudgeTEMP"].ToString() == "NG")
+                {
+                    RCF.Judge_TEMP = dt.Rows[0]["Judge_TEMP"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_TEMP = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgeIOT"].ToString() == "OK" && dt.Rows[0]["JudgeIOT"].ToString() == "NG")
+                {
+                    RCF.Judge_IOT = dt.Rows[0]["JudgeIOT"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_IOT = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgeWI2"].ToString() == "OK" && dt.Rows[0]["JudgeWI2"].ToString() == "NG")
+                {
+                    RCF.Judge_WI2 = dt.Rows[0]["JudgeWI2"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_WI2 = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgePAN"].ToString() == "OK" && dt.Rows[0]["JudgePAN"].ToString() == "NG")
+                {
+                    RCF.Judge_PAN = dt.Rows[0]["JudgePAN"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_PAN = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgeCAMBACK"].ToString() == "OK" && dt.Rows[0]["JudgeCAMBACK"].ToString() == "NG")
+                {
+                    RCF.Judge_CAMBACK = dt.Rows[0]["JudgeCAMBACK"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_CAMBACK = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgeCAMFRONT"].ToString() == "OK" && dt.Rows[0]["JudgeCAMFRONT"].ToString() == "NG")
+                {
+                    RCF.Judge_CAMFRONT = dt.Rows[0]["JudgeCAMFRONT"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_CAMFRONT = "PD";
+                }
+                //
+                RCF.Judge_Total = dt.Rows[0]["JudgeTotal"].ToString();
             }
             else
             {
@@ -799,12 +942,15 @@ namespace FinalCheck
             }
             if (RCF.Judge_Total == "OK")
             {
-                gr_header.Background = new SolidColorBrush(Colors.Green);
+                RCF.ReasonError = "";
+                RCF.PersonConfirm = "";
+                gr_header.Background = new SolidColorBrush(Color.FromArgb(0xFF, 0x45, 0xCD, 0x45));
             }
             else
             {
                 gr_header.Background = new SolidColorBrush(Colors.Red);
             }
+            List_Result_Check_Final.Add(RCF);
             return RCF;
 
         }
@@ -812,67 +958,83 @@ namespace FinalCheck
 
         public async Task ControlPlc(int timeout)
         {
-            using (TcpClient tcpclient = new TcpClient())
+            try
             {
-                CancellationTokenSource PlcCancellationToken = new CancellationTokenSource();
-                Task connectTask = tcpclient.ConnectAsync(IPAddress.Parse(ConfigConnection.IpAddress), ConfigConnection.Port);
-                if (await Task.WhenAny(connectTask, Task.Delay(timeout, PlcCancellationToken.Token)) != connectTask)
+                using (TcpClient tcpclient = new TcpClient())
                 {
-                    PlcCancellationToken.Cancel();
-                    throw new TimeoutException("Error timed out Open Connection .");
-                }
-                await connectTask;
-                NetworkStream StreamPLc = tcpclient.GetStream();
-                if (await Plc.ReadBit(StreamPLc, timeout, ConfigConnection.ReadData.TypeDeviceTrigerReadCabi, ConfigConnection.ReadData.NameDeviceTrigerReadCabi))
-                {
-                    string DataCabi = (string)await Plc.ReadData(StreamPLc, timeout, ConfigConnection.ReadData.TypeDeviceDataCabi, ConfigConnection.ReadData.NameDeviceDataCabi, ConfigConnection.ReadData.QuantityDataCabi, "String");
-                    if (DataCabi != null && DataCabi.Length >= 19)
+                    CancellationTokenSource PlcCancellationToken = new CancellationTokenSource();
+                    Task connectTask = tcpclient.ConnectAsync(IPAddress.Parse(ConfigConnection.IpAddress), ConfigConnection.PortNumber);
+                    if (await Task.WhenAny(connectTask, Task.Delay(timeout, PlcCancellationToken.Token)) != connectTask)
                     {
-                        ResultCheckFinal RCF = LoadDataForCabi(DataCabi.Substring(0, 19));
-                        if (RCF.Judge_Total == "OK")
+                        PlcCancellationToken.Cancel();
+                        throw new TimeoutException("Error timed out Open Connection .");
+                    }
+                    await connectTask;
+                    NetworkStream StreamPLc = tcpclient.GetStream();
+                    await Plc.WriteBit(StreamPLc, timeout, "M", ConfigConnection.WriteBit.AliveBit);
+                    if (await Plc.ReadBit(StreamPLc, timeout, "M", ConfigConnection.ReadData.NameDeviceTrigerReadCabi))
+                    {
+                        string DataCabi = (string)await Plc.ReadData(StreamPLc, timeout, "D", ConfigConnection.ReadData.NameDeviceDataCabi, ConfigConnection.ReadData.QuantityDataCabi, "String");
+                        if (DataCabi != null && DataCabi.Length >= 19)
                         {
-                            //Save Data Sql
-                            SaveDataFinal();
-                            //
-                            await Plc.WriteASCII(StreamPLc, timeout, ConfigConnection.WriteData.TypeDeviceSendResult, ConfigConnection.WriteData.NameDeviceSendResult, ConfigConnection.WriteData.QuantityDeviceSendResult, "OKOKOKOKOKOKOKOKOKOKOKOKOK");
-                            
-                           
+                            ModelCurrent = DataCabi.Substring(0, 12);
+                            SerialCurrent = DataCabi.Substring(12, 7);
+                            ResultCheckFinal RCF = LoadDataForCabi(DataCabi.Substring(0, 19));
+                            if (RCF.Judge_Total == "OK")
+                            {
+                                //Save Data Sql
+                                SaveDataFinal(DataCabi, RCF);
+                                //
+                                await Plc.WriteASCII(StreamPLc, timeout, "D", ConfigConnection.WriteData.NameDeviceSendResult, ConfigConnection.WriteData.QuantityDeviceSendResult, "OKOKOKOKOKOKOKOKOKOKOKOKOK");
+                            }
+                            else
+                            {
+                                SaveDataFinal(DataCabi, RCF);
+                                string rs = RCF.Judge_VP + RCF.Judge_GAS + RCF.Judge_WI1WITH + RCF.Judge_WI1START + RCF.Judge_IP + RCF.Judge_DF + RCF.Judge_TEMP + RCF.Judge_IOT + RCF.Judge_WI2 + RCF.Judge_PAN + RCF.Judge_CAMBACK + RCF.Judge_CAMFRONT + RCF.Judge_Total;
+                                await Plc.WriteASCII(StreamPLc, timeout, "D", ConfigConnection.WriteData.NameDeviceSendResult, ConfigConnection.WriteData.QuantityDeviceSendResult, rs);
+                                //rs_NG = true;
+                            }
                         }
                         else
                         {
-                            string rs = RCF.Judge_VP + RCF.Judge_GAS + RCF.Judge_WI1WITH + RCF.Judge_WI1START + RCF.Judge_IP + RCF.Judge_DF + RCF.Judge_TEMP + RCF.Judge_IOT + RCF.Judge_WI2 + RCF.Judge_PAN + RCF.Judge_CAMBACK + RCF.Judge_CAMFRONT + RCF.Judge_Total;
-                            await Plc.WriteASCII(StreamPLc, timeout, ConfigConnection.WriteData.TypeDeviceSendResult, ConfigConnection.WriteData.NameDeviceSendResult, ConfigConnection.WriteData.QuantityDeviceSendResult, rs);
-                            rs_NG = true;
+                            await Plc.WriteASCII(StreamPLc, timeout, "D", ConfigConnection.WriteData.NameDeviceSendResult, ConfigConnection.WriteData.QuantityDeviceSendResult, "NoDataCabi");
                         }
-                    }
-                    else
-                    {
-                        await Plc.WriteASCII(StreamPLc, timeout, ConfigConnection.WriteData.TypeDeviceSendResult, ConfigConnection.WriteData.NameDeviceSendResult, ConfigConnection.WriteData.QuantityDeviceSendResult, "NoDataCabi");
-                    }
 
+                    }
+                    tcpclient.Close();
                 }
-                tcpclient.Close();
+                if (rs_NG)
+                {
+                    //Hiểm thị thông tin lỗi:
+                }
             }
-            if (rs_NG)
+            catch (Exception)
             {
-                //Hiểm thị thông tin lỗi:
+
+                
             }
+           
 
         }
-        public void SaveDataFinal(params object[] data)
+        public void SaveDataFinal(string CodeModel,ResultCheckFinal rfc)
         {
             DbConnect db_connect = new DbConnect();
-            db_connect.exnonquery("", CommandType.StoredProcedure, data);
+            db_connect.exnonquery("InsertDataFinalCheck", CommandType.StoredProcedure,CodeModel, rfc.Judge_VP, rfc.Judge_GAS, rfc.Judge_WI1WITH, rfc.Judge_WI1START, rfc.Judge_IP, rfc.Judge_DF, rfc.Judge_TEMP, rfc.Judge_IOT, rfc.Judge_WI2, rfc.Judge_PAN, rfc.Judge_CAMBACK, rfc.Judge_CAMFRONT, rfc.Judge_Total, rfc.ReasonError, rfc.PersonConfirm);
         }
         private async void TimerCheck_Tick(object sender, EventArgs e)
         {
             if (!check_run&&!rs_NG)
             {
                 check_run = true;
-                //await ControlPlc(20000);
+               // await ControlPlc(5000);
                 check_run = false;
             }
         }
 
+        private void MainForm_Closed(object sender, EventArgs e)
+        {
+            TimerCheck.Stop();
+            Environment.Exit(0);
+        }
     }
 }

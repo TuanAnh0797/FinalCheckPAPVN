@@ -360,3 +360,5 @@ C:\Users\70P7970\Desktop\FinalCheckPAPVN\FinalCheck\bin\Debug\ConnectPLC.dll
 C:\Users\70P7970\Desktop\FinalCheckPAPVN\FinalCheck\bin\Debug\ConnectPLC.pdb
 C:\Users\70P7970\Desktop\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.csprojResolveAssemblyReference.cache
 C:\Users\70P7970\Desktop\FinalCheckPAPVN\FinalCheck\bin\Debug\ShowMeTheXAML.dll
+C:\Users\PC\Desktop\FinalCheckPAPVN\FinalCheck\bin\Debug\ShowMeTheXAML.dll
+C:\Users\PC\Desktop\FinalCheckPAPVN\FinalCheck\bin\Debug\config.json
