@@ -1,9 +1,12 @@
 ﻿using FinalCheck.DataBase;
+using FinalCheck.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
@@ -23,10 +26,12 @@ namespace FinalCheck
     /// <summary>
     /// Interaction logic for DataDetail.xaml
     /// </summary>
-    public partial class DataDetail : Window,INotifyPropertyChanged
+    public partial class DataDetail : Window, INotifyPropertyChanged
     {
         private string cabinet;
         public ResultCheckFinal RS_Final;
+        PLC Plc = new PLC();
+        bool check_run = false;
         DispatcherTimer TimerCheck = new DispatcherTimer();
         public string Cabinet
         {
@@ -45,11 +50,11 @@ namespace FinalCheck
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public  DataDetail(string namecabi)
+        public DataDetail(string namecabi)
         {
-           
-           InitializeComponent();
-           txb_namecabi.Text = namecabi;
+
+            InitializeComponent();
+            txb_namecabi.Text = namecabi;
         }
         public DataDetail(string namecabi, ResultCheckFinal RCF)
         {
@@ -57,7 +62,7 @@ namespace FinalCheck
             RS_Final = RCF;
             Task t1 = UpdateJugde(namecabi, RCF);
             Task t2 = UpdateDetail(namecabi);
-            TimerCheck.Interval = TimeSpan.FromMilliseconds(300);
+            TimerCheck.Interval = TimeSpan.FromMilliseconds(500);
             TimerCheck.Start();
             TimerCheck.Tick += TimerCheck_Tick;
         }
@@ -80,9 +85,9 @@ namespace FinalCheck
                     txbl_JugdePAN.Text = RCF.Judge_PAN;
                     txbl_JugdeCAMBACK.Text = RCF.Judge_CAMBACK;
                     txbl_JugdeCAMFRONT.Text = RCF.Judge_CAMFRONT;
-
+                    txbl_JugdeTotal.Text = RCF.Judge_Total;
                 }));
-               
+
             });
             t1.Start();
             return t1;
@@ -119,16 +124,65 @@ namespace FinalCheck
 
                     dtg_CAMFRONT.ItemsSource = dts.Tables[11].DefaultView;
                 }));
-                
-
             });
             t1.Start();
             return t1;
         }
-
-        private void TimerCheck_Tick(object sender, EventArgs e)
+        public async Task<bool> ControlPlc(int timeout)
         {
-            
+            try
+            {
+                using (TcpClient tcpclient = new TcpClient())
+                {
+                    CancellationTokenSource PlcCancellationToken = new CancellationTokenSource();
+                    Task connectTask = tcpclient.ConnectAsync(IPAddress.Parse(ConfigConnection.IpAddress), ConfigConnection.PortNumber);
+                    if (await Task.WhenAny(connectTask, Task.Delay(timeout, PlcCancellationToken.Token)) != connectTask)
+                    {
+                        PlcCancellationToken.Cancel();
+                        throw new TimeoutException("Error timed out Open Connection .");
+                    }
+                    await connectTask;
+                    NetworkStream StreamPLc = tcpclient.GetStream();
+                    await Plc.WriteBit(StreamPLc, timeout, "M", ConfigConnection.WriteBit.AliveBit);
+                    if (await Plc.ReadBit(StreamPLc, timeout, "M", ConfigConnection.ReadData.NameDeviceTrigerReadError))
+                    {
+                        string DataContentError = (string)await Plc.ReadData(StreamPLc, timeout, "D", ConfigConnection.ReadData.NameDeviceDataReason, ConfigConnection.ReadData.QuantityDataReason, "String");
+                        string DataUser = (string)await Plc.ReadData(StreamPLc, timeout, "D", ConfigConnection.ReadData.NameDeviceDataPerson, ConfigConnection.ReadData.QuantityDataPerson, "String");
+                        UpdateDataFinalCheck(txb_namecabi.Text, DataContentError, DataUser);
+                        await Plc.WriteBit(StreamPLc, timeout, "M", ConfigConnection.WriteBit.NameDeviceSendConfirm);
+                        return true;
+                    }
+                    tcpclient.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+            return false;
+
+
+        }
+        public void UpdateDataFinalCheck(string ModelCode, string ReasonError, string PersonConfirm)
+        {
+            DbConnect db_connect = new DbConnect();
+            db_connect.exnonquery("UpdateDataFinalCheck", CommandType.StoredProcedure, ModelCode, ReasonError, PersonConfirm);
+
+        }
+
+        private async void TimerCheck_Tick(object sender, EventArgs e)
+        {
+            if (!check_run)
+            {
+                check_run = true;
+                if (await ControlPlc(5000))
+                {
+                    this.Close();
+                }
+                check_run = false;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -136,9 +190,10 @@ namespace FinalCheck
             this.Close();
         }
 
-        private void MyControlBarTA_Loaded(object sender, RoutedEventArgs e)
+        private void MyControlBarTA_Closed(object sender, EventArgs e)
         {
-           
+            TimerCheck.Stop();
+            check_run = false;
         }
     }
 }

@@ -23,7 +23,6 @@ using System.Windows.Controls.Primitives;
 using System.Runtime.CompilerServices;
 using System.Data;
 using FinalCheck.DataBase;
-using TALibrary;
 using System.Net.Sockets;
 using FinalCheck.Model;
 using System.Net;
@@ -151,8 +150,8 @@ namespace FinalCheck
                 loadConfigJson();
                 loadConfigSQL();
                 //time1.Interval = TimeSpan.FromSeconds(5);
-                TimerCheck.Interval = TimeSpan.FromMilliseconds(300);
-                TimerUpdateUI.Interval = TimeSpan.FromMilliseconds(1000);
+                TimerCheck.Interval = TimeSpan.FromMilliseconds(500);
+                TimerUpdateUI.Interval = TimeSpan.FromMilliseconds(500);
                 innitproperty();
                 innitchart();
                 //time1.Start();
@@ -173,7 +172,7 @@ namespace FinalCheck
 
         }
 
-       
+
 
         public void loadConfigJson()
         {
@@ -213,10 +212,10 @@ namespace FinalCheck
                 throw (new Exception("Không tìm thấy dữ liệu ConfigConnectPLC. Xem datatable: ConfigConnectionPlc"));
             }
 
-            
+
         }
 
-      
+
 
         public void innitchart()
         {
@@ -755,18 +754,17 @@ namespace FinalCheck
         //Load Data For Table History
         public void LoadDataForTableHistory()
         {
+            dataforlistview.Clear();
             DbConnect db_connect = new DbConnect();
-            DataTable dt = db_connect.StoreFillDT("", CommandType.StoredProcedure, "");
+            DataTable dt = db_connect.StoreFillDT("LoadDataForTableHistory", CommandType.StoredProcedure);
             if (dt.Rows.Count > 0)
             {
-                ObservableCollection<ResultMain> Tempdata = new ObservableCollection<ResultMain>();
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    ResultMain RM = new ResultMain(i+1,dt.Rows[i]["Cabinet"].ToString(), dt.Rows[i]["Judge"].ToString(), dt.Rows[i]["TimeCheck"].ToString());
-                    Tempdata.Add(RM);
+                    ResultMain RM = new ResultMain(i + 1, dt.Rows[i]["CodeModel"].ToString(), dt.Rows[i]["Judge_Total"].ToString(), dt.Rows[i]["TimeUpdate"].ToString());
+                    dataforlistview.Add(RM);
                 }
-                dataforlistview.Clear();
-                dataforlistview = Tempdata;
+
             }
         }
 
@@ -775,51 +773,51 @@ namespace FinalCheck
         public void LoadDataForChart()
         {
             DbConnect db_connect = new DbConnect();
-            DataTable dt = db_connect.StoreFillDT("", CommandType.StoredProcedure, "");
+            DataTable dt = db_connect.StoreFillDT("LoadDataForChart", CommandType.StoredProcedure);
             //OK
             if (dt.Rows.Count > 0)
             {
-                VPOK.Value = (double)dt.Rows[0]["VPOK"];
-                GASOILOK.Value = (double)dt.Rows[0]["GASOILOK"];
-                WI1WITHOK.Value = (double)dt.Rows[0]["WI1WITHOK"];
-                WI1STARTOK.Value = (double)dt.Rows[0]["WI1STARTOK"];
-                IPOK.Value = (double)dt.Rows[0]["IPOK"];
-                DFOK.Value = (double)dt.Rows[0]["DFOK"];
-                TEMPOK.Value = (double)dt.Rows[0]["TEMPOK"];
-                IOTOK.Value = (double)dt.Rows[0]["IOTOK"];
-                WI2OK.Value = (double)dt.Rows[0]["WI2OK"];
-                PANOK.Value = (double)dt.Rows[0]["PANOK"];
-                CAMBACKOK.Value = (double)dt.Rows[0]["CAMBACKOK"];
-                CAMFRONTOK.Value = (double)dt.Rows[0]["CAMFRONTOK"];
+                VPOK.Value = double.Parse(dt.Rows[0]["VPOK"].ToString());
+                GASOILOK.Value = double.Parse(dt.Rows[0]["GASOILOK"].ToString());
+                WI1WITHOK.Value = double.Parse(dt.Rows[0]["WI1WITHOK"].ToString());
+                WI1STARTOK.Value = double.Parse(dt.Rows[0]["WI1STARTOK"].ToString());
+                IPOK.Value = double.Parse(dt.Rows[0]["IPOK"].ToString());
+                DFOK.Value = double.Parse(dt.Rows[0]["DFOK"].ToString());
+                TEMPOK.Value = double.Parse(dt.Rows[0]["TEMPOK"].ToString());
+                IOTOK.Value = double.Parse(dt.Rows[0]["IOTOK"].ToString());
+                WI2OK.Value = double.Parse(dt.Rows[0]["WI2OK"].ToString());
+                PANOK.Value = double.Parse(dt.Rows[0]["PANOK"].ToString());
+                CAMBACKOK.Value = double.Parse(dt.Rows[0]["CAMBACKOK"].ToString());
+                CAMFRONTOK.Value = double.Parse(dt.Rows[0]["CAMFRONTOK"].ToString());
                 //NG
-                VPNG.Value = (double)dt.Rows[0]["VPNG"];
-                GASOILNG.Value = (double)dt.Rows[0]["GASOILNG"];
-                WI1WITHNG.Value = (double)dt.Rows[0]["WI1WITHNG"];
-                WI1STARTNG.Value = (double)dt.Rows[0]["WI1STARTNG"];
-                IPNG.Value = (double)dt.Rows[0]["IPNG"];
-                DFNG.Value = (double)dt.Rows[0]["DFNG"];
-                TEMPNG.Value = (double)dt.Rows[0]["TEMPNG"];
-                IOTNG.Value = (double)dt.Rows[0]["IOTNG"];
-                WI2NG.Value = (double)dt.Rows[0]["WI2NG"];
-                PANNG.Value = (double)dt.Rows[0]["PANNG"];
-                CAMBACKNG.Value = (double)dt.Rows[0]["CAMBACKNG"];
-                CAMFRONTNG.Value = (double)dt.Rows[0]["CAMFRONTNG"];
+                VPNG.Value = double.Parse(dt.Rows[0]["VPNG"].ToString());
+                GASOILNG.Value = double.Parse(dt.Rows[0]["GASOILNG"].ToString());
+                WI1WITHNG.Value = double.Parse(dt.Rows[0]["WI1WITHNG"].ToString());
+                WI1STARTNG.Value = double.Parse(dt.Rows[0]["WI1STARTNG"].ToString());
+                IPNG.Value = double.Parse(dt.Rows[0]["IPNG"].ToString());
+                DFNG.Value = double.Parse(dt.Rows[0]["DFNG"].ToString());
+                TEMPNG.Value = double.Parse(dt.Rows[0]["TEMPNG"].ToString());
+                IOTNG.Value = double.Parse(dt.Rows[0]["IOTNG"].ToString());
+                WI2NG.Value = double.Parse(dt.Rows[0]["WI2NG"].ToString());
+                PANNG.Value = double.Parse(dt.Rows[0]["PANNG"].ToString());
+                CAMBACKNG.Value = double.Parse(dt.Rows[0]["CAMBACKNG"].ToString());
+                CAMFRONTNG.Value = double.Parse(dt.Rows[0]["CAMFRONTNG"].ToString());
                 //PENDING
-                VPPENDING.Value = (double)dt.Rows[0]["VPPENDING"];
-                GASOILPENDING.Value = (double)dt.Rows[0]["GASOILPENDING"];
-                WI1WITHPENDING.Value = (double)dt.Rows[0]["WI1WITHPENDING"];
-                WI1STARTPENDING.Value = (double)dt.Rows[0]["WI1STARTPENDING"];
-                IPPENDING.Value = (double)dt.Rows[0]["IPPENDING"];
-                DFPENDING.Value = (double)dt.Rows[0]["DFPENDING"];
-                TEMPPENDING.Value = (double)dt.Rows[0]["TEMPPENDING"];
-                IOTPENDING.Value = (double)dt.Rows[0]["IOTPENDING"];
-                WI2PENDING.Value = (double)dt.Rows[0]["WI2PENDING"];
-                PANPENDING.Value = (double)dt.Rows[0]["PANPENDING"];
-                CAMBACKPENDING.Value = (double)dt.Rows[0]["CAMBACKPENDING"];
-                CAMFRONTPENDING.Value = (double)dt.Rows[0]["CAMFRONTPENDING"];
+                VPPENDING.Value = double.Parse(dt.Rows[0]["VPPENDING"].ToString());
+                GASOILPENDING.Value = double.Parse(dt.Rows[0]["GASOILPENDING"].ToString());
+                WI1WITHPENDING.Value = double.Parse(dt.Rows[0]["WI1WITHPENDING"].ToString());
+                WI1STARTPENDING.Value = double.Parse(dt.Rows[0]["WI1STARTPENDING"].ToString());
+                IPPENDING.Value = double.Parse(dt.Rows[0]["IPPENDING"].ToString());
+                DFPENDING.Value = double.Parse(dt.Rows[0]["DFPENDING"].ToString());
+                TEMPPENDING.Value = double.Parse(dt.Rows[0]["TEMPPENDING"].ToString());
+                IOTPENDING.Value = double.Parse(dt.Rows[0]["IOTPENDING"].ToString());
+                WI2PENDING.Value = double.Parse(dt.Rows[0]["WI2PENDING"].ToString());
+                PANPENDING.Value = double.Parse(dt.Rows[0]["PANPENDING"].ToString());
+                CAMBACKPENDING.Value = double.Parse(dt.Rows[0]["CAMBACKPENDING"].ToString());
+                CAMFRONTPENDING.Value = double.Parse(dt.Rows[0]["CAMFRONTPENDING"].ToString());
                 //Total
-                TotalOK.Value = (double)dt.Rows[0]["TotalOK"];
-                TotalNG.Value = (double)dt.Rows[0]["TotalNG"];
+                TotalOK.Value = double.Parse(dt.Rows[0]["TotalOK"].ToString());
+                TotalNG.Value = double.Parse(dt.Rows[0]["TotalNG"].ToString());
             }
         }
         public ResultCheckFinal LoadDataForCabi(string cabinet)
@@ -830,8 +828,10 @@ namespace FinalCheck
             DataTable dt = db_connect.StoreFillDT("GetJudgeAllLine", CommandType.StoredProcedure, cabinet);
             if (dt.Rows.Count > 0)
             {
+                RCF.PersonConfirm = "NO";
+                RCF.ReasonError = "NO";
                 //
-                if (dt.Rows[0]["JudgeVP"].ToString() == "OK" && dt.Rows[0]["JudgeVP"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeVP"].ToString() == "OK" || dt.Rows[0]["JudgeVP"].ToString() == "NG")
                 {
                     RCF.Judge_VP = dt.Rows[0]["JudgeVP"].ToString();
                 }
@@ -840,16 +840,16 @@ namespace FinalCheck
                     RCF.Judge_VP = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeGAS"].ToString() == "OK" && dt.Rows[0]["JudgeGAS"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeGAS"].ToString() == "OK" || dt.Rows[0]["JudgeGAS"].ToString() == "NG")
                 {
-                    RCF.Judge_GAS = dt.Rows[0]["Judge_GAS"].ToString();
+                    RCF.Judge_GAS = dt.Rows[0]["JudgeGAS"].ToString();
                 }
                 else
                 {
                     RCF.Judge_GAS = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeWI1WITH"].ToString() == "OK" && dt.Rows[0]["JudgeWI1WITH"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeWI1WITH"].ToString() == "OK" || dt.Rows[0]["JudgeWI1WITH"].ToString() == "NG")
                 {
                     RCF.Judge_WI1WITH = dt.Rows[0]["JudgeWI1WITH"].ToString();
                 }
@@ -858,16 +858,16 @@ namespace FinalCheck
                     RCF.Judge_WI1WITH = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeWI1START"].ToString() == "OK" && dt.Rows[0]["JudgeWI1START"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeWI1START"].ToString() == "OK" || dt.Rows[0]["JudgeWI1START"].ToString() == "NG")
                 {
-                    RCF.Judge_WI1START = dt.Rows[0]["Judge_WI1START"].ToString();
+                    RCF.Judge_WI1START = dt.Rows[0]["JudgeWI1START"].ToString();
                 }
                 else
                 {
                     RCF.Judge_WI1START = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeIP"].ToString() == "OK" && dt.Rows[0]["JudgeIP"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeIP"].ToString() == "OK" || dt.Rows[0]["JudgeIP"].ToString() == "NG")
                 {
                     RCF.Judge_IP = dt.Rows[0]["JudgeIP"].ToString();
                 }
@@ -876,7 +876,7 @@ namespace FinalCheck
                     RCF.Judge_IP = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeDF"].ToString() == "OK" && dt.Rows[0]["JudgeDF"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeDF"].ToString() == "OK" || dt.Rows[0]["JudgeDF"].ToString() == "NG")
                 {
                     RCF.Judge_DF = dt.Rows[0]["JudgeDF"].ToString();
                 }
@@ -885,16 +885,16 @@ namespace FinalCheck
                     RCF.Judge_DF = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeTEMP"].ToString() == "OK" && dt.Rows[0]["JudgeTEMP"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeTEMP"].ToString() == "OK" || dt.Rows[0]["JudgeTEMP"].ToString() == "NG")
                 {
-                    RCF.Judge_TEMP = dt.Rows[0]["Judge_TEMP"].ToString();
+                    RCF.Judge_TEMP = dt.Rows[0]["JudgeTEMP"].ToString();
                 }
                 else
                 {
                     RCF.Judge_TEMP = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeIOT"].ToString() == "OK" && dt.Rows[0]["JudgeIOT"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeIOT"].ToString() == "OK" || dt.Rows[0]["JudgeIOT"].ToString() == "NG")
                 {
                     RCF.Judge_IOT = dt.Rows[0]["JudgeIOT"].ToString();
                 }
@@ -903,7 +903,7 @@ namespace FinalCheck
                     RCF.Judge_IOT = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeWI2"].ToString() == "OK" && dt.Rows[0]["JudgeWI2"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeWI2"].ToString() == "OK" || dt.Rows[0]["JudgeWI2"].ToString() == "NG")
                 {
                     RCF.Judge_WI2 = dt.Rows[0]["JudgeWI2"].ToString();
                 }
@@ -912,7 +912,7 @@ namespace FinalCheck
                     RCF.Judge_WI2 = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgePAN"].ToString() == "OK" && dt.Rows[0]["JudgePAN"].ToString() == "NG")
+                if (dt.Rows[0]["JudgePAN"].ToString() == "OK" || dt.Rows[0]["JudgePAN"].ToString() == "NG")
                 {
                     RCF.Judge_PAN = dt.Rows[0]["JudgePAN"].ToString();
                 }
@@ -921,7 +921,7 @@ namespace FinalCheck
                     RCF.Judge_PAN = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeCAMBACK"].ToString() == "OK" && dt.Rows[0]["JudgeCAMBACK"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeCAMBACK"].ToString() == "OK" || dt.Rows[0]["JudgeCAMBACK"].ToString() == "NG")
                 {
                     RCF.Judge_CAMBACK = dt.Rows[0]["JudgeCAMBACK"].ToString();
                 }
@@ -930,7 +930,7 @@ namespace FinalCheck
                     RCF.Judge_CAMBACK = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeCAMFRONT"].ToString() == "OK" && dt.Rows[0]["JudgeCAMFRONT"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeCAMFRONT"].ToString() == "OK" || dt.Rows[0]["JudgeCAMFRONT"].ToString() == "NG")
                 {
                     RCF.Judge_CAMFRONT = dt.Rows[0]["JudgeCAMFRONT"].ToString();
                 }
@@ -1006,7 +1006,7 @@ namespace FinalCheck
                                 //
                                 await Plc.WriteASCII(StreamPLc, timeout, "D", ConfigConnection.WriteData.NameDeviceSendResult, ConfigConnection.WriteData.QuantityDeviceSendResult, "OKOKOKOKOKOKOKOKOKOKOKOKOK");
                                 //
-                               
+
                             }
                             else
                             {
@@ -1027,16 +1027,17 @@ namespace FinalCheck
                 }
                 if (rs_NG)
                 {
-                    //Hiểm thị thông tin lỗi:
+
                     await showdetailError(DataCabi, RCF);
+                    rs_NG = false;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
 
-                
             }
-           
+
 
         }
         public async Task showdetailError(string CodeModel, ResultCheckFinal RCF)
@@ -1046,21 +1047,21 @@ namespace FinalCheck
             {
                 this.Dispatcher?.Invoke(new Action(() =>
                 {
-                    DataDetail p = new DataDetail(CodeModel,RCF);
+                    DataDetail p = new DataDetail(CodeModel, RCF);
                     p.ShowDialog();
                 }));
             });
             result.Start();
             await result;
         }
-        public void SaveDataFinal(string CodeModel,ResultCheckFinal rfc)
+        public void SaveDataFinal(string CodeModel, ResultCheckFinal rfc)
         {
             DbConnect db_connect = new DbConnect();
-            db_connect.exnonquery("InsertDataFinalCheck", CommandType.StoredProcedure,CodeModel, rfc.Judge_VP, rfc.Judge_GAS, rfc.Judge_WI1WITH, rfc.Judge_WI1START, rfc.Judge_IP, rfc.Judge_DF, rfc.Judge_TEMP, rfc.Judge_IOT, rfc.Judge_WI2, rfc.Judge_PAN, rfc.Judge_CAMBACK, rfc.Judge_CAMFRONT, rfc.Judge_Total, rfc.ReasonError, rfc.PersonConfirm);
+            db_connect.exnonquery("InsertDataFinalCheck", CommandType.StoredProcedure, CodeModel, rfc.Judge_VP, rfc.Judge_GAS, rfc.Judge_WI1WITH, rfc.Judge_WI1START, rfc.Judge_IP, rfc.Judge_DF, rfc.Judge_TEMP, rfc.Judge_IOT, rfc.Judge_WI2, rfc.Judge_PAN, rfc.Judge_CAMBACK, rfc.Judge_CAMFRONT, rfc.Judge_Total, rfc.ReasonError, rfc.PersonConfirm);
         }
         private async void TimerCheck_Tick(object sender, EventArgs e)
         {
-            if (!check_run&&!rs_NG)
+            if (!check_run)
             {
                 check_run = true;
                 await ControlPlc(5000);
@@ -1071,8 +1072,12 @@ namespace FinalCheck
         {
             Task t1 = new Task(() =>
             {
-                LoadDataForTableHistory();
-                LoadDataForChart();
+                this.Dispatcher?.Invoke(() =>
+                {
+                    LoadDataForTableHistory();
+                    LoadDataForChart();
+                });
+
             });
             t1.Start();
             await t1;
@@ -1088,7 +1093,6 @@ namespace FinalCheck
                     TrigerUpdateUI = false;
                     check_run_UpdateUi = false;
                 }
-               
             }
         }
 
