@@ -43,8 +43,11 @@ namespace FinalCheck
         PLC Plc = new PLC();
         //DispatcherTimer time1 = new DispatcherTimer();
         DispatcherTimer TimerCheck = new DispatcherTimer();
+        DispatcherTimer TimerUpdateUI = new DispatcherTimer();
         bool check_run = false;
+        bool check_run_UpdateUi = false;
         bool rs_NG = false;
+        bool TrigerUpdateUI = true;
         public Func<double, string> Formatter { get; set; }
 
         public ObservableCollection<ResultMain> dataforlistview { set; get; }
@@ -149,13 +152,17 @@ namespace FinalCheck
                 loadConfigSQL();
                 //time1.Interval = TimeSpan.FromSeconds(5);
                 TimerCheck.Interval = TimeSpan.FromMilliseconds(300);
+                TimerUpdateUI.Interval = TimeSpan.FromMilliseconds(1000);
                 innitproperty();
                 innitchart();
                 //time1.Start();
                 TimerCheck.Start();
                 TimerCheck.Tick += TimerCheck_Tick;
+
+                TimerUpdateUI.Start();
+                TimerUpdateUI.Tick += TimerUpdateUI_Tick;
                 //time1.Tick += Time1_Tick;
-                LoadDataForCabi("abc");
+
             }
             catch (Exception ex)
             {
@@ -165,6 +172,9 @@ namespace FinalCheck
 
 
         }
+
+       
+
         public void loadConfigJson()
         {
             string dataconfig = File.ReadAllText(Directory.GetCurrentDirectory() + "//config.json");
@@ -643,15 +653,6 @@ namespace FinalCheck
             };
             Formatter = value => value.ToString();
         }
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-
-
-
-        //}
-
-
-
         private async void lv1_MouseUp(object sender, MouseButtonEventArgs e)
         {
             await showdetail();
@@ -751,7 +752,23 @@ namespace FinalCheck
             gView.Columns[10].Width = workingWidth * with;
             gView.Columns[11].Width = workingWidth * with;
         }
-
+        //Load Data For Table History
+        public void LoadDataForTableHistory()
+        {
+            DbConnect db_connect = new DbConnect();
+            DataTable dt = db_connect.StoreFillDT("", CommandType.StoredProcedure, "");
+            if (dt.Rows.Count > 0)
+            {
+                ObservableCollection<ResultMain> Tempdata = new ObservableCollection<ResultMain>();
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    ResultMain RM = new ResultMain(i+1,dt.Rows[i]["Cabinet"].ToString(), dt.Rows[i]["Judge"].ToString(), dt.Rows[i]["TimeCheck"].ToString());
+                    Tempdata.Add(RM);
+                }
+                dataforlistview.Clear();
+                dataforlistview = Tempdata;
+            }
+        }
 
         //Load Data For Chart
 
@@ -960,6 +977,8 @@ namespace FinalCheck
         {
             try
             {
+                ResultCheckFinal RCF = new ResultCheckFinal();
+                string DataCabi = "";
                 using (TcpClient tcpclient = new TcpClient())
                 {
                     CancellationTokenSource PlcCancellationToken = new CancellationTokenSource();
@@ -974,26 +993,29 @@ namespace FinalCheck
                     await Plc.WriteBit(StreamPLc, timeout, "M", ConfigConnection.WriteBit.AliveBit);
                     if (await Plc.ReadBit(StreamPLc, timeout, "M", ConfigConnection.ReadData.NameDeviceTrigerReadCabi))
                     {
-                        string DataCabi = (string)await Plc.ReadData(StreamPLc, timeout, "D", ConfigConnection.ReadData.NameDeviceDataCabi, ConfigConnection.ReadData.QuantityDataCabi, "String");
+                        DataCabi = (string)await Plc.ReadData(StreamPLc, timeout, "D", ConfigConnection.ReadData.NameDeviceDataCabi, ConfigConnection.ReadData.QuantityDataCabi, "String");
                         if (DataCabi != null && DataCabi.Length >= 19)
                         {
                             ModelCurrent = DataCabi.Substring(0, 12);
                             SerialCurrent = DataCabi.Substring(12, 7);
-                            ResultCheckFinal RCF = LoadDataForCabi(DataCabi.Substring(0, 19));
+                            RCF = LoadDataForCabi(DataCabi.Substring(0, 19));
                             if (RCF.Judge_Total == "OK")
                             {
                                 //Save Data Sql
                                 SaveDataFinal(DataCabi, RCF);
                                 //
                                 await Plc.WriteASCII(StreamPLc, timeout, "D", ConfigConnection.WriteData.NameDeviceSendResult, ConfigConnection.WriteData.QuantityDeviceSendResult, "OKOKOKOKOKOKOKOKOKOKOKOKOK");
+                                //
+                               
                             }
                             else
                             {
                                 SaveDataFinal(DataCabi, RCF);
                                 string rs = RCF.Judge_VP + RCF.Judge_GAS + RCF.Judge_WI1WITH + RCF.Judge_WI1START + RCF.Judge_IP + RCF.Judge_DF + RCF.Judge_TEMP + RCF.Judge_IOT + RCF.Judge_WI2 + RCF.Judge_PAN + RCF.Judge_CAMBACK + RCF.Judge_CAMFRONT + RCF.Judge_Total;
                                 await Plc.WriteASCII(StreamPLc, timeout, "D", ConfigConnection.WriteData.NameDeviceSendResult, ConfigConnection.WriteData.QuantityDeviceSendResult, rs);
-                                //rs_NG = true;
+                                rs_NG = true;
                             }
+                            TrigerUpdateUI = true;
                         }
                         else
                         {
@@ -1006,6 +1028,7 @@ namespace FinalCheck
                 if (rs_NG)
                 {
                     //Hiểm thị thông tin lỗi:
+                    await showdetailError(DataCabi, RCF);
                 }
             }
             catch (Exception)
@@ -1015,6 +1038,20 @@ namespace FinalCheck
             }
            
 
+        }
+        public async Task showdetailError(string CodeModel, ResultCheckFinal RCF)
+        {
+            Task result;
+            result = new Task(() =>
+            {
+                this.Dispatcher?.Invoke(new Action(() =>
+                {
+                    DataDetail p = new DataDetail(CodeModel,RCF);
+                    p.ShowDialog();
+                }));
+            });
+            result.Start();
+            await result;
         }
         public void SaveDataFinal(string CodeModel,ResultCheckFinal rfc)
         {
@@ -1026,14 +1063,39 @@ namespace FinalCheck
             if (!check_run&&!rs_NG)
             {
                 check_run = true;
-               // await ControlPlc(5000);
+                await ControlPlc(5000);
                 check_run = false;
+            }
+        }
+        public async Task MethodUpdateUI()
+        {
+            Task t1 = new Task(() =>
+            {
+                LoadDataForTableHistory();
+                LoadDataForChart();
+            });
+            t1.Start();
+            await t1;
+        }
+        private async void TimerUpdateUI_Tick(object sender, EventArgs e)
+        {
+            if (TrigerUpdateUI)
+            {
+                if (!check_run_UpdateUi)
+                {
+                    check_run_UpdateUi = true;
+                    await MethodUpdateUI();
+                    TrigerUpdateUI = false;
+                    check_run_UpdateUi = false;
+                }
+               
             }
         }
 
         private void MainForm_Closed(object sender, EventArgs e)
         {
             TimerCheck.Stop();
+            TimerUpdateUI.Stop();
             Environment.Exit(0);
         }
     }

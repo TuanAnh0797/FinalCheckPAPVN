@@ -123,11 +123,6 @@ namespace FinalCheck
 
             dtg_CAMFRONT.ItemsSource = dts.Tables[11].DefaultView;
 
-
-
-
-
-
         }
 
     }

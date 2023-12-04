@@ -30,13 +30,18 @@
         <uc:TitleBar Grid.Row="0">
         </uc:TitleBar>
         <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="34*"/>
+                <ColumnDefinition Width="44*"/>
+                <ColumnDefinition Width="347*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="30"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Name="txb_namecabi" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Medium" Text="Name Cabi"></TextBlock>
-            <Border Margin="5,0,5,5"  Grid.Column="1" Grid.Row="1" BorderThickness="0" BorderBrush="White" Background="#FFD6CFCF" >
+            <TextBlock Name="txb_namecabi" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Medium" Text="Name Cabi" Grid.Column="2" Margin="194,-3,350,457" Grid.RowSpan="2"></TextBlock>
+            <Border Margin="5,0,5,5" Grid.Row="1" BorderThickness="0" BorderBrush="White" Background="#FFD6CFCF" Grid.ColumnSpan="3" >
                 <Grid>
                     <Grid.Resources>
                         <Style TargetType="Border" x:Key="bordertable">
@@ -129,20 +134,18 @@
                     <Grid  Grid.Row="1" Grid.Column="2">
 
                         <Border BorderThickness="1" Style="{StaticResource bordertable}" >
-
+                            <DataGrid Name="dtg_VP" AutoGenerateColumns="True" Grid.Row="0"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
                         </Border>
                     </Grid>
-                    <Grid  Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
-                    </Grid>
+
                     <Grid  Grid.Row="1" Grid.Column="3">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Pending"></TextBlock>
+                            <TextBlock Name="txbl_JugdeVP" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="1" Grid.Column="4" Grid.RowSpan="13">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center" Text="OK"></TextBlock>
+                            <TextBlock Name="txbl_JugdeTotal" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
 
@@ -160,14 +163,14 @@
                     <Grid  Grid.Row="2" Grid.Column="2">
 
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-
+                            <DataGrid Name="dtg_GAS" AutoGenerateColumns="True" Grid.Row="1"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
                         </Border>
 
                     </Grid>
 
                     <Grid  Grid.Row="2" Grid.Column="3">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                            <TextBlock Name="txbl_JugdeGAS" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
 
@@ -184,14 +187,14 @@
                     </Grid>
                     <Grid  Grid.Row="3" Grid.Column="2">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}" >
-
+                            <DataGrid Name="dtg_WI1WITH" AutoGenerateColumns="True" Grid.Row="2"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
                         </Border>
 
                     </Grid>
 
                     <Grid  Grid.Row="3" Grid.Column="3">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                            <TextBlock Name="txbl_JugdeWI1WITH" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
                     <!--Row5-->
@@ -208,12 +211,12 @@
                     <Grid  Grid.Row="4" Grid.Column="2">
 
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-
+                            <DataGrid Name="dtg_WI1START" AutoGenerateColumns="True" Grid.Row="3"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="4" Grid.Column="3">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                            <TextBlock Name="txbl_JugdeWI1START" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
                     <!--Row6-->
@@ -230,11 +233,12 @@
                     <Grid  Grid.Row="5" Grid.Column="2">
 
                         <Border BorderThickness="1" Style="{StaticResource bordertable}" >
+                            <DataGrid Name="dtg_IP" AutoGenerateColumns="True" Grid.Row="4"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="5" Grid.Column="3">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                            <TextBlock Name="txbl_JugdeIP" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
                     <!--Row7-->
@@ -251,11 +255,12 @@
                     <Grid  Grid.Row="6" Grid.Column="2">
 
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <DataGrid Name="dtg_DF" AutoGenerateColumns="True" Grid.Row="5"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="6" Grid.Column="3">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                            <TextBlock Name="txbl_JugdeDF" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
                     <!--Row8-->
@@ -270,13 +275,15 @@
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="7" Grid.Column="2" >
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <DataGrid Name="dtg_TEMP" AutoGenerateColumns="True" Grid.Row="6"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
+                        </Border>
                     </Grid>
 
 
                     <Grid  Grid.Row="7" Grid.Column="3">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                            <TextBlock Name="txbl_JugdeTEMP" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
 
@@ -294,6 +301,7 @@
                     </Grid>
                     <Grid  Grid.Row="8" Grid.Column="2">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <DataGrid Name="dtg_IOT" AutoGenerateColumns="True" Grid.Row="7"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="8" Grid.Column="3">
@@ -303,7 +311,7 @@
                     </Grid>
                     <Grid  Grid.Row="8" Grid.Column="3">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                            <TextBlock Name="txbl_JugdeIOT" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
                     <!--Rownew-->
@@ -320,14 +328,14 @@
                     <Grid  Grid.Row="9" Grid.Column="2">
 
                         <Border BorderThickness="1" Style="{StaticResource bordertable}" >
-
+                            <DataGrid Name="dtg_WI2" AutoGenerateColumns="True" Grid.Row="8"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
                         </Border>
 
                     </Grid>
 
                     <Grid  Grid.Row="9" Grid.Column="3">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                            <TextBlock Name="txbl_JugdeWI2" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
                     <!--Row11-->
@@ -343,11 +351,12 @@
                     </Grid>
                     <Grid  Grid.Row="10" Grid.Column="2">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <DataGrid Name="dtg_PAN" AutoGenerateColumns="True" Grid.Row="9"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="10" Grid.Column="3">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                            <TextBlock Name="txbl_JugdePAN" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
                     <!--Row12-->
@@ -361,14 +370,16 @@
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Cam Back</TextBlock>
                         </Border>
                     </Grid>
-                    <Grid  Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="2">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
+                    <Grid  Grid.Row="11" Grid.Column="2">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <DataGrid Name="dtg_CAMBACK" AutoGenerateColumns="True" Grid.Row="10"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
+                        </Border>
                     </Grid>
 
 
                     <Grid  Grid.Row="11" Grid.Column="3">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                            <TextBlock Name="txbl_JugdeCAMBACK" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
                     <!--Row13-->
@@ -382,14 +393,16 @@
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Cam Front</TextBlock>
                         </Border>
                     </Grid>
-                    <Grid  Grid.Row="12" Grid.Column="2" Grid.ColumnSpan="2">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}"></Border>
+                    <Grid  Grid.Row="12" Grid.Column="2">
+                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                            <DataGrid Name="dtg_CAMFRONT" AutoGenerateColumns="True" Grid.Row="11"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
+                        </Border>
                     </Grid>
 
 
                     <Grid  Grid.Row="12" Grid.Column="3">
                         <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <TextBlock Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"> OK</TextBlock>
+                            <TextBlock Name="txbl_JugdeCAMFRONT" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
 
@@ -399,7 +412,7 @@
 
 
             </Border>
-            <Grid Grid.Row="2" Margin="5,0,5,5">
+            <Grid Grid.Row="2" Margin="5,0,5,5" Grid.ColumnSpan="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
