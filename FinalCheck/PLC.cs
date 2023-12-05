@@ -36,14 +36,14 @@ namespace FinalCheck
             if (await Task.WhenAny(writeTask, Task.Delay(TimeOut, CancellationToken.Token)) != writeTask)
             {
                 CancellationToken.Cancel();
-                throw new TimeoutException($"{typedevice}{device} Error Trigger Exist Send timed out.");
+                throw new TimeoutException($"{typedevice}{device} Error Trigger Exist Send timed out PLC.");
             }
             await writeTask;
             Task<int> readTask = stream.ReadAsync(DataReciveFromPLC, 0, DataReciveFromPLC.Length, CancellationToken.Token);
             if (await Task.WhenAny(readTask, Task.Delay(TimeOut, CancellationToken.Token)) != readTask)
             {
                 CancellationToken.Cancel();
-                throw new TimeoutException($"{typedevice}{device} Error Trigger Exist Send timed out.");
+                throw new TimeoutException($"{typedevice}{device} Error Trigger Exist Send timed out PLC.");
             }
             int bytesRead = await readTask;
             if (DataReciveFromPLC[9] == 0 && DataReciveFromPLC[10] == 0)
@@ -72,14 +72,14 @@ namespace FinalCheck
             if (await Task.WhenAny(writeTask, Task.Delay(TimeOut, CancellationToken.Token)) != writeTask)
             {
                 CancellationToken.Cancel();
-                throw new TimeoutException($"{typedevice}{device} Error Trigger Exist Send timed out.");
+                throw new TimeoutException($"{typedevice}{device} Error Trigger Exist Send timed out PLC.");
             }
             await writeTask;
             Task<int> readTask = stream.ReadAsync(DataReciveFromPLC, 0, DataReciveFromPLC.Length, CancellationToken.Token);
             if (await Task.WhenAny(readTask, Task.Delay(TimeOut, CancellationToken.Token)) != readTask)
             {
                 CancellationToken.Cancel();
-                throw new TimeoutException($"{typedevice}{device} Error Trigger Exist Send timed out.");
+                throw new TimeoutException($"{typedevice}{device} Error Trigger Exist Send timed out PLC.");
             }
             int bytesRead = await readTask;
             if (DataReciveFromPLC[9] == 0 && DataReciveFromPLC[10] == 0)
@@ -124,14 +124,14 @@ namespace FinalCheck
             if (await Task.WhenAny(writeTask, Task.Delay(TimeOut, CancellationToken.Token)) != writeTask)
             {
                 CancellationToken.Cancel();
-                throw new TimeoutException($"{typedevice}{device} Error Trigger Exist Send timed out.");
+                throw new TimeoutException($"{typedevice}{device} Error Trigger Exist Send timed out PLC.");
             }
             await writeTask;
             Task<int> readTask = stream.ReadAsync(DataReciveFromPLC, 0, DataReciveFromPLC.Length, CancellationToken.Token);
             if (await Task.WhenAny(readTask, Task.Delay(TimeOut, CancellationToken.Token)) != readTask)
             {
                 CancellationToken.Cancel();
-                throw new TimeoutException($"{typedevice}{device} Error Trigger Exist Send timed out.");
+                throw new TimeoutException($"{typedevice}{device} Error Trigger Exist Send timed out PLC.");
             }
             await readTask;
 
@@ -176,14 +176,14 @@ namespace FinalCheck
             if (await Task.WhenAny(writeTask, Task.Delay(TimeOut, CancellationToken.Token)) != writeTask)
             {
                 CancellationToken.Cancel();
-                throw new TimeoutException($"{Devicestr}{HeaderDeviceint} Error Trigger Exist Send timed out.");
+                throw new TimeoutException($"{Devicestr}{HeaderDeviceint} Error Trigger Exist Send timed out PLC.");
             }
             await writeTask;
             Task<int> readTask = stream.ReadAsync(DataReciveFromPLC, 0, DataReciveFromPLC.Length, CancellationToken.Token);
             if (await Task.WhenAny(readTask, Task.Delay(TimeOut, CancellationToken.Token)) != readTask)
             {
                 CancellationToken.Cancel();
-                throw new TimeoutException($"{Devicestr}{HeaderDeviceint} Error Trigger Exist Send timed out.");
+                throw new TimeoutException($"{Devicestr}{HeaderDeviceint} Error Trigger Exist Send timed out PLC.");
             }
             await readTask;
         }
@@ -209,14 +209,14 @@ namespace FinalCheck
             if (await Task.WhenAny(writeTask, Task.Delay(TimeOut, CancellationToken.Token)) != writeTask)
             {
                 CancellationToken.Cancel();
-                throw new TimeoutException($"{Devicestr}{HeaderDeviceint} Error Trigger Exist Send timed out.");
+                throw new TimeoutException($"{Devicestr}{HeaderDeviceint} Error Trigger Exist Send timed out PLC.");
             }
             await writeTask;
             Task<int> readTask = stream.ReadAsync(DataReciveFromPLC, 0, DataReciveFromPLC.Length, CancellationToken.Token);
             if (await Task.WhenAny(readTask, Task.Delay(TimeOut, CancellationToken.Token)) != readTask)
             {
                 CancellationToken.Cancel();
-                throw new TimeoutException($"{Devicestr}{HeaderDeviceint} Error Trigger Exist Send timed out.");
+                throw new TimeoutException($"{Devicestr}{HeaderDeviceint} Error Trigger Exist Send timed out PLC.");
             }
             await readTask;
         }
@@ -242,14 +242,14 @@ namespace FinalCheck
             if (await Task.WhenAny(writeTask, Task.Delay(TimeOut, CancellationToken.Token)) != writeTask)
             {
                 CancellationToken.Cancel();
-                throw new TimeoutException($"{Devicestr}{HeaderDeviceint} Error Trigger Exist Send timed out.");
+                throw new TimeoutException($"{Devicestr}{HeaderDeviceint} Error Trigger Exist Send timed out PLC.");
             }
             await writeTask;
             Task<int> readTask = stream.ReadAsync(DataReciveFromPLC, 0, DataReciveFromPLC.Length, CancellationToken.Token);
             if (await Task.WhenAny(readTask, Task.Delay(TimeOut, CancellationToken.Token)) != readTask)
             {
                 CancellationToken.Cancel();
-                throw new TimeoutException($"{Devicestr}{HeaderDeviceint} Error Trigger Exist Send timed out.");
+                throw new TimeoutException($"{Devicestr}{HeaderDeviceint} Error Trigger Exist Send timed out PLC.");
             }
             await readTask;
         }

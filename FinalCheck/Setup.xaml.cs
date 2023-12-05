@@ -17,7 +17,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using TALibrary;
+using System.Windows.Controls.Primitives;
 
 namespace FinalCheck
 {
@@ -29,6 +29,7 @@ namespace FinalCheck
     {
         public delegate void mydeledate();
         public mydeledate confirmcloseform;
+       
         public Setup()
         {
             InitializeComponent();
@@ -41,6 +42,7 @@ namespace FinalCheck
 
                 MessageBox.Show(ex.Message);
             }
+
         }
         public void loaddatasql()
         {
@@ -123,9 +125,7 @@ namespace FinalCheck
             {
                 Updatedatasql();
                 loaddatasql();
-                MessageBox.Show("Cập nhật thành công","Thông báo");
-                
-
+                MessageBox.Show("Cập nhật thành công", "Thông báo");
             }
             catch (Exception ex)
             {
@@ -133,5 +133,6 @@ namespace FinalCheck
                 MessageBox.Show(ex.Message);
             }
         }
+       
     }
 }

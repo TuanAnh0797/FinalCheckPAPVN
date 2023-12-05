@@ -27,28 +27,28 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <uc:MyControlBarxaml Grid.Row="0" ></uc:MyControlBarxaml>
-        <Grid Grid.Row="1" Margin="5">
+        <Grid Grid.Row="1" Margin="5,0,5,5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Margin="30,0,0,10"  >
-                <StackPanel Orientation="Horizontal">
+            <Grid Grid.Row="0"  Background="LightGray"  >
+                <StackPanel Orientation="Horizontal" Margin="30,5,0,5">
                     <StackPanel Orientation="Horizontal" Margin="0,0,15,0">
-                        <TextBlock VerticalAlignment="Bottom" FontSize="17" FontWeight="Heavy" Margin="0,0,5,0">From:</TextBlock>
-                        <materialDesign:TimePicker VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" Height="40"  materialDesign:HintAssist.Hint="Time" FontSize="15" Is24Hours="True" Width="100"  />
-                        <DatePicker VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" Height="40" FontSize="15" Width="120" materialDesign:HintAssist.Hint="Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                        <TextBlock VerticalAlignment="Center" FontSize="17" FontWeight="Heavy" Padding="0,10,0,0" Margin="0,0,5,0">From:</TextBlock>
+                        <materialDesign:TimePicker VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" Height="40"  materialDesign:HintAssist.Hint="Time" FontSize="15" Is24Hours="True" Width="120"  />
+                        <DatePicker VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" Height="40" FontSize="15" Width="140" materialDesign:HintAssist.Hint="Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,15,0">
-                        <TextBlock VerticalAlignment="Bottom" FontSize="17" FontWeight="Heavy" Margin="0,0,5,0">To:</TextBlock>
-                        <materialDesign:TimePicker VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" Height="40"  materialDesign:HintAssist.Hint="Time" FontSize="15" Is24Hours="True"  Width="100"  />
-                        <DatePicker VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" Height="40" FontSize="15" Width="120" materialDesign:HintAssist.Hint="Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                        <TextBlock VerticalAlignment="Center" FontSize="17" FontWeight="Heavy" Padding="0,10,0,0" Margin="0,0,5,0">To:</TextBlock>
+                        <materialDesign:TimePicker VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" Height="40"  materialDesign:HintAssist.Hint="Time" FontSize="15" Is24Hours="True"  Width="120"  />
+                        <DatePicker VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" Height="40" FontSize="15" Width="140" materialDesign:HintAssist.Hint="Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,15,0">
-                        <TextBlock VerticalAlignment="Bottom" FontSize="17" FontWeight="Heavy" Margin="0,0,5,0">Caninet:</TextBlock>
-                        <TextBox Width="300" Padding="10" Style="{StaticResource MaterialDesignOutlinedTextBox}" FontSize="15" VerticalAlignment="Center" AcceptsReturn="True" TextWrapping="Wrap" MaxWidth="400" materialDesign:HintAssist.Hint="Floating hint in a box" />
+                        <TextBlock VerticalAlignment="Center" FontSize="17" FontWeight="Heavy" Padding="0,10,0,0" Margin="0,0,5,0">Caninet:</TextBlock>
+                        <TextBox Width="300" Padding="8" Style="{StaticResource MaterialDesignOutlinedTextBox}" FontSize="15" VerticalAlignment="Center" AcceptsReturn="True" TextWrapping="Wrap" MaxWidth="400"  />
                     </StackPanel>
-                    <Button Background="Green" FontSize="15" Height="40">
+                    <Button Background="ForestGreen" FontSize="20" Width="150" Height="40">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="DatabaseSearch" />
                             <TextBlock>Search</TextBlock>
@@ -62,13 +62,21 @@
                     <ColumnDefinition Width="5*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Background="DarkSeaGreen" Margin="0,1,1,1">
+                        <TextBlock Text="Data Total" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"></TextBlock>
+                    </Grid>
+                    
                     <ListView Grid.Row="1" SizeChanged="lv1_SizeChanged" HorizontalContentAlignment="Stretch"  x:Name="lv1" Grid.Column="0" ItemsSource="{Binding dataforlistview, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Auto" >
                         <ListView.Resources>
                             <Style TargetType="GridViewColumnHeader">
                                 <Setter Property="FontSize" Value="13"></Setter>
                                 <Setter Property="Width" Value="auto"></Setter>
                                 <Setter Property="FontWeight" Value="Heavy"></Setter>
-                                <Setter Property="Background" Value="Wheat"></Setter>
+                                <Setter Property="Background" Value="DarkSeaGreen"></Setter>
                             </Style>
                         </ListView.Resources>
                         <ListView.ItemContainerStyle>
@@ -182,117 +190,319 @@
                         </ListView.View>
                     </ListView>
                 </Grid>
-                <Grid Grid.Column="1" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"></TextBlock>
-                        <DataGrid Grid.Column="1" Name="dtg_VP" AutoGenerateColumns="True"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
+                    <Grid Grid.Row="0" Background="CadetBlue" Margin="0,1,0,1">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">Data Detail</TextBlock>
                     </Grid>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"></TextBlock>
-                        <DataGrid Name="dtg_GAS" Grid.Column="1" AutoGenerateColumns="True"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
+                    <Grid Grid.Row="1"  ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Margin="0,0,0,1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="85"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Background="CadetBlue">
+                                <TextBlock  Text="VP" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Medium" ></TextBlock>
+                            </Grid>
+                            <DataGrid Grid.Column="1" Name="dtg_VP" AutoGenerateColumns="True"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                                <DataGrid.ColumnHeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Height" Value="20"/>
+                                        <Setter Property="FontSize"  Value="11"/>
+                                        <Setter Property="Padding"  Value="0"/>
+                                        <Setter Property="Margin"  Value="0"/>
+                                    </Style>
+                                </DataGrid.ColumnHeaderStyle>
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="FontSize" Value="12"/>
+                                    </Style>
+                                </DataGrid.CellStyle>
+                            </DataGrid>
+                        </Grid>
+                        <Grid Grid.Row="1" Margin="0,0,0,1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="85"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Background="CadetBlue">
+                                <TextBlock  Text="GAS" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Medium" ></TextBlock>
+                            </Grid>
+                            <DataGrid Name="dtg_GAS" Grid.Column="1" AutoGenerateColumns="True"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                                <DataGrid.ColumnHeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Height" Value="20"/>
+                                        <Setter Property="FontSize"  Value="11"/>
+                                        <Setter Property="Padding"  Value="0"/>
+                                        <Setter Property="Margin"  Value="0"/>
+                                    </Style>
+                                </DataGrid.ColumnHeaderStyle>
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="FontSize" Value="12"/>
+                                    </Style>
+                                </DataGrid.CellStyle>
+                            </DataGrid>
+                        </Grid>
+                        <Grid Grid.Row="2" Margin="0,0,0,1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="85"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Background="CadetBlue">
+                                <TextBlock  Text="WI1 WITH" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Medium" ></TextBlock>
+                            </Grid>
+                            <DataGrid Name="dtg_WI1WITH" AutoGenerateColumns="True" Grid.Column="1"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                                <DataGrid.ColumnHeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Height" Value="20"/>
+                                        <Setter Property="FontSize"  Value="11"/>
+                                        <Setter Property="Padding"  Value="0"/>
+                                        <Setter Property="Margin"  Value="0"/>
+                                    </Style>
+                                </DataGrid.ColumnHeaderStyle>
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="FontSize" Value="12"/>
+                                    </Style>
+                                </DataGrid.CellStyle>
+                            </DataGrid>
+                        </Grid>
+                        <Grid Grid.Row="3" Margin="0,0,0,1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="85"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Background="CadetBlue">
+                                <TextBlock  Text="WI1 START" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Medium" ></TextBlock>
+                            </Grid>
+                            <DataGrid Name="dtg_WI1START" AutoGenerateColumns="True" Grid.Column="1"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                                <DataGrid.ColumnHeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Height" Value="20"/>
+                                        <Setter Property="FontSize"  Value="11"/>
+                                        <Setter Property="Padding"  Value="0"/>
+                                        <Setter Property="Margin"  Value="0"/>
+                                    </Style>
+                                </DataGrid.ColumnHeaderStyle>
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="FontSize" Value="12"/>
+                                    </Style>
+                                </DataGrid.CellStyle>
+                            </DataGrid>
+                        </Grid>
+                        <Grid Grid.Row="4" Margin="0,0,0,1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="85"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Background="CadetBlue">
+                                <TextBlock  Text="IP" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Medium" ></TextBlock>
+                            </Grid>
+                            <DataGrid Name="dtg_IP" AutoGenerateColumns="True" Grid.Column="1"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                                <DataGrid.ColumnHeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Height" Value="20"/>
+                                        <Setter Property="FontSize"  Value="11"/>
+                                        <Setter Property="Padding"  Value="0"/>
+                                        <Setter Property="Margin"  Value="0"/>
+                                    </Style>
+                                </DataGrid.ColumnHeaderStyle>
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="FontSize" Value="12"/>
+                                    </Style>
+                                </DataGrid.CellStyle>
+                            </DataGrid>
+                        </Grid>
+                        <Grid Grid.Row="5" Margin="0,0,0,1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="85"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Background="CadetBlue">
+                                <TextBlock  Text="DF" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Medium" ></TextBlock>
+                            </Grid>
+                            <DataGrid Name="dtg_DF" AutoGenerateColumns="True" Grid.Column="1"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                                <DataGrid.ColumnHeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Height" Value="20"/>
+                                        <Setter Property="FontSize"  Value="11"/>
+                                        <Setter Property="Padding"  Value="0"/>
+                                        <Setter Property="Margin"  Value="0"/>
+                                    </Style>
+                                </DataGrid.ColumnHeaderStyle>
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="FontSize" Value="12"/>
+                                    </Style>
+                                </DataGrid.CellStyle>
+                            </DataGrid>
+                        </Grid>
+                        <Grid Grid.Row="6" Margin="0,0,0,1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="85"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Background="CadetBlue">
+                                <TextBlock  Text="TEMP" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Medium" ></TextBlock>
+                            </Grid>
+                            <DataGrid Name="dtg_TEMP" AutoGenerateColumns="True" Grid.Column="1"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                                <DataGrid.ColumnHeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Height" Value="20"/>
+                                        <Setter Property="FontSize"  Value="11"/>
+                                        <Setter Property="Padding"  Value="0"/>
+                                        <Setter Property="Margin"  Value="0"/>
+                                    </Style>
+                                </DataGrid.ColumnHeaderStyle>
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="FontSize" Value="12"/>
+                                    </Style>
+                                </DataGrid.CellStyle>
+                            </DataGrid>
+                        </Grid>
+                        <Grid Grid.Row="7" Margin="0,0,0,1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="85"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Background="CadetBlue">
+                                <TextBlock  Text="IOT" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Medium" ></TextBlock>
+                            </Grid>
+                            <DataGrid Name="dtg_IOT" AutoGenerateColumns="True" Grid.Column="1"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                                <DataGrid.ColumnHeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Height" Value="20"/>
+                                        <Setter Property="FontSize"  Value="11"/>
+                                        <Setter Property="Padding"  Value="0"/>
+                                        <Setter Property="Margin"  Value="0"/>
+                                    </Style>
+                                </DataGrid.ColumnHeaderStyle>
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="FontSize" Value="12"/>
+                                    </Style>
+                                </DataGrid.CellStyle>
+                            </DataGrid>
+                        </Grid>
+                        <Grid Grid.Row="8" Margin="0,0,0,1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="85"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Background="CadetBlue">
+                                <TextBlock  Text="WI2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Medium" ></TextBlock>
+                            </Grid>
+                            <DataGrid Name="dtg_WI2" AutoGenerateColumns="True" Grid.Column="1"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                                <DataGrid.ColumnHeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Height" Value="20"/>
+                                        <Setter Property="FontSize"  Value="11"/>
+                                        <Setter Property="Padding"  Value="0"/>
+                                        <Setter Property="Margin"  Value="0"/>
+                                    </Style>
+                                </DataGrid.ColumnHeaderStyle>
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="FontSize" Value="12"/>
+                                    </Style>
+                                </DataGrid.CellStyle>
+                            </DataGrid>
+                        </Grid>
+                        <Grid Grid.Row="9" Margin="0,0,0,1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="85"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Background="CadetBlue">
+                                <TextBlock  Text="PAN" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Medium" ></TextBlock>
+                            </Grid>
+                            <DataGrid Name="dtg_PAN" AutoGenerateColumns="True" Grid.Column="1"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                                <DataGrid.ColumnHeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Height" Value="20"/>
+                                        <Setter Property="FontSize"  Value="11"/>
+                                        <Setter Property="Padding"  Value="0"/>
+                                        <Setter Property="Margin"  Value="0"/>
+                                    </Style>
+                                </DataGrid.ColumnHeaderStyle>
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="FontSize" Value="12"/>
+                                    </Style>
+                                </DataGrid.CellStyle>
+                            </DataGrid>
+                        </Grid>
+                        <Grid Grid.Row="10" Margin="0,0,0,1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="85"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Background="CadetBlue">
+                                <TextBlock  Text="CAMBACK" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Medium" ></TextBlock>
+                            </Grid>
+                            <DataGrid Name="dtg_CAMBACK" AutoGenerateColumns="True" Grid.Column="1"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                                <DataGrid.ColumnHeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Height" Value="20"/>
+                                        <Setter Property="FontSize"  Value="11"/>
+                                        <Setter Property="Padding"  Value="0"/>
+                                        <Setter Property="Margin"  Value="0"/>
+                                    </Style>
+                                </DataGrid.ColumnHeaderStyle>
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="FontSize" Value="12"/>
+                                    </Style>
+                                </DataGrid.CellStyle>
+                            </DataGrid>
+                        </Grid>
+                        <Grid Grid.Row="11">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="85"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" Background="CadetBlue">
+                                <TextBlock  Text="CAMFRONT" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Medium" ></TextBlock>
+                            </Grid>
+                            <DataGrid Name="dtg_CAMFRONT" AutoGenerateColumns="True" Grid.Column="1"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                                <DataGrid.ColumnHeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="Height" Value="20"/>
+                                        <Setter Property="FontSize"  Value="11"/>
+                                        <Setter Property="Padding"  Value="0"/>
+                                        <Setter Property="Margin"  Value="0"/>
+                                    </Style>
+                                </DataGrid.ColumnHeaderStyle>
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="FontSize" Value="12"/>
+                                    </Style>
+                                </DataGrid.CellStyle>
+                            </DataGrid>
+                        </Grid>
                     </Grid>
-                    <Grid Grid.Row="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"></TextBlock>
-                        <DataGrid Name="dtg_WI1WITH" AutoGenerateColumns="True" Grid.Column="1"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
-                    </Grid>
-                    <Grid Grid.Row="3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"></TextBlock>
-                        <DataGrid Name="dtg_WI1START" AutoGenerateColumns="True" Grid.Column="1"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
-                    </Grid>
-                    <Grid Grid.Row="4">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"></TextBlock>
-                        <DataGrid Name="dtg_IP" AutoGenerateColumns="True" Grid.Column="1"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
-                    </Grid>
-                    <Grid Grid.Row="5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"></TextBlock>
-                        <DataGrid Name="dtg_DF" AutoGenerateColumns="True" Grid.Column="1"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
-                    </Grid>
-                    <Grid Grid.Row="6">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"></TextBlock>
-                        <DataGrid Name="dtg_TEMP" AutoGenerateColumns="True" Grid.Column="1"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
-                    </Grid>
-                    <Grid Grid.Row="7">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"></TextBlock>
-                        <DataGrid Name="dtg_IOT" AutoGenerateColumns="True" Grid.Column="1"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
-                    </Grid>
-                    <Grid Grid.Row="8">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"></TextBlock>
-                        <DataGrid Name="dtg_WI2" AutoGenerateColumns="True" Grid.Column="1"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
-                    </Grid>
-                    <Grid Grid.Row="9">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"></TextBlock>
-                        <DataGrid Name="dtg_PAN" AutoGenerateColumns="True" Grid.Column="1"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
-                    </Grid>
-                    <Grid Grid.Row="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"></TextBlock>
-                        <DataGrid Name="dtg_CAMBACK" AutoGenerateColumns="True" Grid.Column="1"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
-                    </Grid>
-                    <Grid Grid.Row="11">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"></TextBlock>
-                        <DataGrid Name="dtg_CAMFRONT" AutoGenerateColumns="True" Grid.Column="1"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></DataGrid>
-                    </Grid>
+
                 </Grid>
             </Grid>
         </Grid>

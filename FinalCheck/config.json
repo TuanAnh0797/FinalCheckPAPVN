@@ -1,5 +1,12 @@
 ﻿{
   "DataBase": {
     "ConnectionString": "Data Source=DESKTOP-NP52VJJ\\SQLEXPRESS;Initial Catalog=DataPLC;User ID=sa;Password = 123456"
+  },
+  "TimmerConfig": {
+    "TimerCheck": 500,
+    "TimerUpdateUI": 500
+  },
+  "LogFile": {
+    "FilePath": ""
   }
 }

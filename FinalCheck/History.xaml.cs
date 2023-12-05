@@ -30,7 +30,7 @@ namespace FinalCheck
         {
             InitializeComponent();
             this.DataContext = this;
-            loaddatadetail("abc");
+            //loaddatadetail("abc");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
