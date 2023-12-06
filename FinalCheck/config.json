@@ -1,6 +1,6 @@
 ﻿{
   "DataBase": {
-    "ConnectionString": "Data Source=DESKTOP-NP52VJJ\\SQLEXPRESS;Initial Catalog=DataPLC;User ID=sa;Password = 123456"
+    "ConnectionString": "Data Source=DESKTOP-CEVMTEM\\SQLEXPRESS;Initial Catalog=DataPLC;User ID=sa;Password=123@123a"
   },
   "TimmerConfig": {
     "TimerCheck": 500,

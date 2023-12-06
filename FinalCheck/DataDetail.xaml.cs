@@ -73,6 +73,11 @@ namespace FinalCheck
             TimerCheck.Start();
             TimerCheck.Tick += TimerCheck_Tick;
         }
+        public DataDetail()
+        {
+            InitializeComponent();
+          
+        }
         public Task UpdateJugdeError(string namecabi, ResultCheckFinal RCF)
         {
             Task t1 = new Task(() =>
@@ -260,9 +265,11 @@ namespace FinalCheck
         {
             DbConnect db_connect = new DbConnect();
             ResultCheckFinal RCF = new ResultCheckFinal();
-            DataTable dt = db_connect.StoreFillDT("GetJudgeAllLine", CommandType.StoredProcedure, cabinet);
+            DataTable dt = db_connect.StoreFillDT("GetJudgeAllLineDetail", CommandType.StoredProcedure, cabinet);
             if (dt.Rows.Count > 0)
             {
+                RCF.PersonConfirm = dt.Rows[0]["UserConfirm"].ToString();
+                RCF.ReasonError = dt.Rows[0]["ReasonError"].ToString();
                 if (dt.Rows[0]["JudgeVP"].ToString() == "OK" || dt.Rows[0]["JudgeVP"].ToString() == "NG")
                 {
                     RCF.Judge_VP = dt.Rows[0]["JudgeVP"].ToString();
@@ -450,11 +457,157 @@ namespace FinalCheck
                     txbl_JugdeCAMBACK.Text = RCF.Judge_CAMBACK;
                     txbl_JugdeCAMFRONT.Text = RCF.Judge_CAMFRONT;
                     txbl_JugdeTotal.Text = RCF.Judge_Total;
+                    txbl_NameError.Text = RCF.ReasonError;
+                    txbl_NameUserConfirm.Text = RCF.PersonConfirm;
                 }));
 
             });
             t1.Start();
             return t1;
+        }
+
+        private void dtg_CAMFRONT_MouseMove(object sender, MouseEventArgs e)
+        {
+            dtg_CAMFRONT.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
+            dtg_CAMFRONT.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
+        }
+
+        private void dtg_CAMFRONT_MouseLeave(object sender, MouseEventArgs e)
+        {
+            dtg_CAMFRONT.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
+            dtg_CAMFRONT.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+        }
+
+        private void dtg_CAMBACK_MouseLeave(object sender, MouseEventArgs e)
+        {
+            dtg_CAMBACK.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
+            dtg_CAMBACK.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+        }
+
+        private void dtg_CAMBACK_MouseMove(object sender, MouseEventArgs e)
+        {
+            dtg_CAMBACK.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
+            dtg_CAMBACK.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
+        }
+
+        private void dtg_PAN_MouseLeave(object sender, MouseEventArgs e)
+        {
+            dtg_PAN.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
+            dtg_PAN.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+        }
+
+        private void dtg_PAN_MouseMove(object sender, MouseEventArgs e)
+        {
+            dtg_PAN.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
+            dtg_PAN.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
+        }
+
+        private void dtg_WI2_MouseLeave(object sender, MouseEventArgs e)
+        {
+            dtg_WI2.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
+            dtg_WI2.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+        }
+
+        private void dtg_WI2_MouseMove(object sender, MouseEventArgs e)
+        {
+            dtg_WI2.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
+            dtg_WI2.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
+        }
+
+        private void dtg_IOT_MouseLeave(object sender, MouseEventArgs e)
+        {
+            dtg_IOT.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
+            dtg_IOT.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+        }
+
+        private void dtg_IOT_MouseMove(object sender, MouseEventArgs e)
+        {
+            dtg_IOT.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
+            dtg_IOT.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
+        }
+
+        private void dtg_TEMP_MouseLeave(object sender, MouseEventArgs e)
+        {
+            dtg_TEMP.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
+            dtg_TEMP.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+        }
+
+        private void dtg_TEMP_MouseMove(object sender, MouseEventArgs e)
+        {
+            dtg_TEMP.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
+            dtg_TEMP.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
+        }
+
+        private void dtg_DF_MouseLeave(object sender, MouseEventArgs e)
+        {
+            dtg_DF.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
+            dtg_DF.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+        }
+
+        private void dtg_DF_MouseMove(object sender, MouseEventArgs e)
+        {
+            dtg_DF.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
+            dtg_DF.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
+        }
+
+        private void dtg_IP_MouseLeave(object sender, MouseEventArgs e)
+        {
+            dtg_IP.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
+            dtg_IP.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+        }
+
+        private void dtg_IP_MouseMove(object sender, MouseEventArgs e)
+        {
+            dtg_IP.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
+            dtg_IP.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
+        }
+
+        private void dtg_WI1START_MouseLeave(object sender, MouseEventArgs e)
+        {
+            dtg_WI1START.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
+            dtg_WI1START.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+        }
+
+        private void dtg_WI1START_MouseMove(object sender, MouseEventArgs e)
+        {
+            dtg_WI1START.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
+            dtg_WI1START.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
+        }
+
+        private void dtg_WI1WITH_MouseLeave(object sender, MouseEventArgs e)
+        {
+            dtg_WI1WITH.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
+            dtg_WI1WITH.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+        }
+
+        private void dtg_WI1WITH_MouseMove(object sender, MouseEventArgs e)
+        {
+            dtg_WI1WITH.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
+            dtg_WI1WITH.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
+        }
+
+        private void dtg_GAS_MouseLeave(object sender, MouseEventArgs e)
+        {
+            dtg_GAS.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
+            dtg_GAS.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+        }
+
+        private void dtg_GAS_MouseMove(object sender, MouseEventArgs e)
+        {
+            dtg_GAS.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
+            dtg_GAS.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
+        }
+
+        private void dtg_VP_MouseLeave(object sender, MouseEventArgs e)
+        {
+            dtg_VP.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
+            dtg_VP.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+        }
+
+        private void dtg_VP_MouseMove(object sender, MouseEventArgs e)
+        {
+            dtg_VP.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
+            dtg_VP.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
         }
     }
 }

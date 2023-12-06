@@ -290,7 +290,7 @@ namespace FinalCheck
             for (int i = 11; i < input.Length; i++)
             {
 
-                if (input[i] < 33 || input[i] > 126)
+                if (input[i] < 32 || input[i] > 126)
                 {
                     return index;
                 }

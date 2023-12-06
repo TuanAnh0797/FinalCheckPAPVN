@@ -37,11 +37,11 @@
                 <RowDefinition Height="30"></RowDefinition>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Name="txb_namecabi" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Medium" Width="auto"></TextBlock>
-            <Border Margin="5,0,5,5" Grid.Row="1" BorderThickness="0" BorderBrush="White" Background="#FFD6CFCF" Grid.ColumnSpan="3" >
+            <Border Margin="5,0,5,5" Grid.Row="1" BorderThickness="0" BorderBrush="Black" Background="White" Grid.ColumnSpan="3" >
                 <Grid>
                     <Grid.Resources>
                         <Style TargetType="Border" x:Key="bordertable">
-                            <Setter Property="BorderBrush" Value="White"></Setter>
+                            <Setter Property="BorderBrush" Value="Black"></Setter>
                         </Style>
                         <Style TargetType="TextBlock" x:Key="txbcolor">
                             <Setter Property="FontSize" Value="15"></Setter>
@@ -87,56 +87,57 @@
                     </Grid.ColumnDefinitions>
                     <!--Row1-->
                     <Grid  Grid.Row="0" Grid.Column="0" Background="#FF35B888">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" Grid.Column="0">
+                        <Border BorderThickness="1,1" Style="{StaticResource bordertable}" Grid.Column="0">
                             <TextBlock FontSize="16" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center">STT</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="0" Grid.Column="1" Background="#FF35B888">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" >
+                        <Border BorderThickness="0,1,0,1" Style="{StaticResource bordertable}" >
                             <TextBlock FontSize="16" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center">Content</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="4" Background="#FF35B888">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" >
+                        <Border BorderThickness="1,1,0,1" Style="{StaticResource bordertable}" >
 
 
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="0" Grid.Column="3" Background="#FF35B888">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,1,0,1" Style="{StaticResource bordertable}">
                             <TextBlock FontSize="16" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center">Result</TextBlock>
 
 
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="0" Grid.Column="4" Background="#FF35B888">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,1,0,1" Style="{StaticResource bordertable}">
                             <TextBlock FontSize="16" FontWeight="Medium" VerticalAlignment="Center" HorizontalAlignment="Center">Total</TextBlock>
                         </Border>
                     </Grid>
 
                     <!--Row2-->
                     <Grid  Grid.Row="1" Grid.Column="0">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,0,1,1" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">1</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="1" Grid.Column="1">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="0,0,0,1" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">VP</TextBlock>
                         </Border>
                     </Grid>
 
                     <Grid  Grid.Row="1" Grid.Column="2">
 
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" >
-                            <DataGrid Name="dtg_VP" AutoGenerateColumns="True" Grid.Row="0"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                        <Border BorderThickness="1,0,0,1" Style="{StaticResource bordertable}" >
+                            <DataGrid Name="dtg_VP" AutoGenerateColumns="True" Grid.Row="0" MouseLeave="dtg_VP_MouseLeave" MouseMove="dtg_VP_MouseMove"  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
                                 <DataGrid.ColumnHeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
                                         <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="FontWeight"  Value="Heavy"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
@@ -149,37 +150,38 @@
                     </Grid>
 
                     <Grid  Grid.Row="1" Grid.Column="3">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,0,0,1" Style="{StaticResource bordertable}">
                             <TextBlock Name="txbl_JugdeVP" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="1" Grid.Column="4" Grid.RowSpan="13">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,0,1,1" Style="{StaticResource bordertable}">
                             <TextBlock Name="txbl_JugdeTotal" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
 
                     <!--Row3-->
                     <Grid  Grid.Row="2" Grid.Column="0">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,0" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">2</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="2" Grid.Column="1">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="0" Style="{StaticResource bordertable}">
                             <TextBlock  Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">GAS</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="2" Grid.Column="2">
 
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <DataGrid Name="dtg_GAS" AutoGenerateColumns="True" Grid.Row="1"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                        <Border BorderThickness="1,0,0,0" Style="{StaticResource bordertable}">
+                            <DataGrid Name="dtg_GAS" AutoGenerateColumns="True" Grid.Row="1" MouseLeave="dtg_GAS_MouseLeave" MouseMove="dtg_GAS_MouseMove"  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
                                 <DataGrid.ColumnHeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
                                         <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="FontWeight"  Value="Heavy"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
@@ -193,31 +195,32 @@
                     </Grid>
 
                     <Grid  Grid.Row="2" Grid.Column="3">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,0,0,0" Style="{StaticResource bordertable}">
                             <TextBlock Name="txbl_JugdeGAS" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
 
                     <!--Row4-->
                     <Grid  Grid.Row="3" Grid.Column="0">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,1,1,0" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">3</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="3" Grid.Column="1">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="0,1,0,0" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">WI 1 WITH</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="3" Grid.Column="2">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" >
-                            <DataGrid Name="dtg_WI1WITH" AutoGenerateColumns="True" Grid.Row="2"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                        <Border BorderThickness="1,1,0,0" Style="{StaticResource bordertable}" >
+                            <DataGrid Name="dtg_WI1WITH" AutoGenerateColumns="True" Grid.Row="2" MouseLeave="dtg_WI1WITH_MouseLeave" MouseMove="dtg_WI1WITH_MouseMove"  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
                                 <DataGrid.ColumnHeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
                                         <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="FontWeight"  Value="Heavy"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
@@ -231,31 +234,32 @@
                     </Grid>
 
                     <Grid  Grid.Row="3" Grid.Column="3">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,1,0,0" Style="{StaticResource bordertable}">
                             <TextBlock Name="txbl_JugdeWI1WITH" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
                     <!--Row5-->
                     <Grid  Grid.Row="4" Grid.Column="0">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,1,1,0" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">4</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="4" Grid.Column="1">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="0,1,0,0" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">WI 1 START</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="4" Grid.Column="2">
 
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <DataGrid Name="dtg_WI1START" AutoGenerateColumns="True" Grid.Row="3"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                        <Border BorderThickness="1,1,0,0" Style="{StaticResource bordertable}">
+                            <DataGrid Name="dtg_WI1START" AutoGenerateColumns="True" Grid.Row="3" MouseLeave="dtg_WI1START_MouseLeave" MouseMove="dtg_WI1START_MouseMove"  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
                                 <DataGrid.ColumnHeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
                                         <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="FontWeight"  Value="Heavy"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
@@ -267,31 +271,33 @@
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="4" Grid.Column="3">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,1,0,0" Style="{StaticResource bordertable}">
                             <TextBlock Name="txbl_JugdeWI1START" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
                     <!--Row6-->
                     <Grid  Grid.Row="5" Grid.Column="0">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,1,1,0" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">5</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="5" Grid.Column="1">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="0,1,0,0" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">IP</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="5" Grid.Column="2">
 
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" >
-                            <DataGrid Name="dtg_IP" AutoGenerateColumns="True" Grid.Row="4"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                        <Border BorderThickness="1,1,0,0" Style="{StaticResource bordertable}" >
+                            <DataGrid Name="dtg_IP" AutoGenerateColumns="True" Grid.Row="4" MouseLeave="dtg_IP_MouseLeave" MouseMove="dtg_IP_MouseMove"   HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
                                 <DataGrid.ColumnHeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
                                         <Setter Property="Margin"  Value="0"/>
+
+                                        <Setter Property="FontWeight"  Value="Heavy"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
@@ -303,31 +309,32 @@
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="5" Grid.Column="3">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,1,0,0" Style="{StaticResource bordertable}">
                             <TextBlock Name="txbl_JugdeIP" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
                     <!--Row7-->
                     <Grid  Grid.Row="6" Grid.Column="0">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,1,1,0" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">6</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="6" Grid.Column="1">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="0,1,0,0" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">DF</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="6" Grid.Column="2">
 
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <DataGrid Name="dtg_DF" AutoGenerateColumns="True" Grid.Row="5"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                        <Border BorderThickness="1,1,0,0" Style="{StaticResource bordertable}">
+                            <DataGrid Name="dtg_DF" AutoGenerateColumns="True" Grid.Row="5" MouseLeave="dtg_DF_MouseLeave" MouseMove="dtg_DF_MouseMove"  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
                                 <DataGrid.ColumnHeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
                                         <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="FontWeight"  Value="Heavy"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
@@ -339,30 +346,31 @@
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="6" Grid.Column="3">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,1,0,0" Style="{StaticResource bordertable}">
                             <TextBlock Name="txbl_JugdeDF" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
                     <!--Row8-->
                     <Grid  Grid.Row="7" Grid.Column="0">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,1,1,0" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">7</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="7" Grid.Column="1">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="0,1,0,0" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">TEMP</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="7" Grid.Column="2" >
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <DataGrid Name="dtg_TEMP" AutoGenerateColumns="True" Grid.Row="6"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                        <Border BorderThickness="1,1,0,0" Style="{StaticResource bordertable}">
+                            <DataGrid Name="dtg_TEMP" AutoGenerateColumns="True" Grid.Row="6" MouseLeave="dtg_TEMP_MouseLeave" MouseMove="dtg_TEMP_MouseMove"   HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
                                 <DataGrid.ColumnHeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
                                         <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="FontWeight"  Value="Heavy"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
@@ -376,7 +384,7 @@
 
 
                     <Grid  Grid.Row="7" Grid.Column="3">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,1,0,0" Style="{StaticResource bordertable}">
                             <TextBlock Name="txbl_JugdeTEMP" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
@@ -384,24 +392,25 @@
 
                     <!--Row9-->
                     <Grid  Grid.Row="8" Grid.Column="0">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,1,1,0" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">8</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="8" Grid.Column="1">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="0,1,0,0" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">IOT</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="8" Grid.Column="2">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <DataGrid Name="dtg_IOT" AutoGenerateColumns="True" Grid.Row="7"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                        <Border BorderThickness="1,1,0,0" Style="{StaticResource bordertable}">
+                            <DataGrid Name="dtg_IOT" AutoGenerateColumns="True" Grid.Row="7" MouseLeave="dtg_IOT_MouseLeave" MouseMove="dtg_IOT_MouseMove"  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
                                 <DataGrid.ColumnHeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
                                         <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="FontWeight"  Value="Heavy"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
@@ -412,37 +421,34 @@
                             </DataGrid>
                         </Border>
                     </Grid>
+                    
                     <Grid  Grid.Row="8" Grid.Column="3">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                        </Border>
-
-                    </Grid>
-                    <Grid  Grid.Row="8" Grid.Column="3">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,1,0,0" Style="{StaticResource bordertable}">
                             <TextBlock Name="txbl_JugdeIOT" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
                     <!--Rownew-->
                     <Grid  Grid.Row="9" Grid.Column="0">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,1,1,0" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">9</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="9" Grid.Column="1">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="0,1,0,0" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">WI 2</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="9" Grid.Column="2">
 
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}" >
-                            <DataGrid Name="dtg_WI2" AutoGenerateColumns="True" Grid.Row="8"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                        <Border BorderThickness="1,1,0,0" Style="{StaticResource bordertable}" >
+                            <DataGrid Name="dtg_WI2" AutoGenerateColumns="True" Grid.Row="8" MouseLeave="dtg_WI2_MouseLeave" MouseMove="dtg_WI2_MouseMove"  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
                                 <DataGrid.ColumnHeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
                                         <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="FontWeight"  Value="Heavy"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
@@ -456,30 +462,31 @@
                     </Grid>
 
                     <Grid  Grid.Row="9" Grid.Column="3">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,1,0,0" Style="{StaticResource bordertable}">
                             <TextBlock Name="txbl_JugdeWI2" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
                     <!--Row11-->
                     <Grid  Grid.Row="10" Grid.Column="0">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,1,1,0" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">10</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="10" Grid.Column="1">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="0,1,0,0" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">PAN</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="10" Grid.Column="2">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <DataGrid Name="dtg_PAN" AutoGenerateColumns="True" Grid.Row="9"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                        <Border BorderThickness="1,1,0,0" Style="{StaticResource bordertable}">
+                            <DataGrid Name="dtg_PAN" AutoGenerateColumns="True" Grid.Row="9" MouseLeave="dtg_PAN_MouseLeave" MouseMove="dtg_PAN_MouseMove"   HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
                                 <DataGrid.ColumnHeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
                                         <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="FontWeight"  Value="Heavy"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
@@ -491,30 +498,31 @@
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="10" Grid.Column="3">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,1,0,0" Style="{StaticResource bordertable}">
                             <TextBlock Name="txbl_JugdePAN" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
                     <!--Row12-->
                     <Grid  Grid.Row="11" Grid.Column="0">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,1,1,0" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">11</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="11" Grid.Column="1">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="0,1,0,0" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Cam Back</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="11" Grid.Column="2">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <DataGrid Name="dtg_CAMBACK" AutoGenerateColumns="True" Grid.Row="10"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                        <Border BorderThickness="1,1,0,0" Style="{StaticResource bordertable}">
+                            <DataGrid Name="dtg_CAMBACK" MouseLeave="dtg_CAMBACK_MouseLeave" MouseMove="dtg_CAMBACK_MouseMove" AutoGenerateColumns="True" Grid.Row="10"   HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
                                 <DataGrid.ColumnHeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
                                         <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="FontWeight"  Value="Heavy"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
@@ -528,7 +536,7 @@
 
 
                     <Grid  Grid.Row="11" Grid.Column="3">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,1,0,0" Style="{StaticResource bordertable}">
                             <TextBlock Name="txbl_JugdeCAMBACK" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
@@ -539,19 +547,20 @@
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="12" Grid.Column="1">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="0,1,0,1" Style="{StaticResource bordertable}">
                             <TextBlock Style="{StaticResource txb_column1}" VerticalAlignment="Center" HorizontalAlignment="Center">Cam Front</TextBlock>
                         </Border>
                     </Grid>
                     <Grid  Grid.Row="12" Grid.Column="2">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
-                            <DataGrid Name="dtg_CAMFRONT" AutoGenerateColumns="True" Grid.Row="11"   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                        <Border BorderThickness="1,1,0,1" Style="{StaticResource bordertable}">
+                            <DataGrid MouseMove="dtg_CAMFRONT_MouseMove" MouseLeave="dtg_CAMFRONT_MouseLeave"  Name="dtg_CAMFRONT" AutoGenerateColumns="True" Grid.Row="11" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
                                 <DataGrid.ColumnHeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
                                         <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="FontWeight"  Value="Heavy"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
@@ -565,7 +574,7 @@
 
 
                     <Grid  Grid.Row="12" Grid.Column="3">
-                        <Border BorderThickness="1" Style="{StaticResource bordertable}">
+                        <Border BorderThickness="1,1,0,1" Style="{StaticResource bordertable}">
                             <TextBlock Name="txbl_JugdeCAMFRONT" Style="{StaticResource txbcolor}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Border>
                     </Grid>
@@ -602,7 +611,7 @@
                         <TextBlock FontSize="18">Người xác nhận:</TextBlock>
                     </Grid>
                     <Grid Grid.Column="1">
-                        <TextBlock FontSize="18" Name="Name_UserConfirm"></TextBlock>
+                        <TextBlock FontSize="18" Name="txbl_NameUserConfirm"></TextBlock>
                     </Grid>
                 </Grid>
             </Grid>
