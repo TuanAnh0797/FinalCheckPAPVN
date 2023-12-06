@@ -136,13 +136,25 @@
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
-                                        <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalContentAlignment"  Value="Center"/>
                                         <Setter Property="FontWeight"  Value="Heavy"/>
+                                        <Setter Property="Background"  Value="LightSteelBlue"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
                                     <Style TargetType="DataGridCell">
                                         <Setter Property="FontSize" Value="12"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalAlignment"  Value="Center"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Judge}" Value="NG">
+                                                <Setter Property="Foreground" Value="Red"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Judge}" Value="OK">
+                                                <Setter Property="Foreground" Value="Green"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
                                     </Style>
                                 </DataGrid.CellStyle>
                             </DataGrid>
@@ -180,13 +192,25 @@
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
-                                        <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalContentAlignment"  Value="Center"/>
                                         <Setter Property="FontWeight"  Value="Heavy"/>
+                                        <Setter Property="Background"  Value="LightSteelBlue"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
                                     <Style TargetType="DataGridCell">
                                         <Setter Property="FontSize" Value="12"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalAlignment"  Value="Center"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Judge}" Value="NG">
+                                                <Setter Property="Foreground" Value="Red"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Judge}" Value="OK">
+                                                <Setter Property="Foreground" Value="Green"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
                                     </Style>
                                 </DataGrid.CellStyle>
                             </DataGrid>
@@ -219,13 +243,25 @@
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
-                                        <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalContentAlignment"  Value="Center"/>
                                         <Setter Property="FontWeight"  Value="Heavy"/>
+                                        <Setter Property="Background"  Value="LightSteelBlue"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
                                     <Style TargetType="DataGridCell">
                                         <Setter Property="FontSize" Value="12"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalAlignment"  Value="Center"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Judge}" Value="NG">
+                                                <Setter Property="Foreground" Value="Red"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Judge}" Value="OK">
+                                                <Setter Property="Foreground" Value="Green"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
                                     </Style>
                                 </DataGrid.CellStyle>
                             </DataGrid>
@@ -258,13 +294,25 @@
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
-                                        <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalContentAlignment"  Value="Center"/>
                                         <Setter Property="FontWeight"  Value="Heavy"/>
+                                        <Setter Property="Background"  Value="LightSteelBlue"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
                                     <Style TargetType="DataGridCell">
                                         <Setter Property="FontSize" Value="12"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalAlignment"  Value="Center"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Judge}" Value="NG">
+                                                <Setter Property="Foreground" Value="Red"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Judge}" Value="OK">
+                                                <Setter Property="Foreground" Value="Green"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
                                     </Style>
                                 </DataGrid.CellStyle>
                             </DataGrid>
@@ -295,14 +343,25 @@
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
-                                        <Setter Property="Margin"  Value="0"/>
-
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalContentAlignment"  Value="Center"/>
                                         <Setter Property="FontWeight"  Value="Heavy"/>
+                                        <Setter Property="Background"  Value="LightSteelBlue"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
                                     <Style TargetType="DataGridCell">
                                         <Setter Property="FontSize" Value="12"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalAlignment"  Value="Center"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Judge}" Value="NG">
+                                                <Setter Property="Foreground" Value="Red"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Judge}" Value="OK">
+                                                <Setter Property="Foreground" Value="Green"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
                                     </Style>
                                 </DataGrid.CellStyle>
                             </DataGrid>
@@ -333,13 +392,25 @@
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
-                                        <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalContentAlignment"  Value="Center"/>
                                         <Setter Property="FontWeight"  Value="Heavy"/>
+                                        <Setter Property="Background"  Value="LightSteelBlue"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
                                     <Style TargetType="DataGridCell">
                                         <Setter Property="FontSize" Value="12"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalAlignment"  Value="Center"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Judge}" Value="NG">
+                                                <Setter Property="Foreground" Value="Red"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Judge}" Value="OK">
+                                                <Setter Property="Foreground" Value="Green"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
                                     </Style>
                                 </DataGrid.CellStyle>
                             </DataGrid>
@@ -369,13 +440,25 @@
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
-                                        <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalContentAlignment"  Value="Center"/>
                                         <Setter Property="FontWeight"  Value="Heavy"/>
+                                        <Setter Property="Background"  Value="LightSteelBlue"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
                                     <Style TargetType="DataGridCell">
                                         <Setter Property="FontSize" Value="12"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalAlignment"  Value="Center"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Judge}" Value="NG">
+                                                <Setter Property="Foreground" Value="Red"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Judge}" Value="OK">
+                                                <Setter Property="Foreground" Value="Green"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
                                     </Style>
                                 </DataGrid.CellStyle>
                             </DataGrid>
@@ -409,13 +492,25 @@
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
-                                        <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalContentAlignment"  Value="Center"/>
                                         <Setter Property="FontWeight"  Value="Heavy"/>
+                                        <Setter Property="Background"  Value="LightSteelBlue"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
                                     <Style TargetType="DataGridCell">
                                         <Setter Property="FontSize" Value="12"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalAlignment"  Value="Center"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Judge}" Value="NG">
+                                                <Setter Property="Foreground" Value="Red"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Judge}" Value="OK">
+                                                <Setter Property="Foreground" Value="Green"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
                                     </Style>
                                 </DataGrid.CellStyle>
                             </DataGrid>
@@ -447,13 +542,25 @@
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
-                                        <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalContentAlignment"  Value="Center"/>
                                         <Setter Property="FontWeight"  Value="Heavy"/>
+                                        <Setter Property="Background"  Value="LightSteelBlue"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
                                     <Style TargetType="DataGridCell">
                                         <Setter Property="FontSize" Value="12"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalAlignment"  Value="Center"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Judge}" Value="NG">
+                                                <Setter Property="Foreground" Value="Red"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Judge}" Value="OK">
+                                                <Setter Property="Foreground" Value="Green"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
                                     </Style>
                                 </DataGrid.CellStyle>
                             </DataGrid>
@@ -485,13 +592,25 @@
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
-                                        <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalContentAlignment"  Value="Center"/>
                                         <Setter Property="FontWeight"  Value="Heavy"/>
+                                        <Setter Property="Background"  Value="LightSteelBlue"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
                                     <Style TargetType="DataGridCell">
                                         <Setter Property="FontSize" Value="12"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalAlignment"  Value="Center"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Judge}" Value="NG">
+                                                <Setter Property="Foreground" Value="Red"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Judge}" Value="OK">
+                                                <Setter Property="Foreground" Value="Green"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
                                     </Style>
                                 </DataGrid.CellStyle>
                             </DataGrid>
@@ -521,13 +640,25 @@
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
-                                        <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalContentAlignment"  Value="Center"/>
                                         <Setter Property="FontWeight"  Value="Heavy"/>
+                                        <Setter Property="Background"  Value="LightSteelBlue"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
                                     <Style TargetType="DataGridCell">
                                         <Setter Property="FontSize" Value="12"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalAlignment"  Value="Center"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Judge}" Value="NG">
+                                                <Setter Property="Foreground" Value="Red"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Judge}" Value="OK">
+                                                <Setter Property="Foreground" Value="Green"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
                                     </Style>
                                 </DataGrid.CellStyle>
                             </DataGrid>
@@ -559,13 +690,25 @@
                                         <Setter Property="Height" Value="20"/>
                                         <Setter Property="FontSize"  Value="11"/>
                                         <Setter Property="Padding"  Value="0"/>
-                                        <Setter Property="Margin"  Value="0"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalContentAlignment"  Value="Center"/>
                                         <Setter Property="FontWeight"  Value="Heavy"/>
+                                        <Setter Property="Background"  Value="LightSteelBlue"/>
                                     </Style>
                                 </DataGrid.ColumnHeaderStyle>
                                 <DataGrid.CellStyle>
                                     <Style TargetType="DataGridCell">
                                         <Setter Property="FontSize" Value="12"/>
+                                        <Setter Property="Margin"  Value="5,0"/>
+                                        <Setter Property="HorizontalAlignment"  Value="Center"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Judge}" Value="NG">
+                                                <Setter Property="Foreground" Value="Red"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Judge}" Value="OK">
+                                                <Setter Property="Foreground" Value="Green"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
                                     </Style>
                                 </DataGrid.CellStyle>
                             </DataGrid>
@@ -585,7 +728,7 @@
 
 
             </Border>
-            <Grid Grid.Row="2" Margin="5,0,5,5" Grid.ColumnSpan="3">
+            <Grid Grid.Row="2" Margin="5,0,5,5" Grid.ColumnSpan="3" Background="OrangeRed">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -595,7 +738,7 @@
                         <ColumnDefinition Width="auto"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
+                    <Grid Grid.Column="0" >
                         <TextBlock FontSize="18">Lỗi:</TextBlock>
                     </Grid>
                     <Grid Grid.Column="1">
