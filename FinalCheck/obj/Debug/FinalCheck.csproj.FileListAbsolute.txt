@@ -360,7 +360,4 @@ C:\Users\70P7970\Desktop\FinalCheckPAPVN\FinalCheck\bin\Debug\ShowMeTheXAML.dll
 C:\Users\PC\Desktop\FinalCheckPAPVN\FinalCheck\bin\Debug\ShowMeTheXAML.dll
 C:\Users\PC\Desktop\FinalCheckPAPVN\FinalCheck\bin\Debug\config.json
 C:\Users\70P7970\Desktop\FinalCheckPAPVN\FinalCheck\bin\Debug\config.json
-C:\Users\70P7970\Desktop\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.csproj.AssemblyReference.cache
-C:\Users\70P7970\Desktop\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.csproj.SuggestedBindingRedirects.cache
-C:\Users\70P7970\Desktop\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.csproj.CoreCompileInputs.cache
-C:\Users\70P7970\Desktop\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.csproj.CopyComplete
+C:\Users\70P7970\Desktop\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.csprojResolveAssemblyReference.cache

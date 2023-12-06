@@ -36,19 +36,22 @@
                 <StackPanel Orientation="Horizontal" Margin="30,5,0,5">
                     <StackPanel Orientation="Horizontal" Margin="0,0,15,0">
                         <TextBlock VerticalAlignment="Center" FontSize="17" FontWeight="Heavy" Padding="0,10,0,0" Margin="0,0,5,0">From:</TextBlock>
-                        <materialDesign:TimePicker VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" Height="40"  materialDesign:HintAssist.Hint="Time" FontSize="15" Is24Hours="True" Width="120"  />
-                        <DatePicker VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" Height="40" FontSize="15" Width="140" materialDesign:HintAssist.Hint="Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                        <materialDesign:TimePicker Name="TimeFrom" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" Height="40"  materialDesign:HintAssist.Hint="Time" FontSize="15" Is24Hours="True" Width="120"  />
+                        <DatePicker Name="DateFrom" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" Height="40" FontSize="15" Width="140" materialDesign:HintAssist.Hint="Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,15,0">
                         <TextBlock VerticalAlignment="Center" FontSize="17" FontWeight="Heavy" Padding="0,10,0,0" Margin="0,0,5,0">To:</TextBlock>
-                        <materialDesign:TimePicker VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" Height="40"  materialDesign:HintAssist.Hint="Time" FontSize="15" Is24Hours="True"  Width="120"  />
-                        <DatePicker VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" Height="40" FontSize="15" Width="140" materialDesign:HintAssist.Hint="Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                        <materialDesign:TimePicker Name="TimeTo" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" Height="40"  materialDesign:HintAssist.Hint="Time" FontSize="15" Is24Hours="True"  Width="120"  />
+                        <DatePicker Name="DateTo" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" Height="40" FontSize="15" Width="140" materialDesign:HintAssist.Hint="Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,15,0">
                         <TextBlock VerticalAlignment="Center" FontSize="17" FontWeight="Heavy" Padding="0,10,0,0" Margin="0,0,5,0">Caninet:</TextBlock>
-                        <TextBox Width="300" Padding="8" Style="{StaticResource MaterialDesignOutlinedTextBox}" FontSize="15" VerticalAlignment="Center" AcceptsReturn="True" TextWrapping="Wrap" MaxWidth="400"  />
+                        <TextBox Name="txb_Cabi" Width="300" Padding="8" Style="{StaticResource MaterialDesignOutlinedTextBox}" FontSize="15" VerticalAlignment="Center" AcceptsReturn="True" TextWrapping="Wrap" MaxWidth="400"  />
                     </StackPanel>
-                    <Button Background="ForestGreen" FontSize="20" Width="150" Height="40">
+                    <CheckBox Unchecked="Ckb_nofinal_Unchecked" Name="Ckb_nofinal" Checked="Ckb_nofinal_Checked" FontSize="15" Margin="0,0,15,0" IsChecked="False">
+                        Tìm thông tin tủ chưa Final Check
+                    </CheckBox>
+                    <Button Name="btn_Search" Click="btn_Search_Click" Background="ForestGreen" FontSize="20" Width="150" Height="35">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="DatabaseSearch" />
                             <TextBlock>Search</TextBlock>

@@ -32,59 +32,6 @@ namespace FinalCheck
             this.DataContext = this;
             //loaddatadetail("abc");
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            RenderTargetBitmap renderTargetBitmap = new RenderTargetBitmap(
-                   (int)ActualWidth, (int)ActualHeight, 96, 96, PixelFormats.Pbgra32);
-
-            renderTargetBitmap.Render(this);
-
-            // Chuyển đổi hình ảnh thành mảng byte
-            PngBitmapEncoder pngImage = new PngBitmapEncoder();
-            pngImage.Frames.Add(BitmapFrame.Create(renderTargetBitmap));
-
-            using (MemoryStream imageStream = new MemoryStream())
-            {
-                pngImage.Save(imageStream);
-                byte[] imageBytes = imageStream.ToArray();
-
-                // Lưu hình ảnh vào tệp
-                string imagePath = "C:\\Users\\PC\\Desktop\\New folder (2)\\screenshot.png";
-                File.WriteAllBytes(imagePath, imageBytes);
-
-                MessageBox.Show($"Screenshot saved to: {imagePath}", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            //RenderTargetBitmap renderTargetBitmap = new RenderTargetBitmap((int)ActualWidth, (int)ActualHeight, 96, 96, System.Windows.Media.PixelFormats.Pbgra32);
-            //renderTargetBitmap.Render(this);
-
-            //// Convert the image to a byte array
-            //PngBitmapEncoder pngImage = new PngBitmapEncoder();
-            //pngImage.Frames.Add(BitmapFrame.Create(renderTargetBitmap));
-            //using (MemoryStream imageStream = new MemoryStream())
-            //{
-            //    pngImage.Save(imageStream);
-            //    byte[] imageBytes = imageStream.ToArray();
-
-            //    // Create PDF and add the image
-            //    PdfDocument document = new PdfDocument();
-            //    PdfPage page = document.AddPage();
-            //    XGraphics gfx = XGraphics.FromPdfPage(page);
-
-            //    using (MemoryStream ms = new MemoryStream(imageBytes))
-            //    {
-            //        XImage image = XImage.FromStream(ms);
-            //        gfx.DrawImage(image, 0, 0);
-            //    }
-
-            //    // Save the PDF to a file
-            //    string pdfFilePath = "C:\\Users\\PC\\Desktop\\New folder (2)\\finaloutput.pdf";
-            //    document.Save(pdfFilePath);
-
-            //    // Open the PDF file
-            //    System.Diagnostics.Process.Start(pdfFilePath);
-            //}
-        }
         private void lv1_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             ListView listView = sender as ListView;
@@ -125,5 +72,95 @@ namespace FinalCheck
 
         }
 
+        private void btn_Search_Click(object sender, RoutedEventArgs e)
+        {
+            if (Ckb_nofinal.IsChecked == false)
+            {
+                DateTime? selectTimeFrom = TimeFrom.SelectedTime;
+                DateTime? selectDateFrom = DateFrom.SelectedDate;
+                DateTime? selectTimeTo = TimeTo.SelectedTime;
+                DateTime? selectDateTo = DateTo.SelectedDate;
+
+                string DateTimeFrom = "";
+                string DateTimeTo = "";
+
+                if (selectTimeFrom.HasValue && selectDateFrom.HasValue)
+                {
+                    DateTime slDate = selectDateFrom.Value;
+                    DateTime slTime = selectTimeFrom.Value;
+                    DateTimeFrom = slDate.ToString("yyyy-MM-dd") + " " + slTime.ToString("HH:mm:ss");
+                }
+                else if (!selectTimeFrom.HasValue && selectDateFrom.HasValue)
+                {
+                    DateTime slDate = selectDateFrom.Value;
+                    DateTimeFrom = slDate.ToString("yyyy-MM-dd") + " 00:00:00";
+                }
+                if (selectTimeTo.HasValue && selectDateTo.HasValue)
+                {
+                    DateTime slDate = selectDateTo.Value;
+                    DateTime slTime = selectTimeTo.Value;
+                    DateTimeTo = slDate.ToString("yyyy-MM-dd") + " " + slTime.ToString("HH:mm:ss");
+                }
+                else if (!selectTimeTo.HasValue && selectDateTo.HasValue)
+                {
+                    DateTime slDate = selectDateTo.Value;
+                    DateTimeTo = slDate.ToString("yyyy-MM-dd") + " 00:00:00";
+                }
+
+                if (DateTimeFrom != "" && DateTimeTo != "" && txb_Cabi.Text != "")
+                {
+                    MessageBox.Show(DateTimeFrom + "\n" + DateTimeTo + "\n" + txb_Cabi.Text);
+                }
+                else if (DateTimeFrom != "" && DateTimeTo != "" && txb_Cabi.Text == "")
+                {
+                    MessageBox.Show(DateTimeFrom + "\n" + DateTimeTo);
+                }
+                else if (txb_Cabi.Text != "")
+                {
+                    MessageBox.Show(txb_Cabi.Text);
+                }
+                else
+                {
+                    MessageBox.Show("Chưa nhập thông tin để tìm kiếm", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+
+            }
+            else if (Ckb_nofinal.IsChecked == true)
+            {
+                MessageBox.Show("No Final Check");
+            }
+
+        }
+        public void LoadDataFinalCheck()
+        {
+
+        }
+        public void LoadDataNoFinalCheck()
+        {
+
+        }
+
+        private void Ckb_nofinal_Checked(object sender, RoutedEventArgs e)
+        {
+           
+                TimeFrom.Text = "";
+                DateFrom.Text = "";
+                TimeTo.Text = "";
+                DateTo.Text = "";
+                TimeFrom.IsEnabled = false;
+                DateFrom.IsEnabled = false;
+                TimeTo.IsEnabled = false;
+                DateTo.IsEnabled = false;
+        }
+
+        private void Ckb_nofinal_Unchecked(object sender, RoutedEventArgs e)
+        {
+            TimeFrom.IsEnabled = true;
+            DateFrom.IsEnabled = true;
+            TimeTo.IsEnabled = true;
+            DateTo.IsEnabled = true;
+        }
     }
 }
