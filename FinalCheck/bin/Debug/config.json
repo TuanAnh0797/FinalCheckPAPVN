@@ -7,7 +7,7 @@
     "TimerUpdateUI": 500
   },
   "LogFile": {
-    "FilePathOK": "",
-    "FilePathNG": ""
+    "FilePathOK": "C:\\Users\\Admin\\Desktop\\LOG_OK_FinalCheck",
+    "FilePathNG": "C:\\Users\\Admin\\Desktop\\LOG_NG_FinalCheck"
   }
 }

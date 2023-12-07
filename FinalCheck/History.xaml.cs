@@ -35,7 +35,7 @@ namespace FinalCheck
             dataforlistview = new ObservableCollection<ResultMain>();
             this.DataContext = this;
 
-            //loaddatadetail("abc");
+           
         }
         public void LoadDataForTableHistory(string datetimefrom, string datetimeto, string namecabi)
         {
@@ -49,6 +49,7 @@ namespace FinalCheck
                     ResultMain RM = new ResultMain(i + 1, dt.Rows[i]["CodeModel"].ToString(), dt.Rows[i]["Judge_Total"].ToString(), dt.Rows[i]["TimeUpdate"].ToString());
                     dataforlistview.Add(RM);
                 }
+                
 
             }
         }
@@ -101,77 +102,65 @@ namespace FinalCheck
 
         private void btn_Search_Click(object sender, RoutedEventArgs e)
         {
-            if (Ckb_nofinal.IsChecked == false)
+            try
             {
-                DateTime? selectTimeFrom = TimeFrom.SelectedTime;
-                DateTime? selectDateFrom = DateFrom.SelectedDate;
-                DateTime? selectTimeTo = TimeTo.SelectedTime;
-                DateTime? selectDateTo = DateTo.SelectedDate;
+                if (Ckb_nofinal.IsChecked == false)
+                {
+                    DateTime? selectTimeFrom = TimeFrom.SelectedTime;
+                    DateTime? selectDateFrom = DateFrom.SelectedDate;
+                    DateTime? selectTimeTo = TimeTo.SelectedTime;
+                    DateTime? selectDateTo = DateTo.SelectedDate;
 
-                string DateTimeFrom = "";
-                string DateTimeTo = "";
-
-
-
-                if (selectTimeFrom.HasValue && selectDateFrom.HasValue)
-                {
-                    DateTime slDate = selectDateFrom.Value;
-                    DateTime slTime = selectTimeFrom.Value;
-                    DateTimeFrom = slDate.ToString("yyyy-MM-dd") + " " + slTime.ToString("HH:mm:ss");
-                }
-                else if (!selectTimeFrom.HasValue && selectDateFrom.HasValue)
-                {
-                    DateTime slDate = selectDateFrom.Value;
-                    DateTimeFrom = slDate.ToString("yyyy-MM-dd") + " 00:00:00";
-                }
-                if (selectTimeTo.HasValue && selectDateTo.HasValue)
-                {
-                    DateTime slDate = selectDateTo.Value;
-                    DateTime slTime = selectTimeTo.Value;
-                    DateTimeTo = slDate.ToString("yyyy-MM-dd") + " " + slTime.ToString("HH:mm:ss");
-                }
-                else if (!selectTimeTo.HasValue && selectDateTo.HasValue)
-                {
-                    DateTime slDate = selectDateTo.Value;
-                    DateTimeTo = slDate.ToString("yyyy-MM-dd") + " 00:00:00";
-                }
-
-                if (DateTimeFrom != "" && DateTimeTo != "" && txb_Cabi.Text != "")
-                {
-                    MessageBox.Show(DateTimeFrom + "\n" + DateTimeTo + "\n" + txb_Cabi.Text);
-                }
-                else if (DateTimeFrom != "" && DateTimeTo != "" && txb_Cabi.Text == "")
-                {
-                    MessageBox.Show(DateTimeFrom + "\n" + DateTimeTo);
-                }
-                else if (txb_Cabi.Text != "")
-                {
-                    MessageBox.Show(txb_Cabi.Text);
-                }
-                else
-                {
-                    MessageBox.Show("Chưa nhập thông tin để tìm kiếm", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-                LoadDataForTableHistory(DateTimeFrom, DateTimeTo, txb_Cabi.Text);
+                    string DateTimeFrom = "";
+                    string DateTimeTo = "";
 
 
+
+                    if (selectTimeFrom.HasValue && selectDateFrom.HasValue)
+                    {
+                        DateTime slDate = selectDateFrom.Value;
+                        DateTime slTime = selectTimeFrom.Value;
+                        DateTimeFrom = slDate.ToString("yyyy-MM-dd") + " " + slTime.ToString("HH:mm:ss");
+                    }
+                    else if (!selectTimeFrom.HasValue && selectDateFrom.HasValue)
+                    {
+                        DateTime slDate = selectDateFrom.Value;
+                        DateTimeFrom = slDate.ToString("yyyy-MM-dd") + " 00:00:00";
+                    }
+                    if (selectTimeTo.HasValue && selectDateTo.HasValue)
+                    {
+                        DateTime slDate = selectDateTo.Value;
+                        DateTime slTime = selectTimeTo.Value;
+                        DateTimeTo = slDate.ToString("yyyy-MM-dd") + " " + slTime.ToString("HH:mm:ss");
+                    }
+                    else if (!selectTimeTo.HasValue && selectDateTo.HasValue)
+                    {
+                        DateTime slDate = selectDateTo.Value;
+                        DateTimeTo = slDate.ToString("yyyy-MM-dd") + " 00:00:00";
+                    }
+
+                    if ((DateTimeFrom == "" || DateTimeTo == "") && txb_Cabi.Text == "" || (DateTimeFrom == "" && DateTimeTo == "" && txb_Cabi.Text == ""))
+                    {
+                        MessageBox.Show("Chưa nhập thông tin để tìm kiếm", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+                    LoadDataForTableHistory(DateTimeFrom, DateTimeTo, txb_Cabi.Text);
+
+
+                }
+                else if (Ckb_nofinal.IsChecked == true)
+                {
+                    UpdateDetail(txb_Cabi.Text);
+                }
             }
-            else if (Ckb_nofinal.IsChecked == true)
+            catch (Exception ex)
             {
-                UpdateDetail(txb_Cabi.Text);
+
+                MessageBox.Show(ex.Message);
             }
+           
 
         }
-        public void LoadDataFinalCheck()
-        {
-
-        }
-        public void LoadDataNoFinalCheck()
-        {
-
-        }
-
         private void Ckb_nofinal_Checked(object sender, RoutedEventArgs e)
         {
            
@@ -407,6 +396,7 @@ namespace FinalCheck
                                     {
                                         string selectedFolderPath = folderBrowserDialog.SelectedPath;
                                         await exportdata(selectedFolderPath);
+                                    MessageBox.Show($"Đã export vào folder: {selectedFolderPath}");
                                     }
                                 }
                         }
@@ -428,6 +418,7 @@ namespace FinalCheck
                                 {
                                     string selectedFolderPath = folderBrowserDialog.SelectedPath;
                                     await exportdata(selectedFolderPath);
+                                    MessageBox.Show($"Đã export vào folder: {selectedFolderPath}");
                                 }
                             }
                         }
