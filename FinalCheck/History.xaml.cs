@@ -27,6 +27,7 @@ namespace FinalCheck
     /// </summary>
     public partial class History : Window
     {
+        public bool is_export = false;
         public ObservableCollection<ResultMain> dataforlistview { set; get; }
         public History()
         {
@@ -375,12 +376,256 @@ namespace FinalCheck
                             dtg_CAMBACK.ItemsSource = dts.Tables[10].DefaultView;
 
                             dtg_CAMFRONT.ItemsSource = dts.Tables[11].DefaultView;
-                        
                     }
                 }));
             });
             result.Start();
             await result;
         }
+
+        private async void btn_Export_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (!is_export)
+                {
+                    is_export = true;
+                    if (dataforlistview.Count > 100)
+                    {
+                        if (MessageBox.Show($"Số lượng export nhiều({dataforlistview.Count.ToString()}) có thể ảnh hưởng đến hiệu năng \n Bạn có muốn tiếp tục export không?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                        {
+                                using (System.Windows.Forms.FolderBrowserDialog folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog())
+                                {
+                                    // Thiết lập các thuộc tính cho FolderBrowserDialog (tùy chọn)
+                                    folderBrowserDialog.Description = "Chọn thư mục để lưu tệp";
+                                    folderBrowserDialog.ShowNewFolderButton = true; // Hiển thị nút để tạo thư mục mới
+
+                                    // Hiển thị hộp thoại và kiểm tra xem người dùng đã chọn thư mục không
+                                    System.Windows.Forms.DialogResult result = folderBrowserDialog.ShowDialog();
+
+                                    if (result == System.Windows.Forms.DialogResult.OK)
+                                    {
+                                        string selectedFolderPath = folderBrowserDialog.SelectedPath;
+                                        await exportdata(selectedFolderPath);
+                                    }
+                                }
+                        }
+                    }
+                    else
+                    {
+                        if (dataforlistview.Count > 0)
+                        {
+                            using (System.Windows.Forms.FolderBrowserDialog folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog())
+                            {
+                                // Thiết lập các thuộc tính cho FolderBrowserDialog (tùy chọn)
+                                folderBrowserDialog.Description = "Chọn thư mục để lưu tệp";
+                                folderBrowserDialog.ShowNewFolderButton = true; // Hiển thị nút để tạo thư mục mới
+
+                                // Hiển thị hộp thoại và kiểm tra xem người dùng đã chọn thư mục không
+                                System.Windows.Forms.DialogResult result = folderBrowserDialog.ShowDialog();
+
+                                if (result == System.Windows.Forms.DialogResult.OK)
+                                {
+                                    string selectedFolderPath = folderBrowserDialog.SelectedPath;
+                                    await exportdata(selectedFolderPath);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không có dữ liệu để Export");
+                        }
+                    }
+
+
+                    is_export = false;
+                }
+                else
+                {
+                    MessageBox.Show("Đang export. Hãy chờ export xong");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            
+            
+        }
+        public void SaveLogCheck(string filepathlog, string NameCabi, ResultCheckFinal RCF)
+        {
+            
+            string NameFile = NameCabi + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".csv";
+            using (StreamWriter sw = new StreamWriter(filepathlog + "\\"  + NameFile, true, Encoding.UTF8))
+            {
+                string Content = "TimeCheck,ModelCode,VP,GAS,WI1 WITH,WI1 START,IP,DF,TEMP,IOT,WI2,PAN,CAMBACK,CAMFRONT,ToTal,Cách xử lý,Người xác nhận\n"
+                + $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")},{NameCabi},{RCF.Judge_VP},{RCF.Judge_GAS},{RCF.Judge_WI1WITH},{RCF.Judge_WI1START},{RCF.Judge_IP},{RCF.Judge_DF},{RCF.Judge_TEMP},{RCF.Judge_IOT},{RCF.Judge_WI2},{RCF.Judge_PAN},{RCF.Judge_CAMBACK},{RCF.Judge_CAMFRONT},{RCF.Judge_Total},{RCF.ReasonError},{RCF.PersonConfirm}";
+                sw.WriteLine(Content);
+            }
+            
+        }
+        public async Task exportdata(string foldersave)
+        {
+            Task t1 = new Task(() =>
+            {
+                for (int i = 0; i < dataforlistview.Count; i++)
+                {
+                    
+                    try
+                    {
+                        ResultCheckFinal RCF = LoadDataForCabi(dataforlistview[i].Cabinet);
+                        SaveLogCheck(foldersave, dataforlistview[i].Cabinet, RCF);
+                    }
+                    catch (Exception)
+                    {
+
+                        continue;
+                    }
+                    
+                }
+            });
+            t1.Start();
+            await t1;
+        }
+        public ResultCheckFinal LoadDataForCabi(string cabinet)
+        {
+            DbConnect db_connect = new DbConnect();
+            ResultCheckFinal RCF = new ResultCheckFinal();
+            DataTable dt = db_connect.StoreFillDT("GetJudgeAllLineDetail", CommandType.StoredProcedure, cabinet);
+            if (dt.Rows.Count > 0)
+            {
+                RCF.PersonConfirm = dt.Rows[0]["UserConfirm"].ToString();
+                RCF.ReasonError = dt.Rows[0]["ReasonError"].ToString();
+                if (dt.Rows[0]["JudgeVP"].ToString() == "OK" || dt.Rows[0]["JudgeVP"].ToString() == "NG")
+                {
+                    RCF.Judge_VP = dt.Rows[0]["JudgeVP"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_VP = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgeGAS"].ToString() == "OK" || dt.Rows[0]["JudgeGAS"].ToString() == "NG")
+                {
+                    RCF.Judge_GAS = dt.Rows[0]["JudgeGAS"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_GAS = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgeWI1WITH"].ToString() == "OK" || dt.Rows[0]["JudgeWI1WITH"].ToString() == "NG")
+                {
+                    RCF.Judge_WI1WITH = dt.Rows[0]["JudgeWI1WITH"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_WI1WITH = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgeWI1START"].ToString() == "OK" || dt.Rows[0]["JudgeWI1START"].ToString() == "NG")
+                {
+                    RCF.Judge_WI1START = dt.Rows[0]["JudgeWI1START"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_WI1START = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgeIP"].ToString() == "OK" || dt.Rows[0]["JudgeIP"].ToString() == "NG")
+                {
+                    RCF.Judge_IP = dt.Rows[0]["JudgeIP"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_IP = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgeDF"].ToString() == "OK" || dt.Rows[0]["JudgeDF"].ToString() == "NG")
+                {
+                    RCF.Judge_DF = dt.Rows[0]["JudgeDF"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_DF = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgeTEMP"].ToString() == "OK" || dt.Rows[0]["JudgeTEMP"].ToString() == "NG")
+                {
+                    RCF.Judge_TEMP = dt.Rows[0]["JudgeTEMP"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_TEMP = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgeIOT"].ToString() == "OK" || dt.Rows[0]["JudgeIOT"].ToString() == "NG")
+                {
+                    RCF.Judge_IOT = dt.Rows[0]["JudgeIOT"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_IOT = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgeWI2"].ToString() == "OK" || dt.Rows[0]["JudgeWI2"].ToString() == "NG")
+                {
+                    RCF.Judge_WI2 = dt.Rows[0]["JudgeWI2"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_WI2 = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgePAN"].ToString() == "OK" || dt.Rows[0]["JudgePAN"].ToString() == "NG")
+                {
+                    RCF.Judge_PAN = dt.Rows[0]["JudgePAN"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_PAN = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgeCAMBACK"].ToString() == "OK" || dt.Rows[0]["JudgeCAMBACK"].ToString() == "NG")
+                {
+                    RCF.Judge_CAMBACK = dt.Rows[0]["JudgeCAMBACK"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_CAMBACK = "PD";
+                }
+                //
+                if (dt.Rows[0]["JudgeCAMFRONT"].ToString() == "OK" || dt.Rows[0]["JudgeCAMFRONT"].ToString() == "NG")
+                {
+                    RCF.Judge_CAMFRONT = dt.Rows[0]["JudgeCAMFRONT"].ToString();
+                }
+                else
+                {
+                    RCF.Judge_CAMFRONT = "PD";
+                }
+                //
+                RCF.Judge_Total = dt.Rows[0]["JudgeTotal"].ToString();
+            }
+            else
+            {
+                RCF.Judge_VP = "PD";
+                RCF.Judge_GAS = "PD";
+                RCF.Judge_WI1WITH = "PD";
+                RCF.Judge_WI1START = "PD";
+                RCF.Judge_IP = "PD";
+                RCF.Judge_DF = "PD";
+                RCF.Judge_TEMP = "PD";
+                RCF.Judge_IOT = "PD";
+                RCF.Judge_WI2 = "PD";
+                RCF.Judge_PAN = "PD";
+                RCF.Judge_CAMBACK = "PD";
+                RCF.Judge_CAMFRONT = "PD";
+                RCF.Judge_Total = "NG";
+            }
+            return RCF;
+
+        }
+
     }
 }

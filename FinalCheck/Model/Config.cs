@@ -23,6 +23,7 @@ namespace FinalCheck.Model
     }
     public class LogFile
     {
-        public string FilePath { get; set; }
+        public string FilePathOK { get; set; }
+        public string FilePathNG { get; set; }
     }
 }

@@ -37,6 +37,8 @@ namespace FinalCheck
         public ResultCheckFinal RS_Final;
         PLC Plc = new PLC();
         bool check_run = false;
+        string FilePathNG;
+        string NameCabi;
         DispatcherTimer TimerCheck = new DispatcherTimer();
         public string Cabinet
         {
@@ -62,11 +64,13 @@ namespace FinalCheck
             Task t1 = UpdateJugde(namecabi);
             Task t2 = UpdateDetail(namecabi);
         }
-        public DataDetail(string namecabi, ResultCheckFinal RCF)
+        public DataDetail(string namecabi, ResultCheckFinal RCF,string filepathNG)
         {
             InitializeComponent();
             RS_Final = RCF;
             innitpopdisconnect();
+            FilePathNG = filepathNG;
+            NameCabi = namecabi;
             Task t1 = UpdateJugdeError(namecabi, RCF);
             Task t2 = UpdateDetailError(namecabi);
             TimerCheck.Interval = TimeSpan.FromMilliseconds(500);
@@ -161,6 +165,8 @@ namespace FinalCheck
                     {
                         string DataContentError = (string)await Plc.ReadData(StreamPLc, timeout, "D", ConfigConnection.ReadData.NameDeviceDataReason, ConfigConnection.ReadData.QuantityDataReason, "String");
                         string DataUser = (string)await Plc.ReadData(StreamPLc, timeout, "D", ConfigConnection.ReadData.NameDeviceDataPerson, ConfigConnection.ReadData.QuantityDataPerson, "String");
+                        RS_Final.PersonConfirm = DataUser;
+                        RS_Final.ReasonError = DataContentError;
                         UpdateDataFinalCheck(txb_namecabi.Text, DataContentError, DataUser);
                         await Plc.WriteBit(StreamPLc, timeout, "M", ConfigConnection.WriteBit.NameDeviceSendConfirm);
                         return true;
@@ -182,6 +188,16 @@ namespace FinalCheck
             return false;
 
 
+        }
+        public void SaveLogCheck(string filepathlog, string NameCabi, ResultCheckFinal RCF)
+        {
+            using (StreamWriter sw = new StreamWriter(filepathlog, false, Encoding.UTF8))
+            {
+                string Content = "TimeCheck,ModelCode,VP,GAS,WI1 WITH,WI1 START,IP,DF,TEMP,IOT,WI2,PAN,CAMBACK,CAMFRONT,ToTal,Cách xử lý,Người xác nhận\n"
+                + $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")},{NameCabi},{RCF.Judge_VP},{RCF.Judge_GAS},{RCF.Judge_WI1WITH},{RCF.Judge_WI1START},{RCF.Judge_IP},{RCF.Judge_DF},{RCF.Judge_TEMP},{RCF.Judge_IOT},{RCF.Judge_WI2},{RCF.Judge_PAN},{RCF.Judge_CAMBACK},{RCF.Judge_CAMFRONT},{RCF.Judge_Total},{RCF.ReasonError},{RCF.PersonConfirm}";
+                sw.WriteLine(Content);
+            }
+           
         }
         public void SaveLogError(string data)
         {
@@ -215,6 +231,7 @@ namespace FinalCheck
                 check_run = true;
                 if (await ControlPlc(5000))
                 {
+                    SaveLogCheck(FilePathNG, NameCabi, RS_Final);
                     this.Close();
                 }
                 check_run = false;

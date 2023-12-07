@@ -49,6 +49,9 @@ namespace FinalCheck
         bool check_run_UpdateUi = false;
         bool rs_NG = false;
         bool TrigerUpdateUI = true;
+        string LogFilePathOK;
+        string LogFilePathNG;
+        bool IsOpenSetup = false;
         public Func<double, string> Formatter { get; set; }
 
         public ObservableCollection<ResultMain> dataforlistview { set; get; }
@@ -163,19 +166,13 @@ namespace FinalCheck
                 //innit Timer Update UI
                 TimerUpdateUI.Start();
                 TimerUpdateUI.Tick += TimerUpdateUI_Tick;
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 this.Close();
             }
-
-
         }
-
-
-
         public void loadConfigJson()
         {
             string dataconfig = File.ReadAllText(Directory.GetCurrentDirectory() + "//config.json");
@@ -183,6 +180,8 @@ namespace FinalCheck
             StaticData.connection_string = myconfig.DataBase.ConnectionString;
             TimerCheck.Interval = TimeSpan.FromMilliseconds(myconfig.TimmerConfig.TimerCheck);
             TimerUpdateUI.Interval = TimeSpan.FromMilliseconds(myconfig.TimmerConfig.TimerUpdateUI);
+            LogFilePathOK = myconfig.LogFile.FilePathOK;
+            LogFilePathNG = myconfig.LogFile.FilePathNG;
         }
         public void loadConfigSQL()
         {
@@ -374,7 +373,16 @@ namespace FinalCheck
         }
         private async void lv1_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            await showdetail();
+            try
+            {
+                await showdetail();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+           
         }
 
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -405,11 +413,20 @@ namespace FinalCheck
 
         private async void btn_History_Click(object sender, RoutedEventArgs e)
         {
-            if (btn_open.IsChecked == true)
+            try
             {
-                btn_open.IsChecked = false;
+                if (btn_open.IsChecked == true)
+                {
+                    btn_open.IsChecked = false;
+                }
+                await showhistory();
             }
-            await showhistory();
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+           
         }
         public async Task showdetail()
         {
@@ -446,33 +463,51 @@ namespace FinalCheck
 
         private void lv1_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            ListView listView = sender as ListView;
-            GridView gView = listView.View as GridView;
-            var workingWidth = listView.ActualWidth - SystemParameters.VerticalScrollBarWidth;
-            gView.Columns[0].Width = workingWidth * 0.1;
-            gView.Columns[1].Width = workingWidth * 0.35;
-            gView.Columns[2].Width = workingWidth * 0.2;
-            gView.Columns[3].Width = workingWidth * 0.35;
+            try
+            {
+                ListView listView = sender as ListView;
+                GridView gView = listView.View as GridView;
+                var workingWidth = listView.ActualWidth - SystemParameters.VerticalScrollBarWidth;
+                gView.Columns[0].Width = workingWidth * 0.1;
+                gView.Columns[1].Width = workingWidth * 0.35;
+                gView.Columns[2].Width = workingWidth * 0.2;
+                gView.Columns[3].Width = workingWidth * 0.35;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+           
         }
 
         private void lv_rsdetail_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            ListView listView = sender as ListView;
-            GridView gView = listView.View as GridView;
-            var workingWidth = listView.ActualWidth;
-            double with = 0.083;
-            gView.Columns[0].Width = workingWidth * with;
-            gView.Columns[1].Width = workingWidth * with;
-            gView.Columns[2].Width = workingWidth * with;
-            gView.Columns[3].Width = workingWidth * with;
-            gView.Columns[4].Width = workingWidth * with;
-            gView.Columns[5].Width = workingWidth * with;
-            gView.Columns[6].Width = workingWidth * with;
-            gView.Columns[7].Width = workingWidth * with;
-            gView.Columns[8].Width = workingWidth * with;
-            gView.Columns[9].Width = workingWidth * with;
-            gView.Columns[10].Width = workingWidth * with;
-            gView.Columns[11].Width = workingWidth * with;
+            try
+            {
+                ListView listView = sender as ListView;
+                GridView gView = listView.View as GridView;
+                var workingWidth = listView.ActualWidth;
+                double with = 0.083;
+                gView.Columns[0].Width = workingWidth * with;
+                gView.Columns[1].Width = workingWidth * with;
+                gView.Columns[2].Width = workingWidth * with;
+                gView.Columns[3].Width = workingWidth * with;
+                gView.Columns[4].Width = workingWidth * with;
+                gView.Columns[5].Width = workingWidth * with;
+                gView.Columns[6].Width = workingWidth * with;
+                gView.Columns[7].Width = workingWidth * with;
+                gView.Columns[8].Width = workingWidth * with;
+                gView.Columns[9].Width = workingWidth * with;
+                gView.Columns[10].Width = workingWidth * with;
+                gView.Columns[11].Width = workingWidth * with;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+          
         }
         //Load Data For Table History
         public void LoadDataForTableHistory()
@@ -487,7 +522,6 @@ namespace FinalCheck
                     ResultMain RM = new ResultMain(i + 1, dt.Rows[i]["CodeModel"].ToString(), dt.Rows[i]["Judge_Total"].ToString(), dt.Rows[i]["TimeUpdate"].ToString());
                     dataforlistview.Add(RM);
                 }
-
             }
         }
 
@@ -751,9 +785,13 @@ namespace FinalCheck
                 }
                 if (rs_NG)
                 {
-
-                    await showdetailError(DataCabi, RCF);
+                    string filepathNG = SaveLogCheck(LogFilePathNG, DataCabi, RCF);
+                    await showdetailError(DataCabi, RCF, filepathNG);
                     rs_NG = false;
+                }
+                else
+                {
+                    SaveLogCheck(LogFilePathOK, DataCabi, RCF);
                 }
             }
             catch (Exception ex)
@@ -785,14 +823,30 @@ namespace FinalCheck
             }
            
         }
-        public async Task showdetailError(string CodeModel, ResultCheckFinal RCF)
+        public string SaveLogCheck(string filepathlog,string NameCabi, ResultCheckFinal RCF)
+        {
+            string SaveFolder = DateTime.Now.ToString("ddMMyyyy");
+            if (!Directory.Exists(filepathlog+$"\\{SaveFolder}"))
+            {
+                Directory.CreateDirectory(filepathlog + $"\\{SaveFolder}");
+            }
+            string NameFile = NameCabi + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".csv";
+            using (StreamWriter sw = new StreamWriter(filepathlog+"\\"+$"{SaveFolder}\\"+NameFile,true,Encoding.UTF8))
+            {
+                string Content = "TimeCheck,ModelCode,VP,GAS,WI1 WITH,WI1 START,IP,DF,TEMP,IOT,WI2,PAN,CAMBACK,CAMFRONT,ToTal,Cách xử lý,Người xác nhận\n"
+                + $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")},{NameCabi},{RCF.Judge_VP},{RCF.Judge_GAS},{RCF.Judge_WI1WITH},{RCF.Judge_WI1START},{RCF.Judge_IP},{RCF.Judge_DF},{RCF.Judge_TEMP},{RCF.Judge_IOT},{RCF.Judge_WI2},{RCF.Judge_PAN},{RCF.Judge_CAMBACK},{RCF.Judge_CAMFRONT},{RCF.Judge_Total},{RCF.ReasonError},{RCF.PersonConfirm}";
+                sw.WriteLine(Content);
+            }
+            return filepathlog + "\\" + $"{SaveFolder}\\" + NameFile;
+        } 
+        public async Task showdetailError(string CodeModel, ResultCheckFinal RCF, string filepathNG)
         {
             Task result;
             result = new Task(() =>
             {
                 this.Dispatcher?.Invoke(new Action(() =>
                 {
-                    DataDetail p = new DataDetail(CodeModel, RCF);
+                    DataDetail p = new DataDetail(CodeModel, RCF, filepathNG);
                     p.ShowDialog();
                 }));
             });

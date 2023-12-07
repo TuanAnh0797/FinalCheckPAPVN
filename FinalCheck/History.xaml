@@ -51,12 +51,19 @@
                     <CheckBox Unchecked="Ckb_nofinal_Unchecked" Name="Ckb_nofinal" Checked="Ckb_nofinal_Checked" FontSize="15" Margin="0,0,15,0" IsChecked="False">
                         Tìm thông tin tủ chưa Final Check
                     </CheckBox>
-                    <Button Name="btn_Search" Click="btn_Search_Click" Background="ForestGreen" FontSize="20" Width="150" Height="35">
+                    <Button Margin="0,0,15,0" Name="btn_Search" Click="btn_Search_Click" Background="ForestGreen" FontSize="20" Width="110" Height="35">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="DatabaseSearch" />
                             <TextBlock>Search</TextBlock>
                         </StackPanel>
                     </Button>
+                    <Button Margin="0,0,15,0" Name="btn_Export" Click="btn_Export_Click" Background="MediumSlateBlue" FontSize="20" Width="110" Height="35">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="DatabaseExport" />
+                            <TextBlock>Export</TextBlock>
+                        </StackPanel>
+                    </Button>
+
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1">
