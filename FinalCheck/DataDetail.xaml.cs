@@ -40,6 +40,7 @@ namespace FinalCheck
         string FilePathNG;
         string NameCabi;
         DispatcherTimer TimerCheck = new DispatcherTimer();
+        DispatcherTimer TimerPopupDisconnect = new DispatcherTimer();
         public string Cabinet
         {
             get { return cabinet; }
@@ -73,10 +74,17 @@ namespace FinalCheck
             NameCabi = namecabi;
             Task t1 = UpdateJugdeError(namecabi, RCF);
             Task t2 = UpdateDetailError(namecabi);
+
             TimerCheck.Interval = TimeSpan.FromMilliseconds(500);
             TimerCheck.Start();
             TimerCheck.Tick += TimerCheck_Tick;
+
+            TimerPopupDisconnect.Interval = TimeSpan.FromMilliseconds(2000);
+            TimerPopupDisconnect.Tick += TimerPopupDisconnect_Tick;
         }
+
+      
+
         public DataDetail()
         {
             InitializeComponent();
@@ -173,15 +181,25 @@ namespace FinalCheck
                     }
                     tcpclient.Close();
                     popupdisconnect.IsOpen = false;
+                    if (TimerPopupDisconnect.IsEnabled)
+                    {
+                        TimerPopupDisconnect.Stop();
+                    }
+                   
                 }
 
             }
             catch (Exception ex)
             {
                 SaveLogError(DateTime.Now.ToString("HH:mm:ss dd/MM/yyyy") + ": " + ex.Message);
-                if (ex.Message.Contains("timed out PLC"))
+                if (ex.Message.Contains("timed out PLC") || ex.Message.Contains("actively refused")) ;
                 {
-                    popupdisconnect.IsOpen = true;
+                    //popupdisconnect.IsOpen = true;
+                    if (!TimerPopupDisconnect.IsEnabled)
+                    {
+                        TimerPopupDisconnect.Start();
+                    }
+                   
                 }
 
             }
@@ -246,6 +264,7 @@ namespace FinalCheck
         private void MyControlBarTA_Closed(object sender, EventArgs e)
         {
             TimerCheck.Stop();
+            TimerPopupDisconnect.Stop();
             check_run = false;
         }
         public void innitpopdisconnect()
@@ -278,12 +297,23 @@ namespace FinalCheck
             // Đặt Border vào Popup
             popupdisconnect.Child = borderdisconnect;
         }
+        private void TimerPopupDisconnect_Tick(object sender, EventArgs e)
+        {
+            if (popupdisconnect.IsOpen)
+            {
+                popupdisconnect.IsOpen = false;
+            }
+            else
+            {
+                popupdisconnect.IsOpen = true;
+            }
+        }
         public ResultCheckFinal LoadDataForCabi(string cabinet)
         {
             DbConnect db_connect = new DbConnect();
             ResultCheckFinal RCF = new ResultCheckFinal();
             DataTable dt = db_connect.StoreFillDT("GetJudgeAllLineDetail", CommandType.StoredProcedure, cabinet);
-            if (dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0 && dt.Rows[0]["JudgeTotal"] != DBNull.Value)
             {
                 RCF.PersonConfirm = dt.Rows[0]["UserConfirm"].ToString();
                 RCF.ReasonError = dt.Rows[0]["ReasonError"].ToString();
@@ -350,7 +380,7 @@ namespace FinalCheck
                     RCF.Judge_TEMP = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeIOT"].ToString() == "OK" || dt.Rows[0]["JudgeIOT"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeIOT"].ToString() == "OK" || dt.Rows[0]["JudgeIOT"].ToString() == "NG" || dt.Rows[0]["JudgeIOT"].ToString() == "NA")
                 {
                     RCF.Judge_IOT = dt.Rows[0]["JudgeIOT"].ToString();
                 }

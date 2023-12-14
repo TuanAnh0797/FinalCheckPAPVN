@@ -1,0 +1,8 @@
+CREATE DEFINER=`TA`@`%` PROCEDURE `LoadDataForTableHistory`()
+BEGIN
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+    SELECT CodeBack, Judge_Total, TimeUpdate
+    FROM DataCheckFinal
+    ORDER BY TimeUpdate DESC
+    LIMIT 50;
+END

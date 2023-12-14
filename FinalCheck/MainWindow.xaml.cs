@@ -45,6 +45,7 @@ namespace FinalCheck
         TextBlock textBlockdisconnect = new TextBlock();
         DispatcherTimer TimerCheck = new DispatcherTimer();
         DispatcherTimer TimerUpdateUI = new DispatcherTimer();
+        DispatcherTimer TimerPopupDisconnect = new DispatcherTimer();
         bool check_run = false;
         bool check_run_UpdateUi = false;
         bool rs_NG = false;
@@ -166,6 +167,8 @@ namespace FinalCheck
                 //innit Timer Update UI
                 TimerUpdateUI.Start();
                 TimerUpdateUI.Tick += TimerUpdateUI_Tick;
+
+                TimerPopupDisconnect.Tick += TimerPopupDisconnect_Tick;
             }
             catch (Exception ex)
             {
@@ -173,6 +176,9 @@ namespace FinalCheck
                 this.Close();
             }
         }
+
+        
+
         public void loadConfigJson()
         {
             string dataconfig = File.ReadAllText(Directory.GetCurrentDirectory() + "//config.json");
@@ -180,6 +186,7 @@ namespace FinalCheck
             StaticData.connection_string = myconfig.DataBase.ConnectionString;
             TimerCheck.Interval = TimeSpan.FromMilliseconds(myconfig.TimmerConfig.TimerCheck);
             TimerUpdateUI.Interval = TimeSpan.FromMilliseconds(myconfig.TimmerConfig.TimerUpdateUI);
+            TimerPopupDisconnect.Interval = TimeSpan.FromMilliseconds(2000);
             LogFilePathOK = myconfig.LogFile.FilePathOK;
             LogFilePathNG = myconfig.LogFile.FilePathNG;
         }
@@ -189,7 +196,7 @@ namespace FinalCheck
 
             DataTable dt = dbc.StoreFillDT("GetConfigConnectPlc", CommandType.StoredProcedure);
 
-            if (dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0 && dt.Rows[0]["IpAddress"] != DBNull.Value)
             {
                 ConfigConnection.IpAddress = dt.Rows[0]["IpAddress"].ToString();
                 ConfigConnection.PortNumber = (int)dt.Rows[0]["PortNumber"];
@@ -209,6 +216,8 @@ namespace FinalCheck
                 //
                 ConfigConnection.ReadData.NameDeviceTrigerReadError = (int)dt.Rows[0]["NameDeviceTrigerReadError"];
                 ConfigConnection.WriteBit.NameDeviceSendConfirm = (int)dt.Rows[0]["NameDeviceSendConfirm"];
+
+                IsOpenSetup = false;
             }
             else
             {
@@ -407,8 +416,14 @@ namespace FinalCheck
             {
                 btn_open.IsChecked = false;
             }
-            Login p = new Login();
-            p.ShowDialog();
+            if (MessageBox.Show("Mở cài đặt sẽ dừng kiểm tra Final Check \n Bạn có muốn tiếp tục không?","Thông báo",MessageBoxButton.YesNo,MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                IsOpenSetup = true;
+                Login p = new Login();
+                p.confirmcloseform = new Login.mydeledate(loadConfigSQL);
+                p.ShowDialog();
+            }
+          
         }
 
         private async void btn_History_Click(object sender, RoutedEventArgs e)
@@ -515,11 +530,11 @@ namespace FinalCheck
             dataforlistview.Clear();
             DbConnect db_connect = new DbConnect();
             DataTable dt = db_connect.StoreFillDT("LoadDataForTableHistory", CommandType.StoredProcedure);
-            if (dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0 && dt.Rows[0]["CodeBack"] != DBNull.Value)
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    ResultMain RM = new ResultMain(i + 1, dt.Rows[i]["CodeModel"].ToString(), dt.Rows[i]["Judge_Total"].ToString(), dt.Rows[i]["TimeUpdate"].ToString());
+                    ResultMain RM = new ResultMain(i + 1, dt.Rows[i]["CodeBack"].ToString(), dt.Rows[i]["Judge_Total"].ToString(), dt.Rows[i]["TimeUpdate"].ToString());
                     dataforlistview.Add(RM);
                 }
             }
@@ -532,7 +547,7 @@ namespace FinalCheck
             DbConnect db_connect = new DbConnect();
             DataTable dt = db_connect.StoreFillDT("LoadDataForChart", CommandType.StoredProcedure);
             //OK
-            if (dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0 && dt.Rows[0]["TotalOK"] != DBNull.Value)
             {
                 VPOK.Value = double.Parse(dt.Rows[0]["VPOK"].ToString());
                 GASOILOK.Value = double.Parse(dt.Rows[0]["GASOILOK"].ToString());
@@ -583,7 +598,7 @@ namespace FinalCheck
             DbConnect db_connect = new DbConnect();
             ResultCheckFinal RCF = new ResultCheckFinal();
             DataTable dt = db_connect.StoreFillDT("GetJudgeAllLine", CommandType.StoredProcedure, cabinet);
-            if (dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0 && dt.Rows[0]["JudgeTotal"] != DBNull.Value)
             {
                 RCF.PersonConfirm = " ";
                 RCF.ReasonError = " ";
@@ -651,7 +666,7 @@ namespace FinalCheck
                     RCF.Judge_TEMP = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeIOT"].ToString() == "OK" || dt.Rows[0]["JudgeIOT"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeIOT"].ToString() == "OK" || dt.Rows[0]["JudgeIOT"].ToString() == "NG" || dt.Rows[0]["JudgeIOT"].ToString() == "NA")
                 {
                     RCF.Judge_IOT = dt.Rows[0]["JudgeIOT"].ToString();
                 }
@@ -768,7 +783,7 @@ namespace FinalCheck
                             else
                             {
                                 SaveDataFinal(DataCabi, RCF);
-                                string rs = RCF.Judge_VP + RCF.Judge_GAS + RCF.Judge_WI1WITH + RCF.Judge_WI1START + RCF.Judge_IP + RCF.Judge_DF + RCF.Judge_TEMP + RCF.Judge_IOT + RCF.Judge_WI2 + RCF.Judge_PAN + RCF.Judge_CAMBACK + RCF.Judge_CAMFRONT + RCF.Judge_Total;
+                                string rs = RCF.Judge_Total+RCF.Judge_VP + RCF.Judge_GAS + RCF.Judge_WI1WITH + RCF.Judge_WI1START + RCF.Judge_IP + RCF.Judge_DF + RCF.Judge_TEMP + RCF.Judge_IOT + RCF.Judge_WI2 + RCF.Judge_PAN + RCF.Judge_CAMBACK + RCF.Judge_CAMFRONT;
                                 await Plc.WriteASCII(StreamPLc, timeout, "D", ConfigConnection.WriteData.NameDeviceSendResult, ConfigConnection.WriteData.QuantityDeviceSendResult, rs);
                                 rs_NG = true;
                             }
@@ -782,6 +797,11 @@ namespace FinalCheck
                     }
                     tcpclient.Close();
                     popupdisconnect.IsOpen = false;
+                    if (TimerPopupDisconnect.IsEnabled)
+                    {
+                        TimerPopupDisconnect.Stop();
+                    }
+
                 }
                 if (rs_NG)
                 {
@@ -797,13 +817,15 @@ namespace FinalCheck
             catch (Exception ex)
             {
                 SaveLogError(DateTime.Now.ToString("HH:mm:ss dd/MM/yyyy") + ": " + ex.Message);
-                if (ex.Message.Contains("timed out PLC"))
+                if (ex.Message.Contains("timed out PLC") || ex.Message.Contains("actively refused")) ;
                 {
-                    popupdisconnect.IsOpen = true;
+                    //popupdisconnect.IsOpen = true;
+                    if (!TimerPopupDisconnect.IsEnabled)
+                    {
+                        TimerPopupDisconnect.Start();
+                    }
                 }
             }
-
-
         }
         public void SaveLogError(string data)
         {
@@ -860,7 +882,7 @@ namespace FinalCheck
         }
         private async void TimerCheck_Tick(object sender, EventArgs e)
         {
-            if (!check_run)
+            if (!check_run && !IsOpenSetup)
             {
                 check_run = true;
                 await ControlPlc(5000);
@@ -899,6 +921,7 @@ namespace FinalCheck
         {
             TimerCheck.Stop();
             TimerUpdateUI.Stop();
+            TimerPopupDisconnect.Stop();
             Environment.Exit(0);
         }
        
@@ -906,7 +929,7 @@ namespace FinalCheck
         {
             // Tạo một UserControl hoặc UIElement để đặt vào Popup
 
-            borderdisconnect.Background = Brushes.Red; // Thay đổi màu nền theo nhu cầu
+            borderdisconnect.Background = Brushes.OrangeRed; // Thay đổi màu nền theo nhu cầu
 
             // Tạo một UserControl hoặc UIElement để đặt vào Border
             // Ví dụ: Tạo một TextBlock để hiển thị nội dung
@@ -918,6 +941,7 @@ namespace FinalCheck
             textBlockdisconnect.FontWeight = FontWeight.FromOpenTypeWeight(600);
             textBlockdisconnect.Text = "Mất kết nối với PLC!";
 
+            
             // Đặt UserControl hoặc UIElement vào Border
             borderdisconnect.Child = textBlockdisconnect;
 
@@ -931,6 +955,17 @@ namespace FinalCheck
 
             // Đặt Border vào Popup
             popupdisconnect.Child = borderdisconnect;
+        }
+        private void TimerPopupDisconnect_Tick(object sender, EventArgs e)
+        {
+            if (popupdisconnect.IsOpen)
+            {
+                popupdisconnect.IsOpen = false;
+            }
+            else
+            {
+                popupdisconnect.IsOpen = true;
+            }
         }
     }
 }

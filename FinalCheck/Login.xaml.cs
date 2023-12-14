@@ -19,6 +19,8 @@ namespace FinalCheck
     /// </summary>
     public partial class Login : Window
     {
+        public delegate void mydeledate();
+        public mydeledate confirmcloseform;
         public Login()
         {
             InitializeComponent();
@@ -48,6 +50,7 @@ namespace FinalCheck
         }
         public void closeform()
         {
+            confirmcloseform?.Invoke();
             this.Close();
         }
     }

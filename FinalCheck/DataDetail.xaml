@@ -739,7 +739,7 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0" >
-                        <TextBlock FontSize="18">Lỗi:</TextBlock>
+                        <TextBlock FontSize="18">Cách xử lý:</TextBlock>
                     </Grid>
                     <Grid Grid.Column="1">
                         <TextBlock FontSize="18" Name="txbl_NameError"></TextBlock>

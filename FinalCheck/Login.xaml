@@ -19,7 +19,8 @@
         ResizeMode="NoResize"
         WindowState="Normal"
         WindowStartupLocation="CenterScreen"
-        Title="Login" Height="240" Width="380">
+        Title="Login" Height="240" Width="380"
+        Topmost="True">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"></RowDefinition>

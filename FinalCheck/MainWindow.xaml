@@ -380,6 +380,9 @@
                                                                     <Trigger Property="Text"  Value="Pending">
                                                                         <Setter Property="Background" Value="Orange"></Setter>
                                                                     </Trigger>
+                                                                    <Trigger Property="Text"  Value="NA">
+                                                                        <Setter Property="Background" Value="Blue"></Setter>
+                                                                    </Trigger>
                                                                 </Style.Triggers>
                                                             </Style>
                                                         </TextBlock.Style>

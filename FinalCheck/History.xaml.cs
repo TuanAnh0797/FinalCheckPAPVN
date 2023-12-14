@@ -42,11 +42,11 @@ namespace FinalCheck
             dataforlistview.Clear();
             DbConnect db_connect = new DbConnect();
             DataTable dt = db_connect.StoreFillDT("LoadDataForTableHistoryTrace", CommandType.StoredProcedure, datetimefrom, datetimeto, namecabi);
-            if (dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0 && dt.Rows[0]["CodeBack"] != DBNull.Value)
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    ResultMain RM = new ResultMain(i + 1, dt.Rows[i]["CodeModel"].ToString(), dt.Rows[i]["Judge_Total"].ToString(), dt.Rows[i]["TimeUpdate"].ToString());
+                    ResultMain RM = new ResultMain(i + 1, dt.Rows[i]["CodeBack"].ToString(), dt.Rows[i]["Judge_Total"].ToString(), dt.Rows[i]["TimeUpdate"].ToString());
                     dataforlistview.Add(RM);
                 }
                 
@@ -484,7 +484,7 @@ namespace FinalCheck
             DbConnect db_connect = new DbConnect();
             ResultCheckFinal RCF = new ResultCheckFinal();
             DataTable dt = db_connect.StoreFillDT("GetJudgeAllLineDetail", CommandType.StoredProcedure, cabinet);
-            if (dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0 && dt.Rows[0]["JudgeTotal"] != DBNull.Value)
             {
                 RCF.PersonConfirm = dt.Rows[0]["UserConfirm"].ToString();
                 RCF.ReasonError = dt.Rows[0]["ReasonError"].ToString();
@@ -551,7 +551,7 @@ namespace FinalCheck
                     RCF.Judge_TEMP = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeIOT"].ToString() == "OK" || dt.Rows[0]["JudgeIOT"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeIOT"].ToString() == "OK" || dt.Rows[0]["JudgeIOT"].ToString() == "NG" || dt.Rows[0]["JudgeIOT"].ToString() == "NA")
                 {
                     RCF.Judge_IOT = dt.Rows[0]["JudgeIOT"].ToString();
                 }

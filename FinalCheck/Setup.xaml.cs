@@ -48,7 +48,7 @@ namespace FinalCheck
         {
             DbConnect dbc = new DbConnect();
             DataTable dt = dbc.StoreFillDT("GetConfigConnectPlc", CommandType.StoredProcedure);
-            if (dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0 && dt.Rows[0]["IpAddress"] != DBNull.Value)
             {
                 txb_ip.Text = dt.Rows[0]["IpAddress"].ToString();
                 txb_port.Text = dt.Rows[0]["PortNumber"].ToString();

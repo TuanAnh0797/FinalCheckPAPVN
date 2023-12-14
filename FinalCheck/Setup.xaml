@@ -19,7 +19,7 @@
         ResizeMode="NoResize"
         WindowState="Normal"
         WindowStartupLocation="CenterScreen"
-        Title="Setup" Height="400" Width="700" Closed="MyControlBarTA_Closed">
+        Title="Setup" Height="400" Width="700" Closed="MyControlBarTA_Closed" Topmost="True">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
