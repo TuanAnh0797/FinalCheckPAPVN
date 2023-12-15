@@ -317,7 +317,7 @@ namespace FinalCheck
             {
                 RCF.PersonConfirm = dt.Rows[0]["UserConfirm"].ToString();
                 RCF.ReasonError = dt.Rows[0]["ReasonError"].ToString();
-                if (dt.Rows[0]["JudgeVP"].ToString() == "OK" || dt.Rows[0]["JudgeVP"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeVP"].ToString() == "OK" || dt.Rows[0]["JudgeVP"].ToString() == "NG" || dt.Rows[0]["JudgeVP"].ToString() == "NA")
                 {
                     RCF.Judge_VP = dt.Rows[0]["JudgeVP"].ToString();
                 }
@@ -326,7 +326,7 @@ namespace FinalCheck
                     RCF.Judge_VP = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeGAS"].ToString() == "OK" || dt.Rows[0]["JudgeGAS"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeGAS"].ToString() == "OK" || dt.Rows[0]["JudgeGAS"].ToString() == "NG" || dt.Rows[0]["JudgeGAS"].ToString() == "NA")
                 {
                     RCF.Judge_GAS = dt.Rows[0]["JudgeGAS"].ToString();
                 }
@@ -335,7 +335,7 @@ namespace FinalCheck
                     RCF.Judge_GAS = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeWI1WITH"].ToString() == "OK" || dt.Rows[0]["JudgeWI1WITH"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeWI1WITH"].ToString() == "OK" || dt.Rows[0]["JudgeWI1WITH"].ToString() == "NG" || dt.Rows[0]["JudgeWI1WITH"].ToString() == "NA")
                 {
                     RCF.Judge_WI1WITH = dt.Rows[0]["JudgeWI1WITH"].ToString();
                 }
@@ -344,7 +344,7 @@ namespace FinalCheck
                     RCF.Judge_WI1WITH = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeWI1START"].ToString() == "OK" || dt.Rows[0]["JudgeWI1START"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeWI1START"].ToString() == "OK" || dt.Rows[0]["JudgeWI1START"].ToString() == "NG" || dt.Rows[0]["JudgeWI1START"].ToString() == "NA")
                 {
                     RCF.Judge_WI1START = dt.Rows[0]["JudgeWI1START"].ToString();
                 }
@@ -353,7 +353,7 @@ namespace FinalCheck
                     RCF.Judge_WI1START = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeIP"].ToString() == "OK" || dt.Rows[0]["JudgeIP"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeIP"].ToString() == "OK" || dt.Rows[0]["JudgeIP"].ToString() == "NG" || dt.Rows[0]["JudgeIP"].ToString() == "NA")
                 {
                     RCF.Judge_IP = dt.Rows[0]["JudgeIP"].ToString();
                 }
@@ -362,7 +362,7 @@ namespace FinalCheck
                     RCF.Judge_IP = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeDF"].ToString() == "OK" || dt.Rows[0]["JudgeDF"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeDF"].ToString() == "OK" || dt.Rows[0]["JudgeDF"].ToString() == "NG" || dt.Rows[0]["JudgeDF"].ToString() == "NA")
                 {
                     RCF.Judge_DF = dt.Rows[0]["JudgeDF"].ToString();
                 }
@@ -371,7 +371,7 @@ namespace FinalCheck
                     RCF.Judge_DF = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeTEMP"].ToString() == "OK" || dt.Rows[0]["JudgeTEMP"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeTEMP"].ToString() == "OK" || dt.Rows[0]["JudgeTEMP"].ToString() == "NG" || dt.Rows[0]["JudgeTEMP"].ToString() == "NA")
                 {
                     RCF.Judge_TEMP = dt.Rows[0]["JudgeTEMP"].ToString();
                 }
@@ -389,7 +389,7 @@ namespace FinalCheck
                     RCF.Judge_IOT = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeWI2"].ToString() == "OK" || dt.Rows[0]["JudgeWI2"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeWI2"].ToString() == "OK" || dt.Rows[0]["JudgeWI2"].ToString() == "NG" || dt.Rows[0]["JudgeWI2"].ToString() == "NA")
                 {
                     RCF.Judge_WI2 = dt.Rows[0]["JudgeWI2"].ToString();
                 }
@@ -398,7 +398,7 @@ namespace FinalCheck
                     RCF.Judge_WI2 = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgePAN"].ToString() == "OK" || dt.Rows[0]["JudgePAN"].ToString() == "NG")
+                if (dt.Rows[0]["JudgePAN"].ToString() == "OK" || dt.Rows[0]["JudgePAN"].ToString() == "NG" || dt.Rows[0]["JudgePAN"].ToString() == "NA")
                 {
                     RCF.Judge_PAN = dt.Rows[0]["JudgePAN"].ToString();
                 }
@@ -407,7 +407,7 @@ namespace FinalCheck
                     RCF.Judge_PAN = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeCAMBACK"].ToString() == "OK" || dt.Rows[0]["JudgeCAMBACK"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeCAMBACK"].ToString() == "OK" || dt.Rows[0]["JudgeCAMBACK"].ToString() == "NG" || dt.Rows[0]["JudgeCAMBACK"].ToString() == "NA")
                 {
                     RCF.Judge_CAMBACK = dt.Rows[0]["JudgeCAMBACK"].ToString();
                 }
@@ -416,7 +416,7 @@ namespace FinalCheck
                     RCF.Judge_CAMBACK = "PD";
                 }
                 //
-                if (dt.Rows[0]["JudgeCAMFRONT"].ToString() == "OK" || dt.Rows[0]["JudgeCAMFRONT"].ToString() == "NG")
+                if (dt.Rows[0]["JudgeCAMFRONT"].ToString() == "OK" || dt.Rows[0]["JudgeCAMFRONT"].ToString() == "NG" || dt.Rows[0]["JudgeCAMFRONT"].ToString() == "NA")
                 {
                     RCF.Judge_CAMFRONT = dt.Rows[0]["JudgeCAMFRONT"].ToString();
                 }

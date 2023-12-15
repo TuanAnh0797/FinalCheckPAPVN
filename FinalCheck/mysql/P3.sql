@@ -15,31 +15,116 @@ BEGIN
     DECLARE rsCAMFront NVARCHAR(2);
     
     DECLARE rsTotal NVARCHAR(2);
-
-    -- Query for VP table
-    SELECT Judge INTO rsVP FROM VP WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
-	SELECT Judge INTO rsGAS FROM gas WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
-      SELECT Judge INTO rsWI1WITH FROM wi1with WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
-      SELECT Judge INTO rsWI1START FROM wi1start WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
-      SELECT Judge INTO rsIP FROM  ip WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
-      SELECT Judge INTO rsDF FROM  df WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
-	SELECT Judge INTO rsTemp FROM  tempresult WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
-   
-   SELECT Judge INTO rsPAN FROM  pan WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
-   SELECT Judge INTO rsWI2 FROM wi2  WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
-   SELECT Judge INTO rsCAMBack FROM  camback WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
-   SELECT Judge INTO rsCAMFront FROM camfront  WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
-   
-   IF(exists(select NameModel from modelcheckiot where NameModel = substring(p_CodeModel,1,12))) THEN
+    
+	DECLARE _VP tinyint;
+    DECLARE _GAS tinyint;
+    DECLARE _WI1WITH tinyint;
+   DECLARE _WI1START tinyint;
+   DECLARE _IP tinyint;
+   DECLARE _DF tinyint;
+  DECLARE  _TEMP tinyint;
+   DECLARE _IOT tinyint;
+  DECLARE  _WI2 tinyint;
+  DECLARE  _PAN tinyint;
+  DECLARE  _CAMBACK tinyint;
+  DECLARE  _CAMFRONT tinyint;
+  
+  SELECT VP,GAS,WI1WITH,WI1START,IP,DF,TEMP,IOT,WI2,PAN,CAMBACK,CAMFRONT INTO _VP,_GAS,_WI1WITH,_WI1START,_IP,_DF,_TEMP,_IOT,_WI2,_PAN,_CAMBACK,_CAMFRONT FROM configcheckfinal  LIMIT 1;
+	IF(_VP = 1) THEN
+         SELECT Judge INTO rsVP FROM VP WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
+    ELSE
+        SET rsVP = 'NA';
+    END IF;
+    
+    IF(_GAS = 1) THEN
+         SELECT Judge INTO rsGAS FROM gas WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
+    ELSE
+        SET rsGAS = 'NA';
+    END IF;
+     IF(_WI1WITH = 1) THEN
+         SELECT Judge INTO rsWI1WITH FROM wi1with WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
+    ELSE
+        SET rsWI1WITH = 'NA';
+    END IF;
+     IF(_WI1START = 1) THEN
+          SELECT Judge INTO rsWI1START FROM wi1start WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
+    ELSE
+        SET rsWI1START = 'NA';
+    END IF;
+    
+    IF(_IP = 1) THEN
+          SELECT Judge INTO rsIP FROM  ip WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
+    ELSE
+        SET rsIP = 'NA';
+    END IF;
+    IF(_DF = 1) THEN
+          SELECT Judge INTO rsDF FROM  df WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
+    ELSE
+        SET rsDF = 'NA';
+    END IF;
+     IF(_TEMP = 1) THEN
+          SELECT Judge INTO rsTemp FROM  tempresult WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
+    ELSE
+        SET rsTemp = 'NA';
+    END IF;
+     IF(_IOT = 1) THEN
+          IF(exists(select NameModel from modelcheckiot where NameModel = substring(p_CodeModel,1,12))) THEN
         SELECT Judge INTO rsIOT FROM  iot WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
     ELSE
         SET rsIOT = 'NA';
     END IF;
+    ELSE
+        SET rsIOT = 'NA';
+    END IF;
+
+      IF(_WI2 = 1) THEN
+          SELECT Judge INTO rsWI2 FROM wi2  WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
+    ELSE
+        SET rsWI2 = 'NA';
+    END IF;
+   
+	 IF(_PAN = 1) THEN
+          SELECT Judge INTO rsPAN FROM  pan WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
+    ELSE
+        SET rsPAN = 'NA';
+    END IF;
+    IF(_CAMBACK = 1) THEN
+           SELECT Judge INTO rsCAMBack FROM  camback WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
+    ELSE
+        SET rsCAMBack = 'NA';
+    END IF;
+     IF(_CAMFRONT = 1) THEN
+            SELECT Judge INTO rsCAMFront FROM camfront  WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
+    ELSE
+        SET rsCAMFront = 'NA';
+    END IF;
+     
+     
+     
+      
+	
    
    
    
-IF(UPPER(rsVP) = 'OK' AND UPPER(rsGAS) = 'OK' AND UPPER(rsWI1START) = 'OK' AND UPPER(rsIP) = 'OK' AND UPPER(rsDF) = 'OK' AND UPPER(rsWI1WITH) = 'OK' AND UPPER(rsPAN) = 'OK' AND UPPER(rsWI2) = 'OK'
-        AND (UPPER(rsIOT) = 'OK' or rsIOT = 'NA') AND UPPER(rsTemp) = 'OK' AND UPPER(rsCAMBack) = 'OK' AND UPPER(rsCAMFront) = 'OK') THEN
+  
+  
+   
+   
+   
+   
+   
+IF((UPPER(rsVP) = 'OK' or rsVP = 'NA') AND 
+	(UPPER(rsGAS) = 'OK' or rsGAS = 'NA') AND 
+    (UPPER(rsWI1START) = 'OK' or rsWI1START ='NA') AND 
+    (UPPER(rsIP) = 'OK'or rsIP = 'NA') AND 
+    (UPPER(rsDF) = 'OK' or rsDF = 'NA')AND 
+    (UPPER(rsWI1WITH) = 'OK'or rsWI1WITH = 'NA') AND 
+    (UPPER(rsPAN) = 'OK' or rsPAN = 'NA')AND 
+    (UPPER(rsWI2) = 'OK' or rsWI2 = 'NA')AND 
+    (UPPER(rsIOT) = 'OK' or rsIOT = 'NA') AND 
+    (UPPER(rsTemp) = 'OK'or rsTemp = 'NA') AND 
+    (UPPER(rsCAMBack) = 'OK'or rsCAMBack = 'NA') AND 
+    (UPPER(rsCAMFront) = 'OK' or rsCAMFront = 'NA')) THEN
         SET rsTotal = 'OK';
     ELSE
         SET rsTotal = 'NG';

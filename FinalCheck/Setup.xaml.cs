@@ -72,29 +72,29 @@ namespace FinalCheck
             if (dt1.Rows.Count > 0 && dt1.Rows[0]["VP"] != DBNull.Value)
             {
                 //
-                btn_VP.IsChecked = (bool)dt1.Rows[0]["VP"];
+                btn_VP.IsChecked = dt1.Rows[0]["VP"].ToString() == "1" ? true : false;
                 //
-                btn_gas.IsChecked = (bool)dt1.Rows[0]["GAS"];
+                btn_gas.IsChecked = dt1.Rows[0]["GAS"].ToString() == "1" ? true : false;
                 //
-                btn_WI1WITH.IsChecked = (bool)dt1.Rows[0]["WI1WITH"];
+                btn_WI1WITH.IsChecked = dt1.Rows[0]["WI1WITH"].ToString() == "1" ? true : false;
                 //
-                btn_WI1START.IsChecked = (bool)dt1.Rows[0]["WI1START"];
+                btn_WI1START.IsChecked = dt1.Rows[0]["WI1START"].ToString() == "1" ? true : false;
                 //
-                btn_IP.IsChecked = (bool)dt1.Rows[0]["IP"];
+                btn_IP.IsChecked = dt1.Rows[0]["IP"].ToString() == "1" ? true : false;
                 //
-                btn_DF.IsChecked = (bool)dt1.Rows[0]["DF"];
+                btn_DF.IsChecked = dt1.Rows[0]["DF"].ToString() == "1" ? true : false;
                 //
-                btn_TEMP.IsChecked = (bool)dt1.Rows[0]["TEMP"];
+                btn_TEMP.IsChecked = dt1.Rows[0]["TEMP"].ToString() == "1" ? true : false;
                 //
-                btn_IOT.IsChecked = (bool)dt1.Rows[0]["IOT"];
+                btn_IOT.IsChecked = dt1.Rows[0]["IOT"].ToString() == "1" ? true : false;
                 //
-                btn_WI2.IsChecked = (bool)dt1.Rows[0]["WI2"];
+                btn_WI2.IsChecked = dt1.Rows[0]["WI2"].ToString() == "1" ? true : false;
                 //
-                btn_PAN.IsChecked = (bool)dt1.Rows[0]["PAN"];
+                btn_PAN.IsChecked = dt1.Rows[0]["PAN"].ToString() == "1" ? true : false;
                 //
-                btn_CAMBACK.IsChecked = (bool)dt1.Rows[0]["CAMBACK"];
+                btn_CAMBACK.IsChecked = dt1.Rows[0]["CAMBACK"].ToString() == "1" ? true : false;
                 //
-                btn_CAMFRONT.IsChecked = (bool)dt1.Rows[0]["CAMFRONT"];
+                btn_CAMFRONT.IsChecked = dt1.Rows[0]["CAMFRONT"].ToString() == "1" ? true : false;
 
             }
             else
