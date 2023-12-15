@@ -19,7 +19,7 @@
         ResizeMode="NoResize"
         WindowState="Normal"
         WindowStartupLocation="CenterScreen"
-        Title="Setup" Height="400" Width="700" Closed="MyControlBarTA_Closed" Topmost="True">
+        Title="Setup" Height="500" Width="700" Closed="MyControlBarTA_Closed" Topmost="True">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -33,6 +33,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="200"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="40"></RowDefinition>
                 </Grid.RowDefinitions>
@@ -118,7 +119,79 @@
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid Grid.Row="3" Margin="0,5,0,0">
+                <Grid Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <TextBlock HorizontalAlignment="Center" FontSize="25" FontWeight="Medium" Text="Setup Check"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1" HorizontalAlignment="Center" Margin="0,15,0,0">
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Vertical" Margin="0,0,30,0">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <ToggleButton x:Name="btn_VP" Width="40" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton" IsChecked="False"></ToggleButton>
+                                    <TextBlock FontWeight="Medium" FontSize="20">VP</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <ToggleButton Name="btn_gas" Width="40" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton" IsChecked="False"></ToggleButton>
+                                    <TextBlock FontWeight="Medium" FontSize="20">GAS</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" >
+                                    <ToggleButton x:Name="btn_WI1WITH" Width="40" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton" IsChecked="False"></ToggleButton>
+                                    <TextBlock FontWeight="Medium" FontSize="20">WI1(WITH)</TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Margin="0,0,30,0">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <ToggleButton x:Name="btn_WI1START" Width="40" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton" IsChecked="False"></ToggleButton>
+                                    <TextBlock FontWeight="Medium" FontSize="20">WI1(START)</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <ToggleButton x:Name="btn_IP" Width="40" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton" IsChecked="False"></ToggleButton>
+                                    <TextBlock FontWeight="Medium" FontSize="20">IP</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" >
+                                    <ToggleButton x:Name="btn_DF" Width="40" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton" IsChecked="False"></ToggleButton>
+                                    <TextBlock FontWeight="Medium" FontSize="20">DF</TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Margin="0,0,30,0">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <ToggleButton x:Name="btn_TEMP" Width="40" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton" IsChecked="False"></ToggleButton>
+                                    <TextBlock FontWeight="Medium" FontSize="20">TEMP</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <ToggleButton x:Name="btn_IOT" Width="40" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton" IsChecked="False"></ToggleButton>
+                                    <TextBlock FontWeight="Medium" FontSize="20">IOT</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" >
+                                    <ToggleButton x:Name="btn_WI2" Width="40" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton" IsChecked="False"></ToggleButton>
+                                    <TextBlock FontWeight="Medium" FontSize="20">WI2</TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Margin="0,0,0,0">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <ToggleButton x:Name="btn_PAN" Width="40" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton" IsChecked="False"></ToggleButton>
+                                    <TextBlock FontWeight="Medium" FontSize="20">PAN</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <ToggleButton Name="btn_CAMBACK" Width="40" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton" IsChecked="False"></ToggleButton>
+                                    <TextBlock FontWeight="Medium" FontSize="20">CAMBACK</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" >
+                                    <ToggleButton x:Name="btn_CAMFRONT" Width="40" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton" IsChecked="False"></ToggleButton>
+                                    <TextBlock FontWeight="Medium" FontSize="20">CAMFRONT</TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                       
+                       
+                        
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="4" Margin="0,5,0,0">
                     <Button Name="btn_save" Click="btn_save_Click" Background="Red" Width="200" FontSize="20">Save</Button>
                 </Grid>
             </Grid>

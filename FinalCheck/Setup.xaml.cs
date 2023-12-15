@@ -48,6 +48,7 @@ namespace FinalCheck
         {
             DbConnect dbc = new DbConnect();
             DataTable dt = dbc.StoreFillDT("GetConfigConnectPlc", CommandType.StoredProcedure);
+            DataTable dt1 = dbc.StoreFillDT("GetConfigCheckFinal", CommandType.StoredProcedure);
             if (dt.Rows.Count > 0 && dt.Rows[0]["IpAddress"] != DBNull.Value)
             {
                 txb_ip.Text = dt.Rows[0]["IpAddress"].ToString();
@@ -68,6 +69,39 @@ namespace FinalCheck
             {
                 throw (new Exception("Không tìm thấy dữ liệu ConfigConnectPLC. Xem datatable: ConfigConnectionPlc"));
             }
+            if (dt1.Rows.Count > 0 && dt1.Rows[0]["VP"] != DBNull.Value)
+            {
+                //
+                btn_VP.IsChecked = (bool)dt1.Rows[0]["VP"];
+                //
+                btn_gas.IsChecked = (bool)dt1.Rows[0]["GAS"];
+                //
+                btn_WI1WITH.IsChecked = (bool)dt1.Rows[0]["WI1WITH"];
+                //
+                btn_WI1START.IsChecked = (bool)dt1.Rows[0]["WI1START"];
+                //
+                btn_IP.IsChecked = (bool)dt1.Rows[0]["IP"];
+                //
+                btn_DF.IsChecked = (bool)dt1.Rows[0]["DF"];
+                //
+                btn_TEMP.IsChecked = (bool)dt1.Rows[0]["TEMP"];
+                //
+                btn_IOT.IsChecked = (bool)dt1.Rows[0]["IOT"];
+                //
+                btn_WI2.IsChecked = (bool)dt1.Rows[0]["WI2"];
+                //
+                btn_PAN.IsChecked = (bool)dt1.Rows[0]["PAN"];
+                //
+                btn_CAMBACK.IsChecked = (bool)dt1.Rows[0]["CAMBACK"];
+                //
+                btn_CAMFRONT.IsChecked = (bool)dt1.Rows[0]["CAMFRONT"];
+
+            }
+            else
+            {
+                throw (new Exception("Không tìm thấy dữ liệu ConfigConnectionCheckFinal. Xem datatable: ConfigConnectionCheckFinal"));
+            }
+
 
         }
         public void Updatedatasql()
@@ -83,8 +117,21 @@ namespace FinalCheck
                  txb_result.Text,
                  txb_alive.Text,
                  txb_ConfirmFinish.Text,
-                  txb_trigerError.Text
+                  txb_trigerError.Text,
+                  btn_VP.IsChecked,
+                btn_gas.IsChecked,
+               btn_WI1WITH.IsChecked,
+                btn_WI1START.IsChecked,
+                 btn_IP.IsChecked,
+                 btn_DF.IsChecked,
+                 btn_TEMP.IsChecked,
+                 btn_IOT.IsChecked,
+                    btn_WI2.IsChecked,
+                 btn_PAN.IsChecked,
+                 btn_CAMBACK.IsChecked,
+                 btn_CAMFRONT.IsChecked
                 );
+           
         }
         private void MyControlBarTA_Closed(object sender, EventArgs e)
         {
