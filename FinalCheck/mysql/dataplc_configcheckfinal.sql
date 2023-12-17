@@ -16,38 +16,36 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `configconnectionplc`
+-- Table structure for table `configcheckfinal`
 --
 
-DROP TABLE IF EXISTS `configconnectionplc`;
+DROP TABLE IF EXISTS `configcheckfinal`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `configconnectionplc` (
-  `IpAddress` varchar(30) DEFAULT NULL,
-  `PortNumber` int DEFAULT NULL,
-  `NameDeviceTrigerReadCabi` int DEFAULT NULL,
-  `NameDeviceDataCabi` int DEFAULT NULL,
-  `QuantityDataCabi` int DEFAULT NULL,
-  `NameDeviceDataPerson` int DEFAULT NULL,
-  `QuantityDataPerson` int DEFAULT NULL,
-  `NameDeviceDataReason` int DEFAULT NULL,
-  `QuantityDataReason` int DEFAULT NULL,
-  `NameDeviceSendResult` int DEFAULT NULL,
-  `QuantityDeviceSendResult` int DEFAULT NULL,
-  `AliveBit` int DEFAULT NULL,
-  `NameDeviceSendConfirm` int DEFAULT NULL,
-  `NameDeviceTrigerReadError` int DEFAULT NULL
+CREATE TABLE `configcheckfinal` (
+  `VP` tinyint DEFAULT '1',
+  `GAS` tinyint DEFAULT '1',
+  `WI1WITH` tinyint DEFAULT '1',
+  `WI1START` tinyint DEFAULT '1',
+  `IP` tinyint DEFAULT '1',
+  `DF` tinyint DEFAULT '1',
+  `TEMP` tinyint DEFAULT '1',
+  `IOT` tinyint DEFAULT '1',
+  `WI2` tinyint DEFAULT '1',
+  `PAN` tinyint DEFAULT '1',
+  `CAMBACK` tinyint DEFAULT '1',
+  `CAMFRONT` tinyint DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `configconnectionplc`
+-- Dumping data for table `configcheckfinal`
 --
 
-LOCK TABLES `configconnectionplc` WRITE;
-/*!40000 ALTER TABLE `configconnectionplc` DISABLE KEYS */;
-INSERT INTO `configconnectionplc` VALUES ('192.168.3.166',8888,51,300,10,800,40,850,40,1000,20,50,61,60);
-/*!40000 ALTER TABLE `configconnectionplc` ENABLE KEYS */;
+LOCK TABLES `configcheckfinal` WRITE;
+/*!40000 ALTER TABLE `configcheckfinal` DISABLE KEYS */;
+INSERT INTO `configcheckfinal` VALUES (1,1,1,1,1,1,0,0,1,1,1,1);
+/*!40000 ALTER TABLE `configcheckfinal` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -59,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-16 18:29:49
+-- Dump completed on 2023-12-16 18:29:50

@@ -168,6 +168,9 @@
                                                                     <Trigger Property="Text"  Value="Pending">
                                                                         <Setter Property="Background" Value="Orange"></Setter>
                                                                     </Trigger>
+                                                                    <Trigger Property="Text"  Value="NA">
+                                                                        <Setter Property="Background" Value="Blue"></Setter>
+                                                                    </Trigger>
                                                                 </Style.Triggers>
                                                             </Style>
                                                         </TextBlock.Style>
@@ -198,6 +201,9 @@
                                                                     </Trigger>
                                                                     <Trigger Property="Text"  Value="Pending">
                                                                         <Setter Property="Background" Value="Orange"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="NA">
+                                                                        <Setter Property="Background" Value="Blue"></Setter>
                                                                     </Trigger>
                                                                 </Style.Triggers>
                                                             </Style>
@@ -230,6 +236,9 @@
                                                                     <Trigger Property="Text"  Value="Pending">
                                                                         <Setter Property="Background" Value="Orange"></Setter>
                                                                     </Trigger>
+                                                                    <Trigger Property="Text"  Value="NA">
+                                                                        <Setter Property="Background" Value="Blue"></Setter>
+                                                                    </Trigger>
                                                                 </Style.Triggers>
                                                             </Style>
                                                         </TextBlock.Style>
@@ -259,6 +268,9 @@
                                                                     </Trigger>
                                                                     <Trigger Property="Text"  Value="Pending">
                                                                         <Setter Property="Background" Value="Orange"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="NA">
+                                                                        <Setter Property="Background" Value="Blue"></Setter>
                                                                     </Trigger>
                                                                 </Style.Triggers>
                                                             </Style>
@@ -290,6 +302,9 @@
                                                                     <Trigger Property="Text"  Value="Pending">
                                                                         <Setter Property="Background" Value="Orange"></Setter>
                                                                     </Trigger>
+                                                                    <Trigger Property="Text"  Value="NA">
+                                                                        <Setter Property="Background" Value="Blue"></Setter>
+                                                                    </Trigger>
                                                                 </Style.Triggers>
                                                             </Style>
                                                         </TextBlock.Style>
@@ -320,6 +335,9 @@
                                                                     <Trigger Property="Text"  Value="Pending">
                                                                         <Setter Property="Background" Value="Orange"></Setter>
                                                                     </Trigger>
+                                                                    <Trigger Property="Text"  Value="NA">
+                                                                        <Setter Property="Background" Value="Blue"></Setter>
+                                                                    </Trigger>
                                                                 </Style.Triggers>
                                                             </Style>
                                                         </TextBlock.Style>
@@ -349,6 +367,9 @@
                                                                     </Trigger>
                                                                     <Trigger Property="Text"  Value="Pending">
                                                                         <Setter Property="Background" Value="Orange"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="NA">
+                                                                        <Setter Property="Background" Value="Blue"></Setter>
                                                                     </Trigger>
                                                                 </Style.Triggers>
                                                             </Style>
@@ -413,6 +434,9 @@
                                                                     <Trigger Property="Text"  Value="Pending">
                                                                         <Setter Property="Background" Value="Orange"></Setter>
                                                                     </Trigger>
+                                                                    <Trigger Property="Text"  Value="NA">
+                                                                        <Setter Property="Background" Value="Blue"></Setter>
+                                                                    </Trigger>
                                                                 </Style.Triggers>
                                                             </Style>
                                                         </TextBlock.Style>
@@ -442,6 +466,9 @@
                                                                     </Trigger>
                                                                     <Trigger Property="Text"  Value="Pending">
                                                                         <Setter Property="Background" Value="Orange"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="Text"  Value="NA">
+                                                                        <Setter Property="Background" Value="Blue"></Setter>
                                                                     </Trigger>
                                                                 </Style.Triggers>
                                                             </Style>
@@ -473,6 +500,9 @@
                                                                     <Trigger Property="Text"  Value="Pending">
                                                                         <Setter Property="Background" Value="Orange"></Setter>
                                                                     </Trigger>
+                                                                    <Trigger Property="Text"  Value="NA">
+                                                                        <Setter Property="Background" Value="Blue"></Setter>
+                                                                    </Trigger>
                                                                 </Style.Triggers>
                                                             </Style>
                                                         </TextBlock.Style>
@@ -503,6 +533,9 @@
                                                                     <Trigger Property="Text"  Value="Pending">
                                                                         <Setter Property="Background" Value="Orange"></Setter>
                                                                     </Trigger>
+                                                                    <Trigger Property="Text"  Value="NA">
+                                                                        <Setter Property="Background" Value="Blue"></Setter>
+                                                                    </Trigger>
                                                                 </Style.Triggers>
                                                             </Style>
                                                         </TextBlock.Style>
@@ -511,16 +544,6 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
-
-
-
-
-
-
-
-
-
-
                                     </GridView>
 
                                 </ListView.View>
@@ -663,10 +686,24 @@
                         <Grid Grid.Column="1">
                             <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"></RowDefinition>
                                     <RowDefinition Height="*"></RowDefinition>
                                     <RowDefinition Height="*"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <Grid Grid.Row="0">
+                                <Grid Grid.Row="0" Background="DeepSkyBlue" Margin="0,2,0,0">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                        <TextBlock FontWeight="Medium" FontSize="15" VerticalAlignment="Center" Margin="0,0,10,0">Biểu đồ thể hiện dữ liệu Final Check: </TextBlock>
+                                        <ComboBox Name="cmb_selectdate" SelectionChanged="ComboBox_SelectionChanged" FontSize="15" SelectedIndex="1" Width="200" Margin="0,0,10,0">
+                                            <ComboBoxItem Content="Theo ca">
+                                             
+                                            </ComboBoxItem>
+                                            <ComboBoxItem Content="Theo ngày">
+                                               
+                                            </ComboBoxItem>
+                                        </ComboBox>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Row="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="2*"></ColumnDefinition>
                                         <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -706,7 +743,7 @@
                                             </Grid>
                                        
                                 </Grid>
-                                <Grid Grid.Row="1">
+                                <Grid Grid.Row="2">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                         <ColumnDefinition Width="*"></ColumnDefinition>

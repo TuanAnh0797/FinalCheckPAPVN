@@ -544,8 +544,13 @@ namespace FinalCheck
 
         public void LoadDataForChart()
         {
+            string param = "2";
+            if (cmb_selectdate.Text == "Theo ca")
+            {
+                param = "1";
+            }
             DbConnect db_connect = new DbConnect();
-            DataTable dt = db_connect.StoreFillDT("LoadDataForChart", CommandType.StoredProcedure);
+            DataTable dt = db_connect.StoreFillDT("LoadDataForChart", CommandType.StoredProcedure,param);
             //OK
             if (dt.Rows.Count > 0 && dt.Rows[0]["TotalOK"] != DBNull.Value)
             {
@@ -590,6 +595,50 @@ namespace FinalCheck
                 //Total
                 TotalOK.Value = double.Parse(dt.Rows[0]["TotalOK"].ToString());
                 TotalNG.Value = double.Parse(dt.Rows[0]["TotalNG"].ToString());
+            }
+            else
+            {
+                VPOK.Value= 0; 
+                GASOILOK.Value= 0; 
+                WI1WITHOK.Value= 0; 
+                WI1STARTOK.Value= 0; 
+                IPOK.Value= 0; 
+                DFOK.Value= 0; 
+                TEMPOK.Value= 0;
+                IOTOK.Value= 0; 
+                WI2OK.Value= 0; 
+                PANOK.Value= 0; 
+                CAMBACKOK.Value= 0; 
+                CAMFRONTOK.Value= 0; 
+                //NG
+                VPNG.Value= 0; 
+                GASOILNG.Value= 0; 
+                WI1WITHNG.Value= 0; 
+                WI1STARTNG.Value= 0; 
+                IPNG.Value= 0; 
+                DFNG.Value= 0; 
+                TEMPNG.Value= 0; 
+                IOTNG.Value= 0; 
+                WI2NG.Value= 0; 
+                PANNG.Value= 0; 
+                CAMBACKNG.Value= 0; 
+                CAMFRONTNG.Value= 0; 
+                //PENDING
+                VPPENDING.Value= 0; 
+                GASOILPENDING.Value= 0;
+                WI1WITHPENDING.Value= 0; 
+                WI1STARTPENDING.Value= 0; 
+                IPPENDING.Value= 0; 
+                DFPENDING.Value= 0; 
+                TEMPPENDING.Value= 0; 
+                IOTPENDING.Value= 0; 
+                WI2PENDING.Value= 0; 
+                PANPENDING.Value= 0; 
+                CAMBACKPENDING.Value= 0; 
+                CAMFRONTPENDING.Value= 0; 
+                //Total
+                TotalOK.Value= 0; 
+                TotalNG.Value= 0; 
             }
         }
         public ResultCheckFinal LoadDataForCabi(string cabinet)
@@ -807,7 +856,7 @@ namespace FinalCheck
                 if (rs_NG)
                 {
                     string filepathNG = SaveLogCheck(LogFilePathNG, DataCabi, RCF);
-                    await showdetailError(DataCabi, RCF, filepathNG);
+                    //await showdetailError(DataCabi, RCF, filepathNG);
                     rs_NG = false;
                 }
                 else
@@ -967,6 +1016,11 @@ namespace FinalCheck
             {
                 popupdisconnect.IsOpen = true;
             }
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TrigerUpdateUI = true;
         }
     }
 }
