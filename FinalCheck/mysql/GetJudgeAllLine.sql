@@ -63,13 +63,13 @@ BEGIN
         SET rsDF = 'NA';
     END IF;
      IF(_TEMP = 1) THEN
-          SELECT Judge INTO rsTemp FROM  tempresult WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
+          SELECT Judge INTO rsTemp FROM  tempresult WHERE substring(CodeBack,1,19)  = p_CodeModel  ORDER BY TimePLC DESC LIMIT 1;
     ELSE
         SET rsTemp = 'NA';
     END IF;
      IF(_IOT = 1) THEN
           IF(exists(select NameModel from modelcheckiot where NameModel = substring(p_CodeModel,1,12))) THEN
-        SELECT Judge INTO rsIOT FROM  iot WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
+        SELECT Judge INTO rsIOT FROM  iot WHERE CodeBack = p_CodeModel and (Judge = 'OK' or Judge = 'NG')  ORDER BY TimePLC DESC LIMIT 1;
     ELSE
         SET rsIOT = 'NA';
     END IF;

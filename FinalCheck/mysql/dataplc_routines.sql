@@ -169,90 +169,85 @@ BEGIN
       ,TimePLC as TimeCheck
   FROM DataPLC.DF
   where CodeBack = p_NameCabi order by TimePLC desc LIMIT 20;
-    
     SELECT 
-      CodeModel
-      ,Judge
-      ,NamePoint1
-      ,Standard1
-      ,Actual1
-      ,Result1
-      ,NamePoint2
-      ,Standard2
-      ,Actual2
-      ,Result2
-      ,NamePoint3
-      ,Standard3
-      ,Actual3
-      ,Result3
-      ,NamePoint4
-      ,Standard4
-      ,Actual4
-      ,Result4
-      ,NamePoint5
-      ,Standard5
-      ,Actual5
-      ,Result5
-      ,NamePoint6
-      ,Standard6
-      ,Actual6
-      ,Result6
-      ,NamePoint7
-      ,Standard7
-      ,Actual7
-      ,Result7
-      ,NamePoint8
-      ,Standard8
-      ,Actual8
-      ,Result8
-      ,NamePoint9
-      ,Standard9
-      ,Actual9
-      ,Result9
-      ,NamePoint10
-      ,Standard10
-      ,Actual10
-      ,Result10
-      ,NamePoint11
-      ,Standard11
-      ,Actual11
-      ,Result11
-      ,NamePoint12
-      ,Standard12
-      ,Actual12
-      ,Result12
-      ,NamePoint13
-      ,Standard13
-      ,Actual13
-      ,Result13
-      ,NamePoint14
-      ,Standard14
-      ,Actual14
-      ,Result14
-      ,NamePoint15
-      ,Standard15
-      ,Actual15
-      ,Result15
-      ,TimePLC as TimeCheck
+CodeBack,
+CodeModel,
+CodeSerial,
+Judge,
+NamePoint1,
+Standard1,
+Actual1,
+Result1,
+NamePoint2,
+Standard2,
+Actual2,
+Result2,
+NamePoint3,
+Standard3,
+Actual3,
+Result3,
+NamePoint4,
+Standard4,
+Actual4,
+Result4,
+NamePoint5,
+Standard5,
+Actual5,
+Result5,
+NamePoint6,
+Standard6,
+Actual6,
+Result6,
+NamePoint7,
+Standard7,
+Actual7,
+Result7,
+NamePoint8,
+Standard8,
+Actual8,
+Result8,
+NamePoint9,
+Standard9,
+Actual9,
+Result9,
+NamePoint10,
+Standard10,
+Actual10,
+Result10,
+NamePoint11,
+Standard11,
+Actual11,
+Result11,
+NamePoint12,
+Standard12,
+Actual12,
+Result12,
+NamePoint13,
+Standard13,
+Actual13,
+Result13,
+NamePoint14,
+Standard14,
+Actual14,
+Result14,
+NamePoint15,
+Standard15,
+Actual15,
+Result15,
+TimePLC as TimeCheck
   FROM DataPLC.TempDetail
-  where CodeModel = p_NameCabi order by TimePLC desc LIMIT 20;
-  
+  where substring(CodeBack,1,19)  = p_NameCabi  order by TimePLC desc LIMIT 20;
   SELECT 
-      CodeBack
-      ,Judge
-      ,QRCode
-      ,Seed
-      ,MacAddress
-      ,CurrentFirm
-      ,RSSI
-      ,InspectionTime
-      ,NG_STEP
-      ,PassKey
-      ,BTMacAddress
-      ,CertSN
-      ,ExtFid
-      ,Vendor
-      ,TimePLC as TimeCheck
+	CodeBack,
+	CodeModel,
+	CodeSerial,
+	Judge,
+	CodeMarket,
+	Information,
+	QRCode,
+	PassKey,
+	ErrorName,
+	TimePLC as TimeCheck
   FROM DataPLC.IOT
  where CodeBack = p_NameCabi order by TimePLC desc LIMIT 20;
  
@@ -417,13 +412,13 @@ BEGIN
         SET rsDF = 'NA';
     END IF;
      IF(_TEMP = 1) THEN
-          SELECT Judge INTO rsTemp FROM  tempresult WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
+          SELECT Judge INTO rsTemp FROM  tempresult WHERE substring(CodeBack,1,19)  = p_CodeModel  ORDER BY TimePLC DESC LIMIT 1;
     ELSE
         SET rsTemp = 'NA';
     END IF;
      IF(_IOT = 1) THEN
           IF(exists(select NameModel from modelcheckiot where NameModel = substring(p_CodeModel,1,12))) THEN
-        SELECT Judge INTO rsIOT FROM  iot WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
+        SELECT Judge INTO rsIOT FROM  iot WHERE CodeBack = p_CodeModel and (Judge = 'OK' or Judge = 'NG')  ORDER BY TimePLC DESC LIMIT 1;
     ELSE
         SET rsIOT = 'NA';
     END IF;
@@ -575,13 +570,13 @@ BEGIN
         SET rsDF = 'NA';
     END IF;
      IF(_TEMP = 1) THEN
-          SELECT Judge INTO rsTemp FROM  tempresult WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
+          SELECT Judge INTO rsTemp FROM  tempresult WHERE substring(CodeBack,1,19)  = p_CodeModel  ORDER BY TimePLC DESC LIMIT 1;
     ELSE
         SET rsTemp = 'NA';
     END IF;
      IF(_IOT = 1) THEN
           IF(exists(select NameModel from modelcheckiot where NameModel = substring(p_CodeModel,1,12))) THEN
-        SELECT Judge INTO rsIOT FROM  iot WHERE CodeBack = p_CodeModel ORDER BY TimePLC DESC LIMIT 1;
+        SELECT Judge INTO rsIOT FROM  iot WHERE CodeBack = p_CodeModel and (Judge = 'OK' or Judge = 'NG') ORDER BY TimePLC DESC LIMIT 1;
     ELSE
         SET rsIOT = 'NA';
     END IF;
@@ -773,10 +768,14 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`TA`@`%` PROCEDURE `LoadDataForChart`()
+CREATE DEFINER=`TA`@`%` PROCEDURE `LoadDataForChart`(IN p_selectionItem VARCHAR(3))
 BEGIN
-	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
-    SELECT
+	DECLARE _hournow int;
+    Set _hournow = hour(now());
+	IF(p_selectionItem = '1') THEN
+		if(_hournow>5 and _hournow < 14) then
+        SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+		SELECT
         SUM(CASE WHEN Judge_VP = 'OK' THEN 1 ELSE 0 END) as VPOK,
         SUM(CASE WHEN Judge_GAS = 'OK' THEN 1 ELSE 0 END) as GASOILOK,
         SUM(CASE WHEN Judge_WI1WITH = 'OK' THEN 1 ELSE 0 END) as WI1WITHOK,
@@ -819,8 +818,306 @@ BEGIN
         SUM(CASE WHEN Judge_Total = 'OK' THEN 1 ELSE 0 END) as TotalOK,
         SUM(CASE WHEN Judge_Total = 'NG' THEN 1 ELSE 0 END) as TotalNG
 
-    FROM DataCheckFinal;
+		FROM DataCheckFinal where Date(TimeUpdate) = curdate() and hour(TimeUpdate)>5 and hour(TimeUpdate)<14;
+		elseif(_hournow> 13 and _hournow < 22) then
+		SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+		SELECT
+        SUM(CASE WHEN Judge_VP = 'OK' THEN 1 ELSE 0 END) as VPOK,
+        SUM(CASE WHEN Judge_GAS = 'OK' THEN 1 ELSE 0 END) as GASOILOK,
+        SUM(CASE WHEN Judge_WI1WITH = 'OK' THEN 1 ELSE 0 END) as WI1WITHOK,
+        SUM(CASE WHEN Judge_WI1START = 'OK' THEN 1 ELSE 0 END) as WI1STARTOK,
+        SUM(CASE WHEN Judge_IP = 'OK' THEN 1 ELSE 0 END) as IPOK,
+        SUM(CASE WHEN Judge_DF = 'OK' THEN 1 ELSE 0 END) as DFOK,
+        SUM(CASE WHEN Judge_TEMP = 'OK' THEN 1 ELSE 0 END) as TEMPOK,
+        SUM(CASE WHEN Judge_IOT = 'OK' THEN 1 ELSE 0 END) as IOTOK,
+        SUM(CASE WHEN Judge_WI2 = 'OK' THEN 1 ELSE 0 END) as WI2OK,
+        SUM(CASE WHEN Judge_PAN = 'OK' THEN 1 ELSE 0 END) as PANOK,
+        SUM(CASE WHEN Judge_CAMBACK = 'OK' THEN 1 ELSE 0 END) as CAMBACKOK,
+        SUM(CASE WHEN Judge_CAMFRONT = 'OK' THEN 1 ELSE 0 END) as CAMFRONTOK,
 
+        SUM(CASE WHEN Judge_VP = 'NG' THEN 1 ELSE 0 END) as VPNG,
+        SUM(CASE WHEN Judge_GAS = 'NG' THEN 1 ELSE 0 END) as GASOILNG,
+        SUM(CASE WHEN Judge_WI1WITH = 'NG' THEN 1 ELSE 0 END) as WI1WITHNG,
+        SUM(CASE WHEN Judge_WI1START = 'NG' THEN 1 ELSE 0 END) as WI1STARTNG,
+        SUM(CASE WHEN Judge_IP = 'NG' THEN 1 ELSE 0 END) as IPNG,
+        SUM(CASE WHEN Judge_DF = 'NG' THEN 1 ELSE 0 END) as DFNG,
+        SUM(CASE WHEN Judge_TEMP = 'NG' THEN 1 ELSE 0 END) as TEMPNG,
+        SUM(CASE WHEN Judge_IOT = 'NG' THEN 1 ELSE 0 END) as IOTNG,
+        SUM(CASE WHEN Judge_WI2 = 'NG' THEN 1 ELSE 0 END) as WI2NG,
+        SUM(CASE WHEN Judge_PAN = 'NG' THEN 1 ELSE 0 END) as PANNG,
+        SUM(CASE WHEN Judge_CAMBACK = 'NG' THEN 1 ELSE 0 END) as CAMBACKNG,
+        SUM(CASE WHEN Judge_CAMFRONT = 'NG' THEN 1 ELSE 0 END) as CAMFRONTNG,
+
+        SUM(CASE WHEN Judge_VP = 'PD' THEN 1 ELSE 0 END) as VPPENDING,
+        SUM(CASE WHEN Judge_GAS = 'PD' THEN 1 ELSE 0 END) as GASOILPENDING,
+        SUM(CASE WHEN Judge_WI1WITH = 'PD' THEN 1 ELSE 0 END) as WI1WITHPENDING,
+        SUM(CASE WHEN Judge_WI1START = 'PD' THEN 1 ELSE 0 END) as WI1STARTPENDING,
+        SUM(CASE WHEN Judge_IP = 'PD' THEN 1 ELSE 0 END) as IPPENDING,
+        SUM(CASE WHEN Judge_DF = 'PD' THEN 1 ELSE 0 END) as DFPENDING,
+        SUM(CASE WHEN Judge_TEMP = 'PD' THEN 1 ELSE 0 END) as TEMPPENDING,
+        SUM(CASE WHEN Judge_IOT = 'PD' THEN 1 ELSE 0 END) as IOTPENDING,
+        SUM(CASE WHEN Judge_WI2 = 'PD' THEN 1 ELSE 0 END) as WI2PENDING,
+        SUM(CASE WHEN Judge_PAN = 'PD' THEN 1 ELSE 0 END) as PANPENDING,
+        SUM(CASE WHEN Judge_CAMBACK = 'PD' THEN 1 ELSE 0 END) as CAMBACKPENDING,
+        SUM(CASE WHEN Judge_CAMFRONT = 'PD' THEN 1 ELSE 0 END) as CAMFRONTPENDING,
+
+        SUM(CASE WHEN Judge_Total = 'OK' THEN 1 ELSE 0 END) as TotalOK,
+        SUM(CASE WHEN Judge_Total = 'NG' THEN 1 ELSE 0 END) as TotalNG
+
+    FROM DataCheckFinal where Date(TimeUpdate) = curdate() and hour(TimeUpdate)>13 and hour(TimeUpdate)<22;
+    else
+		if(_hournow >21) THEN
+					SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+		SELECT
+        SUM(CASE WHEN Judge_VP = 'OK' THEN 1 ELSE 0 END) as VPOK,
+        SUM(CASE WHEN Judge_GAS = 'OK' THEN 1 ELSE 0 END) as GASOILOK,
+        SUM(CASE WHEN Judge_WI1WITH = 'OK' THEN 1 ELSE 0 END) as WI1WITHOK,
+        SUM(CASE WHEN Judge_WI1START = 'OK' THEN 1 ELSE 0 END) as WI1STARTOK,
+        SUM(CASE WHEN Judge_IP = 'OK' THEN 1 ELSE 0 END) as IPOK,
+        SUM(CASE WHEN Judge_DF = 'OK' THEN 1 ELSE 0 END) as DFOK,
+        SUM(CASE WHEN Judge_TEMP = 'OK' THEN 1 ELSE 0 END) as TEMPOK,
+        SUM(CASE WHEN Judge_IOT = 'OK' THEN 1 ELSE 0 END) as IOTOK,
+        SUM(CASE WHEN Judge_WI2 = 'OK' THEN 1 ELSE 0 END) as WI2OK,
+        SUM(CASE WHEN Judge_PAN = 'OK' THEN 1 ELSE 0 END) as PANOK,
+        SUM(CASE WHEN Judge_CAMBACK = 'OK' THEN 1 ELSE 0 END) as CAMBACKOK,
+        SUM(CASE WHEN Judge_CAMFRONT = 'OK' THEN 1 ELSE 0 END) as CAMFRONTOK,
+
+        SUM(CASE WHEN Judge_VP = 'NG' THEN 1 ELSE 0 END) as VPNG,
+        SUM(CASE WHEN Judge_GAS = 'NG' THEN 1 ELSE 0 END) as GASOILNG,
+        SUM(CASE WHEN Judge_WI1WITH = 'NG' THEN 1 ELSE 0 END) as WI1WITHNG,
+        SUM(CASE WHEN Judge_WI1START = 'NG' THEN 1 ELSE 0 END) as WI1STARTNG,
+        SUM(CASE WHEN Judge_IP = 'NG' THEN 1 ELSE 0 END) as IPNG,
+        SUM(CASE WHEN Judge_DF = 'NG' THEN 1 ELSE 0 END) as DFNG,
+        SUM(CASE WHEN Judge_TEMP = 'NG' THEN 1 ELSE 0 END) as TEMPNG,
+        SUM(CASE WHEN Judge_IOT = 'NG' THEN 1 ELSE 0 END) as IOTNG,
+        SUM(CASE WHEN Judge_WI2 = 'NG' THEN 1 ELSE 0 END) as WI2NG,
+        SUM(CASE WHEN Judge_PAN = 'NG' THEN 1 ELSE 0 END) as PANNG,
+        SUM(CASE WHEN Judge_CAMBACK = 'NG' THEN 1 ELSE 0 END) as CAMBACKNG,
+        SUM(CASE WHEN Judge_CAMFRONT = 'NG' THEN 1 ELSE 0 END) as CAMFRONTNG,
+
+        SUM(CASE WHEN Judge_VP = 'PD' THEN 1 ELSE 0 END) as VPPENDING,
+        SUM(CASE WHEN Judge_GAS = 'PD' THEN 1 ELSE 0 END) as GASOILPENDING,
+        SUM(CASE WHEN Judge_WI1WITH = 'PD' THEN 1 ELSE 0 END) as WI1WITHPENDING,
+        SUM(CASE WHEN Judge_WI1START = 'PD' THEN 1 ELSE 0 END) as WI1STARTPENDING,
+        SUM(CASE WHEN Judge_IP = 'PD' THEN 1 ELSE 0 END) as IPPENDING,
+        SUM(CASE WHEN Judge_DF = 'PD' THEN 1 ELSE 0 END) as DFPENDING,
+        SUM(CASE WHEN Judge_TEMP = 'PD' THEN 1 ELSE 0 END) as TEMPPENDING,
+        SUM(CASE WHEN Judge_IOT = 'PD' THEN 1 ELSE 0 END) as IOTPENDING,
+        SUM(CASE WHEN Judge_WI2 = 'PD' THEN 1 ELSE 0 END) as WI2PENDING,
+        SUM(CASE WHEN Judge_PAN = 'PD' THEN 1 ELSE 0 END) as PANPENDING,
+        SUM(CASE WHEN Judge_CAMBACK = 'PD' THEN 1 ELSE 0 END) as CAMBACKPENDING,
+        SUM(CASE WHEN Judge_CAMFRONT = 'PD' THEN 1 ELSE 0 END) as CAMFRONTPENDING,
+
+        SUM(CASE WHEN Judge_Total = 'OK' THEN 1 ELSE 0 END) as TotalOK,
+        SUM(CASE WHEN Judge_Total = 'NG' THEN 1 ELSE 0 END) as TotalNG
+
+	FROM DataCheckFinal where Date(TimeUpdate) = curdate() and hour(TimeUpdate)> 21;
+   
+	ELSE
+	SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+		SELECT
+        SUM(CASE WHEN Judge_VP = 'OK' THEN 1 ELSE 0 END) as VPOK,
+        SUM(CASE WHEN Judge_GAS = 'OK' THEN 1 ELSE 0 END) as GASOILOK,
+        SUM(CASE WHEN Judge_WI1WITH = 'OK' THEN 1 ELSE 0 END) as WI1WITHOK,
+        SUM(CASE WHEN Judge_WI1START = 'OK' THEN 1 ELSE 0 END) as WI1STARTOK,
+        SUM(CASE WHEN Judge_IP = 'OK' THEN 1 ELSE 0 END) as IPOK,
+        SUM(CASE WHEN Judge_DF = 'OK' THEN 1 ELSE 0 END) as DFOK,
+        SUM(CASE WHEN Judge_TEMP = 'OK' THEN 1 ELSE 0 END) as TEMPOK,
+        SUM(CASE WHEN Judge_IOT = 'OK' THEN 1 ELSE 0 END) as IOTOK,
+        SUM(CASE WHEN Judge_WI2 = 'OK' THEN 1 ELSE 0 END) as WI2OK,
+        SUM(CASE WHEN Judge_PAN = 'OK' THEN 1 ELSE 0 END) as PANOK,
+        SUM(CASE WHEN Judge_CAMBACK = 'OK' THEN 1 ELSE 0 END) as CAMBACKOK,
+        SUM(CASE WHEN Judge_CAMFRONT = 'OK' THEN 1 ELSE 0 END) as CAMFRONTOK,
+
+        SUM(CASE WHEN Judge_VP = 'NG' THEN 1 ELSE 0 END) as VPNG,
+        SUM(CASE WHEN Judge_GAS = 'NG' THEN 1 ELSE 0 END) as GASOILNG,
+        SUM(CASE WHEN Judge_WI1WITH = 'NG' THEN 1 ELSE 0 END) as WI1WITHNG,
+        SUM(CASE WHEN Judge_WI1START = 'NG' THEN 1 ELSE 0 END) as WI1STARTNG,
+        SUM(CASE WHEN Judge_IP = 'NG' THEN 1 ELSE 0 END) as IPNG,
+        SUM(CASE WHEN Judge_DF = 'NG' THEN 1 ELSE 0 END) as DFNG,
+        SUM(CASE WHEN Judge_TEMP = 'NG' THEN 1 ELSE 0 END) as TEMPNG,
+        SUM(CASE WHEN Judge_IOT = 'NG' THEN 1 ELSE 0 END) as IOTNG,
+        SUM(CASE WHEN Judge_WI2 = 'NG' THEN 1 ELSE 0 END) as WI2NG,
+        SUM(CASE WHEN Judge_PAN = 'NG' THEN 1 ELSE 0 END) as PANNG,
+        SUM(CASE WHEN Judge_CAMBACK = 'NG' THEN 1 ELSE 0 END) as CAMBACKNG,
+        SUM(CASE WHEN Judge_CAMFRONT = 'NG' THEN 1 ELSE 0 END) as CAMFRONTNG,
+
+        SUM(CASE WHEN Judge_VP = 'PD' THEN 1 ELSE 0 END) as VPPENDING,
+        SUM(CASE WHEN Judge_GAS = 'PD' THEN 1 ELSE 0 END) as GASOILPENDING,
+        SUM(CASE WHEN Judge_WI1WITH = 'PD' THEN 1 ELSE 0 END) as WI1WITHPENDING,
+        SUM(CASE WHEN Judge_WI1START = 'PD' THEN 1 ELSE 0 END) as WI1STARTPENDING,
+        SUM(CASE WHEN Judge_IP = 'PD' THEN 1 ELSE 0 END) as IPPENDING,
+        SUM(CASE WHEN Judge_DF = 'PD' THEN 1 ELSE 0 END) as DFPENDING,
+        SUM(CASE WHEN Judge_TEMP = 'PD' THEN 1 ELSE 0 END) as TEMPPENDING,
+        SUM(CASE WHEN Judge_IOT = 'PD' THEN 1 ELSE 0 END) as IOTPENDING,
+        SUM(CASE WHEN Judge_WI2 = 'PD' THEN 1 ELSE 0 END) as WI2PENDING,
+        SUM(CASE WHEN Judge_PAN = 'PD' THEN 1 ELSE 0 END) as PANPENDING,
+        SUM(CASE WHEN Judge_CAMBACK = 'PD' THEN 1 ELSE 0 END) as CAMBACKPENDING,
+        SUM(CASE WHEN Judge_CAMFRONT = 'PD' THEN 1 ELSE 0 END) as CAMFRONTPENDING,
+
+        SUM(CASE WHEN Judge_Total = 'OK' THEN 1 ELSE 0 END) as TotalOK,
+        SUM(CASE WHEN Judge_Total = 'NG' THEN 1 ELSE 0 END) as TotalNG
+
+	FROM DataCheckFinal where (Date(TimeUpdate) = curdate() and hour(TimeUpdate)>= 0 AND hour(TimeUpdate) < 6) or (DATE_SUB(CURDATE(), INTERVAL 1 DAY) AND hour(TimeUpdate)> 21);
+        END IF;
+    end if;
+    ELSE
+		IF(_hournow > 5) then
+		SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+		SELECT
+        SUM(CASE WHEN Judge_VP = 'OK' THEN 1 ELSE 0 END) as VPOK,
+        SUM(CASE WHEN Judge_GAS = 'OK' THEN 1 ELSE 0 END) as GASOILOK,
+        SUM(CASE WHEN Judge_WI1WITH = 'OK' THEN 1 ELSE 0 END) as WI1WITHOK,
+        SUM(CASE WHEN Judge_WI1START = 'OK' THEN 1 ELSE 0 END) as WI1STARTOK,
+        SUM(CASE WHEN Judge_IP = 'OK' THEN 1 ELSE 0 END) as IPOK,
+        SUM(CASE WHEN Judge_DF = 'OK' THEN 1 ELSE 0 END) as DFOK,
+        SUM(CASE WHEN Judge_TEMP = 'OK' THEN 1 ELSE 0 END) as TEMPOK,
+        SUM(CASE WHEN Judge_IOT = 'OK' THEN 1 ELSE 0 END) as IOTOK,
+        SUM(CASE WHEN Judge_WI2 = 'OK' THEN 1 ELSE 0 END) as WI2OK,
+        SUM(CASE WHEN Judge_PAN = 'OK' THEN 1 ELSE 0 END) as PANOK,
+        SUM(CASE WHEN Judge_CAMBACK = 'OK' THEN 1 ELSE 0 END) as CAMBACKOK,
+        SUM(CASE WHEN Judge_CAMFRONT = 'OK' THEN 1 ELSE 0 END) as CAMFRONTOK,
+
+        SUM(CASE WHEN Judge_VP = 'NG' THEN 1 ELSE 0 END) as VPNG,
+        SUM(CASE WHEN Judge_GAS = 'NG' THEN 1 ELSE 0 END) as GASOILNG,
+        SUM(CASE WHEN Judge_WI1WITH = 'NG' THEN 1 ELSE 0 END) as WI1WITHNG,
+        SUM(CASE WHEN Judge_WI1START = 'NG' THEN 1 ELSE 0 END) as WI1STARTNG,
+        SUM(CASE WHEN Judge_IP = 'NG' THEN 1 ELSE 0 END) as IPNG,
+        SUM(CASE WHEN Judge_DF = 'NG' THEN 1 ELSE 0 END) as DFNG,
+        SUM(CASE WHEN Judge_TEMP = 'NG' THEN 1 ELSE 0 END) as TEMPNG,
+        SUM(CASE WHEN Judge_IOT = 'NG' THEN 1 ELSE 0 END) as IOTNG,
+        SUM(CASE WHEN Judge_WI2 = 'NG' THEN 1 ELSE 0 END) as WI2NG,
+        SUM(CASE WHEN Judge_PAN = 'NG' THEN 1 ELSE 0 END) as PANNG,
+        SUM(CASE WHEN Judge_CAMBACK = 'NG' THEN 1 ELSE 0 END) as CAMBACKNG,
+        SUM(CASE WHEN Judge_CAMFRONT = 'NG' THEN 1 ELSE 0 END) as CAMFRONTNG,
+
+        SUM(CASE WHEN Judge_VP = 'PD' THEN 1 ELSE 0 END) as VPPENDING,
+        SUM(CASE WHEN Judge_GAS = 'PD' THEN 1 ELSE 0 END) as GASOILPENDING,
+        SUM(CASE WHEN Judge_WI1WITH = 'PD' THEN 1 ELSE 0 END) as WI1WITHPENDING,
+        SUM(CASE WHEN Judge_WI1START = 'PD' THEN 1 ELSE 0 END) as WI1STARTPENDING,
+        SUM(CASE WHEN Judge_IP = 'PD' THEN 1 ELSE 0 END) as IPPENDING,
+        SUM(CASE WHEN Judge_DF = 'PD' THEN 1 ELSE 0 END) as DFPENDING,
+        SUM(CASE WHEN Judge_TEMP = 'PD' THEN 1 ELSE 0 END) as TEMPPENDING,
+        SUM(CASE WHEN Judge_IOT = 'PD' THEN 1 ELSE 0 END) as IOTPENDING,
+        SUM(CASE WHEN Judge_WI2 = 'PD' THEN 1 ELSE 0 END) as WI2PENDING,
+        SUM(CASE WHEN Judge_PAN = 'PD' THEN 1 ELSE 0 END) as PANPENDING,
+        SUM(CASE WHEN Judge_CAMBACK = 'PD' THEN 1 ELSE 0 END) as CAMBACKPENDING,
+        SUM(CASE WHEN Judge_CAMFRONT = 'PD' THEN 1 ELSE 0 END) as CAMFRONTPENDING,
+
+        SUM(CASE WHEN Judge_Total = 'OK' THEN 1 ELSE 0 END) as TotalOK,
+        SUM(CASE WHEN Judge_Total = 'NG' THEN 1 ELSE 0 END) as TotalNG
+
+    FROM DataCheckFinal WHERE  Date(TimeUpdate) = curdate() and hour(TimeUpdate)>5 ;
+    else
+		SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+		SELECT
+        SUM(CASE WHEN Judge_VP = 'OK' THEN 1 ELSE 0 END) as VPOK,
+        SUM(CASE WHEN Judge_GAS = 'OK' THEN 1 ELSE 0 END) as GASOILOK,
+        SUM(CASE WHEN Judge_WI1WITH = 'OK' THEN 1 ELSE 0 END) as WI1WITHOK,
+        SUM(CASE WHEN Judge_WI1START = 'OK' THEN 1 ELSE 0 END) as WI1STARTOK,
+        SUM(CASE WHEN Judge_IP = 'OK' THEN 1 ELSE 0 END) as IPOK,
+        SUM(CASE WHEN Judge_DF = 'OK' THEN 1 ELSE 0 END) as DFOK,
+        SUM(CASE WHEN Judge_TEMP = 'OK' THEN 1 ELSE 0 END) as TEMPOK,
+        SUM(CASE WHEN Judge_IOT = 'OK' THEN 1 ELSE 0 END) as IOTOK,
+        SUM(CASE WHEN Judge_WI2 = 'OK' THEN 1 ELSE 0 END) as WI2OK,
+        SUM(CASE WHEN Judge_PAN = 'OK' THEN 1 ELSE 0 END) as PANOK,
+        SUM(CASE WHEN Judge_CAMBACK = 'OK' THEN 1 ELSE 0 END) as CAMBACKOK,
+        SUM(CASE WHEN Judge_CAMFRONT = 'OK' THEN 1 ELSE 0 END) as CAMFRONTOK,
+
+        SUM(CASE WHEN Judge_VP = 'NG' THEN 1 ELSE 0 END) as VPNG,
+        SUM(CASE WHEN Judge_GAS = 'NG' THEN 1 ELSE 0 END) as GASOILNG,
+        SUM(CASE WHEN Judge_WI1WITH = 'NG' THEN 1 ELSE 0 END) as WI1WITHNG,
+        SUM(CASE WHEN Judge_WI1START = 'NG' THEN 1 ELSE 0 END) as WI1STARTNG,
+        SUM(CASE WHEN Judge_IP = 'NG' THEN 1 ELSE 0 END) as IPNG,
+        SUM(CASE WHEN Judge_DF = 'NG' THEN 1 ELSE 0 END) as DFNG,
+        SUM(CASE WHEN Judge_TEMP = 'NG' THEN 1 ELSE 0 END) as TEMPNG,
+        SUM(CASE WHEN Judge_IOT = 'NG' THEN 1 ELSE 0 END) as IOTNG,
+        SUM(CASE WHEN Judge_WI2 = 'NG' THEN 1 ELSE 0 END) as WI2NG,
+        SUM(CASE WHEN Judge_PAN = 'NG' THEN 1 ELSE 0 END) as PANNG,
+        SUM(CASE WHEN Judge_CAMBACK = 'NG' THEN 1 ELSE 0 END) as CAMBACKNG,
+        SUM(CASE WHEN Judge_CAMFRONT = 'NG' THEN 1 ELSE 0 END) as CAMFRONTNG,
+
+        SUM(CASE WHEN Judge_VP = 'PD' THEN 1 ELSE 0 END) as VPPENDING,
+        SUM(CASE WHEN Judge_GAS = 'PD' THEN 1 ELSE 0 END) as GASOILPENDING,
+        SUM(CASE WHEN Judge_WI1WITH = 'PD' THEN 1 ELSE 0 END) as WI1WITHPENDING,
+        SUM(CASE WHEN Judge_WI1START = 'PD' THEN 1 ELSE 0 END) as WI1STARTPENDING,
+        SUM(CASE WHEN Judge_IP = 'PD' THEN 1 ELSE 0 END) as IPPENDING,
+        SUM(CASE WHEN Judge_DF = 'PD' THEN 1 ELSE 0 END) as DFPENDING,
+        SUM(CASE WHEN Judge_TEMP = 'PD' THEN 1 ELSE 0 END) as TEMPPENDING,
+        SUM(CASE WHEN Judge_IOT = 'PD' THEN 1 ELSE 0 END) as IOTPENDING,
+        SUM(CASE WHEN Judge_WI2 = 'PD' THEN 1 ELSE 0 END) as WI2PENDING,
+        SUM(CASE WHEN Judge_PAN = 'PD' THEN 1 ELSE 0 END) as PANPENDING,
+        SUM(CASE WHEN Judge_CAMBACK = 'PD' THEN 1 ELSE 0 END) as CAMBACKPENDING,
+        SUM(CASE WHEN Judge_CAMFRONT = 'PD' THEN 1 ELSE 0 END) as CAMFRONTPENDING,
+
+        SUM(CASE WHEN Judge_Total = 'OK' THEN 1 ELSE 0 END) as TotalOK,
+        SUM(CASE WHEN Judge_Total = 'NG' THEN 1 ELSE 0 END) as TotalNG
+
+	FROM DataCheckFinal where (Date(TimeUpdate) = curdate() and hour(TimeUpdate)>= 0 AND hour(TimeUpdate) < 6) or (DATE_SUB(CURDATE(), INTERVAL 1 DAY) AND hour(TimeUpdate)> 5);
+    END IF;
+END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `LoadDataForChartHistory` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`TA`@`%` PROCEDURE `LoadDataForChartHistory`(IN DateTimeFrom DATETIME,
+IN DateTimeTo DATETIME)
+BEGIN
+	SELECT
+        SUM(CASE WHEN Judge_VP = 'OK' THEN 1 ELSE 0 END) as VPOK,
+        SUM(CASE WHEN Judge_GAS = 'OK' THEN 1 ELSE 0 END) as GASOILOK,
+        SUM(CASE WHEN Judge_WI1WITH = 'OK' THEN 1 ELSE 0 END) as WI1WITHOK,
+        SUM(CASE WHEN Judge_WI1START = 'OK' THEN 1 ELSE 0 END) as WI1STARTOK,
+        SUM(CASE WHEN Judge_IP = 'OK' THEN 1 ELSE 0 END) as IPOK,
+        SUM(CASE WHEN Judge_DF = 'OK' THEN 1 ELSE 0 END) as DFOK,
+        SUM(CASE WHEN Judge_TEMP = 'OK' THEN 1 ELSE 0 END) as TEMPOK,
+        SUM(CASE WHEN Judge_IOT = 'OK' THEN 1 ELSE 0 END) as IOTOK,
+        SUM(CASE WHEN Judge_WI2 = 'OK' THEN 1 ELSE 0 END) as WI2OK,
+        SUM(CASE WHEN Judge_PAN = 'OK' THEN 1 ELSE 0 END) as PANOK,
+        SUM(CASE WHEN Judge_CAMBACK = 'OK' THEN 1 ELSE 0 END) as CAMBACKOK,
+        SUM(CASE WHEN Judge_CAMFRONT = 'OK' THEN 1 ELSE 0 END) as CAMFRONTOK,
+
+        SUM(CASE WHEN Judge_VP = 'NG' THEN 1 ELSE 0 END) as VPNG,
+        SUM(CASE WHEN Judge_GAS = 'NG' THEN 1 ELSE 0 END) as GASOILNG,
+        SUM(CASE WHEN Judge_WI1WITH = 'NG' THEN 1 ELSE 0 END) as WI1WITHNG,
+        SUM(CASE WHEN Judge_WI1START = 'NG' THEN 1 ELSE 0 END) as WI1STARTNG,
+        SUM(CASE WHEN Judge_IP = 'NG' THEN 1 ELSE 0 END) as IPNG,
+        SUM(CASE WHEN Judge_DF = 'NG' THEN 1 ELSE 0 END) as DFNG,
+        SUM(CASE WHEN Judge_TEMP = 'NG' THEN 1 ELSE 0 END) as TEMPNG,
+        SUM(CASE WHEN Judge_IOT = 'NG' THEN 1 ELSE 0 END) as IOTNG,
+        SUM(CASE WHEN Judge_WI2 = 'NG' THEN 1 ELSE 0 END) as WI2NG,
+        SUM(CASE WHEN Judge_PAN = 'NG' THEN 1 ELSE 0 END) as PANNG,
+        SUM(CASE WHEN Judge_CAMBACK = 'NG' THEN 1 ELSE 0 END) as CAMBACKNG,
+        SUM(CASE WHEN Judge_CAMFRONT = 'NG' THEN 1 ELSE 0 END) as CAMFRONTNG,
+
+        SUM(CASE WHEN Judge_VP = 'PD' THEN 1 ELSE 0 END) as VPPENDING,
+        SUM(CASE WHEN Judge_GAS = 'PD' THEN 1 ELSE 0 END) as GASOILPENDING,
+        SUM(CASE WHEN Judge_WI1WITH = 'PD' THEN 1 ELSE 0 END) as WI1WITHPENDING,
+        SUM(CASE WHEN Judge_WI1START = 'PD' THEN 1 ELSE 0 END) as WI1STARTPENDING,
+        SUM(CASE WHEN Judge_IP = 'PD' THEN 1 ELSE 0 END) as IPPENDING,
+        SUM(CASE WHEN Judge_DF = 'PD' THEN 1 ELSE 0 END) as DFPENDING,
+        SUM(CASE WHEN Judge_TEMP = 'PD' THEN 1 ELSE 0 END) as TEMPPENDING,
+        SUM(CASE WHEN Judge_IOT = 'PD' THEN 1 ELSE 0 END) as IOTPENDING,
+        SUM(CASE WHEN Judge_WI2 = 'PD' THEN 1 ELSE 0 END) as WI2PENDING,
+        SUM(CASE WHEN Judge_PAN = 'PD' THEN 1 ELSE 0 END) as PANPENDING,
+        SUM(CASE WHEN Judge_CAMBACK = 'PD' THEN 1 ELSE 0 END) as CAMBACKPENDING,
+        SUM(CASE WHEN Judge_CAMFRONT = 'PD' THEN 1 ELSE 0 END) as CAMFRONTPENDING,
+
+        SUM(CASE WHEN Judge_Total = 'OK' THEN 1 ELSE 0 END) as TotalOK,
+        SUM(CASE WHEN Judge_Total = 'NG' THEN 1 ELSE 0 END) as TotalNG
+		FROM DataCheckFinal where TimeUpdate Between DateTimeFrom AND DateTimeTo;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -880,6 +1177,68 @@ BEGIN
         FROM DataCheckFinal
         WHERE CodeBack = namecabi;
     END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `new_procedure` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`TA`@`%` PROCEDURE `new_procedure`(IN DateTimeFrom DATETIME,
+IN DateTimeTo DATETIME)
+BEGIN
+	SELECT
+        SUM(CASE WHEN Judge_VP = 'OK' THEN 1 ELSE 0 END) as VPOK,
+        SUM(CASE WHEN Judge_GAS = 'OK' THEN 1 ELSE 0 END) as GASOILOK,
+        SUM(CASE WHEN Judge_WI1WITH = 'OK' THEN 1 ELSE 0 END) as WI1WITHOK,
+        SUM(CASE WHEN Judge_WI1START = 'OK' THEN 1 ELSE 0 END) as WI1STARTOK,
+        SUM(CASE WHEN Judge_IP = 'OK' THEN 1 ELSE 0 END) as IPOK,
+        SUM(CASE WHEN Judge_DF = 'OK' THEN 1 ELSE 0 END) as DFOK,
+        SUM(CASE WHEN Judge_TEMP = 'OK' THEN 1 ELSE 0 END) as TEMPOK,
+        SUM(CASE WHEN Judge_IOT = 'OK' THEN 1 ELSE 0 END) as IOTOK,
+        SUM(CASE WHEN Judge_WI2 = 'OK' THEN 1 ELSE 0 END) as WI2OK,
+        SUM(CASE WHEN Judge_PAN = 'OK' THEN 1 ELSE 0 END) as PANOK,
+        SUM(CASE WHEN Judge_CAMBACK = 'OK' THEN 1 ELSE 0 END) as CAMBACKOK,
+        SUM(CASE WHEN Judge_CAMFRONT = 'OK' THEN 1 ELSE 0 END) as CAMFRONTOK,
+
+        SUM(CASE WHEN Judge_VP = 'NG' THEN 1 ELSE 0 END) as VPNG,
+        SUM(CASE WHEN Judge_GAS = 'NG' THEN 1 ELSE 0 END) as GASOILNG,
+        SUM(CASE WHEN Judge_WI1WITH = 'NG' THEN 1 ELSE 0 END) as WI1WITHNG,
+        SUM(CASE WHEN Judge_WI1START = 'NG' THEN 1 ELSE 0 END) as WI1STARTNG,
+        SUM(CASE WHEN Judge_IP = 'NG' THEN 1 ELSE 0 END) as IPNG,
+        SUM(CASE WHEN Judge_DF = 'NG' THEN 1 ELSE 0 END) as DFNG,
+        SUM(CASE WHEN Judge_TEMP = 'NG' THEN 1 ELSE 0 END) as TEMPNG,
+        SUM(CASE WHEN Judge_IOT = 'NG' THEN 1 ELSE 0 END) as IOTNG,
+        SUM(CASE WHEN Judge_WI2 = 'NG' THEN 1 ELSE 0 END) as WI2NG,
+        SUM(CASE WHEN Judge_PAN = 'NG' THEN 1 ELSE 0 END) as PANNG,
+        SUM(CASE WHEN Judge_CAMBACK = 'NG' THEN 1 ELSE 0 END) as CAMBACKNG,
+        SUM(CASE WHEN Judge_CAMFRONT = 'NG' THEN 1 ELSE 0 END) as CAMFRONTNG,
+
+        SUM(CASE WHEN Judge_VP = 'PD' THEN 1 ELSE 0 END) as VPPENDING,
+        SUM(CASE WHEN Judge_GAS = 'PD' THEN 1 ELSE 0 END) as GASOILPENDING,
+        SUM(CASE WHEN Judge_WI1WITH = 'PD' THEN 1 ELSE 0 END) as WI1WITHPENDING,
+        SUM(CASE WHEN Judge_WI1START = 'PD' THEN 1 ELSE 0 END) as WI1STARTPENDING,
+        SUM(CASE WHEN Judge_IP = 'PD' THEN 1 ELSE 0 END) as IPPENDING,
+        SUM(CASE WHEN Judge_DF = 'PD' THEN 1 ELSE 0 END) as DFPENDING,
+        SUM(CASE WHEN Judge_TEMP = 'PD' THEN 1 ELSE 0 END) as TEMPPENDING,
+        SUM(CASE WHEN Judge_IOT = 'PD' THEN 1 ELSE 0 END) as IOTPENDING,
+        SUM(CASE WHEN Judge_WI2 = 'PD' THEN 1 ELSE 0 END) as WI2PENDING,
+        SUM(CASE WHEN Judge_PAN = 'PD' THEN 1 ELSE 0 END) as PANPENDING,
+        SUM(CASE WHEN Judge_CAMBACK = 'PD' THEN 1 ELSE 0 END) as CAMBACKPENDING,
+        SUM(CASE WHEN Judge_CAMFRONT = 'PD' THEN 1 ELSE 0 END) as CAMFRONTPENDING,
+
+        SUM(CASE WHEN Judge_Total = 'OK' THEN 1 ELSE 0 END) as TotalOK,
+        SUM(CASE WHEN Judge_Total = 'NG' THEN 1 ELSE 0 END) as TotalNG
+		FROM DataCheckFinal where TimeUpdate Between DateTimeFrom AND DateTimeTo;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -990,4 +1349,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-16 18:29:51
+-- Dump completed on 2023-12-23 15:34:43
