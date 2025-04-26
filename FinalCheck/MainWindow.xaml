@@ -554,7 +554,7 @@
                     </Grid>
                     <Grid Grid.Row="1" Margin="4,0,4,0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
                             <ColumnDefinition Width="5*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0" Margin="2" Background="White">
@@ -654,6 +654,7 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
+                                        
                                         <GridViewColumn >
                                             <GridViewColumn.Header>
                                                 <Grid Margin="5,0,5,0">
@@ -677,6 +678,55 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
+
+                                        <GridViewColumn >
+                                            <GridViewColumn.Header>
+                                                <Grid Margin="5,0,5,0">
+                                                    <Label>Error</Label>
+                                                </Grid>
+                                            </GridViewColumn.Header>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Width="auto" TextAlignment="Center" FontWeight="Medium"  FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Reasonerror}">
+
+                                                        </TextBlock>
+                                                    </Grid>
+
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn >
+                                            <GridViewColumn.Header>
+                                                <Grid Margin="5,0,5,0">
+                                                    <Label>UserID</Label>
+                                                </Grid>
+                                            </GridViewColumn.Header>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Width="auto" TextAlignment="Center" FontWeight="Medium"  FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding PersonConfirm}">
+
+                                                        </TextBlock>
+                                                    </Grid>
+
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+
+
 
                                     </GridView>
 

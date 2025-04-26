@@ -55,7 +55,7 @@ namespace FinalCheck
         bool IsOpenSetup = false;
         public Func<double, string> Formatter { get; set; }
 
-        public ObservableCollection<ResultMain> dataforlistview { set; get; }
+        public ObservableCollection<ResultMainNew> dataforlistview { set; get; }
 
         public ObservableCollection<ResultCheckFinal> List_Result_Check_Final { set; get; }
 
@@ -239,7 +239,7 @@ namespace FinalCheck
         public void innitproperty()
         {
 
-            dataforlistview = new ObservableCollection<ResultMain>();
+            dataforlistview = new ObservableCollection<ResultMainNew>();
 
             List_Result_Check_Final = new ObservableCollection<ResultCheckFinal>();
 
@@ -534,7 +534,7 @@ namespace FinalCheck
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    ResultMain RM = new ResultMain(i + 1, dt.Rows[i]["CodeBack"].ToString(), dt.Rows[i]["Judge_Total"].ToString(), dt.Rows[i]["TimeUpdate"].ToString());
+                    ResultMainNew RM = new ResultMainNew(i + 1, dt.Rows[i]["CodeBack"].ToString(), dt.Rows[i]["Judge_Total"].ToString(), dt.Rows[i]["TimeUpdate"].ToString(), dt.Rows[i]["ReasonError"].ToString(), dt.Rows[i]["PersonConfirm"].ToString());
                     dataforlistview.Add(RM);
                 }
             }

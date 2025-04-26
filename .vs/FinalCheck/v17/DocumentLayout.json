@@ -1,0 +1,571 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\2025\\FinalCheckPAPVN\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\mainwindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\mainwindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\model\\resultmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\model\\resultmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\history.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\history.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|d:\\2025\\finalcheckpapvn\\finalcheck\\mainwindow.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\mainwindow.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\viewmodel\\controlbarviewmodelcs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\viewmodel\\controlbarviewmodelcs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\viewmodel\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\viewmodel\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\model\\resultcheckfinal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\model\\resultcheckfinal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|d:\\2025\\finalcheckpapvn\\finalcheck\\setup.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\setup.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\config.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\config.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\setup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\setup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\plc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\plc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\history.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\history.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\datadetail.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\datadetail.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\datadetail.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\datadetail.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\model\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\model\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\model\\configconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\model\\configconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\myusercontrol\\titlebar.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\myusercontrol\\titlebar.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\myconverter\\pdconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\myconverter\\pdconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\myconverter\\mydatetimeconvert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\myconverter\\mydatetimeconvert.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\database\\staticdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\database\\staticdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\database\\dbconnect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\database\\dbconnect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\icon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\icon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\myusercontrol\\mycontrolbarxaml.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\myusercontrol\\mycontrolbarxaml.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\myusercontrol\\mycontrolbarxaml.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\myusercontrol\\mycontrolbarxaml.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|D:\\2025\\FinalCheckPAPVN\\finalcheck\\myusercontrol\\titlebar.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A2935C98-59D2-44C7-B542-82AD670B5A88}|FinalCheck\\FinalCheck.csproj|solutionrelative:finalcheck\\myusercontrol\\titlebar.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\PC\\Desktop\\FinalCheckPAPVN\\FinalCheck\\obj\\Debug\\App.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Setup.xaml.cs",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\Setup.xaml.cs",
+              "RelativeDocumentMoniker": "FinalCheck\\Setup.xaml.cs",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\Setup.xaml.cs",
+              "RelativeToolTip": "FinalCheck\\Setup.xaml.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAkwCkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T02:43:15.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "FinalCheck\\MainWindow.xaml",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\MainWindow.xaml",
+              "RelativeToolTip": "FinalCheck\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-26T02:43:15.797Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ResultCheckFinal.cs",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\Model\\ResultCheckFinal.cs",
+              "RelativeDocumentMoniker": "FinalCheck\\Model\\ResultCheckFinal.cs",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\Model\\ResultCheckFinal.cs",
+              "RelativeToolTip": "FinalCheck\\Model\\ResultCheckFinal.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAEEAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T02:43:15.815Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BaseViewModel.cs",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\ViewModel\\BaseViewModel.cs",
+              "RelativeDocumentMoniker": "FinalCheck\\ViewModel\\BaseViewModel.cs",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\ViewModel\\BaseViewModel.cs",
+              "RelativeToolTip": "FinalCheck\\ViewModel\\BaseViewModel.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAsAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T02:43:15.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ControlBarViewModelcs.cs",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\ViewModel\\ControlBarViewModelcs.cs",
+              "RelativeDocumentMoniker": "FinalCheck\\ViewModel\\ControlBarViewModelcs.cs",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\ViewModel\\ControlBarViewModelcs.cs",
+              "RelativeToolTip": "FinalCheck\\ViewModel\\ControlBarViewModelcs.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAADIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T02:43:15.875Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "FinalCheck\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\MainWindow.xaml.cs",
+              "RelativeToolTip": "FinalCheck\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAUCAAAAAAAAAAAswBACAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T02:43:15.79Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ResultMain.cs",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\Model\\ResultMain.cs",
+              "RelativeDocumentMoniker": "FinalCheck\\Model\\ResultMain.cs",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\Model\\ResultMain.cs",
+              "RelativeToolTip": "FinalCheck\\Model\\ResultMain.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwCMAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T02:43:15.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "App.config",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\App.config",
+              "RelativeDocumentMoniker": "FinalCheck\\App.config",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\App.config",
+              "RelativeToolTip": "FinalCheck\\App.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFlSURBVDhPpZO9qsJAEIWPqyaFjQha2MUHsNDK1p/eRgsbg1Z2UfAx/AEfwVIb8TksfAGxSBAFJY2FpBiddQ1XvOBe7gfLsgfmMJM5wX\u002BJqBu9Xo/O57N6fWKaJvr9PgqFQljDhI9ms0mTyUS9PuHieDyOwWCAYrEY1gl1axEEAcbjMTabDSnpbwYMm0ynU1yvV2kSk6oGP8fjcV6EHcxmMySTSSQSCUSjUaV\u002BRxqcTid6fESUSiU5o2EY2ibieDxSJpOJcAdcNJ/PZTe8Nh1Eq9XCdrulfD4fqdVqUlyv17ILHQSHx7ZtDIdDWiwWT1HoL0fU63X4vo/lcqmkx2piMVwuFxmcbwjHcdDpdJBOp\u002BXJZrM4HA6yq9vtpmXyhuu6VK1WybIsKpfLtN/vibfkeV54OPavIL39GC/YpN1uY7fbIZfLYbVaodvtguiZ4FQqhdFoxJn5tV7CJpVKhRqNRpj7T4A7TASPsDpkW/8AAAAASUVORK5CYII=",
+              "WhenOpened": "2025-04-26T02:43:15.795Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Login.xaml",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\Login.xaml",
+              "RelativeDocumentMoniker": "FinalCheck\\Login.xaml",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\Login.xaml",
+              "RelativeToolTip": "FinalCheck\\Login.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-26T02:43:15.793Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "History.xaml.cs",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\History.xaml.cs",
+              "RelativeDocumentMoniker": "FinalCheck\\History.xaml.cs",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\History.xaml.cs",
+              "RelativeToolTip": "FinalCheck\\History.xaml.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAADwvzAAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T02:43:15.804Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "History.xaml",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\History.xaml",
+              "RelativeDocumentMoniker": "FinalCheck\\History.xaml",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\History.xaml",
+              "RelativeToolTip": "FinalCheck\\History.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-26T02:43:15.796Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\App.xaml",
+              "RelativeDocumentMoniker": "FinalCheck\\App.xaml",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\App.xaml",
+              "RelativeToolTip": "FinalCheck\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-26T02:43:15.791Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Setup.xaml",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\Setup.xaml",
+              "RelativeDocumentMoniker": "FinalCheck\\Setup.xaml",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\Setup.xaml",
+              "RelativeToolTip": "FinalCheck\\Setup.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-26T02:43:15.232Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "DataDetail.xaml",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\DataDetail.xaml",
+              "RelativeDocumentMoniker": "FinalCheck\\DataDetail.xaml",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\DataDetail.xaml",
+              "RelativeToolTip": "FinalCheck\\DataDetail.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-26T02:43:15.798Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "config.json",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\config.json",
+              "RelativeDocumentMoniker": "FinalCheck\\config.json",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\config.json",
+              "RelativeToolTip": "FinalCheck\\config.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-26T02:43:15.799Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PLC.cs",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\PLC.cs",
+              "RelativeDocumentMoniker": "FinalCheck\\PLC.cs",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\PLC.cs",
+              "RelativeToolTip": "FinalCheck\\PLC.cs",
+              "ViewState": "AQIAAHsAAAAAAAAAAAAAADIAAABFAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADtSURBVDhPYxgFCHDh4YX/sQtj/6u3qP9XblL\u002BHzk/8j9UiuHtx7f/VZpVwHxkNggwgohLjy79D18SzmAua86QZJbEwM/Bz3D91XWGCNMIRpAGo34jsGJkwMrMynCn9g5YP0PK0pT/3tO9/3/58gVuMjLA5wImEHH68WkGN3U3Bh4eHoiJJACwAb/\u002B/gI7CRuAeeH3398M8g3ycDayKxjC5oX9D54TjNX5IIDPC2Ann7x78n/E4ggGDw0PhgiDCLBrLj2/xJBhl0HQS3AFe67t\u002BT/lyBSGO2/uMHCxcTHYK9szdAd2kxwmIw8wMAAAESl0qwYO77cAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-04-26T02:43:15.801Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "DataDetail.xaml.cs",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\DataDetail.xaml.cs",
+              "RelativeDocumentMoniker": "FinalCheck\\DataDetail.xaml.cs",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\DataDetail.xaml.cs",
+              "RelativeToolTip": "FinalCheck\\DataDetail.xaml.cs",
+              "ViewState": "AQIAAKUBAAAAAAAAAADwv7kBAAA/AAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADjSURBVDhPY0AGretv/t9x7tl/KJd0sOfii/\u002Bimfv\u002Bbzv7lGhDGBlid2Eo1pTkZNiSLsVQWVkJFWFgYGdnZygoKGAwNjZmhAphgt0XnsFd8P79\u002B/9Pnz6F47CwsP/R0dH/z549i2IhE5QGg1P3PzMsTtVgsFTiYvj27RtUFAF\u002B//7N0NfXx4BsCIoBIVoMDOaKnFg1wwDIkAkTJkB5oDBAAnFxcf/b29uhPNygsLCQYdWqVWC9KC748eMHlEU8QDGAHDBqABUMQEkHmZmZ/9\u002B\u002BfQvl4QbCwsIM06dPx50niAcMDADfJl5g9BqhpwAAAABJRU5ErkJggg==",
+              "WhenOpened": "2025-04-26T02:43:15.802Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Config.cs",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\Model\\Config.cs",
+              "RelativeDocumentMoniker": "FinalCheck\\Model\\Config.cs",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\Model\\Config.cs",
+              "RelativeToolTip": "FinalCheck\\Model\\Config.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA8AAAAFAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADtSURBVDhPYxgFCHDh4YX/sQtj/6u3qP9XblL\u002BHzk/8j9UiuHtx7f/VZpVwHxkNggwgohLjy79D18SzmAua86QZJbEwM/Bz3D91XWGCNMIRpAGo34jsGJkwMrMynCn9g5YP0PK0pT/3tO9/3/58gVuMjLA5wImEHH68WkGN3U3Bh4eHoiJJACwAb/\u002B/gI7CRuAeeH3398M8g3ycDayKxjC5oX9D54TjNX5IIDPC2Ann7x78n/E4ggGDw0PhgiDCLBrLj2/xJBhl0HQS3AFe67t\u002BT/lyBSGO2/uMHCxcTHYK9szdAd2kxwmIw8wMAAAESl0qwYO77cAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-04-26T02:43:15.805Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ConfigConnection.cs",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\Model\\ConfigConnection.cs",
+              "RelativeDocumentMoniker": "FinalCheck\\Model\\ConfigConnection.cs",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\Model\\ConfigConnection.cs",
+              "RelativeToolTip": "FinalCheck\\Model\\ConfigConnection.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAACsAAAA3AAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADtSURBVDhPYxgFCHDh4YX/sQtj/6u3qP9XblL\u002BHzk/8j9UiuHtx7f/VZpVwHxkNggwgohLjy79D18SzmAua86QZJbEwM/Bz3D91XWGCNMIRpAGo34jsGJkwMrMynCn9g5YP0PK0pT/3tO9/3/58gVuMjLA5wImEHH68WkGN3U3Bh4eHoiJJACwAb/\u002B/gI7CRuAeeH3398M8g3ycDayKxjC5oX9D54TjNX5IIDPC2Ann7x78n/E4ggGDw0PhgiDCLBrLj2/xJBhl0HQS3AFe67t\u002BT/lyBSGO2/uMHCxcTHYK9szdAd2kxwmIw8wMAAAESl0qwYO77cAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-04-26T02:43:15.807Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "PDConverter.cs",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\MyConverter\\PDConverter.cs",
+              "RelativeDocumentMoniker": "FinalCheck\\MyConverter\\PDConverter.cs",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\MyConverter\\PDConverter.cs",
+              "RelativeToolTip": "FinalCheck\\MyConverter\\PDConverter.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAfAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADtSURBVDhPYxgFCHDh4YX/sQtj/6u3qP9XblL\u002BHzk/8j9UiuHtx7f/VZpVwHxkNggwgohLjy79D18SzmAua86QZJbEwM/Bz3D91XWGCNMIRpAGo34jsGJkwMrMynCn9g5YP0PK0pT/3tO9/3/58gVuMjLA5wImEHH68WkGN3U3Bh4eHoiJJACwAb/\u002B/gI7CRuAeeH3398M8g3ycDayKxjC5oX9D54TjNX5IIDPC2Ann7x78n/E4ggGDw0PhgiDCLBrLj2/xJBhl0HQS3AFe67t\u002BT/lyBSGO2/uMHCxcTHYK9szdAd2kxwmIw8wMAAAESl0qwYO77cAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-04-26T02:43:15.808Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "TitleBar.xaml.cs",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\MyUserControl\\TitleBar.xaml.cs",
+              "RelativeDocumentMoniker": "FinalCheck\\MyUserControl\\TitleBar.xaml.cs",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\MyUserControl\\TitleBar.xaml.cs",
+              "RelativeToolTip": "FinalCheck\\MyUserControl\\TitleBar.xaml.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAkwCAAAAAIAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADjSURBVDhPY0AGretv/t9x7tl/KJd0sOfii/\u002Bimfv\u002Bbzv7lGhDGBlid2Eo1pTkZNiSLsVQWVkJFWFgYGdnZygoKGAwNjZmhAphgt0XnsFd8P79\u002B/9Pnz6F47CwsP/R0dH/z549i2IhE5QGg1P3PzMsTtVgsFTiYvj27RtUFAF\u002B//7N0NfXx4BsCIoBIVoMDOaKnFg1wwDIkAkTJkB5oDBAAnFxcf/b29uhPNygsLCQYdWqVWC9KC748eMHlEU8QDGAHDBqABUMQEkHmZmZ/9\u002B\u002BfQvl4QbCwsIM06dPx50niAcMDADfJl5g9BqhpwAAAABJRU5ErkJggg==",
+              "WhenOpened": "2025-04-26T02:43:15.81Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "DbConnect.cs",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\DataBase\\DbConnect.cs",
+              "RelativeDocumentMoniker": "FinalCheck\\DataBase\\DbConnect.cs",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\DataBase\\DbConnect.cs",
+              "RelativeToolTip": "FinalCheck\\DataBase\\DbConnect.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAhwCQAAAAQAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADtSURBVDhPYxgFCHDh4YX/sQtj/6u3qP9XblL\u002BHzk/8j9UiuHtx7f/VZpVwHxkNggwgohLjy79D18SzmAua86QZJbEwM/Bz3D91XWGCNMIRpAGo34jsGJkwMrMynCn9g5YP0PK0pT/3tO9/3/58gVuMjLA5wImEHH68WkGN3U3Bh4eHoiJJACwAb/\u002B/gI7CRuAeeH3398M8g3ycDayKxjC5oX9D54TjNX5IIDPC2Ann7x78n/E4ggGDw0PhgiDCLBrLj2/xJBhl0HQS3AFe67t\u002BT/lyBSGO2/uMHCxcTHYK9szdAd2kxwmIw8wMAAAESl0qwYO77cAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-04-26T02:43:15.811Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "MyDateTimeConvert.cs",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\MyConverter\\MyDateTimeConvert.cs",
+              "RelativeDocumentMoniker": "FinalCheck\\MyConverter\\MyDateTimeConvert.cs",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\MyConverter\\MyDateTimeConvert.cs",
+              "RelativeToolTip": "FinalCheck\\MyConverter\\MyDateTimeConvert.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAA0AAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADtSURBVDhPYxgFCHDh4YX/sQtj/6u3qP9XblL\u002BHzk/8j9UiuHtx7f/VZpVwHxkNggwgohLjy79D18SzmAua86QZJbEwM/Bz3D91XWGCNMIRpAGo34jsGJkwMrMynCn9g5YP0PK0pT/3tO9/3/58gVuMjLA5wImEHH68WkGN3U3Bh4eHoiJJACwAb/\u002B/gI7CRuAeeH3398M8g3ycDayKxjC5oX9D54TjNX5IIDPC2Ann7x78n/E4ggGDw0PhgiDCLBrLj2/xJBhl0HQS3AFe67t\u002BT/lyBSGO2/uMHCxcTHYK9szdAd2kxwmIw8wMAAAESl0qwYO77cAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-04-26T02:43:15.813Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "StaticData.cs",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\DataBase\\StaticData.cs",
+              "RelativeDocumentMoniker": "FinalCheck\\DataBase\\StaticData.cs",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\DataBase\\StaticData.cs",
+              "RelativeToolTip": "FinalCheck\\DataBase\\StaticData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAyAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADtSURBVDhPYxgFCHDh4YX/sQtj/6u3qP9XblL\u002BHzk/8j9UiuHtx7f/VZpVwHxkNggwgohLjy79D18SzmAua86QZJbEwM/Bz3D91XWGCNMIRpAGo34jsGJkwMrMynCn9g5YP0PK0pT/3tO9/3/58gVuMjLA5wImEHH68WkGN3U3Bh4eHoiJJACwAb/\u002B/gI7CRuAeeH3398M8g3ycDayKxjC5oX9D54TjNX5IIDPC2Ann7x78n/E4ggGDw0PhgiDCLBrLj2/xJBhl0HQS3AFe67t\u002BT/lyBSGO2/uMHCxcTHYK9szdAd2kxwmIw8wMAAAESl0qwYO77cAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-04-26T02:43:15.814Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\App.xaml.cs",
+              "RelativeDocumentMoniker": "FinalCheck\\App.xaml.cs",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\App.xaml.cs",
+              "RelativeToolTip": "FinalCheck\\App.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADjSURBVDhPY0AGretv/t9x7tl/KJd0sOfii/\u002Bimfv\u002Bbzv7lGhDGBlid2Eo1pTkZNiSLsVQWVkJFWFgYGdnZygoKGAwNjZmhAphgt0XnsFd8P79\u002B/9Pnz6F47CwsP/R0dH/z549i2IhE5QGg1P3PzMsTtVgsFTiYvj27RtUFAF\u002B//7N0NfXx4BsCIoBIVoMDOaKnFg1wwDIkAkTJkB5oDBAAnFxcf/b29uhPNygsLCQYdWqVWC9KC748eMHlEU8QDGAHDBqABUMQEkHmZmZ/9\u002B\u002BfQvl4QbCwsIM06dPx50niAcMDADfJl5g9BqhpwAAAABJRU5ErkJggg==",
+              "WhenOpened": "2025-04-26T02:43:15.816Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "App.g.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\FinalCheckPAPVN\\FinalCheck\\obj\\Debug\\App.g.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\FinalCheckPAPVN\\FinalCheck\\obj\\Debug\\App.g.cs",
+              "ViewState": "AQIAADEAAAAAAAAAAAAqwEsAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-11-28T14:11:19.632Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Login.xaml.cs",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\Login.xaml.cs",
+              "RelativeDocumentMoniker": "FinalCheck\\Login.xaml.cs",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\Login.xaml.cs",
+              "RelativeToolTip": "FinalCheck\\Login.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADjSURBVDhPY0AGretv/t9x7tl/KJd0sOfii/\u002Bimfv\u002Bbzv7lGhDGBlid2Eo1pTkZNiSLsVQWVkJFWFgYGdnZygoKGAwNjZmhAphgt0XnsFd8P79\u002B/9Pnz6F47CwsP/R0dH/z549i2IhE5QGg1P3PzMsTtVgsFTiYvj27RtUFAF\u002B//7N0NfXx4BsCIoBIVoMDOaKnFg1wwDIkAkTJkB5oDBAAnFxcf/b29uhPNygsLCQYdWqVWC9KC748eMHlEU8QDGAHDBqABUMQEkHmZmZ/9\u002B\u002BfQvl4QbCwsIM06dPx50niAcMDADfJl5g9BqhpwAAAABJRU5ErkJggg==",
+              "WhenOpened": "2025-04-26T02:43:15.871Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Icon.ico - Icon [256x256, 32 bit, PNG]",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\Icon.ico",
+              "RelativeDocumentMoniker": "FinalCheck\\Icon.ico",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\WPF\\FinalCheckPAPVN\\FinalCheck\\Icon.ico - Icon [256x256, 32 bit, PNG]",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADuSURBVDhPpZNBrkRAGIRrJOIALsAZbC2cwhmwws6aNXYWriOxsnMFSycgzKt\u002BPRPDTNLz3pd0qkt0pX7S\u002BC83qQjDcJ/nWborhmEgjmM4jvM8Q57G9/29qirpriRJAl3XkabpS4gmVYllWVCWJYZh2OWj7wIIQ\u002Bq6lu4AR5imabdt\u002B60eF9\u002BVx64Nuq57q67rCj3zcYS\u002B7\u002BXul0fQmUsAZxzHEVmWCaUnyg3atkUQBFjXVSg9UW4QRREsyxJ7Kj1RbrBtG36\u002BPIqiEEpPlBtomoY8z\u002BF5nlB68vVfOPOpgfJlOmKaJpqmeblUfwS4AwImfYh7fH3hAAAAAElFTkSuQmCC",
+              "WhenOpened": "2025-04-26T02:43:15.876Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "packages.config",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\packages.config",
+              "RelativeDocumentMoniker": "FinalCheck\\packages.config",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\packages.config",
+              "RelativeToolTip": "FinalCheck\\packages.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFlSURBVDhPpZO9qsJAEIWPqyaFjQha2MUHsNDK1p/eRgsbg1Z2UfAx/AEfwVIb8TksfAGxSBAFJY2FpBiddQ1XvOBe7gfLsgfmMJM5wX\u002BJqBu9Xo/O57N6fWKaJvr9PgqFQljDhI9ms0mTyUS9PuHieDyOwWCAYrEY1gl1axEEAcbjMTabDSnpbwYMm0ynU1yvV2kSk6oGP8fjcV6EHcxmMySTSSQSCUSjUaV\u002BRxqcTid6fESUSiU5o2EY2ibieDxSJpOJcAdcNJ/PZTe8Nh1Eq9XCdrulfD4fqdVqUlyv17ILHQSHx7ZtDIdDWiwWT1HoL0fU63X4vo/lcqmkx2piMVwuFxmcbwjHcdDpdJBOp\u002BXJZrM4HA6yq9vtpmXyhuu6VK1WybIsKpfLtN/vibfkeV54OPavIL39GC/YpN1uY7fbIZfLYbVaodvtguiZ4FQqhdFoxJn5tV7CJpVKhRqNRpj7T4A7TASPsDpkW/8AAAAASUVORK5CYII=",
+              "WhenOpened": "2025-04-26T02:43:15.878Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "MyControlBarxaml.xaml",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\MyUserControl\\MyControlBarxaml.xaml",
+              "RelativeDocumentMoniker": "FinalCheck\\MyUserControl\\MyControlBarxaml.xaml",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\MyUserControl\\MyControlBarxaml.xaml",
+              "RelativeToolTip": "FinalCheck\\MyUserControl\\MyControlBarxaml.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-26T02:43:15.879Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "TitleBar.xaml",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\MyUserControl\\TitleBar.xaml",
+              "RelativeDocumentMoniker": "FinalCheck\\MyUserControl\\TitleBar.xaml",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\MyUserControl\\TitleBar.xaml",
+              "RelativeToolTip": "FinalCheck\\MyUserControl\\TitleBar.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-26T02:43:15.88Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "MyControlBarxaml.xaml.cs",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\MyUserControl\\MyControlBarxaml.xaml.cs",
+              "RelativeDocumentMoniker": "FinalCheck\\MyUserControl\\MyControlBarxaml.xaml.cs",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\MyUserControl\\MyControlBarxaml.xaml.cs",
+              "RelativeToolTip": "FinalCheck\\MyUserControl\\MyControlBarxaml.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAMAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADjSURBVDhPY0AGretv/t9x7tl/KJd0sOfii/\u002Bimfv\u002Bbzv7lGhDGBlid2Eo1pTkZNiSLsVQWVkJFWFgYGdnZygoKGAwNjZmhAphgt0XnsFd8P79\u002B/9Pnz6F47CwsP/R0dH/z549i2IhE5QGg1P3PzMsTtVgsFTiYvj27RtUFAF\u002B//7N0NfXx4BsCIoBIVoMDOaKnFg1wwDIkAkTJkB5oDBAAnFxcf/b29uhPNygsLCQYdWqVWC9KC748eMHlEU8QDGAHDBqABUMQEkHmZmZ/9\u002B\u002BfQvl4QbCwsIM06dPx50niAcMDADfJl5g9BqhpwAAAABJRU5ErkJggg==",
+              "WhenOpened": "2025-04-26T02:43:15.881Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "6d0c72dd-a51a-4075-9657-b8a6d83aedc2",
+        "Display": 1,
+        "X": 185,
+        "Y": 518,
+        "Width": 800,
+        "Height": 600,
+        "WindowState": 2
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "FinalCheck\\MainWindow.xaml",
+              "ToolTip": "D:\\2025\\FinalCheckPAPVN\\FinalCheck\\MainWindow.xaml",
+              "RelativeToolTip": "FinalCheck\\MainWindow.xaml",
+              "ViewState": "AgIAAJoCAAAAAAAAAAAwwOICAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-26T02:45:03.656Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
