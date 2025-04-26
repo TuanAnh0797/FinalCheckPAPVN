@@ -633,7 +633,7 @@
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
-                                        <GridViewColumn>
+                                        <!--<GridViewColumn>
                                             <GridViewColumn.Header>
                                                 <Grid Margin="5,0,5,0">
                                                     <Label>Result</Label>
@@ -653,32 +653,7 @@
 
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
-                                        
-                                        <GridViewColumn >
-                                            <GridViewColumn.Header>
-                                                <Grid Margin="5,0,5,0">
-                                                    <Label>Time Check</Label>
-                                                </Grid>
-                                            </GridViewColumn.Header>
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="*" />
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBlock Width="auto" TextAlignment="Center" FontWeight="Medium"  FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding TimeCheck}">
-                                                           
-                                                        </TextBlock>
-                                                    </Grid>
-
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
-
+                                        </GridViewColumn>-->
                                         <GridViewColumn >
                                             <GridViewColumn.Header>
                                                 <Grid Margin="5,0,5,0">
@@ -726,6 +701,31 @@
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
 
+                                        <GridViewColumn >
+                                            <GridViewColumn.Header>
+                                                <Grid Margin="5,0,5,0">
+                                                    <Label>Time Check</Label>
+                                                </Grid>
+                                            </GridViewColumn.Header>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Width="auto" TextAlignment="Center" FontWeight="Medium"  FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding TimeCheck}">
+                                                           
+                                                        </TextBlock>
+                                                    </Grid>
+
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+
+                                       
 
 
                                     </GridView>

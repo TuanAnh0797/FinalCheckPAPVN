@@ -856,7 +856,7 @@ namespace FinalCheck
                 if (rs_NG)
                 {
                     string filepathNG = SaveLogCheck(LogFilePathNG, DataCabi, RCF);
-                    //await showdetailError(DataCabi, RCF, filepathNG);
+                    await showdetailError(DataCabi, RCF, filepathNG);
                     rs_NG = false;
                 }
                 else

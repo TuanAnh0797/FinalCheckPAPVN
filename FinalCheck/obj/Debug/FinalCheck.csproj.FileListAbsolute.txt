@@ -576,4 +576,4 @@ D:\2025\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.g.resources
 D:\2025\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.Properties.Resources.resources
 D:\2025\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.csproj.GenerateResource.cache
 D:\2025\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.csproj.CoreCompileInputs.cache
-D:\2025\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.csproj.Up2Date
+D:\2025\FinalCheckPAPVN\FinalCheck\obj\Debug\FinalCheck.csproj.CopyComplete

@@ -1,0 +1,13 @@
+﻿{
+  "DataBase": {
+    "ConnectionString": "Server=192.168.3.178;Port=3306;Database=dataplc;User=TA;Password=123456;AllowLoadLocalInfile=true;"
+  },
+  "TimmerConfig": {
+    "TimerCheck": 500,
+    "TimerUpdateUI": 500
+  },
+  "LogFile": {
+    "FilePathOK": "C:\\Users\\Admin\\Desktop\\LOG_OK_FinalCheck",
+    "FilePathNG": "C:\\Users\\Admin\\Desktop\\LOG_NG_FinalCheck"
+  }
+}
