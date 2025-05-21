@@ -55,7 +55,7 @@ namespace FinalCheck
         bool IsOpenSetup = false;
         public Func<double, string> Formatter { get; set; }
 
-        public ObservableCollection<ResultMainNew> dataforlistview { set; get; }
+        public ObservableCollection<ResultMain> dataforlistview { set; get; }
 
         public ObservableCollection<ResultCheckFinal> List_Result_Check_Final { set; get; }
 
@@ -239,7 +239,7 @@ namespace FinalCheck
         public void innitproperty()
         {
 
-            dataforlistview = new ObservableCollection<ResultMainNew>();
+            dataforlistview = new ObservableCollection<ResultMain>();
 
             List_Result_Check_Final = new ObservableCollection<ResultCheckFinal>();
 
@@ -534,7 +534,10 @@ namespace FinalCheck
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    ResultMainNew RM = new ResultMainNew(i + 1, dt.Rows[i]["CodeBack"].ToString(), dt.Rows[i]["Judge_Total"].ToString(), dt.Rows[i]["TimeUpdate"].ToString(), dt.Rows[i]["ReasonError"].ToString(), dt.Rows[i]["PersonConfirm"].ToString());
+                    //ResultMainNew RM = new ResultMainNew(i + 1, dt.Rows[i]["CodeBack"].ToString(), dt.Rows[i]["Judge_Total"].ToString(), dt.Rows[i]["TimeUpdate"].ToString(), dt.Rows[i]["ReasonError"].ToString(), dt.Rows[i]["PersonConfirm"].ToString());
+
+                    ResultMain RM = new ResultMain(i + 1, dt.Rows[i]["CodeBack"].ToString(), dt.Rows[i]["Judge_Total"].ToString(), dt.Rows[i]["TimeUpdate"].ToString());
+
                     dataforlistview.Add(RM);
                 }
             }
@@ -849,19 +852,24 @@ namespace FinalCheck
                     popupdisconnect.IsOpen = false;
                     if (TimerPopupDisconnect.IsEnabled)
                     {
+                        SaveLogError(DateTime.Now.ToString("HH:mm:ss dd/MM/yyyy") + ": " + "ConnectAgain");
                         TimerPopupDisconnect.Stop();
                     }
 
                 }
-                if (rs_NG)
+                if (rs_NG && DataCabi.Length > 10)
                 {
                     string filepathNG = SaveLogCheck(LogFilePathNG, DataCabi, RCF);
-                    await showdetailError(DataCabi, RCF, filepathNG);
+                    //await showdetailError(DataCabi, RCF, filepathNG);
                     rs_NG = false;
                 }
                 else
                 {
-                    SaveLogCheck(LogFilePathOK, DataCabi, RCF);
+                    if (DataCabi.Length > 10)
+                    {
+                        SaveLogCheck(LogFilePathOK, DataCabi, RCF);
+                    }
+                    
                 }
             }
             catch (Exception ex)
@@ -869,6 +877,7 @@ namespace FinalCheck
                 SaveLogError(DateTime.Now.ToString("HH:mm:ss dd/MM/yyyy") + ": " + ex.Message);
                 if (ex.Message.Contains("timed out PLC") || ex.Message.Contains("actively refused")) ;
                 {
+                    SaveLogError(DateTime.Now.ToString("HH:mm:ss dd/MM/yyyy") + ": " + "Disconnect");
                     //popupdisconnect.IsOpen = true;
                     if (!TimerPopupDisconnect.IsEnabled)
                     {
